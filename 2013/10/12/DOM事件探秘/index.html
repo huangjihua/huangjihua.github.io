@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>DOM事件探秘(一) | Hank Huang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM事件探秘(一)">
+<meta property="og:url" content="http://huangjihua.github.io/2013/10/12/DOM事件探秘/index.html">
+<meta property="og:site_name" content="Hank Huang's Blog">
+<meta property="og:description" content="前言Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。">
+<meta property="og:image" content="http://yuml.me/diagram/nofunky/class/
+  [window]->1[document],[window]-[note:document],[window]8<-[document],
+  [document]->2[body],[document]-[note:body],[document]7<-[body],
+  [body]->3[div],[body]-[note:div],[body]6<-[div],
+  [div]->4[text],[div]-[note:text],[div]5<-[text]">
+<meta property="og:updated_time" content="2015-10-19T10:31:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM事件探秘(一)">
+<meta name="twitter:description" content="前言Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">Hank Huang&#39;s Blog</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://huangjihua.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/">首页</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+          <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://huangjihua.github.io"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/avatar.png">
+      <h2 id="name">黄继华</h2>
+      <h3 id="title">Web Developer &amp; Designer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+      <a id="follow" href="https://github.com/huangjihua/">关注我</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        8
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        6
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="http://github.com/huangjihua" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://www.weibo.com/236797891" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="http://blog.csdn.net/huangjihua0402" target="_blank" title="csdn"><i class="fa fa-csdn"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-DOM事件探秘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DOM事件探秘(一)
+    </h1>
+  
+
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/10/12/DOM事件探秘/">
+      <time datetime="2013-10-12T08:28:00.000Z" itemprop="datePublished">2013-10-12</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <!--文章内容theme.auto_excerpt[0]-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+                
+                  <div id="toc" class="toc-article">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一、事件流"><span class="toc-number">2.</span> <span class="toc-text">一、事件流</span></a></li></ol>
+</div>
+<!--Ŀ¼-->
+
+                  <h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。</p>
+<h4 id="一、事件流">一、事件流</h4><p>事件流就是描述了页面中接受事件的顺序，在浏览器发展的初期，两大浏览器厂商IE和Netscape互掐，出现了一个坑爹的情况，那就是他们对事件流的解释出现了两中截然相反的定义。也就是我们所熟悉的：IE的事件冒泡，Netscape的事件捕获。<br><img height="550" alt="DOM事件触发过程" src="http://yuml.me/diagram/nofunky/class/
+  [window]->1[document],[window]-[note:document],[window]8<-[document],
+  [document]->2[body],[document]-[note:body],[document]7<-[body],
+  [body]->3[div],[body]-[note:div],[body]6<-[div],
+  [div]->4[text],[div]-[note:text],[div]5<-[text]"></p>
+<blockquote>
+<p>当一个DOM事件被触发的时候，它并不只是在它的起源对象上触发一次，而是会经历三个不同的阶段。简而言之：事件一开始从文档的根节点流向目标对象（<em>捕获阶段</em>），然后在目标对向上被触发（<em>目标阶段</em>），之后再回溯到文档的根节点（<em>冒泡阶段</em>）</p>
+</blockquote>
+<p>事件流描述的是从页面中接受事件的顺序。<br>IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流</p>
+<blockquote>
+<p>1.<strong>事件冒泡</strong>：即事件最开始由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上转播至最不具体的节点(文档)。就是当点击text部分时，先由text处的元素接收，然后逐级传播至window，即执行5-6-7-8的过程</p>
+<p>2.<strong>事件捕获</strong>：事件捕获的思想是不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。同理，在上面的模型中，就是点击text部分时，先由window接收，然后逐级传播至text元素，即执行1-2-3-4-5的过程。</p>
+</blockquote>
+<p>#####事件冒泡和事件捕获的流程与区别<br>下面用代码来说明下事件冒泡和事件捕获的流程，同时也让大家能看出二者的区别：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>事件冒泡和事件捕获的流程与区别<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+        <span class="id">#p</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">400px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid <span class="hexcolor">#c5c5c5</span></span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
+        <span class="id">#c</span><span class="rules">{<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">30px</span> <span class="number">100px</span> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid red</span></span>;<span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"p"</span>&gt;</span>
+       父节点
+       <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c"</span>&gt;</span>子节点<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+   <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"> 
+    <span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p'</span>);
+    <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'c'</span>);
+     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+           alert(<span class="string">'子节点捕获'</span>)
+  　　      }, <span class="literal">true</span>);
+     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+           alert(<span class="string">'子节点冒泡'</span>)
+      }, <span class="literal">false</span>);
+    p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+            alert(<span class="string">'父节点捕获'</span>)
+        }, <span class="literal">true</span>);
+      p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+          alert(<span class="string">'父节点冒泡'</span>)
+       }, <span class="literal">false</span>);
+    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
+
+               
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://huangjihua.github.io/2013/10/12/DOM事件探秘/" data-id="cii4nrynh0016k4jxwgtkjtu3" class="article-share-link">分享到</a>
+      
+        <a href="http://huangjihua.github.io/2013/10/12/DOM事件探秘/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/10/12/DOM事件探秘二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          DOM事件探秘(二)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="ds-thread" class="ds-thread" data-thread-key="http://huangjihua.github.io/2013/10/12/DOM事件探秘/" data-title="DOM事件探秘(一)" data-url="http://huangjihua.github.io/2013/10/12/DOM事件探秘/">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category"></p>-->
+              <p class="item-title"><a href="/2015/11/02/grunt-beginner前端自动化工具/" class="title">Grunt-Beginner前端自动化工具</a></p>
+              <p class="item-date"><time datetime="2015-11-02T08:29:57.000Z" itemprop="datePublished">2015-11-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category"></p>-->
+              <p class="item-title"><a href="/2015/10/29/Sass和Compass用法以及Ruby安装/" class="title">Sass 和 Compass 用法</a></p>
+              <p class="item-date"><time datetime="2015-10-29T02:40:58.000Z" itemprop="datePublished">2015-10-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category"></p>-->
+              <p class="item-title"><a href="/2015/10/15/hexo搭建静态博客/" class="title">hexo搭建静态博客</a></p>
+              <p class="item-date"><time datetime="2015-10-15T02:40:58.000Z" itemprop="datePublished">2015-10-15</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category"></p>-->
+              <p class="item-title"><a href="/2014/10/15/Linux的学习/" class="title">linux学习随笔</a></p>
+              <p class="item-date"><time datetime="2014-10-15T03:40:58.000Z" itemprop="datePublished">2014-10-15</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category"></p>-->
+              <p class="item-title"><a href="/2014/02/12/SublimeText3-Nodejs环境配置/" class="title">SublimeText3-Nodejs环境配置</a></p>
+              <p class="item-date"><time datetime="2014-02-12T08:28:00.000Z" itemprop="datePublished">2014-02-12</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">Nodejs</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/web-tool/">Web Tool</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">CSS</a> <a href="/tags/linux/" style="font-size: 10px;">Linux</a> <a href="/tags/nodejs/" style="font-size: 15px;">Nodejs</a> <a href="/tags/web-tool/" style="font-size: 15px;">Web Tool</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title ">抗癌公社-北京社区</h3>
+  <div class="widget">
+    <div class="kags">
+       <div class="kags-title">
+         <img src="/css/images/kags_logo_touming.png" alt=""/>
+       </div>
+       <img src="/css/images/mykags.png" alt="抗癌公社-北京社区-欢迎您的加入"/>
+       <div><b> 微信扫码加入吧</b></div>
+       <div class="content">
+         <b>公社简介</b>
+         <p>
+           抗癌公社（原名互保公社）创建于2011年5月，是中国第一家众保平台，它通过建立网民间的“利益共同体与关系共同体”，利用针对癌症的小额互助，帮助患者筹集医疗费，以缓解人们对癌症的忧虑和解决癌症医疗费问题。
+         </p>
+         <b> 我们的使命</b>
+         <p>
+           帮助1亿国人解决大病医疗费问题建立中国乃至世界门槛最低的、性价比最高的保障方式，使人们不管收入高低，都不再为高额医疗费忧虑。人人有完善保障，更加从容和有尊严。
+           促进社会友爱互助精神，重建“善有善报”的社会价值观，证明“人人为我我为人人”不仅可行、而且是最优的生活方式。
+         </p>
+         <b>我们的愿景</b>
+         <p>
+           每个人一出生都会被父母加入到公社中来
+           每个社员都以作为公社一员而自豪
+           成为有影响力的互助团体，员工受人尊敬
+         </p>
+       </div>
+      <div class="qq">
+        <b>注册加入后：</b> <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=a648c5e0d95a18a2a2ad6595603a446a2361cb5f0db3cc9187131c05cabe3fe8"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png"  alt="抗癌公社北京社区" title="抗癌公社北京社区"></a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">微博秀</h3>
+  <div class="widget">
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1338627565&verifier=bce5fd03&dpc=1"></iframe>
+  </div>
+</div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 黄继华<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/huangjihua/icarus">PPOffice</a>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hank"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+ <script src="//ajax.useso.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<!--时序图---生成图js文件-->
+<!--<script type="text/javascript" src="http://www.websequencediagrams.com/service.js"></script>-->
+
+  </div>
+</body>
+</html>

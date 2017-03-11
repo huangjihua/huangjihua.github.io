@@ -295,19 +295,19 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-S6中的关键字super该如何理解？" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ES6中的关键字super该如何理解？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/11/S6中的关键字super该如何理解？/" class="article-date">
+      <a href="/2017/01/11/ES6中的关键字super该如何理解？/" class="article-date">
       <time datetime="2017-01-11T03:23:34.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
 
  
-    <a href="/2017/01/11/S6中的关键字super该如何理解？/#comments" title="查看评论">
+    <a href="/2017/01/11/ES6中的关键字super该如何理解？/#comments" title="查看评论">
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <span class="count-comment"></span>
         
-            <span class="ds-thread-count" data-thread-key="2017/01/11/S6中的关键字super该如何理解？/"></span>
+            <span class="ds-thread-count" data-thread-key="2017/01/11/ES6中的关键字super该如何理解？/"></span>
         
         
     </a>
@@ -320,7 +320,7 @@
     
       <header class="article-header">
         <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a>
+      <a class="article-title" href="/2017/01/11/ES6中的关键字super该如何理解？/">ES6中的关键字super该如何理解？</a>
     </h1>
       </header>
       
@@ -328,7 +328,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h2><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
+        <p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
 <pre><code> <span class="keyword">class</span> Cat { 
   <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
     <span class="keyword">this</span>.name = name;
@@ -913,6 +913,91 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
   
 </article>
   
+    <article id="post-MAC中bash与zsh的切换" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/22/MAC中bash与zsh的切换/" class="article-date">
+      <time datetime="2016-10-22T03:02:25.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+
+ 
+    <a href="/2016/10/22/MAC中bash与zsh的切换/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count" data-thread-key="2016/10/22/MAC中bash与zsh的切换/"></span>
+        
+        
+    </a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a>
+    </h1>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="切换命令">切换命令</h4><ul>
+<li><p>切换bash</p>
+<p>   <code>chsh -s /bin/bash</code></p>
+</li>
+</ul>
+<ul>
+<li><p>切换zsh</p>
+<p>  <code>chsh -s /bin/zsh</code></p>
+</li>
+</ul>
+<h4 id="配置启动zsh时自动加载node">配置启动zsh时自动加载node</h4><p>1.进入插件目录</p>
+<pre><code>cd~/.oh-<span class="keyword">my</span>-zsh/plugins/
+</code></pre><p>2.创建 nvm_auto_load 目录</p>
+<pre><code><span class="built_in">mkdir</span> nvm_auto_load
+</code></pre><p>3.将初始化 nvm 写入 nvm_auto_load.plugin.zsh</p>
+<pre><code><span class="keyword">if</span> [[ -z <span class="variable">$NVM_DIR</span> ]]; <span class="keyword">then</span>
+ NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span>
+
+<span class="keyword">fi</span>
+[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>] &amp;&amp; .<span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>
+</code></pre><p>4.修改 ~/.zshrc</p>
+<blockquote>
+<p>在你的原有插件配置中添加 nvm_auto_load ，如 plugins=(git nvm_auto_load)<br>如果你的nvm 不是安装在推荐的目录 ~/.nvm ，则需要在plugins 配置行之前添加一个 NVM_DIR 的配置</p>
+</blockquote>
+<pre><code><span class="built_in">export</span>NVM_DIR=<span class="string">"/path/to/nvm"</span>
+</code></pre><p>5.修改后的 .zshrc 完整示例：</p>
+<pre><code>exportZSH=<span class="variable">$HOME</span>/.oh-my-zsh
+exportNVM_DIR=<span class="variable">$HOME</span>/.nvm
+
+plugins=(git nvm_auto_load)
+
+source<span class="variable">$ZSH</span>/oh-my-zsh.sh
+</code></pre><p>修改完记得重启zsh哟~~</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/mac/">Mac</a>
+    </div>
+      <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">Mac</a></li></ul>
+    </div>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+  
     <article id="post-Atom中linter-eslint安装以及全局设置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -993,91 +1078,6 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
     </div>
       <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atom/">Atom</a></li></ul>
-    </div>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-  
-    <article id="post-MAC中bash与zsh的切换" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/22/MAC中bash与zsh的切换/" class="article-date">
-      <time datetime="2016-10-22T03:02:25.000Z" itemprop="datePublished">2016-10-22</time>
-</a>
-
- 
-    <a href="/2016/10/22/MAC中bash与zsh的切换/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count" data-thread-key="2016/10/22/MAC中bash与zsh的切换/"></span>
-        
-        
-    </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a>
-    </h1>
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="切换命令">切换命令</h4><ul>
-<li><p>切换bash</p>
-<p>   <code>chsh -s /bin/bash</code></p>
-</li>
-</ul>
-<ul>
-<li><p>切换zsh</p>
-<p>  <code>chsh -s /bin/zsh</code></p>
-</li>
-</ul>
-<h4 id="配置启动zsh时自动加载node">配置启动zsh时自动加载node</h4><p>1.进入插件目录</p>
-<pre><code>cd~/.oh-<span class="keyword">my</span>-zsh/plugins/
-</code></pre><p>2.创建 nvm_auto_load 目录</p>
-<pre><code><span class="built_in">mkdir</span> nvm_auto_load
-</code></pre><p>3.将初始化 nvm 写入 nvm_auto_load.plugin.zsh</p>
-<pre><code><span class="keyword">if</span> [[ -z <span class="variable">$NVM_DIR</span> ]]; <span class="keyword">then</span>
- NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span>
-
-<span class="keyword">fi</span>
-[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>] &amp;&amp; .<span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>
-</code></pre><p>4.修改 ~/.zshrc</p>
-<blockquote>
-<p>在你的原有插件配置中添加 nvm_auto_load ，如 plugins=(git nvm_auto_load)<br>如果你的nvm 不是安装在推荐的目录 ~/.nvm ，则需要在plugins 配置行之前添加一个 NVM_DIR 的配置</p>
-</blockquote>
-<pre><code><span class="built_in">export</span>NVM_DIR=<span class="string">"/path/to/nvm"</span>
-</code></pre><p>5.修改后的 .zshrc 完整示例：</p>
-<pre><code>exportZSH=<span class="variable">$HOME</span>/.oh-my-zsh
-exportNVM_DIR=<span class="variable">$HOME</span>/.nvm
-
-plugins=(git nvm_auto_load)
-
-source<span class="variable">$ZSH</span>/oh-my-zsh.sh
-</code></pre><p>修改完记得重启zsh哟~~</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/mac/">Mac</a>
-    </div>
-      <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">Mac</a></li></ul>
     </div>
       
       <div class="clearfix"></div>

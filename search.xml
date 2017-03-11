@@ -4,9 +4,9 @@
   
     
     <entry>
-      <title><![CDATA[S6中的关键字super该如何理解？]]></title>
-      <url>http://huangjihua.com.cn/2017/01/11/S6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<h2 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h2><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
+      <title><![CDATA[ES6中的关键字super该如何理解？]]></title>
+      <url>http://huangjihua.com.cn/2017/01/11/ES6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
 <pre><code> <span class="keyword">class</span> Cat { 
   <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
     <span class="keyword">this</span>.name = name;
@@ -523,6 +523,58 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
     </entry>
     
     <entry>
+      <title><![CDATA[MAC中bash与zsh的切换]]></title>
+      <url>http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/</url>
+      <content type="html"><![CDATA[<h4 id="切换命令">切换命令</h4><ul>
+<li><p>切换bash</p>
+<p>   <code>chsh -s /bin/bash</code></p>
+</li>
+</ul>
+<ul>
+<li><p>切换zsh</p>
+<p>  <code>chsh -s /bin/zsh</code></p>
+</li>
+</ul>
+<h4 id="配置启动zsh时自动加载node">配置启动zsh时自动加载node</h4><p>1.进入插件目录</p>
+<pre><code>cd~/.oh-<span class="keyword">my</span>-zsh/plugins/
+</code></pre><p>2.创建 nvm_auto_load 目录</p>
+<pre><code><span class="built_in">mkdir</span> nvm_auto_load
+</code></pre><p>3.将初始化 nvm 写入 nvm_auto_load.plugin.zsh</p>
+<pre><code><span class="keyword">if</span> [[ -z <span class="variable">$NVM_DIR</span> ]]; <span class="keyword">then</span>
+ NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span>
+
+<span class="keyword">fi</span>
+[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>] &amp;&amp; .<span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>
+</code></pre><p>4.修改 ~/.zshrc</p>
+<blockquote>
+<p>在你的原有插件配置中添加 nvm_auto_load ，如 plugins=(git nvm_auto_load)<br>如果你的nvm 不是安装在推荐的目录 ~/.nvm ，则需要在plugins 配置行之前添加一个 NVM_DIR 的配置</p>
+</blockquote>
+<pre><code><span class="built_in">export</span>NVM_DIR=<span class="string">"/path/to/nvm"</span>
+</code></pre><p>5.修改后的 .zshrc 完整示例：</p>
+<pre><code>exportZSH=<span class="variable">$HOME</span>/.oh-my-zsh
+exportNVM_DIR=<span class="variable">$HOME</span>/.nvm
+
+plugins=(git nvm_auto_load)
+
+source<span class="variable">$ZSH</span>/oh-my-zsh.sh
+</code></pre><p>修改完记得重启zsh哟~~</p>]]></content>
+      
+        <categories>
+            
+            <category> Mac </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Atom中linter-Eslint安装以及全局设置]]></title>
       <url>http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h2 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h2><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
@@ -573,58 +625,6 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
         <tags>
             
             <tag> Atom </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[MAC中bash与zsh的切换]]></title>
-      <url>http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/</url>
-      <content type="html"><![CDATA[<h4 id="切换命令">切换命令</h4><ul>
-<li><p>切换bash</p>
-<p>   <code>chsh -s /bin/bash</code></p>
-</li>
-</ul>
-<ul>
-<li><p>切换zsh</p>
-<p>  <code>chsh -s /bin/zsh</code></p>
-</li>
-</ul>
-<h4 id="配置启动zsh时自动加载node">配置启动zsh时自动加载node</h4><p>1.进入插件目录</p>
-<pre><code>cd~/.oh-<span class="keyword">my</span>-zsh/plugins/
-</code></pre><p>2.创建 nvm_auto_load 目录</p>
-<pre><code><span class="built_in">mkdir</span> nvm_auto_load
-</code></pre><p>3.将初始化 nvm 写入 nvm_auto_load.plugin.zsh</p>
-<pre><code><span class="keyword">if</span> [[ -z <span class="variable">$NVM_DIR</span> ]]; <span class="keyword">then</span>
- NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span>
-
-<span class="keyword">fi</span>
-[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>] &amp;&amp; .<span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>
-</code></pre><p>4.修改 ~/.zshrc</p>
-<blockquote>
-<p>在你的原有插件配置中添加 nvm_auto_load ，如 plugins=(git nvm_auto_load)<br>如果你的nvm 不是安装在推荐的目录 ~/.nvm ，则需要在plugins 配置行之前添加一个 NVM_DIR 的配置</p>
-</blockquote>
-<pre><code><span class="built_in">export</span>NVM_DIR=<span class="string">"/path/to/nvm"</span>
-</code></pre><p>5.修改后的 .zshrc 完整示例：</p>
-<pre><code>exportZSH=<span class="variable">$HOME</span>/.oh-my-zsh
-exportNVM_DIR=<span class="variable">$HOME</span>/.nvm
-
-plugins=(git nvm_auto_load)
-
-source<span class="variable">$ZSH</span>/oh-my-zsh.sh
-</code></pre><p>修改完记得重启zsh哟~~</p>]]></content>
-      
-        <categories>
-            
-            <category> Mac </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Mac </tag>
             
         </tags>
         

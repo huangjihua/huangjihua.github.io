@@ -3,6 +3,27 @@
 
 
     
+  <url>
+    <loc>http://huangjihua.com.cn/2017/01/11/ES6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</loc>
+    <lastmod>2017-03-11T15:08:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>ES6中的关键字super该如何理解？</title>
+        <pubTime>2017-01-11T03:23:34.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
     
   <url>
     <loc>http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/</loc>
@@ -127,7 +148,6 @@
     
     
     
-    
   <url>
     <loc>http://huangjihua.com.cn/2015/10/15/hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2017-03-11T13:16:02.000Z</lastmod>
@@ -142,26 +162,6 @@
            
              
               <breadCrumb title="Hexo" url="http://huangjihua.com.cn/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2017/01/11/S6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</loc>
-    <lastmod>2017-03-11T09:23:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>S6中的关键字super该如何理解？</title>
-        <pubTime>2017-01-11T03:23:34.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
           
         </display>
     </data>

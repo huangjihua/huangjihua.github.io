@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://huangjihua.com.cn/"/>
-  <updated>2017-03-11T09:23:24.000Z</updated>
+  <updated>2017-03-11T15:08:54.000Z</updated>
   <id>http://huangjihua.com.cn/</id>
   
   <author>
@@ -16,13 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>S6中的关键字super该如何理解？</title>
-    <link href="http://huangjihua.com.cn/2017/01/11/S6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/"/>
-    <id>http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/</id>
+    <title>ES6中的关键字super该如何理解？</title>
+    <link href="http://huangjihua.com.cn/2017/01/11/ES6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/"/>
+    <id>http://huangjihua.com.cn/2017/01/11/ES6中的关键字super该如何理解？/</id>
     <published>2017-01-11T03:23:34.000Z</published>
-    <updated>2017-03-11T09:23:24.000Z</updated>
+    <updated>2017-03-11T15:08:54.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h2><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
+    <content type="html"><![CDATA[<p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
 <pre><code> <span class="keyword">class</span> Cat { 
   <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
     <span class="keyword">this</span>.name = name;
@@ -92,8 +92,9 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;S6中的关键字super该如何理解？&quot;&gt;S6中的关键字super该如何理解？&lt;/h2&gt;&lt;p&gt;有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &lt;span class=&quot;keywor
+      &lt;p&gt;有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; Cat { 
+  &lt;span class=&quot;constructor&quot;&gt;
     
     </summary>
     
@@ -546,64 +547,6 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
   </entry>
   
   <entry>
-    <title>Atom中linter-Eslint安装以及全局设置</title>
-    <link href="http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://huangjihua.com.cn/2016/10/22/Atom中linter-eslint安装以及全局设置/</id>
-    <published>2016-10-22T03:02:25.000Z</published>
-    <updated>2017-03-11T14:14:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h2><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
-<p>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
-<p>把<code>Disable when no ESLint config is found</code>的对钩去掉。这个选项的意思是说：如果你的javascript项目文件夹中没有.eslintrc这样的配置文件的话，那么ESLint就不起作用。在这里，我们要设置为全局lint，不需要在每个javascript文件夹中包含.eslintrc文件，所以要把它去掉，否则由于我们的项目文件夹中没有.eslintrc文件，ESLint会不起作用。<br>把<code>Use global ESLint installation</code>的对钩勾上。因为我们使用的是全局的ESLint安装包。<br>下面，开始安装ESLint：</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint -<span class="keyword">g</span></span>
-</code></pre><p>ESLint是通过npm安装的，这里的-g选项代表全局，也就是说它不会把ESLint的可执行文件安装在你的项目文件夹或者说当前文件夹下。如果你没有设置这个-g选项的话，它会在你当前文件夹下安装ESLint可执行文件，那样就不是全局安装了。后面我们所有安装包都要用使用这个-g选项<br>eslint -v<br>安装完成之后，你可以先执行一下eslint -v这个命令来看一下eslint是否已经安装成功了，如果没有的话，你需要反复检查，直到确保eslint安装已经成功为止。</p>
-<p>关于<code>eslint --init</code> 可以不必执行，它主要的作用是在你当前文件夹下生成.eslintrc文件，但同时也会把eslint在你当前文件夹下重新安装一遍，并且如果你使用包的话，它还会要求必须要有package.json文件，总之会很麻烦。但如果你是第一次使用的话，我建议你可以执行一下试试，它主要提供3种预安装包：<code>Google</code>标准、<code>Airbnb</code>标准和<code>Standard</code>标准。这3个标准里，Google就是Google公司的标准，Airbnb是Airbnb公司的标准，Standard就是一些前端工程师自定的标准。目前来看，公认的最好的标准是Airbnb标准（互联网发展日新月异，永远是年轻人颠覆老年人，连Google都老了）。它对于ES6要求最严格，比如禁止使用var定义变量，必须使用let或者const等等。既然采用最新标准，当然就让你的代码一次性向最高标准看齐，省得以后麻烦。</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-config-airbnb -<span class="keyword">g</span></span>
-</code></pre><p>精彩的重头戏来了：看到漂亮的airbnb了吗？我们就里就是要安装Airbnb的标准了。注意-g，还是全局化安装。</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-jsx-a11y -<span class="keyword">g</span></span>
-</code></pre><p>a11y是accessibility（无障碍环境）的缩写，从第一个字母a到最后一个字母y，中间一共是11个字母，所以就叫a11y了，类似于i18n表示internationalization（国际化）一样。JSX主要是React会用到，虽然我们的项目里可能并不会用React，但是这个Airbnb标准必须要用到它，所以必须安装。</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-<span class="keyword">import</span> -<span class="keyword">g</span></span>
-</code></pre><p>同上，Airbnb标准必需。<br>最后，编写我们自己的全局.eslintrc文件：</p>
-<pre><code>vi ~/<span class="class">.eslintrc</span><span class="class">.json</span>
-</code></pre><p>前面讲过了，为项目服务的.eslintrc.json文件是放在项目文件夹下的，全局的.eslintrc.json文件则放在当前用户的根目录下，类Unix系统的当前用户目录是~，而Windows系统的话则是类似于C:\Windows\Users\Username这样的地方。<br>把以下代码放入.eslintrc.json，就做好了你的全局ESLint配置文件。</p>
-<pre><code>{
-    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
-    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
-    "<span class="attribute">plugins</span>": <span class="value">[
-        <span class="string">"react"</span>
-    ]
-</span>}
-</code></pre><p>在atom中打开你的某一个js文件，随便改几个字符看看效果吧，不出所料的话，应该会出现一堆红色的错误。如果没有出现，不是你的代码没有问题，而是你没有安装对。</p>
-<p>Airbnb的缺省标准是每行的缩进字符是2个空格键，而我一般喜欢使用4个空格键作缩进，所以这里需要一点小小的定制。另外，我缺省会大量使用jQuery，不想让它总是报告什么jQuery这个变量未定义等错误。所以增加了几行，最终的.eslintrc.json如下：</p>
-<pre><code>{
-    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
-    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
-    "<span class="attribute">plugins</span>": <span class="value">[
-        <span class="string">"react"</span>
-    ]</span>,
-    "<span class="attribute">env</span>": <span class="value">{
-        "<span class="attribute">jquery</span>": <span class="value"><span class="literal">true</span>
-    </span>}</span>,
-    "<span class="attribute">rules</span>": <span class="value">{
-        "<span class="attribute">indent</span>": <span class="value">[<span class="string">"error"</span>, <span class="number">4</span>]
-    </span>}
- </span>}
-</code></pre><p>这样你在任何项目中的js文件都会按照这同一套标准去检查。好了，现在可以开始改你的代码了，解决那一大堆红叉子吧，我相信一定不少。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Atom中linter-eslint安装以及全局设置&quot;&gt;Atom中linter-eslint安装以及全局设置&lt;/h2&gt;&lt;p&gt;   &lt;a href=&quot;http://eslint.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ESLint&lt;
-    
-    </summary>
-    
-      <category term="Atom" scheme="http://huangjihua.com.cn/categories/atom/"/>
-    
-    
-      <category term="Atom" scheme="http://huangjihua.com.cn/tags/atom/"/>
-    
-  </entry>
-  
-  <entry>
     <title>MAC中bash与zsh的切换</title>
     <link href="http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/"/>
     <id>http://huangjihua.com.cn/2016/10/22/MAC中bash与zsh的切换/</id>
@@ -661,6 +604,64 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     
     
       <category term="Mac" scheme="http://huangjihua.com.cn/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Atom中linter-Eslint安装以及全局设置</title>
+    <link href="http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://huangjihua.com.cn/2016/10/22/Atom中linter-eslint安装以及全局设置/</id>
+    <published>2016-10-22T03:02:25.000Z</published>
+    <updated>2017-03-11T14:14:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h2><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
+<p>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
+<p>把<code>Disable when no ESLint config is found</code>的对钩去掉。这个选项的意思是说：如果你的javascript项目文件夹中没有.eslintrc这样的配置文件的话，那么ESLint就不起作用。在这里，我们要设置为全局lint，不需要在每个javascript文件夹中包含.eslintrc文件，所以要把它去掉，否则由于我们的项目文件夹中没有.eslintrc文件，ESLint会不起作用。<br>把<code>Use global ESLint installation</code>的对钩勾上。因为我们使用的是全局的ESLint安装包。<br>下面，开始安装ESLint：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint -<span class="keyword">g</span></span>
+</code></pre><p>ESLint是通过npm安装的，这里的-g选项代表全局，也就是说它不会把ESLint的可执行文件安装在你的项目文件夹或者说当前文件夹下。如果你没有设置这个-g选项的话，它会在你当前文件夹下安装ESLint可执行文件，那样就不是全局安装了。后面我们所有安装包都要用使用这个-g选项<br>eslint -v<br>安装完成之后，你可以先执行一下eslint -v这个命令来看一下eslint是否已经安装成功了，如果没有的话，你需要反复检查，直到确保eslint安装已经成功为止。</p>
+<p>关于<code>eslint --init</code> 可以不必执行，它主要的作用是在你当前文件夹下生成.eslintrc文件，但同时也会把eslint在你当前文件夹下重新安装一遍，并且如果你使用包的话，它还会要求必须要有package.json文件，总之会很麻烦。但如果你是第一次使用的话，我建议你可以执行一下试试，它主要提供3种预安装包：<code>Google</code>标准、<code>Airbnb</code>标准和<code>Standard</code>标准。这3个标准里，Google就是Google公司的标准，Airbnb是Airbnb公司的标准，Standard就是一些前端工程师自定的标准。目前来看，公认的最好的标准是Airbnb标准（互联网发展日新月异，永远是年轻人颠覆老年人，连Google都老了）。它对于ES6要求最严格，比如禁止使用var定义变量，必须使用let或者const等等。既然采用最新标准，当然就让你的代码一次性向最高标准看齐，省得以后麻烦。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-config-airbnb -<span class="keyword">g</span></span>
+</code></pre><p>精彩的重头戏来了：看到漂亮的airbnb了吗？我们就里就是要安装Airbnb的标准了。注意-g，还是全局化安装。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-jsx-a11y -<span class="keyword">g</span></span>
+</code></pre><p>a11y是accessibility（无障碍环境）的缩写，从第一个字母a到最后一个字母y，中间一共是11个字母，所以就叫a11y了，类似于i18n表示internationalization（国际化）一样。JSX主要是React会用到，虽然我们的项目里可能并不会用React，但是这个Airbnb标准必须要用到它，所以必须安装。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-<span class="keyword">import</span> -<span class="keyword">g</span></span>
+</code></pre><p>同上，Airbnb标准必需。<br>最后，编写我们自己的全局.eslintrc文件：</p>
+<pre><code>vi ~/<span class="class">.eslintrc</span><span class="class">.json</span>
+</code></pre><p>前面讲过了，为项目服务的.eslintrc.json文件是放在项目文件夹下的，全局的.eslintrc.json文件则放在当前用户的根目录下，类Unix系统的当前用户目录是~，而Windows系统的话则是类似于C:\Windows\Users\Username这样的地方。<br>把以下代码放入.eslintrc.json，就做好了你的全局ESLint配置文件。</p>
+<pre><code>{
+    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
+    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
+    "<span class="attribute">plugins</span>": <span class="value">[
+        <span class="string">"react"</span>
+    ]
+</span>}
+</code></pre><p>在atom中打开你的某一个js文件，随便改几个字符看看效果吧，不出所料的话，应该会出现一堆红色的错误。如果没有出现，不是你的代码没有问题，而是你没有安装对。</p>
+<p>Airbnb的缺省标准是每行的缩进字符是2个空格键，而我一般喜欢使用4个空格键作缩进，所以这里需要一点小小的定制。另外，我缺省会大量使用jQuery，不想让它总是报告什么jQuery这个变量未定义等错误。所以增加了几行，最终的.eslintrc.json如下：</p>
+<pre><code>{
+    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
+    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
+    "<span class="attribute">plugins</span>": <span class="value">[
+        <span class="string">"react"</span>
+    ]</span>,
+    "<span class="attribute">env</span>": <span class="value">{
+        "<span class="attribute">jquery</span>": <span class="value"><span class="literal">true</span>
+    </span>}</span>,
+    "<span class="attribute">rules</span>": <span class="value">{
+        "<span class="attribute">indent</span>": <span class="value">[<span class="string">"error"</span>, <span class="number">4</span>]
+    </span>}
+ </span>}
+</code></pre><p>这样你在任何项目中的js文件都会按照这同一套标准去检查。好了，现在可以开始改你的代码了，解决那一大堆红叉子吧，我相信一定不少。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Atom中linter-eslint安装以及全局设置&quot;&gt;Atom中linter-eslint安装以及全局设置&lt;/h2&gt;&lt;p&gt;   &lt;a href=&quot;http://eslint.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ESLint&lt;
+    
+    </summary>
+    
+      <category term="Atom" scheme="http://huangjihua.com.cn/categories/atom/"/>
+    
+    
+      <category term="Atom" scheme="http://huangjihua.com.cn/tags/atom/"/>
     
   </entry>
   

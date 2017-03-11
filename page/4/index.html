@@ -14,11 +14,18 @@
 <meta name="author" content="Hank" />
 
 
+     
+        <meta name="baidu-site-verification" content="baidusitemap,xml" />
+    
+     
+        <meta name="google-site-verification" content="setmap.xml" />
+    
+
 
 <meta name="description" content="关注WEB前端，前端开发，javascript,css,Web,HTTP,Nodejs">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Huangjihua's Blog">
-<meta property="og:url" content="http://huangjihua.com.cn/tags/atom/index.html">
+<meta property="og:url" content="http://huangjihua.com.cn/page/4/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="关注WEB前端，前端开发，javascript,css,Web,HTTP,Nodejs">
 <meta name="twitter:card" content="summary">
@@ -51,11 +58,13 @@
 <link rel="stylesheet" href="/css/style.css" type="text/css">
 
 
+    <style> .article { opacity: 0;} </style>
+
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: Atom | Huangjihua&#39;s Blog</title>
+<title>Huangjihua&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -64,10 +73,10 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: false,
+        isHome: true,
         isPost: false,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -295,58 +304,123 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-DOM事件探秘" class="article article-type-post" itemscope itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/22/Atom中linter-eslint安装以及全局设置/" class="archive-article-date">
-      <time datetime="2016-10-22T03:02:25.000Z" itemprop="datePublished">10-22</time>
+    <div class="article-meta">
+      <a href="/2013/10/12/DOM事件探秘/" class="article-date">
+      <time datetime="2013-10-12T08:28:00.000Z" itemprop="datePublished">2013-10-12</time>
 </a>
 
 
-        </div>
-         
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a>
+      <a class="article-title" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a>
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/atom/">Atom</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atom/">Atom</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </header>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。</p>
+<h4 id="一、事件流">一、事件流</h4><p>事件流就是描述了页面中接受事件的顺序，在浏览器发展的初期，两大浏览器厂商IE和Netscape互掐，出现了一个坑爹的情况，那就是他们对事件流的解释出现了两中截然相反的定义。也就是我们所熟悉的：IE的事件冒泡，Netscape的事件捕获。<br><img height="550" alt="DOM事件触发过程" src="http://yuml.me/diagram/nofunky/class/
+  [window]->1[document],[window]-[note:document],[window]8<-[document],
+  [document]->2[body],[document]-[note:body],[document]7<-[body],
+  [body]->3[div],[body]-[note:div],[body]6<-[div],
+  [div]->4[text],[div]-[note:text],[div]5<-[text]"></p>
+<blockquote>
+<p>当一个DOM事件被触发的时候，它并不只是在它的起源对象上触发一次，而是会经历三个不同的阶段。简而言之：事件一开始从文档的根节点流向目标对象（<em>捕获阶段</em>），然后在目标对向上被触发（<em>目标阶段</em>），之后再回溯到文档的根节点（<em>冒泡阶段</em>）</p>
+</blockquote>
+<p>事件流描述的是从页面中接受事件的顺序。<br>IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流</p>
+<blockquote>
+<p>1.<strong>事件冒泡</strong>：即事件最开始由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上转播至最不具体的节点(文档)。就是当点击text部分时，先由text处的元素接收，然后逐级传播至window，即执行5-6-7-8的过程</p>
+<p>2.<strong>事件捕获</strong>：事件捕获的思想是不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。同理，在上面的模型中，就是点击text部分时，先由window接收，然后逐级传播至text元素，即执行1-2-3-4-5的过程。</p>
+</blockquote>
+<p>#####事件冒泡和事件捕获的流程与区别<br>下面用代码来说明下事件冒泡和事件捕获的流程，同时也让大家能看出二者的区别：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>事件冒泡和事件捕获的流程与区别<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+        <span class="id">#p</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">400px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid <span class="hexcolor">#c5c5c5</span></span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
+        <span class="id">#c</span><span class="rules">{<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">30px</span> <span class="number">100px</span> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid red</span></span>;<span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"p"</span>&gt;</span>
+       父节点
+       <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c"</span>&gt;</span>子节点<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+   <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"> 
+    <span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p'</span>);
+    <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'c'</span>);
+     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+           alert(<span class="string">'子节点捕获'</span>)
+  　　      }, <span class="literal">true</span>);
+     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+           alert(<span class="string">'子节点冒泡'</span>)
+      }, <span class="literal">false</span>);
+    p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+            alert(<span class="string">'父节点捕获'</span>)
+        }, <span class="literal">true</span>);
+      p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+          alert(<span class="string">'父节点冒泡'</span>)
+       }, <span class="literal">false</span>);
+    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
 
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
 </div>
       <footer id="footer">
     <div class="outer">

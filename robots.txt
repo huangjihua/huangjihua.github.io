@@ -1,5 +1,16 @@
 # robots.txt
-User-agent: Baiduspider
-Disallow: /
-User-agent: Googlebot
-Disallow:
+# User-agent: Baiduspider
+# Disallow: /
+# User-agent: Googlebot
+# Disallow:
+
+User-agent: *
+Allow: /
+Allow: /archives/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Sitemap: http://huangjihua.com.cn/sitemap.xml
+Sitemap: http://huangjihua.com.cn/baidusitemap.xml

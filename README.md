@@ -1,1 +1,1 @@
-# ["hank的博客"](http://huangjihua.com.cn)
+# [hank的博客](http://huangjihua.com.cn)

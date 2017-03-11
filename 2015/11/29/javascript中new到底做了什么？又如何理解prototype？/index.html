@@ -13,35 +13,38 @@
 
 
 
-<meta name="description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+<meta name="description" content="说到prototype就得先说说new了。我们先看看这样一段代码：
 var Person = function(){};
 var p = new Person();
  很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
 
 var p={}; 也就是说，初始化一个对象p
-p.proto=P">
+p.proto=Person.prototype;
+Person.call(p);也就是说">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript中new到底做了什么？又如何理解prototype？">
 <meta property="og:url" content="http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
-<meta property="og:description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+<meta property="og:description" content="说到prototype就得先说说new了。我们先看看这样一段代码：
 var Person = function(){};
 var p = new Person();
  很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
 
 var p={}; 也就是说，初始化一个对象p
-p.proto=P">
+p.proto=Person.prototype;
+Person.call(p);也就是说">
 <meta property="og:image" content="http://huangjihua.com.cn/images/joo_3.png">
-<meta property="og:updated_time" content="2017-03-11T06:56:39.000Z">
+<meta property="og:updated_time" content="2017-03-11T14:14:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中new到底做了什么？又如何理解prototype？">
-<meta name="twitter:description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+<meta name="twitter:description" content="说到prototype就得先说说new了。我们先看看这样一段代码：
 var Person = function(){};
 var p = new Person();
  很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
 
 var p={}; 也就是说，初始化一个对象p
-p.proto=P">
+p.proto=Person.prototype;
+Person.call(p);也就是说">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -341,7 +344,7 @@ p.proto=P">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="javascript中new到底做了什么？又如何理解prototype？">javascript中new到底做了什么？又如何理解prototype？</h1><p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
+        <p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
 <span class="keyword">var</span> p = <span class="keyword">new</span> Person();
 </code></pre><p> 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：</p>
@@ -418,7 +421,7 @@ Base.call(obj)<span class="comment">;</span>
         <p><span>本文标题:</span><a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2015-11-29, 10:40:58</p>
-        <p><span>最后更新:</span>2017-03-11, 14:56:39</p>
+        <p><span>最后更新:</span>2017-03-11, 22:14:01</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="Javascript中new到底做了什么？又如何理解prototype？">http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -452,7 +455,7 @@ Base.call(obj)<span class="comment">;</span>
 <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript中new到底做了什么？又如何理解prototype？"><span class="toc-number">1.</span> <span class="toc-text">javascript中new到底做了什么？又如何理解prototype？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#那么proto是什么？"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">那么proto是什么？</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#那么proto是什么？"><span class="toc-number">1.</span> <span class="toc-text">那么proto是什么？</span></a></li></ol>
         
     </div>
     <style>
@@ -531,7 +534,7 @@ Base.call(obj)<span class="comment">;</span>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字理解，你懂了？/">Javascript中this关键字理解，你懂了？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
     <script>

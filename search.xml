@@ -90,10 +90,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Javascript中this关键字到底怎么理解，你真的弄懂了吗？]]></title>
-      <url>http://huangjihua.com.cn/2016/11/29/Javascript%E4%B8%ADthis%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BD%A0%E7%9C%9F%E7%9A%84%E5%BC%84%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>#Javascript中this关键字到底怎么理解，你真的弄懂了吗？</p>
-<p>其实这个问题在面试中基本都会问到，我想大多数童鞋们都经历过吧，你是否答对了呢？</p>
+      <title><![CDATA[Javascript中this关键字理解，你懂了？]]></title>
+      <url>http://huangjihua.com.cn/2016/11/29/Javascript%E4%B8%ADthis%E5%85%B3%E9%94%AE%E5%AD%97%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BD%A0%E6%87%82%E4%BA%86%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<p>其实这个问题在面试中基本都会问到，我想大多数童鞋们都经历过吧，你是否答对了呢？</p>
 <h2 id="this指向哪里呢？">this指向哪里呢？</h2><p> 在Javascript中，和大多数面向对象的编程语言一样，这是一个特殊的关键字，它在方法中用于引用<br><code>被调用方法</code>的对象。</p>
 <blockquote>
 <p>In JavaScript, as in most object-oriented programming languages, this is a special keyword that is used within methods to refer to the object on which a method is being invoked.<br>                                   ——jQuery Fundamentals (Chapter 2), by Rebecca Murphey</p>
@@ -412,7 +411,7 @@ foo( <span class="number">1</span>,<span class="number">2</span>,<span class="nu
     <entry>
       <title><![CDATA[Javascript数组去重的方法]]></title>
       <url>http://huangjihua.com.cn/2016/11/14/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="javascript数组去重的方法">javascript数组去重的方法</h1><p><strong>这个是个经常用来面试的题目（别小看这个题）考点有二：</strong></p>
+      <content type="html"><![CDATA[<p><strong>这个是个经常用来面试的题目（别小看这个题）考点有二：</strong></p>
 <ol>
 <li><code>正确性</code>：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。</li>
 <li><p><code>高性能</code>：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。</p>
@@ -526,7 +525,7 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
     <entry>
       <title><![CDATA[Atom中linter-Eslint安装以及全局设置]]></title>
       <url>http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<h1 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h1><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
+      <content type="html"><![CDATA[<h2 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h2><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
 <p>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
 <p>把<code>Disable when no ESLint config is found</code>的对钩去掉。这个选项的意思是说：如果你的javascript项目文件夹中没有.eslintrc这样的配置文件的话，那么ESLint就不起作用。在这里，我们要设置为全局lint，不需要在每个javascript文件夹中包含.eslintrc文件，所以要把它去掉，否则由于我们的项目文件夹中没有.eslintrc文件，ESLint会不起作用。<br>把<code>Use global ESLint installation</code>的对钩勾上。因为我们使用的是全局的ESLint安装包。<br>下面，开始安装ESLint：</p>
 <pre><code>npm <span class="operator"><span class="keyword">install</span> eslint -<span class="keyword">g</span></span>
@@ -582,8 +581,7 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
     <entry>
       <title><![CDATA[MAC中bash与zsh的切换]]></title>
       <url>http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/</url>
-      <content type="html"><![CDATA[<p>#MAC中bash与zsh的切换</p>
-<h4 id="切换命令">切换命令</h4><ul>
+      <content type="html"><![CDATA[<h4 id="切换命令">切换命令</h4><ul>
 <li><p>切换bash</p>
 <p>   <code>chsh -s /bin/bash</code></p>
 </li>
@@ -635,7 +633,7 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     <entry>
       <title><![CDATA[作用域与闭包]]></title>
       <url>http://huangjihua.com.cn/2016/10/20/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<h2 id="作用域与闭包">作用域与闭包</h2><p>首先在讲之前，需要掌握以下几个概念：</p>
+      <content type="html"><![CDATA[<p>首先在讲之前，需要掌握以下几个概念：</p>
 <ol>
 <li>javaScript具有两种作用域：<strong>全局作用域</strong>和<strong>函数作用域</strong>，另外还有<strong>块作用域</strong>，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。</li>
 <li>ES6的let关键字，可以用来在任意代码块中声明变量。</li>
@@ -837,7 +835,7 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
     <entry>
       <title><![CDATA[Javascript中new到底做了什么？又如何理解prototype？]]></title>
       <url>http://huangjihua.com.cn/2015/11/29/javascript%E4%B8%ADnew%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%E5%8F%88%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3prototype%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<h1 id="javascript中new到底做了什么？又如何理解prototype？">javascript中new到底做了什么？又如何理解prototype？</h1><p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
+      <content type="html"><![CDATA[<p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
 <span class="keyword">var</span> p = <span class="keyword">new</span> Person();
 </code></pre><p> 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：</p>

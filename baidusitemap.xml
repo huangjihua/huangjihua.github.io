@@ -4,6 +4,130 @@
 
     
   <url>
+    <loc>http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/</loc>
+    <lastmod>2017-03-11T14:14:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>Atom中linter-Eslint安装以及全局设置</title>
+        <pubTime>2016-10-22T03:02:25.000Z</pubTime>
+        
+        <tag>Atom</tag>
+         
+         
+           
+             
+              <breadCrumb title="Atom" url="http://huangjihua.com.cn/categories/atom/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://huangjihua.com.cn/2015/11/29/javascript%E4%B8%ADnew%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%E5%8F%88%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3prototype%EF%BC%9F/</loc>
+    <lastmod>2017-03-11T14:14:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript中new到底做了什么？又如何理解prototype？</title>
+        <pubTime>2015-11-29T02:40:58.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://huangjihua.com.cn/2016/11/14/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-03-11T14:13:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript数组去重的方法</title>
+        <pubTime>2016-11-14T14:40:58.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/</loc>
+    <lastmod>2017-03-11T14:13:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>MAC中bash与zsh的切换</title>
+        <pubTime>2016-10-22T03:02:25.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mac" url="http://huangjihua.com.cn/categories/mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://huangjihua.com.cn/2016/11/29/Javascript%E4%B8%ADthis%E5%85%B3%E9%94%AE%E5%AD%97%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BD%A0%E6%87%82%E4%BA%86%EF%BC%9F/</loc>
+    <lastmod>2017-03-11T14:13:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript中this关键字理解，你懂了？</title>
+        <pubTime>2016-11-29T13:40:58.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://huangjihua.com.cn/2016/10/20/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2017-03-11T14:11:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>作用域与闭包</title>
+        <pubTime>2016-10-20T03:02:25.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+  <url>
     <loc>http://huangjihua.com.cn/2015/10/15/hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2017-03-11T13:16:02.000Z</lastmod>
     <data>
@@ -23,7 +147,6 @@
     </url>
 
     
-    
   <url>
     <loc>http://huangjihua.com.cn/2017/01/11/S6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</loc>
     <lastmod>2017-03-11T09:23:24.000Z</lastmod>
@@ -31,86 +154,6 @@
         <display>
         <title>S6中的关键字super该如何理解？</title>
         <pubTime>2017-01-11T03:23:34.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2016/10/20/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
-    <lastmod>2017-03-11T09:23:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>作用域与闭包</title>
-        <pubTime>2016-10-20T03:02:25.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2016/11/29/Javascript%E4%B8%ADthis%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BD%A0%E7%9C%9F%E7%9A%84%E5%BC%84%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/</loc>
-    <lastmod>2017-03-11T07:14:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript中this关键字到底怎么理解，你真的弄懂了吗？</title>
-        <pubTime>2016-11-29T13:40:58.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2016/11/14/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2017-03-11T07:07:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript数组去重的方法</title>
-        <pubTime>2016-11-14T14:40:58.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://huangjihua.com.cn/categories/javascript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2015/11/29/javascript%E4%B8%ADnew%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%E5%8F%88%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3prototype%EF%BC%9F/</loc>
-    <lastmod>2017-03-11T06:56:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript中new到底做了什么？又如何理解prototype？</title>
-        <pubTime>2015-11-29T02:40:58.000Z</pubTime>
         
         <tag>javascript</tag>
          
@@ -138,47 +181,6 @@
            
              
               <breadCrumb title="HTTP/HTTPS" url="http://huangjihua.com.cn/categories/http-https/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2017-03-11T04:03:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>Atom中linter-Eslint安装以及全局设置</title>
-        <pubTime>2016-10-22T03:02:25.000Z</pubTime>
-        
-        <tag>Atom</tag>
-         
-         
-           
-             
-              <breadCrumb title="Atom" url="http://huangjihua.com.cn/categories/atom/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/</loc>
-    <lastmod>2017-03-11T03:06:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>MAC中bash与zsh的切换</title>
-        <pubTime>2016-10-22T03:02:25.000Z</pubTime>
-        
-        <tag>Mac</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mac" url="http://huangjihua.com.cn/categories/mac/"/>
           
         </display>
     </data>
@@ -336,8 +338,6 @@
     </data>
     </url>
 
-    
-    
     
     
 </urlset>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Hank" />
+
+
+
+<meta name="description" content="javascript数组去重的方法这个是个经常用来面试的题目（别小看这个题）考点有二：
+
+正确性：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。
+高性能：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。
+var arr = [1,2,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript数组去重的方法">
+<meta property="og:url" content="http://huangjihua.com.cn/2016/11/14/javascript数组去重的方法/index.html">
+<meta property="og:site_name" content="Huangjihua's Blog">
+<meta property="og:description" content="javascript数组去重的方法这个是个经常用来面试的题目（别小看这个题）考点有二：
+
+正确性：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。
+高性能：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。
+var arr = [1,2,">
+<meta property="og:updated_time" content="2017-03-11T07:07:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript数组去重的方法">
+<meta name="twitter:description" content="javascript数组去重的方法这个是个经常用来面试的题目（别小看这个题）考点有二：
+
+正确性：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。
+高性能：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。
+var arr = [1,2,">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>javascript数组去重的方法 | Huangjihua&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/hank.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Hank</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">填坑手艺人的随笔</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/essays/">我的随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Hank</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/hank.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Hank</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">填坑手艺人的随笔</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/essays/">我的随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-javascript数组去重的方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/14/javascript数组去重的方法/" class="article-date">
+      <time datetime="2016-11-14T14:40:58.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript数组去重的方法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="javascript数组去重的方法">javascript数组去重的方法</h1><p><strong>这个是个经常用来面试的题目（别小看这个题）考点有二：</strong></p>
+<ol>
+<li><code>正确性</code>：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。</li>
+<li><p><code>高性能</code>：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。</p>
+<pre><code>var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="string">'2'</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="string">'2'</span>,{a:<span class="number">1</span>},{b:<span class="number">1</span>,c:<span class="number">2</span>},{a:<span class="number">1</span>}];
+</code></pre></li>
+</ol>
+<p>下面的方法测试结果都是对arr数组进行测试的。</p>
+<h2 id="第一反应方案———扩展方法实现">第一反应方案———扩展方法实现</h2><ol>
+<li><p>利用indexOf判断旧数组</p>
+<pre><code> <span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+  <span class="keyword">var</span> newArray = [];
+  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> ;i &lt; <span class="keyword">this</span>.length;i++){
+      <span class="comment">//判断新数组里的是否存在该值</span>
+      <span class="keyword">if</span>(newArray.indexOf(<span class="keyword">this</span>[i]) == -<span class="number">1</span>){
+          newArray.push(<span class="keyword">this</span>[i]);
+      }
+  }
+     <span class="keyword">return</span> newArray;
+};
+<span class="built_in">console</span>.log(arr.unique1()); 
+<span class="comment">//结果 ：[ 1, 2, '2', 3, 4, { a: 1 }, { b: 1, c: 2 }, { a: 1 } ]</span>
+</code></pre></li>
+<li><p>利用indexOf判断新数组</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#9;Array.prototype.uniqu2 =  function () &#123;&#10;&#9;      var newArray = [];&#10;&#9;      for (var i = 0; i &#60; this.length; i++) &#123;&#10;&#9;          //&#21028;&#26029;&#24403;&#21069;&#25968;&#32452;&#30340;&#31532;i&#39033;&#22312;&#24403;&#21069;&#25968;&#32452;&#20013;&#20540;&#31532;&#19968;&#27425;&#20986;&#29616;&#30340;&#20301;&#32622;&#26159;&#19981;&#26159;=i&#65292;&#22914;&#26524;!=i,&#34920;&#31034;&#26377;&#37325;&#22797;&#65292;&#24573;&#30053;&#25481;&#12290;&#10;&#9;          if (this.indexOf(this[i]) == i) &#123;&#10;&#9;              newArray.push(this[i]);&#10;&#9;          &#125;&#10;&#9;      &#125;&#10;&#9;      return newArray;&#10;&#9;  &#125;;&#10;&#9;  &#10;&#9;  console.log(arr.unique2()); &#10;//&#32467;&#26524; &#65306;[ 1, 2, &#39;2&#39;, 3, 4, &#123; a: 1 &#125;, &#123; b: 1, c: 2 &#125;, &#123; a: 1 &#125; ]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上两种方法都觉得很靠谱，在现代浏览器下，上面这个函数很正确，性能也不错。但前端最大的悲哀也是挑战之处在于，要支持各种运行环境。在 IE6-8 下，数组的 indexOf 方法还不存在，那怎么办呢？接下来就利用到了对象了。</p>
+<ol>
+<li><p>利用hash对象key的唯一性—————优化方案</p>
+<pre><code><span class="built_in">Array</span>.prototype.unique3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+ <span class="keyword">var</span> newArray = [], hash = {};
+ <span class="comment">// for循环时，每次取出一个元素与对象进行对比</span>
+ <span class="comment">// 如果这个元素不重复，则将它存放到newArray数组中</span>
+ <span class="comment">// 同时把这个元素的内容作为对象的一个属性，并赋值为1,</span>
+ <span class="comment">// 存入到第2步建立的对象中</span>
+ <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span> ;i&lt;<span class="keyword">this</span>.length;i++){
+     <span class="comment">// 检测在hash对象中是否包含遍历到的元素的值</span>
+     <span class="comment">//(typeof this[i])+this[i] 为了处理number与string类型，</span>
+     <span class="comment">// 但是如果数组里包含object类型的对象（如：{a:1}）此方法不可行</span>
+     <span class="keyword">if</span>(!hash[(<span class="keyword">typeof</span> <span class="keyword">this</span>[i])+<span class="keyword">this</span>[i]]){
+         <span class="comment">// 如果不包含，存入object对象中该属性名的值设置为1</span>
+         hash[(<span class="keyword">typeof</span> <span class="keyword">this</span>[i])+<span class="keyword">this</span>[i]] = <span class="literal">true</span>;
+         <span class="comment">// 如果不包含，将存入对象的元素的值推入到newArray数组中</span>
+         newArray.push(<span class="keyword">this</span>[i]);
+     }
+ }
+ <span class="keyword">return</span> newArray;
+ };
+<span class="built_in">console</span>.log(arr.unique()); 
+ <span class="comment">//结果 ：[ 1, 2, '2', 3, 4, { a: 1 } ]  </span>
+</code></pre><p> 核心是构建了一个 hash 对象来替代 indexOf. 注意在 JavaScript 里，对象的键值只能是字符串，因此需要 var key = typeof(this[i]) + this[i] 来区分数值 2 和字符串 ‘2’ 等情况。</p>
+<p> 但优化真的很容易带来坑，比如上面的实现，对下面这种输入就无法判断：</p>
+<pre><code><span class="function"><span class="title">unique</span><span class="params">([ new String(<span class="number">2</span>)</span></span>, new <span class="function"><span class="title">Number</span><span class="params">(<span class="number">2</span>)</span></span> ])
+</code></pre><p>可以继续修改代码，做到性能和正确性都很好。但往往，这带来的结果并不好。如果有谁有好的方法解决这个问题，可以回复我。</p>
+</li>
+</ol>
+<h2 id="使用Set">使用Set</h2><ul>
+<li><code>Set</code> 和<code>Map</code>是ES6中新增的数据结构</li>
+<li><p><code>Set</code>直接可以存储不重复的一组<code>key</code>,这个<code>key</code>也可以是对象,字符串等。</p>
+<pre><code><span class="comment">// ES6 </span>
+<span class="function"><span class="keyword">function</span> <span class="title">unique</span> (<span class="params">arr</span>) </span>{ 
+    <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Map</span>()     
+    <span class="keyword">return</span> arr.filter((a) =&gt; !seen.has(a) &amp;&amp; seen.set(a, <span class="number">1</span>));
+ } 
+<span class="comment">// or</span>
+<span class="function"><span class="keyword">function</span> <span class="title">unique</span> (<span class="params">arr</span>) </span>{ 
+     <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));
+}
+</code></pre></li>
+</ul>
+<p>##创建set</p>
+<pre><code>var s = <span class="keyword">new</span> Set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);
+console.<span class="built_in">log</span>(s); <span class="comment">//Set { 1, 2, 3, 4, 5 }</span>
+</code></pre><h3 id="新增元素">新增元素</h3><pre><code>s.add(<span class="number">6</span>);
+console.<span class="built_in">log</span>(s); <span class="comment">//Set { 1, 2, 3, 4, 5, 6 }</span>
+s.add(<span class="number">3</span>); <span class="comment">//重复的不会增加</span>
+ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2, 3, 4, 5, 6 }</span>
+</code></pre><h3 id="删除元素">删除元素</h3><pre><code>s.<span class="keyword">delete</span>(<span class="number">3</span>);
+console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2, 4, 5 }</span>
+</code></pre><h3 id="遍历元素">遍历元素</h3><ul>
+<li><code>Set</code> 和<code>Map</code>无法使用<code>下标</code></li>
+<li><p>ES6标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p>  for(var x of s){</p>
+<pre><code>console.<span class="command">log</span>(x);
+</code></pre><p>  }</p>
+</li>
+<li><p>或者直接使用<code>iterable</code>内置<code>forEach</code>方法</p>
+</li>
+<li><p><code>forEach</code>方法<code>ES5.1</code>标准引入的</p>
+<pre><code>s.forEach(<span class="function"><span class="keyword">function</span><span class="params">(ele,<span class="keyword">set</span>)</span><span class="comment">{
+    console.log(ele);
+}</span>);</span>
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
+        <p><span>发布时间:</span>2016-11-14, 22:40:58</p>
+        <p><span>最后更新:</span>2017-03-11, 15:07:54</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/14/javascript数组去重的方法/" title="javascript数组去重的方法">http://huangjihua.com.cn/2016/11/14/javascript数组去重的方法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2016/11/14/javascript数组去重的方法/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">
+                    Javascript中this关键字到底怎么理解，你真的弄懂了吗？
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">
+                    Atom中linter-eslint安装以及全局设置
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript数组去重的方法"><span class="toc-number">1.</span> <span class="toc-text">javascript数组去重的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一反应方案———扩展方法实现"><span class="toc-number">1.1.</span> <span class="toc-text">第一反应方案———扩展方法实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Set"><span class="toc-number">1.2.</span> <span class="toc-text">使用Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新增元素"><span class="toc-number">1.2.1.</span> <span class="toc-text">新增元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除元素"><span class="toc-number">1.2.2.</span> <span class="toc-text">删除元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历元素"><span class="toc-number">1.2.3.</span> <span class="toc-text">遍历元素</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"javascript数组去重的方法　| Huangjihua's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/14/javascript数组去重的方法/" data-title="javascript数组去重的方法" data-url="http://huangjihua.com.cn/2016/11/14/javascript数组去重的方法/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"null"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/" title="上一篇: Javascript中this关键字到底怎么理解，你真的弄懂了吗？">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/22/Atom中linter-eslint安装以及全局设置/" title="下一篇: Atom中linter-eslint安装以及全局设置">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Hank
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

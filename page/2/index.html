@@ -14,14 +14,18 @@
 <meta name="author" content="Hank" />
 
 
+     
+        <meta name="baidu-site-verification" content="baidusitemap,xml" />
     
+     
+        <meta name="google-site-verification" content="setmap.xml" />
     
 
 
 <meta name="description" content="关注WEB前端，前端开发，随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Huangjihua's Blog">
-<meta property="og:url" content="http://huangjihua.github.io/page/2/index.html">
+<meta property="og:url" content="http://huangjihua.com.cn/page/2/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="关注WEB前端，前端开发，随笔">
 <meta name="twitter:card" content="summary">
@@ -90,6 +94,16 @@
 
 
 
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 
 </head>
@@ -201,7 +215,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
                     </div>
                 </section>
                 
@@ -290,11 +304,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-SublimeText3-Nodejs环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript中new到底做了什么？又如何理解prototype？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/02/12/SublimeText3-Nodejs环境配置/" class="article-date">
-      <time datetime="2014-02-12T08:28:00.000Z" itemprop="datePublished">2014-02-12</time>
+      <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" class="article-date">
+      <time datetime="2015-11-29T02:40:58.000Z" itemprop="datePublished">2015-11-29</time>
 </a>
 
 
@@ -309,7 +323,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a>
+      <a class="article-title" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a>
     </h1>
   
 
@@ -319,92 +333,352 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="下载SublimeText-Nodejs">下载SublimeText-Nodejs</h4><blockquote>
-<p>本文基于window环境测试的说明，希望能给大家带来帮助。</p>
-</blockquote>
-<p>1、直接下载压缩包后解压到sublime text的package目录中。查看package目录在哪可以通过菜单栏中的Preferences–&gt;浏览程序包Browse Packages直接打开package目录。</p>
-<p>2、使用git命令下载到Sublime的Data/package目录</p>
-<pre><code>git <span class="keyword">clone</span> <span class="title">https</span>://github.com/tanepiper/SublimeText-Nodejs 
-</code></pre><blockquote>
-<p>注意：下载好后，将SublimeText-Nodejs目录名称改为Nodejs</p>
-</blockquote>
-<h4 id="修改nodejs配置项">修改nodejs配置项</h4><ul>
-<li><p>修改第一个文件，在package目录下的nodejs目录中，打开<code>Nodejs.sublime-setting</code>配置文件，修改<code>&quot;node_command&quot;</code>和<code>&quot;npm_command&quot;</code>两项,修改好后内容如下：</p>
-<p>  {</p>
-<pre><code>// save before running commands
-"save_first": true,
-// if present, <span class="operator"><span class="keyword">use</span> this command instead <span class="keyword">of</span> plain <span class="string">"node"</span>
-// <span class="keyword">e</span>.<span class="keyword">g</span>. <span class="string">"/usr/bin/node"</span> <span class="keyword">or</span> <span class="string">"C:\bin\node.exe"</span>
-//<span class="string">"node_command"</span>: <span class="literal">false</span>, //修改前
-
-<span class="string">"node_command"</span>: <span class="string">"D:/DeveloperInstall/nodejs/node.exe"</span>,  //修改后
-// Same <span class="keyword">for</span> NPM command
-// <span class="string">"npm_command"</span>: <span class="literal">false</span>, //修改前
-
-<span class="string">"npm_command"</span>: <span class="string">"D:/DeveloperInstall/nodejs/npm.cmd"</span>,  //修改后
-// <span class="keyword">as</span> <span class="string">'NODE_PATH'</span> environment <span class="keyword">variable</span> <span class="keyword">for</span> node runtime
-<span class="string">"node_path"</span>: <span class="literal">false</span>,
-
-<span class="string">"expert_mode"</span>: <span class="literal">false</span>,
-
-<span class="string">"ouput_to_new_tab"</span>: <span class="literal">false</span></span>
-</code></pre><p>  }</p>
-</li>
-</ul>
-<ul>
-<li><p>修改第二文件，接下来打开<code>Nodejs.sublime-build</code>配置文件，需要修改一下两项：</p>
-<blockquote>
-<p>一个是<code>&quot;encoding&quot;</code>项，为了避免乱码code，需要将<code>&quot;cp1252&quot;</code>改成<code>&quot;utf8&quot;</code>；<br>一个是windows下的<code>&quot;cmd&quot;</code>命令，windows下面的cmd可以直接 <code>&quot;cmd&quot;: [&quot;node&quot;, &quot;$file&quot;]</code>，但是这样非常不利于开发环境，因为这样的话每次build都会重新启动一个node.exe进程，且会占用一个端口，这肯定是我们不希望的。上文中的cmd原本是想在启动node.exe之前讲node.exe进程都杀掉，然后再启动node.exe，但是这个命令写的不对，直接使用的话是编译不成功的。对cmd命令需要做简单的处理，修改之后的文件如下：</p>
-</blockquote>
-<p>  {</p>
-<pre><code><span class="string">"cmd"</span>: [<span class="string">"node"</span>, <span class="string">"<span class="variable">$file</span>"</span>],
-<span class="string">"file_regex"</span>: <span class="string">"^[ ]*File \"</span>(...*?)\<span class="string">", line ([0-9]*)"</span>,
-<span class="string">"selector"</span>: <span class="string">"source.js"</span>,
-<span class="string">"shell"</span>:<span class="literal">true</span>,
- //<span class="string">"encoding"</span>: <span class="string">"cp1252"</span>, //修改前
-<span class="string">"encoding"</span>: <span class="string">"utf8"</span>,//修改后
-<span class="string">"windows"</span>:
-{
-       //<span class="string">"cmd"</span>: [<span class="string">"taskkill /F /IM node.exe &amp; node"</span>, <span class="string">"<span class="variable">$file</span>"</span>] //修改前
-      <span class="string">"cmd"</span>: [<span class="string">"D:/DeveloperInstall/nodejs/node.exe"</span>, <span class="string">"<span class="variable">$file</span>"</span>] //修改后
-  },
-<span class="string">"linux"</span>:
-  {
-      <span class="string">"cmd"</span>: [<span class="string">"killall node; node"</span>, <span class="string">"<span class="variable">$file</span>"</span>]
-  },
-<span class="string">"osx"</span>:
-{
-      <span class="string">"cmd"</span>: [<span class="string">"killall node; node <span class="variable">$file</span>"</span>]
+        <h1 id="javascript中new到底做了什么？又如何理解prototype？">javascript中new到底做了什么？又如何理解prototype？</h1><p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
+<span class="keyword">var</span> p = <span class="keyword">new</span> Person();
+</code></pre><p> 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：</p>
+<ol>
+<li>var p={}; 也就是说，初始化一个对象p</li>
+<li>p.<strong>proto</strong>=Person.prototype;</li>
+<li>Person.call(p);也就是说构造p，也可以称之为初始化p。</li>
+</ol>
+<p>关键在于第二步，我们来证明一下,如果这段代码会返回true。说明我们步骤2的正确：</p>
+<pre><code><span class="built_in">console</span>.log(p.__proto__ === Person.prototype); <span class="regexp">//</span>结果果然是<span class="literal">true</span>
+</code></pre><h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
+<p>   按照标准，<strong>proto</strong>是不对外公开的，也就是说是个私有属性，但是Firefox的引擎将他暴露了出来成为了一个共有的属性，我们可以对外访问和设置。</p>
+<p>好，概念说清了，让我们看一下下面这些代码：</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
+ </span>{ };
+Person.prototype.Say = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
+ </span>{
+    alert(<span class="string">"Person say"</span>);
+    }
+    <span class="keyword">var</span> p = <span class="keyword">new</span> Person();
+    p.Say();
+</code></pre><p>这段代码很简单，相信每个人都这样写过，那就让我们看下为什么p可以访问Person的Say。</p>
+<p>首先var p=new Person()；可以得出p.<strong>proto</strong>=Person.prototype。那么当我们调用p.Say()时，首先p中没有Say这个属性， 于是，他就需要到他的<strong>proto</strong>中去找，也就是Person.prototype，而我们在上面定义了 Person.prototype.Say=function(){}; 于是，就找到了这个方法。</p>
+<p>好，接下来，让我们看个更复杂的。</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{ };
+Person.prototype.Say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Person say"</span>);
 }
-</code></pre><p>  }</p>
+Person.prototype.Salary = <span class="number">50000</span>;
+
+<span class="keyword">var</span> Programmer = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{ };
+Programmer.prototype = <span class="keyword">new</span> Person();
+Programmer.prototype.WriteCode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"programmer writes code"</span>);
+};
+
+Programmer.prototype.Salary = <span class="number">500</span>;
+
+<span class="keyword">var</span> p = <span class="keyword">new</span> Programmer();
+p.Say();
+p.WriteCode();
+<span class="built_in">console</span>.log(p.Salary);
+</code></pre><p>我们来做这样的推导：</p>
+<p><code>var p= new Programmer()</code>可以得出<code>p.__proto__=Programmer.prototype</code>;</p>
+<p>而在上面我们指定了<code>Programmer.prototype = new Person();</code>我们来这样拆分，<code>var p1=new Person();Programmer.prototype=p1</code>;那么:</p>
+<pre><code>p1.__proto_<span class="number">_</span>=Person.<span class="keyword">prototype</span>;
+
+Programmer.<span class="keyword">prototype</span>.__proto_<span class="number">_</span>=Person.<span class="keyword">prototype</span>;
+</code></pre><p>由根据上面得到<code>p.__proto__=Programmer.prototype</code>。可以得到</p>
+<pre><code>p.<span class="strong">__proto__</span>.<span class="strong">__proto__</span>=Person.prototype。
+</code></pre><p>好，算清楚了之后我们来看上面的结果,p.Say()。由于p没有Say这个属性，于是去p.<strong>proto</strong>，也就是 Programmer.prototype，也就是p1中去找，由于p1中也没有Say，那就去p.<strong>proto</strong>.<strong>proto</strong>，也就是 Person.prototype中去找，于是就找到了alert(“Person say”)的方法。</p>
+<p>其余的也都是同样的道理。</p>
+<p>这也就是原型链的实现原理。</p>
+<p>最后，其实prototype只是一个假象，他在实现原型链中只是起到了一个辅助作用，换句话说，他只是在new的时候有着一定的价值，而原型链的本质，其实在于<strong>proto</strong>！</p>
+<p>new 操作符<br>在有上面的基础概念的介绍之后，在加上new操作符，我们就能完成传统面向对象的class + new的方式创建对象，在JavaScript中，我们将这类方式成为Pseudoclassical。<br>基于上面的例子，我们执行如下代码</p>
+<pre><code><span class="keyword">var</span> obj = <span class="keyword">new</span> Base();
+</code></pre><p>这样代码的结果是什么，我们在Javascript引擎中看到的对象模型是：<br><img src="/images/joo_3.png" alt="&quot;Javascript引擎中看到的对象模型&quot;"><br>new操作符具体干了什么呢?其实很简单，就干了三件事情。</p>
+<pre><code>var obj 
+ = {}<span class="comment">;</span>
+obj.__proto__ = Base.prototype<span class="comment">;</span>
+Base.call(obj)<span class="comment">;</span>
+</code></pre><p>第一行，我们创建了一个空对象obj<br>第二行，我们将这个空对象的<strong>proto</strong>成员指向了Base函数对象prototype成员对象<br>第三行，我们将Base函数对象的this指针替换成obj，然后再调用Base函数，于是我们就给obj对象赋值了一个id成员变量，这个成员变量的值是”base”，关于call函数的用法，请参看陈皓《Javascript 面向对象编程》文章</p>
+<p>如果我们给Base.prototype的对象添加一些函数会有什么效果呢？<br>例如代码如下： </p>
+<pre><code>Base.prototype.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.id;
+}
+</code></pre><p>那么当我们使用new创建一个新对象的时候，根据<strong>proto</strong>的特性，toString这个方法也可以做新对象的方法被访问到。于是我们看到了：<br>构造子中，我们来设置‘类’的成员变量（例如：例子中的id），构造子对象prototype中我们来设置‘类’的公共方法。于是通过函数对象和Javascript特有的<strong>proto</strong>与prototype成员及new操作符，模拟出类和类实例化的效果。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-grunt-beginner前端自动化工具" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/02/grunt-beginner前端自动化工具/" class="article-date">
+      <time datetime="2015-11-02T08:29:57.000Z" itemprop="datePublished">2015-11-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p> 本文章适合对HTML、CSS、JS有一定基础，并且对Nodejs有一定的了解的同学。</p>
+<h4 id="学习目标和内容">学习目标和内容</h4><hr>
+<h5 id="什么事前端集成解决方案">什么事前端集成解决方案</h5><blockquote>
+<p>每一个前端团队都想打造自己的前端开发体系，来帮助团队更高效的工作，目前通常都是东拼西凑，逐渐的整合的过程。</p>
+</blockquote>
+<p>前端集成解决方案个人理解是：</p>
+<blockquote>
+<p>将前端研发领域中各种分散的技术元素集中在一起，并对常见的前端开发问题、不足、缺陷和需求，所提出的一种解决问题的方案。</p>
+</blockquote>
+<p>不同角色理解解对比：</p>
+<blockquote>
+<p>开发者：解决前端工程的根本问题；<br>专家学者：一套包含<strong>框架</strong>和<strong>工具</strong>，便于开发者<strong>快速</strong>构建<strong>美丽实用</strong>的Web应用程序的工作流，同时这套工作流必须是稳健强壮的。(其中美丽和实用有时候不能同时并存)</p>
+</blockquote>
+<p><strong><em>解决哪些前端问题？</em></strong></p>
+<blockquote>
+<ul>
+<li>开发团队代码风格不统一，如何强制开发规范；</li>
+<li>前期开发的组件库如何维护和使用；</li>
+<li>如何模块化前端项目；</li>
+<li>服务器部粉前必须的压缩，检查流程如简化，流程如何完善。</li>
+</ul>
+</blockquote>
+<h5 id="主流的方式有哪几种">主流的方式有哪几种</h5><p><img src="http://yuml.me/diagram/nofunky/usecase/(note:主流的方式 {bg:beige}),(Yeoman),(Bower),(Grunt|Gulp)"><br>推荐几款前端解决方案供大家参考：</p>
+<ul>
+<li>适用MAC的可视化工具： <a href="http://incident57.com/codekit/index.html" target="_blank" rel="external">Codekit</a></li>
+<li>百度的<a href="http://fis.baidu.com/" target="_blank" rel="external">FIS3</a></li>
+<li>腾讯的<a href="http://alloyteam.github.io/Spirit/" target="_blank" rel="external">Spirit</a></li>
+</ul>
+<h5 id="Grunt的定位">Grunt的定位</h5><blockquote>
+<p>Yeoman,Bower,Grunt其中是怎么样一个定位呢？我们把它定位为—Build Tool</p>
+</blockquote>
+<h5 id="目前Grunt的竞争者">目前Grunt的竞争者</h5><blockquote>
+<p>Glup是Grunt强有力的竞争对手，还有Buildy、jasy、Gmake等</p>
+</blockquote>
+<h4 id="准备工作">准备工作</h4><hr>
+<h5 id="nodejs简介">nodejs简介</h5><p><img src="http://yuml.me/diagram/nofunky/usecase/(note:Nodejs是什么？{bg:beige}),javascript{bg:Fuchsia}^服务服端语言{bg:yellow}"></p>
+<h6 id="安装">安装</h6><ul>
+<li><a href="http://nodejs.org" target="_blank" rel="external">Nodejs官网</a> </li>
+<li>MAC上：<a href="http://brew.sh" target="_blank" rel="external">HomeBrew</a>，这里推荐一个小工具<a href="https://www.cakebrew.com/" target="_blank" rel="external">Cakebrew</a>,可以免去我们级命令行的烦恼。</li>
+<li>Linux：apt-get[ubuntu]、yum 等</li>
+</ul>
+<p><strong>nodejs命令行工具：</strong>mac和Linux本身就自带强大的控制台，但window虽然有cmd窗口但是它不支持bash脚本，怎么解决这个问题呢？我推荐安装git,git里包含一个git bash shell在一定程度上弥补了这个缺陷。</p>
+<ul>
+<li><p>NPM-Node Package Manager（Node包管理和分发工具）<br><img src="http://yuml.me/diagram/nofunky/class/[rubt;gem|Python;pypi;setuptool|PHP;Pear{bg:yellow}]"></p>
+</li>
+<li><p>Nodejs包括基本模块、框架和库，但是这些很多框架和库管理起来很麻烦，所以才有了NPM,<code>npm</code>能很快的找到特定服务要使用的包，然后进行下载/安装/管理。</p>
 </li>
 </ul>
-<p>重启sublime text之后，配置就算完成了。我们写一小段代码来验证一下是否可以正常运行。</p>
-<pre><code><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);
-<span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);
-http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>{
-    response.writeHead(<span class="number">200</span>, {<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>});
-    response.end(<span class="string">'Hello Nodejs\n'</span>);
-}).listen(<span class="number">3000</span>);
-<span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000/'</span>);
-
-Ctrl+b编译这段代码之后，sublime text窗口中就会显示
-
-Server running at http:<span class="comment">//127.0.0.1:3000/</span>
-</code></pre><p>若之前有运行的node进程在，则会先杀掉node进程，再启动node，显示如下：</p>
-<p>成功: 已终止进程 “node.exe”，其 PID 为 5736。</p>
-<p>Server running at <a href="http://127.0.0.1:3000/" target="_blank" rel="external">http://127.0.0.1:3000/</a></p>
-<p>到此，服务端算是启动成功，打开浏览器，输入<a href="http://127.0.0.1:3000/，页面显示Hello" target="_blank" rel="external">http://127.0.0.1:3000/，页面显示Hello</a> World则表示交互正常。</p>
-<p>注意：如果出现以下问题</p>
-<pre><code>[<span class="name">WinError</span> <span class="number">2</span>] 系统找不到指定的文件。 
-[<span class="atom">cmd</span>: [<span class="string">'erl'</span>, <span class="string">'-compile'</span>, <span class="string">'H:\\github\\web\\test\\test.js'</span>]]
-</code></pre><blockquote>
-<p>先检查sublime&gt; tools &gt; Builde System ,看看选中的是否是Nodejs或者是Automatic,如果不是，就恭喜你了。</p>
+<h6 id="命令的使用">命令的使用</h6><pre><code><span class="comment">#npm常用命令</span>
+<span class="built_in">npm</span> -v          <span class="comment">#显示版本，检查npm 是否正确安装。</span>
+<span class="built_in">npm</span> install express   <span class="comment">#安装express模块</span>
+<span class="built_in">npm</span> install -g express  <span class="comment">#全局安装express模块</span>
+<span class="built_in">npm</span> list         <span class="comment">#列出已安装模块</span>
+<span class="built_in">npm</span> show express     <span class="comment">#显示模块详情</span>
+<span class="built_in">npm</span> update        <span class="comment">#升级当前目录下的项目的所有模块</span>
+<span class="built_in">npm</span> update express    <span class="comment">#升级当前目录下的项目的指定模块</span>
+<span class="built_in">npm</span> update -g express  <span class="comment">#升级全局安装的express模块</span>
+<span class="built_in">npm</span> uninstall express  <span class="comment">#删除指定的模</span>
+</code></pre><h6 id="node项目的基本结构">node项目的基本结构</h6><h5 id="Yeoman,_Bower,_Grunt简介及安装">Yeoman, Bower, Grunt简介及安装</h5><ul>
+<li><a href="http://yeoman.io" target="_blank" rel="external">Yeoman</a>：The web’s scaffolding tool for modern webapps(现代webapp的脚手架工具)</li>
+</ul>
+<p>Yeoman的作用：</p>
+<blockquote>
+<ul>
+<li>在Web项目立项阶段，使用yeoman来生成项目的文件，代码结构。</li>
+<li>Yeoman自动将最佳实践和工具整合进来，大大加速和方便了后续的开发。</li>
+</ul>
+<p>根据项目自行选择Yeoman中的不同生成器，不管怎么变，Yeoman还是统一了现阶段公认的 <code>代码校验</code>、<code>测试</code>、<code>压缩</code>等最基本功能的流程,其余部分就交给 <code>生成器自由发挥</code></p>
 </blockquote>
-<pre><code>[<span class="name">WinError</span> <span class="number">2</span>] 系统找不到指定的文件。
-[<span class="atom">cmd</span>: [<span class="string">'g++'</span>,<span class="string">'node'</span>, <span class="string">'H:\\github\\web\\test\\test.js'</span>]]
-</code></pre><p>1、这个问题是由于没有将GCC的安装目录加入path环境变量，从上图的错误提示path中就可以发现。，所以，将mingw的安装目录中的bin目录的路径填入PATH环境变量。重启程序，就可以解决了.</p>
+<pre><code>npm <span class="keyword">install</span> -g yo <span class="comment">#全局安装yeoman</span>
+</code></pre><ul>
+<li><p><a href="http://bower.io" target="_blank" rel="external">Bower</a>：A package manager for the web(Web的包管理器)</p>
+<blockquote>
+<p>Web站点组成:框架，库，公共部分等，Bower则用来跟踪管理这些</p>
+</blockquote>
+</li>
+<li><p><a href="http://gruntjs.com/" target="_blank" rel="external">Brunt</a>:The JavaScript Task Runner(JavaScript 世界的构建工具)</p>
+<blockquote>
+<p>为何要用构建工具？<br>一句话：自动化。对于需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。当你在 Gruntfile 文件正确配置好了任务，任务运行器就会自动帮你或你的小组完成大部分无聊的工作。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Yeoman实践">Yeoman实践</h4><pre><code>npm <span class="keyword">install</span> -g generator-angular <span class="comment">#全局安装 angular</span>
+npm <span class="keyword">install</span> -g generator-mobile <span class="comment">#全局安装 mobile</span>
+npm <span class="keyword">install</span> -g generator-webapp <span class="comment">#全局安装 webapp</span>
+</code></pre><blockquote>
+<p>接下来新建angular项目为例</p>
+</blockquote>
+<pre><code>mkdir yo-<span class="built_in">action</span> <span class="preprocessor">#新建目录</span>
+cd yo-<span class="built_in">action</span> 
+mkdir angular-<span class="built_in">action</span> <span class="preprocessor">#新建项目目录</span>
+cd angular-aciton
+yo angular helloAngular <span class="preprocessor">#创建angular项目 helloAngular项目名称</span>
+   <span class="preprocessor">#选用grunt</span>
+   <span class="preprocessor">#sass是否包含自行选择（sass基于ruby，要求有ruby环境）和 bootStrap框架等</span>
+dir <span class="preprocessor">#安装完成之后 查看目录</span>
+ls -al<span class="preprocessor"># ls列出当前目录下的bash命令 -al表示列出隐藏文件以及一点开头的文件</span>
+</code></pre><blockquote>
+<p><code>ruby</code>安装、解决<a href="http://www.w3cplus.com/sassguide/install.html" target="_blank" rel="external">sass</a>未翻墙不能安装等问题。<br>接下来看看项目下的<code>pageage.json</code>文件</p>
+</blockquote>
+<pre><code> {
+ <span class="string">"name"</span>: <span class="string">"helloangular"</span>, <span class="preprocessor">#项目名</span>
+ <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,<span class="preprocessor">#版本号，递增</span>
+ <span class="string">"dependencies"</span>: {} <span class="preprocessor">#项目在生产环境中需要的依赖</span>
+ <span class="string">"devDependencies"</span>: {
+    <span class="string">"grunt"</span>: <span class="string">"^0.4.5"</span>, <span class="preprocessor"># ^表示对版本比较宽松的限制，只限制主版本号，如果有新版本自动更新，直到<span class="number">1.</span>x.x之前的版本都可以</span>
+    <span class="string">"grunt-newer"</span>: <span class="string">"~1.1.0"</span>, <span class="preprocessor"># ~只更新<span class="number">1.1</span><span class="number">.0</span>到<span class="number">1.1</span><span class="number">.9</span> </span>
+   },
+ <span class="string">"scripts"</span>: {
+    <span class="string">"test"</span>: <span class="string">"grunt test"</span>，
+    “install”:<span class="string">""</span>  <span class="preprocessor"># 执行npm install 会根据package.json文件中的组件来安装</span>
+   }
+ }
 
+rm -rf node_modules <span class="preprocessor">#rm 删除目录命令 -rf递归删除且不需二次确认</span>
+</code></pre><ul>
+<li>目录说明<blockquote>
+<p>pakeage.json :这是NodeJS模块的“信息图”<br>bower.json :指定我们可以通过bower去拉哪些相应的前端框架和组件<br>.yo-rc.json<br>.travis.yml :专为开源打造的持续集成环境<br>.jshintrc  :jshin配置文件<br>.gitignore ：指定当前项目要忽略不上传到git的文件<br>.gitattributes  :git配置项<br>.editorconfig  :第三方工具<br>.bowerrc  :bower本身的配置项<br>test目录下的文件 ：项目自动化测试<br>bower_components ：线上拉下来的前端框架</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Bower实践">Bower实践</h4><hr>
+<ol>
+<li><p>接下来就bower是如何对web框架和组件进行管理的，利用jQuery和bootstrap为例。</p>
+<pre><code><span class="label">mkdir</span> <span class="keyword">bower-action </span>#创建<span class="keyword">bower测试目录
+</span><span class="label">cd</span> <span class="keyword">bower-action
+</span><span class="label">mkdir</span> jquery-<span class="keyword">bootstrap-aciton </span>#项目目录
+<span class="label">cd</span> jquery-<span class="keyword">bootstrap-action
+</span><span class="keyword">bower </span>install jquery
+<span class="keyword">bower </span>intall <span class="keyword">bootstrap
+</span><span class="label">ls</span> -al #安装完成后，查看目录下多了一个<span class="keyword">bower_components目录
+</span><span class="label">cd</span> <span class="keyword">bower_components </span>#目录下就有了jquery和<span class="keyword">bootstrap</span>
+</code></pre></li>
+<li><p>如果组件比较小，没有在bower上注册，怎么办？</p>
+<blockquote>
+<p>bower提供多种安装方式:</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>通过github的短语安装 <img src="http://i.imgur.com/VKUiCwJ.png" alt=""></li>
+</ul>
+<pre><code><span class="keyword">bower </span>install jquery/jquery
+</code></pre><ul>
+<li>用过完整的github地址安装 </li>
+</ul>
+<pre><code>bower install <span class="string">https:</span><span class="comment">//github.com/jquery/jquery.git</span>
+</code></pre><ol>
+<li>框架和组件，github上没有怎么办？<blockquote>
+<p>bower提供了直接通过url地址安装<br>以上bower生成的文件中并没有包含bower.json和.bowerrc两个配置文件：需要初始化生成</p>
+</blockquote>
+</li>
+</ol>
+<pre><code><span class="title">bower</span> init <span class="comment">#初始化后根据提示设置</span>
+</code></pre><blockquote>
+<p>手动生成一个.bowerrc,说说其配置</p>
+</blockquote>
+<pre><code>{
+  <span class="string">"directory"</span>: <span class="string">"bower_components"</span>,
+  <span class="string">"proxy"</span>:<span class="string">"http://proxy.kyj.com:8080"</span>, <span class="preprocessor">#为了网络安全，设置一层代理</span>
+  <span class="string">"https-proxy"</span>:<span class="string">"https://proxy.kyj.com:8080"</span>,
+  <span class="string">"timeout"</span>:<span class="number">60000</span> <span class="preprocessor">#超时 毫秒</span>
+}
+</code></pre><blockquote>
+<p>项目中如果单独使用bower，在项目中引用这些框架和组件非常麻烦，所以一定要配合grunt一起使用，提供开发效率。</p>
+<h4 id="Grunt实践">Grunt实践</h4><hr>
+</blockquote>
+<pre><code>mkdir grunt-action
+cd grunt-action
+mkdir grunt-yo
+cd grunt-yo
+yo webapp  grunt-yo #注意需要安装：npm install -g yeoman/generator-webpp
+#项目出现<span class="number">3</span>个选项
+<span class="comment">(*)Sass #对css3的扩展，增加了规则、变量、混入、选择器、继承等等特性
+(*)</span>BootStrap
+<span class="comment">(*)Modernizr #用来检测用户浏览器是否支持某些HTML5和CSS3新特性的一个js库</span>
+</code></pre><blockquote>
+<p>接下来讲解一Gruntfile.js —</p>
+</blockquote>
+<pre><code><span class="string">'use strict'</span>;<span class="comment">#遵循ECMAScript（ES5）严格模式，体现js更合理、更安全、更严谨的发展方向</span>
+module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> </span>{
+<span class="comment">#所有的gruntpage和逻辑代码都要放入该函数</span>
+
+<span class="comment">// 自动加载package.json里声明的 grunt tasks </span>
+<span class="comment">// [jit-grunt](https://github.com/shootaroo/jit-grunt)自动加载所需任务 也可以使用load-grunt-tasks插件来加载</span>
+  <span class="keyword">require</span>(<span class="string">'jit-grunt'</span>)(grunt, {
+    useminPrepare: <span class="string">'grunt-usemin'</span>
+  });
+ <span class="comment">// Configurable paths</span>
+ <span class="keyword">var</span> config = {
+    app: <span class="string">'app'</span>,
+    dist: <span class="string">'dist'</span>
+ };
+ <span class="comment">#grunt重要的概念:task（任务）,initConfig里配置的是一个一个的单元task</span>
+ grunt.initConfig({
+    config: config,
+    watch: {
+      bower: {  <span class="comment">#任务watch的第一个目标</span>
+        files: [<span class="string">'bower.json'</span>], <span class="comment">#属性是可选的</span>
+        tasks: [<span class="string">'wiredep'</span>]
+      }，
+      babel: {  <span class="comment">#任务watch的第二个目标</span>
+        files: [<span class="string">'&lt;%= config.app %&gt;/scripts/{,*/}*.js'</span>],
+        tasks: [<span class="string">'babel:dist'</span>]
+      }
+    }
+  }
+}
+</code></pre><p>本人在window环境测试，需要注意几个问题：</p>
+<blockquote>
+<p>1.检查是否安装好ruby并安装好sass，sass在3.3.0之后版本提供了<a href="http://code.tutsplus.com/tutorials/source-maps-101--net-29173" target="_blank" rel="external">sourcemap</a>功能<br>2.检查<a href="https://github.com/Medium/phantomjs" target="_blank" rel="external">phantomjs</a>是否全局安装成功，yo生成webapp会报相关错误。<br>3.全局安装generator-mocha<br>4.运行grunt如果有Plugin没有安装报错，安装一下，比如grunt-mocha,grunt-contrib-sass等</p>
+<h5 id="Grunt的Task,Target和Options">Grunt的Task,Target和Options</h5></blockquote>
+<h5 id="从无到有构建Grunt项目">从无到有构建Grunt项目</h5><h5 id="初识Grunt_Files处理方式">初识Grunt Files处理方式</h5><h5 id="剖析Grunt_Tasks_-_grunt_serve">剖析Grunt Tasks - grunt serve</h5><h5 id="剖析Grunt_Tasks_-_grunt_test">剖析Grunt Tasks - grunt test</h5><h5 id="剖析Grunt_Tasks_-_grunt_build">剖析Grunt Tasks - grunt build</h5><h4 id="Grunt_-_plugins">Grunt - plugins</h4><hr>
+<h5 id="剖析Grunt_-_plugins（一）">剖析Grunt - plugins（一）</h5><h4 id="扩展知识介绍">扩展知识介绍</h4><hr>
+<h5 id="gulp-in-action（一）">gulp-in-action（一）</h5><h5 id="npm-in-action">npm-in-action</h5><h4 id="总结">总结</h4>
       
     </div>
     
@@ -438,11 +712,11 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
 
 
   
-    <article id="post-DOM事件探秘三" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Sass和Compass用法以及Ruby安装" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/10/12/DOM事件探秘三/" class="article-date">
-      <time datetime="2013-10-12T09:13:47.000Z" itemprop="datePublished">2013-10-12</time>
+      <a href="/2015/10/29/Sass和Compass用法以及Ruby安装/" class="article-date">
+      <time datetime="2015-10-29T02:40:58.000Z" itemprop="datePublished">2015-10-29</time>
 </a>
 
 
@@ -457,7 +731,7 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a>
+      <a class="article-title" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a>
     </h1>
   
 
@@ -467,90 +741,815 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="事件处理程序">事件处理程序</h4><blockquote>
-<p>什么事事件对象呢？在触发DOM上的事件时都会产生一个对象事件对象event</p>
-</blockquote>
-<p>Event对象在event第一次触发的时候被创建出来，并且一直伴随着事件在DOM结构中流转的整个生命周期。event对象会被作为第一个参数传递给事件监听的回调函数。我们可以通过这个event对象来获取到大量当前事件相关的信息</p>
+        <p>###RubyInstaller </p>
+<p>If you are on Windows, there is a great project to help you install Ruby: <a href="http://rubyinstaller.org/" target="_blank" rel="external">RubyInstaller</a>. It gives you everything you need to set up a full Ruby development environment on Windows.<br>Just download it, run it, and you are done!</p>
+<h4 id="Check_whether_Ruby_already_is_available_by_opening_a_terminal">Check whether Ruby already is available by opening a terminal</h4><pre><code><span class="title">ruby</span> -v
+</code></pre><h4 id="Try_Ruby">Try Ruby</h4><p>1.由于国内网络原因，首先我们来修改一下Ruby的source地址</p>
+<pre><code>gem sources --<span class="built_in">remove</span> http<span class="variable">s:</span>//rubygems.org/ //移除默认的
+gem sources -<span class="keyword">a</span> http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org/ //添加新的地址
+gem sources -<span class="keyword">l</span> # 查看<span class="keyword">list</span>
+
+gem <span class="keyword">update</span> //更新<span class="keyword">ruby</span>版本
+</code></pre><p>2.安装Sass<br>如果安装多个版本的sass先下载<a href="http://rubyinstaller.org/downloads" target="_blank" rel="external">DevKit</a>构建工具</p>
+<pre><code>gem install sass
+sass -v 
+gem install sass --version=<span class="number">3.3</span> <span class="comment">//安装特定版本的sass , 但要先安装build tools 》DevKit</span>
+gem <span class="built_in">list</span> <span class="comment">//列出本地的所有ruby程序包</span>
+gem unistall sass -- version=<span class="number">3.3</span><span class="number">.0</span> <span class="comment">//卸载特定版本的sass</span>
+</code></pre><p> 简单说一下安装devkit注意事项：</p>
 <blockquote>
-<ul>
-<li>type (String) — 事件的名称</li>
-<li>target (node) — 事件起源的DOM节点</li>
-<li>currentTarget?(node) — 当前回调函数被触发的DOM节点（后面会做比较详细的介绍）</li>
-<li>bubbles (boolean) — 指明这个事件是否是一个冒泡事件（接下来会做解释）</li>
-<li>preventDefault(function) — 这个方法将阻止浏览器中用户代理对当前事件的相关默认行为被触发。比如阻止标签a元素的click事件加载一个新的页面</li>
-<li>stopPropagation (function) — 这个方法将阻止当前事件链上后面的元素的回调函数被触发，当前节点上针对此事件的其他回调函数依然会被触发。（我们稍后会详细介绍。）</li>
-<li>stopImmediatePropagation (function) — 这个方法将阻止当前事件链上所有的回调函数被触发，也包括当前节点上针对此事件已绑定的其他回调函数。</li>
-<li>cancelable (boolean) — 这个变量指明这个事件的默认行为是否可以通过调用event.preventDefault来阻止。也就是说，只有cancelable为true的时候，调用event.preventDefault才能生效。</li>
-<li>defaultPrevented (boolean) — 这个状态变量表明当前事件对象的preventDefault方法是否被调用过</li>
-<li>isTrusted (boolean) — 如果一个事件是由设备本身（如浏览器）触发的，而不是通过JavaScript模拟合成的，那个这个事件被称为可信任的(trusted)</li>
-<li>eventPhase (number) — 这个数字变量表示当前这个事件所处的阶段(phase):none(0), capture(1),target(2),bubbling(3)。我们会在下一个部分介绍事件的各个阶段</li>
-<li>timestamp (number) — 事件发生的时间</li>
-</ul>
+<p>DevKit 是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。注：这个方法目前仅支持通过RubyInstaller安装的Ruby，如果不是建议你重新安装。安装方法：双击下载的7z文件，指定解压路径，路径中不能有空格。如D:/DeveloperInstall\DevKit，这个路径就是<devkit_install_dir>。<br>cd <devkit_install_dir></devkit_install_dir></devkit_install_dir></p>
 </blockquote>
-<p>此外事件对象还可能拥有很多其他的属性，但是他们都是针对特定的event的。比如，鼠标事件包含clientX和clientY属性来表明鼠标在当前视窗的位置。</p>
-<p>我们可以使用熟悉的浏览器的调试工具或者通过console.log在控制台输出来更具体地查看事件对象以及它的属性。</p>
+<pre><code>ruby dk<span class="class">.rb</span> init <span class="comment">//#生成config.yml，这里会检查将要添加DevKit支持的Ruby列表，只支持通过RubyInstaller安装的Ruby</span>
+</code></pre><blockquote>
+<p>如果这里列出的Ruby与你的要求不符，可以手动修改</p>
+</blockquote>
+<pre><code>ruby dk.rb review /<span class="regexp">/检查要添加DevKit支持的Ruby列表是否有误，可以略过
+ruby dk.rb install /</span><span class="regexp">/安装后会出现以下两条信息
+/</span><span class="regexp">/[INFO] Updating convenience notice gem override for 'D:/</span><span class="constant">DeveloperInstall</span>/<span class="constant">Ruby22</span><span class="string">'
+//[INFO] Installing '</span><span class="constant">D</span>:<span class="regexp">/DeveloperInstall/</span><span class="constant">Ruby22</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">ruby</span>/<span class="title">site_ruby</span>/<span class="title">devkit</span>.<span class="title">rb</span>'</span>
+
+gem install rdiscount --platform=ruby /<span class="regexp">/检查是否安装成功  如果能安装rdiscount成功说明安装DevKit成功</span>
+</code></pre><p>安装好DevKit后就可以安装多个版本的sass等<br><img src="http://i.imgur.com/3S0o0W2.png" alt=""><br>测试一下：<br>    mkdir learn-sass-cli<br>    vim main.scss //按i进入编辑后添加 *{margin:0;padding:0;} 然后按esc进入命令行模式 输入:wq 保存退出<br>    sass main.scss main.css // 转css文件<br>    sass-convert main.scss main.sass // 转.sass文件，可以了解一下sass写法</p>
+<p>3.安装Compass</p>
+<pre><code>gem install compass
+
+compass <span class="built_in">create</span> learn-sass-syntax<span class="comment"> //创建compass-sass项目</span>
+</code></pre><p>在命令行模式下，除了一次性编译命令，compass还有自动编译命令</p>
+<pre><code>　　<span class="title">compass</span> watch
+</code></pre><p>运行该命令后，只要scss文件发生变化，就会被自动编译成css文件。<br>1.sass 变量声明</p>
+<pre><code>/*在.scss文件中 ---变量的声明
+<span class="variable">$headline-ff</span>:Arial,Verdana,Helvetica,sans-serif;
+<span class="variable">$main-sec-ff</span>:Arial,Verdana,Helvetica,sans-serif;
+</code></pre><p>2.scss中包含已有的.scss文件 </p>
+<blockquote>
+<p>例如：把上面的变量存在一个新建的_variables.scss文件中，由于变量不用被转化成css文件，所以在文件名前加下划线：表示局部文件</p>
+</blockquote>
+<pre><code>@<span class="keyword">import</span> <span class="string">"varables"</span>; //scss文件中的<span class="keyword">import</span>并非css中的<span class="keyword">import</span>，css中<span class="keyword">import</span>必须放在代码最前面，对性能也不利，css文件中不建议用<span class="keyword">import</span>指令
+</code></pre><p>3.引入时没有带入下划线：基于sass的既定规则</p>
+<blockquote>
+<p>1.没有文件后缀名的时候，sass会添加.scss或.sass的后缀<br>2.同一目录下，局部文件和非局部文件不能重名</p>
+</blockquote>
+<p>4.使用css原生@import的既定规则：</p>
+<blockquote>
+<p>1.当@import后边跟的文件名是以.css结尾的时候<br>2.当@import后边跟的是<a href="http://开头的字符串的时候" target="_blank" rel="external">http://开头的字符串的时候</a><br>3.当@import后边跟的是一个url()函数的时候<br>4.当@import后边带有media queries的时候</p>
+</blockquote>
+<p>   注意：多个x需要import的文件可以写成一行，用逗号隔开</p>
+<hr>
+<blockquote>
+<p>sass编译中文时候出现如下错误的解决方法： </p>
+</blockquote>
+<pre><code>error sass/screen<span class="class">.scss</span> (Line <span class="number">2</span> of sass/_variables<span class="class">.scss</span>: Invalid GBK character <span class="string">"\xE5"</span>)
+</code></pre><blockquote>
+<p>到ruby安装目录下的gems\2.2.0\gems\sass-3.4.19\lib\sass等目录下找到engine.rb文件，在文件里require后加上就可以了：</p>
+</blockquote>
+<pre><code>Encoding<span class="class">.default_external</span> = Encoding.<span class="function"><span class="title">find</span><span class="params">(<span class="string">'utf-8'</span>)</span></span>
+</code></pre><hr>
+<h3 id="语法注意事项">语法注意事项</h3><p>例如：</p>
+<ol>
+<li>如下图1：<img src="http://i.imgur.com/JDOH0iL.png" alt="a标签的hover"><br>左侧是scss文件，右边是生成后的css文件，blue的a后面多一个空格影响就很大，指a标签下面所有元素hover效果，注意<code>&amp;</code>特殊符号的应用。</li>
+</ol>
+<p>2.sass里提供了class嵌套，也提供了Atrribute嵌套</p>
+<pre><code>//class嵌套
+.mian-sec{
+    font-family:<span class="variable">$main-sec-ff</span>;
+    .headline{
+        font-family: <span class="variable">$main-sec-ff</span>;
+        font-size: <span class="number">16</span>px;
+    }
+}
+//属性嵌套
+.mian-sec{
+    font-family:<span class="variable">$main-sec-ff</span>;
+    .headline{
+        font:{
+          family: <span class="variable">$main-sec-ff</span>;
+          size: <span class="number">16</span>px;
+        }
+    }
+}
+</code></pre><p>两种形式生成css结果一样：</p>
+<pre><code><span class="comment">/* line 31, ../sass/screen.scss */</span>
+<span class="class">.mian-sec</span> <span class="class">.headline</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Verdana, Helvetica, sans-serif</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">16px</span></span></span>;
+}</span>
+</code></pre><ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">CSS</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">CSS</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hexo搭建静态博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/15/hexo搭建静态博客/" class="article-date">
+      <time datetime="2015-10-15T02:40:58.000Z" itemprop="datePublished">2015-10-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="安装">安装</h4><p>系统环境 Windows 7 64bit</p>
+<p>文本编辑器推荐使用 WebStorm 10,<br>文件编码选择 UTF-8<br>Git</p>
+<p>安装 GitHub for Windows,<br>登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱</p>
+<p>新建仓库, Github Pages 的仓库名必须为your_user_name.github.io<br>your_user_name 替换成你的用户名</p>
+<p>配置 SSH, 参考 SSH配置教程Node.js<br>安装 Node.js, Node 安装包里带有 npm<br>Hexo</p>
+<h5 id="安装_Hexo">安装 Hexo</h5><pre><code>//2.x
+npm <span class="operator"><span class="keyword">install</span> hexo -<span class="keyword">g</span>
+
+//<span class="number">3.</span>x
+npm <span class="keyword">install</span> hexo-cli -<span class="keyword">g</span>
+npm <span class="keyword">install</span> hexo <span class="comment">--save</span></span>
+</code></pre><p>查看 Node 版本</p>
+<pre><code><span class="keyword">node</span><span class="identifier"> </span><span class="title">-v</span>
+</code></pre><p>查看 Hexo 版本</p>
+<pre><code>hexo <span class="property">version</span>
+</code></pre><p>创建项目</p>
+<pre><code><span class="title">hexo</span> init hexo-lcx
+</code></pre><p>进入目录</p>
+<p>cd hexo-lcx</p>
+<p>也可以先建文件夹再进目录初始化</p>
+<pre><code>cd hexo-lcx
+hexo init
+
+安装依赖包
+
+//2.x
+npm <span class="operator"><span class="keyword">install</span>
+
+// <span class="number">3.</span>x
+npm <span class="keyword">install</span>
+// generators
+npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-generator-<span class="keyword">archive</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-generator-<span class="keyword">category</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-generator-tag <span class="comment">--save</span>
+// <span class="keyword">server</span>
+npm <span class="keyword">install</span> hexo-<span class="keyword">server</span> <span class="comment">--save</span>
+// deployers
+npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-deployer-heroku <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-deployer-rsync <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-deployer-openshift <span class="comment">--save</span>
+// plugins
+npm <span class="keyword">install</span> hexo-renderer-marked@<span class="number">0.25</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-renderer-stylus@<span class="number">0.3</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-generator-feed@<span class="number">1.0</span><span class="number">.3</span> <span class="comment">--save</span>
+npm <span class="keyword">install</span> hexo-generator-sitemap@<span class="number">1.0</span><span class="number">.1</span> <span class="comment">--save</span></span>
+</code></pre><p>以后所有的命令都在该目录下进行</p>
+<p>启动服务</p>
+<pre><code>hexo <span class="keyword">server</span>
+</code></pre><p>用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 或者 <a href="http://127.0.0.1:4000/" target="_blank" rel="external">http://127.0.0.1:4000/</a> 就能看到网页了<br>推荐使用现代化浏览器(Chrome)获得最佳效果</p>
+<p>按 Ctrl+C 停止本地预览服务<br>使用<br>目录结构</p>
+<blockquote>
+<p>├── .deploy       #需要部署的文件<br>├── node_modules  #Hexo插件<br>├── public        #生成的静态网页文件<br>├── scaffolds     #模板<br>├── source        #博客正文和其他源文件, 404 favicon CNAME 等都应该放在这里<br>|   ├── _drafts   #草稿<br>|   └── _posts    #文章<br>├── themes        #主题<br>├── _config.yml   #全局配置文件<br>└── package.json</p>
+</blockquote>
+<h5 id="全局配置__config-yml">全局配置 _config.yml</h5><p>配置文件的冒号”:”后面有空格</p>
+<pre><code><span class="comment"># Site #站点信息</span>
+title: Hank
+subtitle: Hank's Blog
+description: 关注WEB前端，前端开发
+author: hank
+author_title: 'Web Developer &amp; Designer'
+avatar: css/images/avatar.png
+location: 'Beijing, China'
+follow: https://github.com/huangjihua/
+language: zh-CN
+since: <span class="number">2015</span>
+timezone: Asia/Beijing <span class="comment">#时区</span>
+
+<span class="comment"># URL #链接格式</span>
+url: http://blog.huangjihua.com <span class="comment">#网址</span>
+root: / <span class="comment">#根目录</span>
+permalink: post/:title.html <span class="comment">#文章的链接格式</span>
+permalink_defaults:
+
+<span class="comment"># Directory #目录</span>
+source_dir: source <span class="comment">#源文件</span>
+public_dir: public <span class="comment">#生成的网页文件</span>
+tag_dir: tags <span class="comment">#标签</span>
+archive_dir: archives <span class="comment">#归档</span>
+category_dir: categories <span class="comment">#分类</span>
+code_dir: downloads/code
+i18n_dir: :lang <span class="comment">#国际化</span>
+skip_render:
+
+<span class="comment"># Writing #写作</span>
+new_post_name: :title.md <span class="comment">#新文章标题</span>
+default_layout: post <span class="comment">#默认模板(post page photo draft)</span>
+titlecase: <span class="literal">false</span> <span class="comment">#标题转换成大写</span>
+external_link: <span class="literal">true</span> <span class="comment">#新标签页里打开连接</span>
+filename_case: <span class="number">0</span>
+render_drafts: <span class="literal">false</span>
+post_asset_folder: <span class="literal">false</span>
+relative_link: <span class="literal">false</span>
+future: <span class="literal">true</span>
+highlight: <span class="comment">#语法高亮</span>
+  enable: <span class="literal">true</span>
+  line_number: <span class="literal">false</span> <span class="comment">#显示行号</span>
+  auto_detect: <span class="literal">true</span>
+  tab_replace:
+
+<span class="comment"># Category &amp; Tag #分类和标签</span>
+default_category: uncategorized <span class="comment">#默认分类</span>
+category_map:
+tag_map:
+
+<span class="comment"># Date / Time format #日期时间格式</span>
+<span class="comment">## http://momentjs.com/docs/#/displaying/format/</span>
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+<span class="comment"># Pagination #分页</span>
+per_page: <span class="number">20</span> <span class="comment">#每页文章数, 设置成 0 禁用分页</span>
+pagination_dir: page
+
+<span class="comment"># Extensions #插件和主题</span>
+<span class="comment">## 插件: http://hexo.io/plugins/</span>
+<span class="comment">## 主题: http://hexo.io/themes/</span>
+theme: next
+
+<span class="comment"># Deployment #部署, huangjihua是我的用户名, 同时发布在 GitHub 和 GitCafe 上面</span>
+deploy:
+  <span class="operator">type</span>: git
+  repository:
+    github: https://github.com/huangjihua/huangjihua.github.io.git,<span class="keyword">master</span>
+    <span class="title">gitcafe</span>: https://gitcafe.com/huangjihua/huangjihua.git,<span class="keyword">master</span>
+
+<span class="title"># Disqus</span> <span class="comment">#Disqus评论系统</span>
+disqus_shortname:
+
+plugins: <span class="comment">#插件，例如生成 RSS 和站点地图的</span>
+- hexo-generator-feed
+- hexo-generator-sitemap
+</code></pre><h5 id="命令行使用">命令行使用</h5><p>常用命令:</p>
+<pre><code>hexo help <span class="preprocessor">#查看帮助</span>
+hexo init <span class="preprocessor">#初始化一个目录</span>
+hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
+hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
+hexo generate <span class="preprocessor">#生成网页, 可以在 public 目录查看整个网站的文件</span>
+hexo <span class="keyword">server</span> <span class="preprocessor">#本地预览, 'Ctrl+C'关闭</span>
+hexo deploy <span class="preprocessor">#部署.deploy目录</span>
+hexo clean <span class="preprocessor">#清除缓存, </span>
+</code></pre><p><strong>强烈建议每次执行命令前先清理缓存, 每次部署前先删除 .deploy 文件夹</strong></p>
+<p>复合命令:</p>
+<pre><code>hexo deploy -g <span class="preprocessor">#生成加部署</span>
+hexo <span class="keyword">server</span> -g <span class="preprocessor">#生成加预览</span>
+</code></pre><p>简写：</p>
+<pre><code>hexo <span class="keyword">n</span> == hexo new
+hexo <span class="keyword">g</span> == hexo <span class="keyword">generate</span>
+hexo s == hexo server
+hexo <span class="keyword">d</span> == hexo deploy
+</code></pre><p>安装插件, <plugin-name> 为插件名</plugin-name></p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt; <span class="comment">--save #安装</span>
+npm <span class="keyword">update</span> #升级
+npm <span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt; #卸载</span>
+</code></pre><p>安装主题, <repository> 为主题的 git 仓库, <theme-name>为要存放在本地的目录名</theme-name></repository></p>
+<pre><code>git <span class="keyword">clone</span> <span class="title">&lt;repository</span>&gt; themes/<span class="tag">&lt;theme-name&gt;</span>
+</code></pre><p>#####　修改网站配置文件</p>
+<pre><code><span class="attribute">theme</span>: <span class="string">&lt;theme-name&gt;</span>
+</code></pre><p>编辑文章</p>
+<p>新建文章</p>
+<pre><code>hexo <span class="keyword">new</span> <span class="string">"标题"</span>
+</code></pre><p>在 _posts 目录下会生成文件 标题.md</p>
+<pre><code>title: 标题
+date: <span class="number">2014</span>-<span class="number">11</span>-<span class="number">11</span> <span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span>
+tags:
+- 标签<span class="number">1</span>
+- 标签<span class="number">2</span>
+- 标签<span class="number">3</span>
+categories: [分类<span class="number">1</span>,分类<span class="number">2</span>,分类<span class="number">3</span>]
+---
+</code></pre><p>正文, 使用 Markdown 语法书写</p>
+<p>编辑完后保存, hexo server 预览</p>
+<h4 id="发布">发布</h4><p>以发布到 Github 为例</p>
+<p>编辑全局配置文件 _config.yml 中的 deploy 部分, huangjihua为用户名</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: github
+  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/huangjihua/huangjihua.github.io.git</span>
+  <span class="attribute">branch</span>: master
+</code></pre><p>或者</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: github
+  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:huangjihua/huangjihua.github.com.git
+  <span class="attribute">branch</span>: master
+</code></pre><p>项目主页需要把 branch 设置为 gh-pages</p>
+<p>托管到 Gitcafe 的话修改为</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: github
+  <span class="attribute">repository</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:huangjihua/huangjihua.git
+  <span class="attribute">branch</span>: gitcafe-pages
+</code></pre><h4 id="部署">部署</h4><pre><code><span class="title">hexo</span> deploy
+</code></pre><p>以下提示说明部署成功</p>
+<pre><code><span class="string">[info]</span> Deploy done: github
+</code></pre><p>点击 Github 上项目的 Settings, GitHub Pages, 提示 Your site is published at <a href="http://huangjihua.github.io/" target="_blank" rel="external">http://huangjihua.github.io/</a><br>第一次上传网站需要等十分钟左右, 以后每次更新都能马上打开</p>
+<h5 id="绑定域名">绑定域名</h5><p>不绑定域名的话只能通过 your_user_name.github.io 访问<br>申请域名推荐 GoDaddy, 域名解析推荐 DNSPod<br>绑定顶级域名</p>
+<p>新建文件 CNAME, 无后缀, 纯文本文件, 内容为要绑定的域名 huangjihua.com<br>如果要使用 www.huangjihua.com 的形式, 文件内容改为 www.huangjihua.com<br>DNS设置<br>主机记录@, 类型A, 记录值192.30.252.153<br>主机记录www, 类型A, 记录值192.30.252.153<br>参考 Tips for configuring an A record with your DNS provider<br>绑定子域名</p>
+<p>比如使用域名huangjihua.com的子域名blog.huangjihua.com<br>CNAME文件内容为blog.huangjihua.com</p>
+<p>DNS设置<br>主机记录blog, 类型CNAME, 记录值huangjihua.github.io<br>参考 Tips for configuring a CNAME record with your DNS provider<br>Gitcafe 绑定域名</p>
+<p>项目管理界面, 左侧的导航栏中有自定义域名设置</p>
+<h4 id="主题">主题</h4>
+
+
+<p>代码:<br><a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external">https://github.com/ppoffice/hexo-theme-icarus</a><br>下载安装主题</p>
+<pre><code>cd hexo-theme-icarus
+git <span class="keyword">clone</span> <span class="title">https</span>://github.com/ppoffice/hexo-theme-icarus.git
+</code></pre><p>也可以手动下载后解压到 themes 目录</p>
+<p>全局配置文件 _config.yml 中 theme 改成 icarus</p>
+<h5 id="主题目录结构">主题目录结构</h5><p>.<br>├── languages          #国际化<br>|   ├── default.yml    #默认<br>|   └── zh-CN.yml      #中文<br>├── layout             #布局<br>|   ├── _partial       #局部的布局<br>|   └── _widget        #小挂件的布局<br>├── script             #js脚本<br>├── source             #源代码文件<br>|   ├── css            #CSS<br>|   |   ├── _base      #基础CSS<br>|   |   ├── _partial   #局部CSS<br>|   |   ├── fonts      #字体<br>|   |   ├── images     #图片<br>|   |   └── style.styl #style.css<br>|   ├── fancybox       #fancybox<br>|   └── js             #js<br>├── _config.yml        #主题配置文件<br>└── README.md          #主题介绍</p>
+<h5 id="主题配置文件">主题配置文件</h5><p>以下是主题 Icarus 的配置文件</p>
+<pre><code><span class="comment"># Logo</span>
+logo: css/images/logo.png <span class="comment"># Empty this to unset logo</span>
+<span class="comment"># Header</span>
+menu:
+  首页: /
+  归档: /archives
+  <span class="comment">#生活: /life</span>
+  <span class="comment">#分类: /categories</span>
+  <span class="comment">#标签: /tags</span>
+  关于: /about
+
+<span class="comment"># Content</span>
+excerpt_link: 阅读全文 <span class="comment">#替换为中文</span>
+fancybox: <span class="literal">true</span>   <span class="comment">#插件添加照片 ![img caption](img url)</span>
+archive_yearly: <span class="literal">true</span> <span class="comment">#按年存档</span>
+
+
+<span class="comment"># Profile</span>
+profile: <span class="literal">true</span> <span class="comment"># whether to show profile bar</span>
+gravatar: <span class="literal">false</span> <span class="comment"># whether to use gravatar with the email</span>
+showlogo: <span class="literal">false</span> <span class="comment"># whether to show the logo in the header</span>
+
+<span class="comment"># Sidebar</span>
+sidebar: right <span class="comment"># set to false if you don't want a sidebar</span>
+widgets: <span class="comment">#站点右边栏，暂时默认，后面介绍修改和添加</span>
+<span class="comment">#- search</span>
+- recent_posts
+- category
+- <span class="keyword">tag</span>
+<span class="title">- tagcloud</span>
+- archive
+- weibo
+thumbnail: <span class="literal">true</span>
+contacts:
+  github: http://github.com/huangjihua  <span class="comment">#ppoffice/hexo-theme-icarus</span>
+  weibo:  http://www.weibo.com/<span class="number">236797891</span>
+  csdn: http://blog.csdn.net/huangjihua0402
+  <span class="comment">#twitter: '#'</span>
+  <span class="comment">#facebook: '#'</span>
+  <span class="comment">#dribbble: '#'</span>
+  rss: atom.<span class="keyword">xml</span> <span class="title">#rss</span>地址  默认即可
+
+<span class="comment"># Links</span>
+links:
+  hank: http://www.github.com/huangjihua
+
+<span class="comment"># CDN</span>
+cdn: useso <span class="comment">#If your site loads slowly change it to "google" , because "useso" is slow out of China</span>
+
+addthis: <span class="comment">#SNS分享，身在天朝，当然用“百度分享”，暂时默认，后面会介绍</span>
+  enable: <span class="literal">true</span>
+  pubid:
+  facebook: <span class="literal">true</span>
+  twitter: <span class="literal">true</span>
+  google: <span class="literal">true</span>
+  pinterest: <span class="literal">true</span>
+
+<span class="comment"># Miscellaneous 分享</span>
+google_site_verification:
+google_analytics: <span class="comment">#要使用google_analytics进行统计的话，这里需要配置ID，暂时默认，后面介绍</span>
+baidu_analytics: <span class="number">07</span>c425d4bcfc27b868657ca3f2a6e187
+jiathis: <span class="literal">true</span>
+favicon: favicon.png <span class="comment">#添加小图标</span>
+baidushare: <span class="literal">true</span>
+<span class="comment">#twitter:</span>
+<span class="comment">#google_plus:</span>
+<span class="comment">#fb_admins:</span>
+<span class="comment">#fb_app_id:</span>
+
+<span class="comment">#将 favicon.ico 文件放在 source 目录下, 修改主题配置文件</span>
+</code></pre><p>语言设置</p>
+<p>可用的语言及代码</p>
+<pre><code>English (<span class="keyword">en</span>)
+中文简体 (zh-Hans)
+French (fr-FR)
+正体中文 (zh-hk/zh-<span class="keyword">tw</span>)
+Russian (<span class="keyword">ru</span>)
+German (<span class="keyword">de</span>)
+</code></pre><p>站点配置文件</p>
+<pre><code><span class="label">language:</span> <span class="built_in">zh</span>-hk
+</code></pre><h5 id="菜单设置">菜单设置</h5><p>编辑主题配置文件的 menu<br>若站点运行在子目录中, 将链接前缀的 / 去掉</p>
+<pre><code><span class="attribute">menu</span>:
+  <span class="attribute">home</span>: /
+  <span class="attribute">archives</span>: /archives
+  <span class="attribute">categories</span>: /categories
+  <span class="attribute">tags</span>: /tags
+  <span class="attribute">commonweal</span>: /<span class="number">404</span>.html
+  <span class="attribute">about</span>: /about
+</code></pre><p>标签云页面</p>
+<p>添加一个标签云页面, 并在菜单中显示页面链接</p>
+<p>新建 tags 页面</p>
+<pre><code>hexo <span class="keyword">new</span> page “<span class="keyword">tags</span>”
+</code></pre><p>将页面的类型设置为 tags</p>
+<pre><code>title: tags
+date: 2015-09-19 22:37:08
+<span class="header">type: "tags"
+---</span>
+</code></pre><p>关闭评论</p>
+<pre><code>title: tags
+date: 2015-09-19 22:37:08
+type: "tags"
+<span class="header">comments: false
+---</span>
+</code></pre><p>在菜单中添加链接. 编辑主题配置文件, 添加 tags 到 menu 中</p>
+<pre><code><span class="attribute">menu</span>:
+  <span class="attribute">tags</span>: /tags
+</code></pre><p>分类页面</p>
+<p>添加一个分类页面, 并在菜单中显示页面链接</p>
+<p>新建 categories 页面</p>
+<pre><code>hexo <span class="keyword">new</span> page categories
+</code></pre><p>将页面的类型设置为 categories</p>
+<pre><code>title: categories
+date: 2015-09-19 22:38:00
+<span class="header">type: "categories"
+---</span>
+</code></pre><p>关闭评论</p>
+<pre><code>title: categories
+date: 2015-09-19 22:38:00
+type: "categories"
+<span class="header">comments: false
+---</span>
+</code></pre><p>在菜单中添加链接. 编辑主题配置文件, 添加 categories 到 menu 中</p>
+<pre><code><span class="attribute">menu</span>:
+  <span class="attribute">categories</span>: /categories
+</code></pre><p>RSS 链接</p>
+<p>编辑主题配置文件 rss 字段</p>
+<pre><code><span class="string">rss:</span> <span class="literal">false</span>
+</code></pre><p>禁用Feed链接</p>
+<pre><code><span class="label">rss:</span>
+</code></pre><p>默认使用站点的 Feed 链接, 需要安装 hexo-generator-feed 插件<br>浏览<a href="http://localhost:4000/atom.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/atom.xml查看是否生效</a></p>
+<pre><code><span class="string">rss:</span> <span class="string">http:</span><span class="comment">//your-feed-url</span>
+</code></pre><p>指定特定的链接地址, 适用于已经烧制过 Feed 的情形<br>代码高亮主题</p>
+<p>NexT 使用 Tomorrow Theme 作为代码高亮, 共有5款主题<br>站点建立时间</p>
+<p>例如 © 2014 - 2015</p>
+<p>站点配置文件新增字段 since</p>
+<pre><code><span class="attribute">since</span>: <span class="string">2014</span>
+</code></pre><p>数学公式显示</p>
+<p>NexT 使用 MathJax 来显示数学公式, 默认关闭</p>
+<p>主题配置文件 mathjax 设定为 true</p>
+<pre><code><span class="preprocessor">##### MathJax Support</span>
+mathjax: <span class="literal">true</span>
+</code></pre><p>访问过慢可替换为其他CDN, 修改文件<br>    themes\next\layout_scripts\mathjax.swig<br>    <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></p>
+<p>侧栏设置</p>
+<p>post - 默认行为, 在文章页面(拥有目录列表)时显示<br>always - 在所有页面中都显示<br>hide - 在所有页面中都隐藏(可以手动展开)</p>
+<p>sidebar: post</p>
+<p>头像设置</p>
+<p>编辑站点配置文件, 新增字段 avatar, 头像的链接地址可以是:</p>
+<pre><code>网络地址
+<span class="symbol">https:</span>/<span class="regexp">/avatars2.githubusercontent.com/u</span><span class="regexp">/4962914?v=3&amp;s=460
+
+站点内的地址
+/uploads</span><span class="regexp">/avatar.jpg /</span><span class="regexp">/头像图片放置在站点的 source/uploads</span><span class="regexp">/
+/images</span><span class="regexp">/avatar.jpg /</span><span class="regexp">/头像图片放置在主题的 source/images</span><span class="regexp">/</span>
+</code></pre><p>avatar: /images/huangjihua_avatar.png</p>
+<p>作者名称</p>
+<p>编辑站点配置文件 author<br>站点描述设置</p>
+<p>编辑站点配置文件 description<br>侧边栏社交链接</p>
+<p>站点配置文件新增字段 social, 然后添加社交站点名称与地址</p>
+<pre><code><span class="comment"># Social links</span>
+<span class="symbol">social:</span>
+  <span class="constant">GitHub</span>: <span class="symbol">https:</span>/<span class="regexp">/github.com/huangjihua</span>
+  <span class="constant">Twitter</span>: <span class="symbol">https:</span>/<span class="regexp">/twitter.com/huangjihua</span>
+  <span class="constant">Zhihu</span>: <span class="symbol">http:</span>/<span class="regexp">/www.zhihu.com/people</span><span class="regexp">/huangjihua
+  Douban: http:/</span><span class="regexp">/www.douban.com/people</span><span class="regexp">/huangjihua
+  #Weibo: http:/</span><span class="regexp">/weibo.com/lmlcx</span>
+</code></pre><h5 id="自定义页面">自定义页面</h5><p>以关于页面为例<br>新建一个 about 页面</p>
+<pre><code>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
+</code></pre><p>编辑 source/about/index.md：</p>
+<pre><code>title: About
+<span class="header">date: 2014-11-1 11:11:11
+---</span>
+About Me
+</code></pre><p>菜单显示 about 链接, 主题配置文件中将 menu 中 about 前面的注释去掉</p>
+<pre><code><span class="keyword">menu</span>:
+  <span class="keyword">about</span>: /<span class="keyword">about</span>
+</code></pre><p>友情链接</p>
+<p>站点配置文件添加</p>
+<pre><code><span class="preprocessor"># 标题</span>
+links_title: 友情链接
+<span class="preprocessor"># 链接</span>
+links:
+  Hexo: http:<span class="comment">//hexo.io/</span>
+  huangjihua: http:<span class="comment">//blog.huangjihua.com/</span>
+</code></pre><p>Sitemap 网站地图</p>
+<p>安装插件</p>
+<pre><code>npm <span class="keyword">install</span> hexo-generator-sitemap
+</code></pre><p>站点配置文件里开启插件</p>
+<pre><code>plugins:
+<span class="bullet">- </span>hexo-generator-sitemap
+</code></pre><p>浏览<a href="http://localhost:4000/sitemap.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/sitemap.xml查看是否生效</a></p>
+<h5 id="404_页面">404 页面</h5><p>效果 <a href="http://blog.huangjihua.com/404.html" target="_blank" rel="external">http://blog.huangjihua.com/404.html</a></p>
+<p>source 目录下新建 404.html 页面</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html;charset=utf-8;"</span>/&gt;</span>
+  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"X-UA-Compatible"</span> <span class="attribute">content</span>=<span class="value">"IE=edge,chrome=1"</span> /&gt;</span>
+  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"robots"</span> <span class="attribute">content</span>=<span class="value">"all"</span> /&gt;</span>
+  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"robots"</span> <span class="attribute">content</span>=<span class="value">"index,follow"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://www.qq.com/404/search_children.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> <span class="attribute">homePageUrl</span>=<span class="value">"your-site-url"</span> <span class="attribute">homePageName</span>=<span class="value">"回到我的主页"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>文章摘录</p>
+<p>NexT 支持三种方式来控制首页文章的显示方式</p>
+<pre><code>在文章中使用 <span class="comment">&lt;!-- more --&gt;</span> 手动进行截断
+在文章的 front-matter 中添加 description, 内容为文章摘要
+自动形成摘要, 在主题配置文件中添加
+</code></pre><p>设定首页/归档/标签页面文章的篇数</p>
+<p>安装以下插件</p>
+<pre><code>hexo-generator-<span class="built_in">index</span>
+hexo-generator-archive
+hexo-generator-<span class="keyword">tag</span>
+</code></pre><p>站点配置文章中设定</p>
+<pre><code><span class="attribute">index_generator</span>:
+  <span class="attribute">per_page</span>: <span class="number">5</span>
+
+<span class="attribute">archive_generator</span>:
+  <span class="attribute">per_page</span>: <span class="number">20</span>
+  <span class="attribute">yearly</span>: true
+  <span class="attribute">monthly</span>: true
+
+<span class="attribute">tag_generator</span>:
+  <span class="attribute">per_page</span>: <span class="number">10</span>
+</code></pre><p>优化</p>
+<h5 id="多说评论系统">多说评论系统</h5><pre><code>如需取消某个页面/文章的评论, 在 md 文件的 <span class="keyword">front</span>-matter 中增加 comments: <span class="constant">false</span>
+</code></pre><p>登陆多说创建站点, 多说域名 xxx.duoshuo.com 前面的 xxx 即为 duoshuo_shortname, 在站点配置文件中新增 duoshuo_shortname 字段</p>
+<pre><code><span class="attribute">duoshuo_shortname</span>: <span class="string">xxx</span>
+</code></pre><p>多说评论组件提供热评文章功能, 仅在文章页面显示</p>
+<p>站点/主题配置文件中设置</p>
+<pre><code># 多说热评文章 <span class="literal">true</span> 或者 <span class="literal">false</span>
+<span class="label">duoshuo_hotartical:</span> <span class="literal">true</span>
+</code></pre><p>Disqus</p>
+<p>在 Disqus官网 申请新网站的 shortname<br>站点配置文件, 添加 disqus_shortname</p>
+<pre><code><span class="attribute">disqus_shortname</span>: <span class="string">xxxxxxxx</span>
+</code></pre><h5 id="设置网站统计">设置网站统计</h5><p>百度统计</p>
+<p>登录 百度统计, 定位到站点的代码获取页面<br>复制 hm.js? 后面那串统计脚本 id<br>编辑站点配置文件, 新增字段 baidu_analytics 字段</p>
+<pre><code><span class="attribute">baidu_analytics</span>: <span class="string">xxxxxxxxxxxxxxxx</span>
+
+<span class="nginx"><span class="title">Google</span> Analytics</span>
+</code></pre><p>从 Google Analytics 获取 ID<br>站点配置文件新增 google_analytics, 设置成 Google 跟踪 ID. 通常是以 UA- 开头</p>
+<pre><code><span class="attribute">google_analytics</span>: <span class="string">UA-xxxxxxxx-x</span>
+</code></pre><h5 id="分享">分享</h5><p>分享服务优先选择 JiaThis<br>JiaThis</p>
+<p>站点/主题配置文件添加字段 jiathis, 值为 true</p>
+<pre><code><span class="preprocessor"># JiaThis 分享服务</span>
+jiathis: <span class="literal">true</span>
+</code></pre><p>百度分享</p>
+<p>站点/主题配置文件添加字段 baidushare, 值为 true</p>
+<pre><code><span class="preprocessor"># 百度分享服务</span>
+baidushare: <span class="literal">true</span>
+</code></pre><p>多说分享</p>
+<p>站点/主题配置文件添加字段 duoshuo_share, 值为 true, 多说分享必须与多说评论同时使用</p>
+<pre><code><span class="preprocessor"># 多说分享服务</span>
+duoshuo_share: <span class="literal">true</span>
+</code></pre><h5 id="Swiftype_搜索">Swiftype 搜索</h5><p>站点配置文件新增 swiftype_key 字段, 值为 swiftype 搜索引擎的 key</p>
+<pre><code><span class="preprocessor">#Swiftype Search Key</span>
+<span class="label">swiftype_key:</span> xxxxxxxxx
+</code></pre><p>Google Webmaster tools</p>
+<p>设置 Google 站点管理工具的验证字符串, 用于提交 sitemap</p>
+<pre><code>获取 google site verification <span class="tag">code</span>
+登录 Google Webmaster Tools, 导航到验证方法, 并选择 HTML 标签, 将会获取到一段代码:
+
+&lt;meta name=<span class="string">"google-site-verification"</span> <span class="attribute">content</span>=<span class="string">"XXXXXXXXXXXXXXXXXXXXXXX"</span> /&gt;
+
+将 <span class="attribute">content</span> 里面的 XXXXXXXXXXXXXXXXXXXXXXX 复制出来, 站点配置文件新增字段 google_site_verification
+
+google_site_verification: XXXXXXXXXXXXXXXXXXXXXXX
+</code></pre><p>版权</p>
+<p>参见 知识共享许可协议<br>站点配置文件新增</p>
+<pre><code># Creative Commons 4.0 International License.
+# http:<span class="comment">//creativecommons.org/</span>
+# Available: <span class="keyword">by</span> | <span class="keyword">by</span>-nc | <span class="keyword">by</span>-nc-nd | <span class="keyword">by</span>-nc-<span class="keyword">sa</span> | <span class="keyword">by</span>-nd | <span class="keyword">by</span>-<span class="keyword">sa</span> | zero
+creative_commons: <span class="keyword">by</span>-nc-<span class="keyword">sa</span>
+</code></pre><p>图片显示</p>
+<p>把图片放到 source/images 目录下</p>
+<pre><code>![<span class="link_label">test</span>](<span class="link_url">images/xxx.jpg</span>)
+</code></pre><p>推荐使用图床, 例如七牛云存储<br>自定义 404 页面</p>
+<p>添加 source/404.html</p>
+<p>404 页面不需要 Hexo 解析</p>
+<pre><code>layout: false
+--------
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=UTF-8"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">href</span>=<span class="value">"/favicon.ico"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">p</span>&gt;</span>404 你懂的<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><h5 id="添加_robots-txt">添加 robots.txt</h5><p>source 目录下添加 robots.txt</p>
+<pre><code># robots.txt
+User-agen<span class="variable">t:</span> Baiduspider
+Disallo<span class="variable">w:</span> /
+User-agen<span class="variable">t:</span> Googlebot
+Disallo<span class="variable">w:</span>
+</code></pre><p>生成 post 时默认生成 categories 配置项</p>
+<p>在 scaffolds/post.md 中添加</p>
+<pre><code><span class="label">categories:</span>
+</code></pre><p>添加 “fork me on github”</p>
+<p>官方教程<br>点击加载评论</p>
+<p>在 themes\next\layout_layout.swig 里找到</p>
+<pre><code>&lt;<span class="operator">div</span> id=<span class="string">"disqus_thread"</span>&gt;
+&lt;noscript&gt;Please enable JavaScript <span class="built_in">to</span> view <span class="operator">the</span> &lt;<span class="operator">a</span> href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered <span class="keyword">by</span> Disqus.&lt;/<span class="operator">a</span>&gt;&lt;/noscript&gt;
+&lt;/<span class="operator">div</span>&gt;
+</code></pre><p>在上面添加</p>
+<pre><code><span class="tag">&lt;<span class="title">button</span> <span class="attribute">id</span>=<span class="value">"load-disqus"</span> <span class="attribute">onclick</span>=<span class="value">"disqus.load();"</span> <span class="attribute">style</span>=<span class="value">"background-color: #ebebeb; color: #646464; font-size: 18px; padding: 8px 12px; border-radius: 5px; border: 1px solid #ebebeb;"</span>&gt;</span>点击查看评论<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+</code></pre><p>修改文件<br>themes\next\layout_scripts\comments\disqus.swig</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml">
+
+var disqus = { //添加的内容
+load : function disqus(){ //添加的内容
+
+      var disqus_shortname = '<span class="comment"></span>';
+      var disqus_identifier = '<span class="comment"></span>';
+      var disqus_title = '<span class="comment"></span>';
+      var disqus_url = '<span class="comment"></span>';
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+      run_disqus_script('count.js');
+      <span class="comment"></span>
+
+$('#load-disqus').remove(); //添加的内容
+} //添加的内容
+} //添加的内容
+
+</span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><h5 id="给_GitHub_添加_README">给 GitHub 添加 README</h5><p>把 README.MD 文件的后缀名改成 MDOWN, 放到 source 文件夹下, 这样 Hexo 不会将其解析成网页, GitHub 也会作为 MD 文件解析<br>网站访问量统计</p>
+<p>使用 不蒜子 提供的服务</p>
+<p>安装脚本</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">async</span> <span class="attribute">src</span>=<span class="value">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>安装标签</p>
+<p>算法a: pv的方式, 单个用户连续点击n篇文章, 记录n次访问量.</p>
+<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_container_site_pv"</span>&gt;</span>
+    本站总访问量<span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>次
+<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+</code></pre><p>算法b: uv的方式, 单个用户连续点击n篇文章, 只记录1次访客数.</p>
+<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_container_site_uv"</span>&gt;</span>
+  本站访客数<span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>人次
+<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+</code></pre><p>网站运行时间</p>
+<p>脚本</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+<span class="keyword">var</span> birthDay = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"11/20/2014"</span>);
+<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();
+<span class="keyword">var</span> duration = now.getTime() - birthDay.getTime();
+<span class="keyword">var</span> total= <span class="built_in">Math</span>.floor(duration / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>));
+<span class="built_in">document</span>.getElementById(<span class="string">"showDays"</span>).innerHTML = <span class="string">"本站已运行 "</span>+total+<span class="string">" 天"</span>;
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>标签</p>
+<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"showDays"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+</code></pre><p>简体中文/繁体中文切换</p>
+<p>下载 js文件 放到主题的 js 文件夹</p>
+<p>添加标签</p>
+<pre><code><span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"translateLink"</span> <span class="attribute">href</span>=<span class="value">"javascript:translatePage();"</span>&gt;</span>繁體<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+</code></pre><p>添加脚本</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/tw_cn.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript">
+<span class="keyword">var</span> defaultEncoding = <span class="number">2</span>; <span class="comment">//网站编写字体是否繁体，1-繁体，2-简体</span>
+<span class="keyword">var</span> translateDelay = <span class="number">0</span>; <span class="comment">//延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0</span>
+<span class="keyword">var</span> cookieDomain = <span class="string">"http://www.arao.me/"</span>; <span class="comment">//Cookie地址, 一定要设定, 通常为你的网址</span>
+<span class="keyword">var</span> msgToTraditionalChinese = <span class="string">"繁體"</span>; <span class="comment">//此处可以更改为你想要显示的文字</span>
+<span class="keyword">var</span> msgToSimplifiedChinese = <span class="string">"简体"</span>; <span class="comment">//同上，但两处均不建议更改</span>
+<span class="keyword">var</span> translateButtonId = <span class="string">"translateLink"</span>; <span class="comment">//默认互换id</span>
+translateInitilization();
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+Kill IE6
+
+<span class="comment">&lt;!--[if IE 6]&gt;
+  &lt;script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</span>
+</code></pre><h5 id="hexo简要流程">hexo简要流程</h5><p>Hexo首先解析md文件，然后根据layout.ejs判断布局类型，再转发给其他布局文件。在布局中可以引入其他文件，比如</p>
+<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('_partial/header')</span> <span class="preprocessor">%</span>&gt;
+</code></pre><p>这样每一块内容都是单独的，方便二次使用，也可以几个不同布局引用一个代码片段。<br><img src="http://www.huangyunkun.com/images/2014/02/hexo_ejs_1.png" alt="简要流程"></p>
+<h4 id="markdown里的一些特殊用法">markdown里的一些特殊用法</h4><h5 id="绘制表格">绘制表格</h5><pre><code><span class="constant">MD</span>写法：
+ | 名称 | 属性 | 方法 |
+|<span class="symbol">:-----|</span><span class="symbol">:---</span><span class="symbol">:|----------</span><span class="symbol">:|</span>
+|测试| **<span class="string">`name`</span>** |test（）|
+|测试| **<span class="string">`name`</span>** |test（）|
+</code></pre><p>   编译后的效果如下：</p>
 <table>
 <thead>
 <tr>
-<th>DOM中事件对象</th>
-<th>IE中的事件对象</th>
-<th>IE中的事件对象</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:center">属性</th>
+<th style="text-align:right">方法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>type属性</td>
-<td>type</td>
-<td>获取事件类型</td>
+<td style="text-align:left">测试</td>
+<td style="text-align:center"><strong><code>name</code></strong></td>
+<td style="text-align:right">test（）</td>
 </tr>
 <tr>
-<td>target属性</td>
-<td>srcElement属性</td>
-<td>获取事件目标</td>
-</tr>
-<tr>
-<td>StopPropagation()方法</td>
-<td>cancelBubble属性</td>
-<td>阻止事件冒泡</td>
-</tr>
-<tr>
-<td>preventDefaut()方法</td>
-<td>returnValue属性</td>
-<td>阻止事件的默认行为</td>
+<td style="text-align:left">测试</td>
+<td style="text-align:center"><strong><code>name</code></strong></td>
+<td style="text-align:right">test（）</td>
 </tr>
 </tbody>
 </table>
-<p>a标签默认有跳转行为，可以通过 preventDefaut来阻止，尤其在移动端用的比较多，不希跳转而是调到某个位置,另外bubbles属性canselable属性可以了解一下。</p>
-<pre><code><span class="comment">//怎么来获取一个兼容所有浏览器的一个事件对象</span>
-getEvent:function(<span class="keyword">event</span>){
-    <span class="keyword">return</span> <span class="keyword">event</span>?<span class="keyword">event</span>:window.<span class="keyword">event</span>;
-},
-<span class="comment">//获取事件类型</span>
-getType:function(<span class="keyword">event</span>){
-    <span class="keyword">return</span> <span class="keyword">event</span>.type;
-},
-<span class="comment">//获取事件来自于哪个元素</span>
-getElement:function(<span class="keyword">event</span>){
-    <span class="keyword">return</span> <span class="keyword">event</span>.target || <span class="keyword">event</span>.srcElement;
-},
-<span class="comment">//不同浏览器   怎么阻止事件的默认行为</span>
-preventDefault:function(<span class="keyword">event</span>){
-    <span class="keyword">if</span>(<span class="keyword">event</span>.preventDefault){
-        <span class="keyword">event</span>.preventDefault();
-    }<span class="keyword">else</span>{
-        <span class="keyword">event</span>.returnValue=<span class="keyword">false</span>; <span class="comment">//IE</span>
-    }
-},
-<span class="comment">//不同浏览器   怎么阻止事件冒泡</span>
-stopPropagation:function(<span class="keyword">event</span>){
-    <span class="keyword">if</span>(<span class="keyword">event</span>.stopPropagation){
-        <span class="keyword">event</span>.stopPropagation();
-    }<span class="keyword">else</span>{
-        <span class="keyword">event</span>.cancelBubble=<span class="keyword">true</span>; <span class="comment">//IE</span>
-    }
-}
-</code></pre><p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
-
+<h4 id="绘制流程图">绘制流程图</h4><p> 一个完整示例：</p>
+<pre><code>&lt;img src="http://yuml.me/diagram/nofunky/usecase/(note: figure 1.2{bg:beige}),
+[<span class="built_ins">User</span>]-(Login),[Site <span class="built_ins">Maintainer</span>]-(<span class="built_ins">Add</span> <span class="built_ins">User</span>),(<span class="built_ins">Add</span> <span class="built_ins">User</span>)&lt;(<span class="built_ins">Add</span> Company),
+[Site <span class="built_ins">Maintainer</span>]-(Upload Docs),(Upload Docs)&lt;(Manage Folders),[<span class="built_ins">User</span>]-(Upload Docs),
+[<span class="built_ins">User</span>]-(Full Text Search Docs), (Full Text Search Docs)&gt;(Preview Doc),(Full Text Search Docs)&gt;(Download Docs),
+[<span class="built_ins">User</span>]-(Browse Docs),(Browse Docs)&gt;(Preview Doc), (Download Docs),
+[Site <span class="built_ins">Maintainer</span>]-(Post New Event To The Web Site), [<span class="built_ins">User</span>]-(View Events)" &gt;
+</code></pre><p><img src="http://yuml.me/diagram/nofunky/usecase/(note: figure 1.2{bg:beige}),
+      [User]-(Login),[Site Maintainer]-(Add User),(Add User)<(Add Company),
+      [Site Maintainer]-(Upload Docs),(Upload Docs)<(Manage Folders),[User]-(Upload Docs),
+      [User]-(Full Text Search Docs), (Full Text Search Docs)>(Preview Doc),(Full Text Search Docs)>(Download Docs),
+      [User]-(Browse Docs),(Browse Docs)>(Preview Doc), (Download Docs),
+      [Site Maintainer]-(Post New Event To The Web Site), [User]-(View Events)"><br>-EOF-</p>
+<h4 id="添加本地图片">添加本地图片</h4><p>在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![&#8220;&#22270;&#29255;&#25551;&#36848;&#8221;](/images/&#20320;&#30340;&#22270;&#29255;&#21517;&#23383;.JPG)</span><br></pre></td></tr></table></figure></p>
+<h4 id="插入音乐">插入音乐</h4><p>比如网易云音乐，找到喜欢的歌曲，点击分享按钮，把里面的代码复制下来，直接粘贴到博文中即可</p>
+<pre><code>&lt;<span class="tag">iframe</span> frameborder=<span class="string">"no"</span> <span class="attribute">border</span>=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> <span class="attribute">width</span>=<span class="number">330</span> <span class="attribute">height</span>=<span class="number">86</span>   
+   src=<span class="string">"http://music.163.com/outchain/player?type=2&amp;id=25706282&amp;auto=0&amp;height=66"</span>&gt;  
+&lt;/iframe&gt;   
+</code></pre><h4 id="插入视频">插入视频</h4><p>如：</p>
+<pre><code><span class="tag">&lt;<span class="title">iframe</span>   
+    <span class="attribute">height</span>=<span class="value">498</span> <span class="attribute">width</span>=<span class="value">510</span>   
+    <span class="attribute">src</span>=<span class="value">"http://player.youku.com/embed/XNjcyMDU4Njg0"</span>   
+    <span class="attribute">frameborder</span>=<span class="value">0</span> <span class="attribute">allowfullscreen</span>&gt;</span>  
+<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span>  
+</code></pre>
       
     </div>
     
@@ -558,13 +1557,13 @@ stopPropagation:function(<span class="keyword">event</span>){
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/hexo/">Hexo</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
 
       
@@ -584,11 +1583,11 @@ stopPropagation:function(<span class="keyword">event</span>){
 
 
   
-    <article id="post-DOM事件探秘二" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HTTP与HTTPs区别以及SSL和TLS协议运行机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/10/12/DOM事件探秘二/" class="article-date">
-      <time datetime="2013-10-12T09:11:02.000Z" itemprop="datePublished">2013-10-12</time>
+      <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" class="article-date">
+      <time datetime="2014-10-29T02:40:58.000Z" itemprop="datePublished">2014-10-29</time>
 </a>
 
 
@@ -603,7 +1602,7 @@ stopPropagation:function(<span class="keyword">event</span>){
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a>
+      <a class="article-title" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a>
     </h1>
   
 
@@ -613,56 +1612,78 @@ stopPropagation:function(<span class="keyword">event</span>){
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="二、使用事件处理程序">二、使用事件处理程序</h4><h5 id="1-_HTML事件处理程序">1. HTML事件处理程序</h5><pre><code>即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
-
-<span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn1"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">onclick</span>=<span class="value">"showmsg();"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript">
-   <span class="function"><span class="keyword">function</span> <span class="title">showmsg</span><span class="params">()</span></span>{
-       alert(<span class="string">"HTML添加事件处理"</span>);
-   }
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><blockquote>
-<p>从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。</p>
-</blockquote>
-<h5 id="2-_DOM0级事件处理程序">2. DOM0级事件处理程序</h5><p>即为指定对象添加事件处理，看下面的一段代码</p>
-<pre><code><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn2"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
-    <span class="comment">//DOM0级事件</span>
-    <span class="keyword">var</span> btn2 = <span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>);
-    btn2.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        alert(<span class="string">"这是通过dom0级添加的事件"</span>);
-    }
-    <span class="comment">//btn2.onclick=null;//删除事件btn2的点击事件，将其置为null即可</span>
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span> 
-</code></pre><blockquote>
-<p>从上面的代码中，我们能看出，相对于HTML事件处理程序，DOM0级事件，html代码和js代码的耦合性已经大大降低。但是，聪明的程序员还是不太满足，期望寻找更简便的处理方式，下面马海祥就来说说第三种处理方法。</p>
-</blockquote>
-<h5 id="3-_DOM2级事件处理程序">3. DOM2级事件处理程序</h5><p>DOM2级事件定义了两个方法：用于处理指定和删除事件处理程序的操作<br>        addEventListener(type,handler,false) //添加事件监听<br>        removeEventListner(type,handler,false) //删除事件监听</p>
+        <h4 id="HTTP和HTTPS介绍">HTTP和HTTPS介绍</h4><p><img src="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg" alt=""></p>
+<h6 id="1-http介绍">1.http介绍</h6><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本传输协议标准架构的发展根基。Ted Nelson组织协调万维网协会（World Wide Web Consortium）和互联网工程工作小组（Internet Engineering Task Force ）共同合作研究，最终发布了一系列的RFC，其中著名的RFC 2616定义了HTTP 1.1。</p>
 <blockquote>
-<p>接收三个参数：type:事件名、hander:作为事件处理程序的函数和布尔值 (布尔值true:表示在捕获阶段调用事件处理程序; false表示在冒泡阶段调用事件处理程序，一般情况都使用false,兼容浏览器)，IE 里是不兼容的。</p>
+<p>1.0与1.1版本的主要区别</p>
 </blockquote>
-<p>DOM0和DOM2共同特点：就是可以给一个元素上添加多个事件处理程序 ，他们按照添加的顺序执行。</p>
+<pre><code><span class="number">1</span>，HTTP/<span class="number">1.0</span>协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；
+<span class="number">2</span>，HTTP/<span class="number">1.1</span>默认使用持久连接(然而,HTTP/<span class="number">1.1</span>协议的客户机和服务器可以配置成使用非持久连接)。
+   在持久连接下,不必为每个Web对象的传送建立一个新的连接,一个连接中可以传输多个对象!
+</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a></p>
+<h6 id="2-https介绍">2.https介绍</h6><p><code>HTTPS</code>（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。</p>
+<p>HTTPS工作图解：<br><img src="http://www.nowamagic.net/librarys/images/201212/2012_12_20_01.png" alt=""> <img src="http://image72.360doc.com/DownloadImg/2014/05/1415/41600550_1.png" alt="时序图"></p>
+<h6 id="HTTP与HTTPS主要区别">HTTP与HTTPS主要区别</h6><blockquote>
+<ol>
+<li><code>HTTPS</code>使用端口443，而不是象<code>HTTP</code>那样使用端口80来和TCP/IP进行通信。(不同的连接方式和不同的端口)</li>
+<li><code>HTTPS</code>协议需要到ca申请证书，一般免费证书很少，需要交费。</li>
+<li>http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议</li>
+<li>http的连接很简单,是无状态的。</li>
+<li>HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议 要比http协议安全</li>
+</ol>
+</blockquote>
+<h6 id="HTTPS解决的问题">HTTPS解决的问题</h6><blockquote>
+<ol>
+<li><strong>信任主机的问题</strong>：采用https 的server 必须从CA 申请一个用于证明服务器用途类型的证书. 改证书只有用于对应的server 的时候,客户度才信任次主机.</li>
+<li><strong>通讯过程中的数据的泄密和被窜改</strong>：</li>
+</ol>
+</blockquote>
+<pre><code><span class="number">1</span>. 一般意义上的https, 就是 server 有一个证书.
+    a) 主要目的是保证server 就是他声称的server. 这个跟第一点一样.
+    b) 服务端和客户端之间的所有通讯,都是加密的.
+        i. 具体讲,是客户端产生一个对称的密钥,通过server 的证书来交换密钥. 一般意义上的握手过程.
+        ii. 接下来所有的信息往来就都是加密的. 第三方即使截获,也没有任何意义.因为他没有密钥. 当然窜改也就没有什么意义了.
+<span class="number">2</span>. 少许对客户端有要求的情况下,会要求客户端也必须有一个证书.
+    a) 这里客户端证书,其实就类似表示个人信息的时候,除了用户名/密码, 还有一个<span class="variable">CA</span> 认证过的身份. 
+       应为个人证书一般来说上别人无法模拟的,所有这样能够更深的确认自己的身份.
+    b) 目前少数个人银行的专业版是这种做法,具体证书可能是拿<span class="variable">U</span>盘作为一个备份的载体.
+<span class="number">3</span>. <span class="variable">HTTPS</span> 一定是繁琐的.
+    a) 本来简单的http协议,一个get一个response. 由于https 要还密钥和确认加密算法的需要.单握手就需要<span class="number">6</span>/<span class="number">7</span> 个往返.
+        i. 任何应用中,过多的round trip 肯定影响性能.
+    b) 接下来才是具体的http协议,每一次响应或者请求, 都要求客户端和服务端对会话的内容做加密/解密.
+        i. 尽管对称加密/解密效率比较高,可是仍然要消耗过多的<span class="variable">CPU</span>,为此有专门的<span class="variable">SSL</span> 芯片. 如果<span class="variable">CPU</span> 信能比较低的话,肯定会降低性能,从而不能serve 更多的请求.
+        ii. 加密后数据量的影响. 所以，才会出现那么多的安全认证提示
+</code></pre><h6 id="SSL/TLS协议运行机制">SSL/TLS协议运行机制</h6><p>互联网的通信安全，建立在SSL/TLS协议之上。<br>本文简要介绍SSL/TLS协议的运行机制。这里就重点介绍一下设计思想和运行过程，不涉及具体的实现细节。详情请参阅<a href="http://tools.ietf.org/html/rfc5246" target="_blank" rel="external">RFC文档</a>。</p>
 <blockquote>
-<p>DOM2也是对特定的对象添加事件处理程序，但是主要涉及到两个方法，用于处理指定和删除事件处理程序的操作：<em>addEventListener()</em>和 <em>removeEventListener()</em>。<br>它们都接收三个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值（是否在捕获阶段处理事件），看下面的一段代码：</p>
+<p><strong>一、历史</strong><br>互联网加密通信协议的历史，几乎与互联网一样长。<br>1994年，NetScape公司设计了SSL协议（Secure Sockets Layer）的1.0版，但是未发布。<br>1995年，NetScape公司发布SSL 2.0版，很快发现有严重漏洞。<br>1996年，SSL 3.0版问世，得到大规模应用。<br>1999年，互联网标准化组织ISOC接替NetScape公司，发布了SSL的升级版TLS 1.0版。<br>2006年和2008年，TLS进行了两次升级，分别为TLS 1.1版和TLS 1.2版。最新的变动是2011年TLS 1.2的修订版。<br>目前，应用最广泛的是TLS 1.0，接下来是SSL 3.0。但是，主流浏览器都已经实现了TLS 1.2的支持。<br>TLS 1.0通常被标示为SSL 3.1，TLS 1.1为SSL 3.2，TLS 1.2为SSL 3.3。</p>
 </blockquote>
-<pre><code><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn3"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
-    <span class="comment">//DOM2级事件</span>
-    <span class="keyword">var</span>  btn3 = <span class="built_in">document</span>.getElementById(<span class="string">'btn3'</span>);
-    <span class="function"><span class="keyword">function</span> <span class="title">show3</span>(<span class="params"></span>)</span>{alert(<span class="string">"DOM2级添加事件处理程序"</span>);}
-    <span class="comment">//这里我们把最后一个值置为false，即不在捕获阶段处理，一般来说冒泡处理在各浏览器中兼容性较好</span>
-     btn3.addEventListener(<span class="string">"click"</span>,show3,<span class="literal">false</span>);
-    <span class="comment">//btn3.removeEventListener("click",show3,false); //如果想要把这个事件删除，只需要传入同样的参数即可</span>
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><p>这里我们可以看到，在添加删除事件处理的时候，最后一种方法更直接，也最简便。但是我提醒大家需要注意的是，在删除事件处理的时候，传入的参数一定要跟之前的参数一致，否则删除会失效！</p>
-<h5 id="4-_IE事件处理程序">4. IE事件处理程序</h5><pre><code><span class="function"><span class="title">attachEvent</span><span class="params">(type,hander)</span></span> <span class="comment">//添加事件</span>
-<span class="function"><span class="title">detachEvent</span><span class="params">(type,hander)</span></span><span class="comment">//删除事件</span>
-<span class="comment">//接受2个参数 ： type事件处理程序名称，hander事件处理程序函数</span>
-</code></pre><p>注意：布尔值没有了的原因：IE8以及更早的浏览器版本都只支持事件冒泡</p>
+<hr>
 <blockquote>
-<p>怎么处理事件处理程序的浏览器兼容性？<br>        //跨浏览器事件处理程序<br>         var  eventUtil={<br>                    //添加句柄– 给元素添加事件<br>                    addHandler:function(element,type,handler){<br>                        if(element.addEventListener){<br>                            element.addEventListener(type,handler,false);//DOM2级添加事件处理程序<br>                        }else if(element.attachEvent){<br>                            element.attachEvent(‘on’+type,handler);//IE添加事件处理程序<br>                        }else{<br>                            element[‘on’+type]=handler;//DOM0级添加事件<br>                            //完全等价element.onclick===element[‘on’+type]<br>                        }<br>                    },<br>                    //删除句柄- 给元素删除事件<br>                    removeHandler:function(element,type,handler){<br>                        if(element.removeEventListener){<br>                            element.removeEventListener(type,handler,false);//DOM2级删除事件处理程序<br>                        }else if(element.detachEvent){<br>                            element.detachEvent(‘on’+type,handler);<br>                        }else{<br>                            element[‘on’+type] =null;<br>                        }<br>                    }<br>               }</p>
+<p><strong>二、作用</strong><br>不使用SSL/TLS的HTTP通信，就是不加密的通信。所有信息明文传播，带来了三大风险。</p>
 </blockquote>
-<p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
+<pre><code>（<span class="number">1</span>） 窃听风险（eavesdropping）：第三方可以获知通信内容。
+（<span class="number">2</span>） 篡改风险（tampering）：第三方可以修改通信内容。
+（<span class="number">3</span>） 冒充风险（pretending）：第三方可以冒充他人身份参与通信。
+</code></pre><p>SSL/TLS协议是为了解决这三大风险而设计的，希望达到：</p>
+<pre><code>（<span class="number">1</span>） 所有信息都是加密传播，第三方无法窃听。
+（<span class="number">2</span>） 具有校验机制，一旦被篡改，通信双方会立刻发现。
+（<span class="number">3</span>） 配备身份证书，防止身份被冒充。
+</code></pre><p>互联网是开放环境，通信双方都是未知身份，这为协议的设计带来了很大的难度。而且，协议还必须能够经受所有匪夷所思的攻击，这使得SSL/TLS协议变得异常复杂。</p>
+<blockquote>
+<p><strong>三、基本的运行过程</strong><br>SSL/TLS协议的基本思路是采用公钥加密法，也就是说，客户端先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密。但是，这里有两个问题。</p>
+</blockquote>
+<p>（1）如何保证公钥不被篡改？</p>
+<pre><code>解决方法：将公钥放在数字证书中。只要证书是可信的，公钥就是可信的。
+</code></pre><p>（2）公钥加密计算量太大，如何减少耗用的时间？</p>
+<pre><code>解决方法：每一次对话（session），客户端和服务器端都生成一个<span class="string">"对话密钥"</span>（session <span class="variable">key</span>），用它来加密信息。
+         由于<span class="string">"对话密钥"</span>是对称加密，所以运算速度非常快，而服务器公钥只用于加密<span class="string">"对话密钥"</span>本身，这样就减少了加密运算的消耗时间。
+</code></pre><p>因此，SSL/TLS协议的基本过程是这样的：</p>
+<pre><code>（<span class="number">1</span>） 客户端向服务器端索要并验证公钥。
+（<span class="number">2</span>） 双方协商生成<span class="string">"对话密钥"</span>。
+（<span class="number">3</span>） 双方采用<span class="string">"对话密钥"</span>进行加密通信。
+</code></pre><p>上面过程的前两步，又称为”握手阶段”（handshake）。</p>
+<p>参考资料：</p>
+<p>MicroSoft,<a href="https://technet.microsoft.com/zh-cn/library/cc785811(v=ws.10" target="_blank" rel="external"> SSL/TLS in Detail</a>.aspx)<br><a href="http://www.moserware.com/2009/06/first-few-milliseconds-of-https.html" target="_blank" rel="external">The First Few Milliseconds of an HTTPS Connection</a></p>
 
       
     </div>
@@ -671,125 +1692,13 @@ stopPropagation:function(<span class="keyword">event</span>){
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/http-https/">HTTP/HTTPS</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-DOM事件探秘" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/10/12/DOM事件探秘/" class="article-date">
-      <time datetime="2013-10-12T08:28:00.000Z" itemprop="datePublished">2013-10-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。</p>
-<h4 id="一、事件流">一、事件流</h4><p>事件流就是描述了页面中接受事件的顺序，在浏览器发展的初期，两大浏览器厂商IE和Netscape互掐，出现了一个坑爹的情况，那就是他们对事件流的解释出现了两中截然相反的定义。也就是我们所熟悉的：IE的事件冒泡，Netscape的事件捕获。<br><img height="550" alt="DOM事件触发过程" src="http://yuml.me/diagram/nofunky/class/
-  [window]->1[document],[window]-[note:document],[window]8<-[document],
-  [document]->2[body],[document]-[note:body],[document]7<-[body],
-  [body]->3[div],[body]-[note:div],[body]6<-[div],
-  [div]->4[text],[div]-[note:text],[div]5<-[text]"></p>
-<blockquote>
-<p>当一个DOM事件被触发的时候，它并不只是在它的起源对象上触发一次，而是会经历三个不同的阶段。简而言之：事件一开始从文档的根节点流向目标对象（<em>捕获阶段</em>），然后在目标对向上被触发（<em>目标阶段</em>），之后再回溯到文档的根节点（<em>冒泡阶段</em>）</p>
-</blockquote>
-<p>事件流描述的是从页面中接受事件的顺序。<br>IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流</p>
-<blockquote>
-<p>1.<strong>事件冒泡</strong>：即事件最开始由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上转播至最不具体的节点(文档)。就是当点击text部分时，先由text处的元素接收，然后逐级传播至window，即执行5-6-7-8的过程</p>
-<p>2.<strong>事件捕获</strong>：事件捕获的思想是不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。同理，在上面的模型中，就是点击text部分时，先由window接收，然后逐级传播至text元素，即执行1-2-3-4-5的过程。</p>
-</blockquote>
-<p>#####事件冒泡和事件捕获的流程与区别<br>下面用代码来说明下事件冒泡和事件捕获的流程，同时也让大家能看出二者的区别：</p>
-<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span>事件冒泡和事件捕获的流程与区别<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
-        <span class="id">#p</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">400px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid <span class="hexcolor">#c5c5c5</span></span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
-        <span class="id">#c</span><span class="rules">{<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">30px</span> <span class="number">100px</span> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">200px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid red</span></span>;<span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
-    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-   <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"p"</span>&gt;</span>
-       父节点
-       <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c"</span>&gt;</span>子节点<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-   <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"> 
-    <span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p'</span>);
-    <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'c'</span>);
-     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-           alert(<span class="string">'子节点捕获'</span>)
-  　　      }, <span class="literal">true</span>);
-     c.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-           alert(<span class="string">'子节点冒泡'</span>)
-      }, <span class="literal">false</span>);
-    p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-            alert(<span class="string">'父节点捕获'</span>)
-        }, <span class="literal">true</span>);
-      p.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-          alert(<span class="string">'父节点冒泡'</span>)
-       }, <span class="literal">false</span>);
-    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</code></pre><p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li></ul>
     </div>
 
       
@@ -811,7 +1720,7 @@ stopPropagation:function(<span class="keyword">event</span>){
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -820,7 +1729,7 @@ stopPropagation:function(<span class="keyword">event</span>){
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016 Hank
+                2016-2017 Hank
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>

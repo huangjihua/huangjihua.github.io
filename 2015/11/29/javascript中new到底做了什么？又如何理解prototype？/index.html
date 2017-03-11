@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Hank" />
+
+
+
+<meta name="description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+var Person = function(){};
+var p = new Person();
+ 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
+
+var p={}; 也就是说，初始化一个对象p
+p.proto=P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript中new到底做了什么？又如何理解prototype？">
+<meta property="og:url" content="http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/index.html">
+<meta property="og:site_name" content="Huangjihua's Blog">
+<meta property="og:description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+var Person = function(){};
+var p = new Person();
+ 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
+
+var p={}; 也就是说，初始化一个对象p
+p.proto=P">
+<meta property="og:image" content="http://huangjihua.com.cn/images/joo_3.png">
+<meta property="og:updated_time" content="2017-03-11T06:56:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript中new到底做了什么？又如何理解prototype？">
+<meta name="twitter:description" content="javascript中new到底做了什么？又如何理解prototype？说到prototype就得先说说new了。我们先看看这样一段代码：
+var Person = function(){};
+var p = new Person();
+ 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：
+
+var p={}; 也就是说，初始化一个对象p
+p.proto=P">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>javascript中new到底做了什么？又如何理解prototype？ | Huangjihua&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/hank.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Hank</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">填坑手艺人的随笔</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/essays/">我的随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Hank</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/hank.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Hank</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">填坑手艺人的随笔</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/essays/">我的随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-javascript中new到底做了什么？又如何理解prototype？" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" class="article-date">
+      <time datetime="2015-11-29T02:40:58.000Z" itemprop="datePublished">2015-11-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript中new到底做了什么？又如何理解prototype？
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="javascript中new到底做了什么？又如何理解prototype？">javascript中new到底做了什么？又如何理解prototype？</h1><p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
+<span class="keyword">var</span> p = <span class="keyword">new</span> Person();
+</code></pre><p> 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：</p>
+<ol>
+<li>var p={}; 也就是说，初始化一个对象p</li>
+<li>p.<strong>proto</strong>=Person.prototype;</li>
+<li>Person.call(p);也就是说构造p，也可以称之为初始化p。</li>
+</ol>
+<p>关键在于第二步，我们来证明一下,如果这段代码会返回true。说明我们步骤2的正确：</p>
+<pre><code><span class="built_in">console</span>.log(p.__proto__ === Person.prototype); <span class="regexp">//</span>结果果然是<span class="literal">true</span>
+</code></pre><h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
+<p>   按照标准，<strong>proto</strong>是不对外公开的，也就是说是个私有属性，但是Firefox的引擎将他暴露了出来成为了一个共有的属性，我们可以对外访问和设置。</p>
+<p>好，概念说清了，让我们看一下下面这些代码：</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
+ </span>{ };
+Person.prototype.Say = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
+ </span>{
+    alert(<span class="string">"Person say"</span>);
+    }
+    <span class="keyword">var</span> p = <span class="keyword">new</span> Person();
+    p.Say();
+</code></pre><p>这段代码很简单，相信每个人都这样写过，那就让我们看下为什么p可以访问Person的Say。</p>
+<p>首先var p=new Person()；可以得出p.<strong>proto</strong>=Person.prototype。那么当我们调用p.Say()时，首先p中没有Say这个属性， 于是，他就需要到他的<strong>proto</strong>中去找，也就是Person.prototype，而我们在上面定义了 Person.prototype.Say=function(){}; 于是，就找到了这个方法。</p>
+<p>好，接下来，让我们看个更复杂的。</p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{ };
+Person.prototype.Say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Person say"</span>);
+}
+Person.prototype.Salary = <span class="number">50000</span>;
+
+<span class="keyword">var</span> Programmer = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{ };
+Programmer.prototype = <span class="keyword">new</span> Person();
+Programmer.prototype.WriteCode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"programmer writes code"</span>);
+};
+
+Programmer.prototype.Salary = <span class="number">500</span>;
+
+<span class="keyword">var</span> p = <span class="keyword">new</span> Programmer();
+p.Say();
+p.WriteCode();
+<span class="built_in">console</span>.log(p.Salary);
+</code></pre><p>我们来做这样的推导：</p>
+<p><code>var p= new Programmer()</code>可以得出<code>p.__proto__=Programmer.prototype</code>;</p>
+<p>而在上面我们指定了<code>Programmer.prototype = new Person();</code>我们来这样拆分，<code>var p1=new Person();Programmer.prototype=p1</code>;那么:</p>
+<pre><code>p1.__proto_<span class="number">_</span>=Person.<span class="keyword">prototype</span>;
+
+Programmer.<span class="keyword">prototype</span>.__proto_<span class="number">_</span>=Person.<span class="keyword">prototype</span>;
+</code></pre><p>由根据上面得到<code>p.__proto__=Programmer.prototype</code>。可以得到</p>
+<pre><code>p.<span class="strong">__proto__</span>.<span class="strong">__proto__</span>=Person.prototype。
+</code></pre><p>好，算清楚了之后我们来看上面的结果,p.Say()。由于p没有Say这个属性，于是去p.<strong>proto</strong>，也就是 Programmer.prototype，也就是p1中去找，由于p1中也没有Say，那就去p.<strong>proto</strong>.<strong>proto</strong>，也就是 Person.prototype中去找，于是就找到了alert(“Person say”)的方法。</p>
+<p>其余的也都是同样的道理。</p>
+<p>这也就是原型链的实现原理。</p>
+<p>最后，其实prototype只是一个假象，他在实现原型链中只是起到了一个辅助作用，换句话说，他只是在new的时候有着一定的价值，而原型链的本质，其实在于<strong>proto</strong>！</p>
+<p>new 操作符<br>在有上面的基础概念的介绍之后，在加上new操作符，我们就能完成传统面向对象的class + new的方式创建对象，在JavaScript中，我们将这类方式成为Pseudoclassical。<br>基于上面的例子，我们执行如下代码</p>
+<pre><code><span class="keyword">var</span> obj = <span class="keyword">new</span> Base();
+</code></pre><p>这样代码的结果是什么，我们在Javascript引擎中看到的对象模型是：<br><img src="/images/joo_3.png" alt="&quot;Javascript引擎中看到的对象模型&quot;"><br>new操作符具体干了什么呢?其实很简单，就干了三件事情。</p>
+<pre><code>var obj 
+ = {}<span class="comment">;</span>
+obj.__proto__ = Base.prototype<span class="comment">;</span>
+Base.call(obj)<span class="comment">;</span>
+</code></pre><p>第一行，我们创建了一个空对象obj<br>第二行，我们将这个空对象的<strong>proto</strong>成员指向了Base函数对象prototype成员对象<br>第三行，我们将Base函数对象的this指针替换成obj，然后再调用Base函数，于是我们就给obj对象赋值了一个id成员变量，这个成员变量的值是”base”，关于call函数的用法，请参看陈皓《Javascript 面向对象编程》文章</p>
+<p>如果我们给Base.prototype的对象添加一些函数会有什么效果呢？<br>例如代码如下： </p>
+<pre><code>Base.prototype.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.id;
+}
+</code></pre><p>那么当我们使用new创建一个新对象的时候，根据<strong>proto</strong>的特性，toString这个方法也可以做新对象的方法被访问到。于是我们看到了：<br>构造子中，我们来设置‘类’的成员变量（例如：例子中的id），构造子对象prototype中我们来设置‘类’的公共方法。于是通过函数对象和Javascript特有的<strong>proto</strong>与prototype成员及new操作符，模拟出类和类实例化的效果。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
+        <p><span>发布时间:</span>2015-11-29, 10:40:58</p>
+        <p><span>最后更新:</span>2017-03-11, 14:56:39</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="javascript中new到底做了什么？又如何理解prototype？">http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/10/20/作用域与闭包/">
+                    作用域与闭包
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/11/02/grunt-beginner前端自动化工具/">
+                    Grunt-Beginner前端自动化工具
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript中new到底做了什么？又如何理解prototype？"><span class="toc-number">1.</span> <span class="toc-text">javascript中new到底做了什么？又如何理解prototype？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#那么proto是什么？"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">那么proto是什么？</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"javascript中new到底做了什么？又如何理解prototype？　| Huangjihua's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" data-title="javascript中new到底做了什么？又如何理解prototype？" data-url="http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"null"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/20/作用域与闭包/" title="上一篇: 作用域与闭包">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/11/02/grunt-beginner前端自动化工具/" title="下一篇: Grunt-Beginner前端自动化工具">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Hank
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

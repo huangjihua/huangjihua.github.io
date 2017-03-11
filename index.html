@@ -14,14 +14,18 @@
 <meta name="author" content="Hank" />
 
 
+     
+        <meta name="baidu-site-verification" content="baidusitemap,xml" />
     
+     
+        <meta name="google-site-verification" content="setmap.xml" />
     
 
 
 <meta name="description" content="关注WEB前端，前端开发，随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Huangjihua's Blog">
-<meta property="og:url" content="http://huangjihua.github.io/index.html">
+<meta property="og:url" content="http://huangjihua.com.cn/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="关注WEB前端，前端开发，随笔">
 <meta name="twitter:card" content="summary">
@@ -90,6 +94,16 @@
 
 
 
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 
 </head>
@@ -201,7 +215,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
                     </div>
                 </section>
                 
@@ -290,11 +304,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-grunt-beginner前端自动化工具" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Javascript中this关键字到底怎么理解，你真的弄懂了吗？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/02/grunt-beginner前端自动化工具/" class="article-date">
-      <time datetime="2015-11-02T08:29:57.000Z" itemprop="datePublished">2015-11-02</time>
+      <a href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/" class="article-date">
+      <time datetime="2016-11-29T13:40:58.000Z" itemprop="datePublished">2016-11-29</time>
 </a>
 
 
@@ -309,7 +323,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a>
+      <a class="article-title" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a>
     </h1>
   
 
@@ -319,1215 +333,307 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p> 本文章适合对HTML、CSS、JS有一定基础，并且对Nodejs有一定的了解的同学。</p>
-<h4 id="学习目标和内容">学习目标和内容</h4><hr>
-<h5 id="什么事前端集成解决方案">什么事前端集成解决方案</h5><blockquote>
-<p>每一个前端团队都想打造自己的前端开发体系，来帮助团队更高效的工作，目前通常都是东拼西凑，逐渐的整合的过程。</p>
-</blockquote>
-<p>前端集成解决方案个人理解是：</p>
+        <p>#Javascript中this关键字到底怎么理解，你真的弄懂了吗？</p>
+<p>其实这个问题在面试中基本都会问到，我想大多数童鞋们都经历过吧，你是否答对了呢？</p>
+<h2 id="this指向哪里呢？">this指向哪里呢？</h2><p> 在Javascript中，和大多数面向对象的编程语言一样，这是一个特殊的关键字，它在方法中用于引用<br><code>被调用方法</code>的对象。</p>
 <blockquote>
-<p>将前端研发领域中各种分散的技术元素集中在一起，并对常见的前端开发问题、不足、缺陷和需求，所提出的一种解决问题的方案。</p>
+<p>In JavaScript, as in most object-oriented programming languages, this is a special keyword that is used within methods to refer to the object on which a method is being invoked.<br>                                   ——jQuery Fundamentals (Chapter 2), by Rebecca Murphey</p>
 </blockquote>
-<p>不同角色理解解对比：</p>
+<p>值得注意，this在javascript中和执行环境有关，而非声明环境。</p>
 <blockquote>
-<p>开发者：解决前端工程的根本问题；<br>专家学者：一套包含<strong>框架</strong>和<strong>工具</strong>，便于开发者<strong>快速</strong>构建<strong>美丽实用</strong>的Web应用程序的工作流，同时这套工作流必须是稳健强壮的。(其中美丽和实用有时候不能同时并存)</p>
+<p>The this keyword is relative to the execution context, not the declaration context.</p>
 </blockquote>
-<p><strong><em>解决哪些前端问题？</em></strong></p>
-<blockquote>
+<p>首先，要搞清楚js里函数的几种调用方式：</p>
 <ul>
-<li>开发团队代码风格不统一，如何强制开发规范；</li>
-<li>前期开发的组件库如何维护和使用；</li>
-<li>如何模块化前端项目；</li>
-<li>服务器部粉前必须的压缩，检查流程如简化，流程如何完善。</li>
+<li>普通函数</li>
+<li>作为方法来调用</li>
+<li>作为构造函数来调用</li>
+<li>使用<code>call/apply</code>方法来调用</li>
+<li><code>Function.prototype.bind</code>方法</li>
+<li>ES6箭头函数</li>
 </ul>
-</blockquote>
-<h5 id="主流的方式有哪几种">主流的方式有哪几种</h5><p><img src="http://yuml.me/diagram/nofunky/usecase/(note:主流的方式 {bg:beige}),(Yeoman),(Bower),(Grunt|Gulp)"><br>推荐几款前端解决方案供大家参考：</p>
-<ul>
-<li>适用MAC的可视化工具： <a href="http://incident57.com/codekit/index.html" target="_blank" rel="external">Codekit</a></li>
-<li>百度的<a href="http://fis.baidu.com/" target="_blank" rel="external">FIS3</a></li>
-<li>腾讯的<a href="http://alloyteam.github.io/Spirit/" target="_blank" rel="external">Spirit</a></li>
-</ul>
-<h5 id="Grunt的定位">Grunt的定位</h5><blockquote>
-<p>Yeoman,Bower,Grunt其中是怎么样一个定位呢？我们把它定位为—Build Tool</p>
-</blockquote>
-<h5 id="目前Grunt的竞争者">目前Grunt的竞争者</h5><blockquote>
-<p>Glup是Grunt强有力的竞争对手，还有Buildy、jasy、Gmake等</p>
-</blockquote>
-<h4 id="准备工作">准备工作</h4><hr>
-<h5 id="nodejs简介">nodejs简介</h5><p><img src="http://yuml.me/diagram/nofunky/usecase/(note:Nodejs是什么？{bg:beige}),javascript{bg:Fuchsia}^服务服端语言{bg:yellow}"></p>
-<h6 id="安装">安装</h6><ul>
-<li><a href="http://nodejs.org" target="_blank" rel="external">Nodejs官网</a> </li>
-<li>MAC上：<a href="http://brew.sh" target="_blank" rel="external">HomeBrew</a>，这里推荐一个小工具<a href="https://www.cakebrew.com/" target="_blank" rel="external">Cakebrew</a>,可以免去我们级命令行的烦恼。</li>
-<li>Linux：apt-get[ubuntu]、yum 等</li>
-</ul>
-<p><strong>nodejs命令行工具：</strong>mac和Linux本身就自带强大的控制台，但window虽然有cmd窗口但是它不支持bash脚本，怎么解决这个问题呢？我推荐安装git,git里包含一个git bash shell在一定程度上弥补了这个缺陷。</p>
-<ul>
-<li><p>NPM-Node Package Manager（Node包管理和分发工具）<br><img src="http://yuml.me/diagram/nofunky/class/[rubt;gem|Python;pypi;setuptool|PHP;Pear{bg:yellow}]"></p>
-</li>
-<li><p>Nodejs包括基本模块、框架和库，但是这些很多框架和库管理起来很麻烦，所以才有了NPM,<code>npm</code>能很快的找到特定服务要使用的包，然后进行下载/安装/管理。</p>
-</li>
-</ul>
-<h6 id="命令的使用">命令的使用</h6><pre><code><span class="comment">#npm常用命令</span>
-<span class="built_in">npm</span> -v          <span class="comment">#显示版本，检查npm 是否正确安装。</span>
-<span class="built_in">npm</span> install express   <span class="comment">#安装express模块</span>
-<span class="built_in">npm</span> install -g express  <span class="comment">#全局安装express模块</span>
-<span class="built_in">npm</span> list         <span class="comment">#列出已安装模块</span>
-<span class="built_in">npm</span> show express     <span class="comment">#显示模块详情</span>
-<span class="built_in">npm</span> update        <span class="comment">#升级当前目录下的项目的所有模块</span>
-<span class="built_in">npm</span> update express    <span class="comment">#升级当前目录下的项目的指定模块</span>
-<span class="built_in">npm</span> update -g express  <span class="comment">#升级全局安装的express模块</span>
-<span class="built_in">npm</span> uninstall express  <span class="comment">#删除指定的模</span>
-</code></pre><h6 id="node项目的基本结构">node项目的基本结构</h6><h5 id="Yeoman,_Bower,_Grunt简介及安装">Yeoman, Bower, Grunt简介及安装</h5><ul>
-<li><a href="http://yeoman.io" target="_blank" rel="external">Yeoman</a>：The web’s scaffolding tool for modern webapps(现代webapp的脚手架工具)</li>
-</ul>
-<p>Yeoman的作用：</p>
-<blockquote>
-<ul>
-<li>在Web项目立项阶段，使用yeoman来生成项目的文件，代码结构。</li>
-<li>Yeoman自动将最佳实践和工具整合进来，大大加速和方便了后续的开发。</li>
-</ul>
-<p>根据项目自行选择Yeoman中的不同生成器，不管怎么变，Yeoman还是统一了现阶段公认的 <code>代码校验</code>、<code>测试</code>、<code>压缩</code>等最基本功能的流程,其余部分就交给 <code>生成器自由发挥</code></p>
-</blockquote>
-<pre><code>npm <span class="keyword">install</span> -g yo <span class="comment">#全局安装yeoman</span>
+<p>以上6中调用方式，不管函数式按照哪种方式来调用，只要记住一个要点：<strong>谁调用这个函数或方法，this就指向谁</strong>。</p>
+<p>接下来具体分析每种情况：</p>
+<h4 id="1-普通函数调用">1.普通函数调用</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    <span class="keyword">this</span>.name = <span class="string">'hank'</span>;
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// node=&gt; global 浏览器=&gt; window</span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">//hank</span>
+}
+foo();  
+<span class="built_in">console</span>.log(global.hasOwnProperty(foo())); <span class="comment">// node输出： true</span>
+</code></pre><p>上面的代码中foo函数作为一个普通函数调用，实际上foo是作为全局对象window的一个方法来进行调用， <code>，浏览器上如：</code>window.foo();<code>所以这个地方是</code>window<code>对象调用了</code>foo<code>方法，那么</code>foo<code>函数当中的</code>this<code>即指向</code>window<code>，同时</code>window<code>还有了另外一个属性</code>name<code>,值为</code>hank`。</p>
+<p>  Node.js 中的全局对象是 <code>global</code>，所有全局变量（除了 <code>global</code> 本身以外）都是 <code>global</code> 对象的属性。在 Node.js 我们可以直接访问到 <code>global</code> 的属性，而不需要在应用中包含它。</p>
+<pre><code><span class="keyword">var</span> name = <span class="string">'hank'</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// 浏览器=&gt; hank   node =&gt; undefined       }</span>
+foo();
+</code></pre><p>同样上面的<code>foo</code>作为<code>window</code>的方法来调用，在代码的一开始定义了一个全局变量<code>name</code>，值为<code>hank</code>，它相当于<code>window</code>的一个属性，即<code>window.name=&#39;hank&#39;</code>，因为在调用的时候<code>this</code>是指向<code>window</code>的，因此这里的输出的结果是<code>hank</code>。</p>
+<p>但是，为什么node.js中this无法获取到name呢？因为node中文件都是模块化的，每个文件内定义的变量可以说是局部变量（只在该文件中能访问到）。如果要定义全局变量，可以不用var关键字或global.name=’hank’，若要其它文件能访问则导出模块中 exports.name = ‘hank’。nodejs测试例子：</p>
+<pre><code>name = <span class="string">'hank'</span>;   <span class="comment">// 全局变量                               </span>
+<span class="keyword">var</span> age =<span class="number">10</span>;      <span class="comment">//局部变量                             </span>
+global.sex = <span class="string">'man'</span>;       <span class="comment">// 全局变量                       </span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{                                
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>===global); <span class="comment">//true         </span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">module</span>);  <span class="comment">//false       </span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);  <span class="comment">//hank            </span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age); <span class="comment">// undefined        </span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.sex) ;  <span class="comment">//man             </span>
+}                                              
+foo();                                         
+<span class="built_in">console</span>.log(<span class="string">'---------------------------'</span>);    
+<span class="built_in">console</span>.log(<span class="keyword">this</span>===exports); <span class="comment">//true            </span>
+<span class="built_in">console</span>.log(<span class="keyword">this</span>===global); <span class="comment">//false    并没有绑定到global 而是绑定到了exports         </span>
+<span class="built_in">console</span>.log(<span class="keyword">this</span>.name) ;<span class="comment">// undefined           </span>
+<span class="built_in">console</span>.log(global.name); <span class="comment">// hank              </span>
+<span class="built_in">console</span>.log(<span class="keyword">this</span>.age); <span class="comment">// undefine             </span>
+<span class="built_in">console</span>.log(<span class="keyword">this</span>.sex) ;  <span class="comment">//undefine            </span>
+</code></pre><h4 id="2-作为方法来调用">2.作为方法来调用</h4><p>上面的代码中，普通函数的调用是作为<code>window</code>对象的方法或者<code>global</code>全局对象的属性来进行调用，显然this是指向了<code>window</code>／<code>global</code>对象。</p>
+<p>接下来看其他形式:</p>
+<pre><code><span class="keyword">var</span> name = <span class="string">'hank'</span>;                                                                                                                                                                                                                             
+<span class="keyword">var</span> foo = {                                                                                                                                                                                                                                     
+    name:<span class="string">'HANK'</span>,                                                                                                                                                                                                                                
+    showName:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{                                                                                                                                                                                                                      
+      <span class="built_in">console</span>.log(<span class="keyword">this</span>===global); <span class="comment">// false  ---  true                                                                                                                                                                                           </span>
+      <span class="built_in">console</span>.log(<span class="keyword">this</span>===exports);<span class="comment">// false  ---  false                                                                                                                                                                                          </span>
+      <span class="built_in">console</span>.log(<span class="keyword">this</span>===foo); <span class="comment">//    true   ---  false                                                                                                                                                                                          </span>
+      <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);  <span class="comment">// HANK  ----- window=&gt; hank  node=&gt; undefined                                                                                                                                                                   </span>
+    }                                                                                                                                                                                                                                           
+
+} ;  
+foo.showName(); <span class="comment">// HANK                                                                                                                                                                                                                         </span>
+<span class="comment">// 这里是foo对象调用了showName方法，显然这里this指向foo对象的，所以会输出foo对象内部属性name </span>
+<span class="keyword">var</span> sn = foo.showName;                                                                                                                                                                                                                          
+sn();  <span class="comment">// window =&gt; hank  node=&gt;undefined  </span>
+<span class="comment">/*这里将foo.showName方法赋值给sn变量，此时sn变量相当于window对象的一个属性，因此showName()执行的时候相当于window.showName(),即window对象调用sn这个方法 ,所以this 执向window。虽然node.js中this虽然指向了global，但是var name='hank'在node中确实局部变量，所以结果是undefined。
+*/</span>  
+</code></pre><p>换一种方式写：</p>
+<pre><code><span class="keyword">var</span> fooA = {
+    name:<span class="string">'hank'</span>,
+    showName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+    }
+}
+<span class="keyword">var</span> fooB = {
+    name:<span class="string">'HANK'</span>,
+    getName:fooA.showName
+}
+fooB .getName();  <span class="comment">// 输出 HANK</span>
+</code></pre><p>上面代码中，虽然<code>showName</code>方法是在<code>fooA</code>这个对象中定义的，但是调用的时候却是在<code>fooB</code>这个对象中调用，因此<code>this</code>对象指向<code>fooB</code>。</p>
+<h4 id="3-用作构造函数来调用">3.用作构造函数来调用</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>{                                                            
+    <span class="keyword">this</span>.name = name;                                                           
+  <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// 没有new：window/global   有new： Foo { name: 'hank' }                                                          </span>
+ }                                                                              
+ <span class="keyword">var</span> nf =  Foo(<span class="string">'hank'</span>);                                                         
+ <span class="built_in">console</span>.log(nf.name);  <span class="comment">// 浏览器上输出: undefined  node中nf=&gt; undefined 结果报错          </span>
+<span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">//  hank                                             </span>
+ <span class="comment">/* 这里没有进行new操作，相当于window对象调用Foo('hank')方法，那么this指向window对象，                    
+    并进行赋值操作window.name='hank'.                                                  
+  */</span>                                                                            
+ <span class="built_in">console</span>.log(global.name); <span class="comment">// hank    这里this指向global,this.name 相当于global.name   </span>
+</code></pre><h5 id="3-1_new_操作符">3.1 new 操作符</h5><p>上面的代码用new操作符，结果如何呢？</p>
+<pre><code><span class="built_in">var</span> nfb = <span class="literal">new</span> Foo(<span class="string">'hank'</span>);  <span class="comment">// 这里的 this指向new处理的那个对象</span>
+console<span class="built_in">.</span><span class="keyword">log</span>(nfb<span class="built_in">.</span>name);  <span class="comment">// 结果输出: hank</span>
+console<span class="built_in">.</span><span class="keyword">log</span>(<span class="built_in">global</span><span class="built_in">.</span>name); <span class="comment">// node中输出: undefined </span>
+</code></pre><p>我们来模拟一下new操作符的内部过程</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">var</span> obj = {};
+    obj.__proto__ = Foo.prototype; <span class="comment">//原型继承， obj的__proto__指向了Foo.prototype         Foo.call(obj,name);</span>
+    <span class="keyword">return</span> obj;
+}
+<span class="keyword">var</span> f = foo(<span class="string">'hank'</span>);
+<span class="built_in">console</span>.log(f.name); <span class="comment">//输出 hank</span>
 </code></pre><ul>
-<li><p><a href="http://bower.io" target="_blank" rel="external">Bower</a>：A package manager for the web(Web的包管理器)</p>
+<li>这上面<code>foo</code>里，首先创建了一个空对象<code>obj</code>，将<code>obj</code>的<code>__proto__</code>指向<code>foo.prototype</code>完成对象原型的属性和方法的继承。</li>
+<li><code>foo.call(obj,name)</code>这里函数<code>foo</code>作为<code>apply/call</code>调用（见下面），将<code>foo</code>对象里的<code>this</code>改为obj,完成了obj.name = name操作。</li>
+<li><p>返回对象obj</p>
 <blockquote>
-<p>Web站点组成:框架，库，公共部分等，Bower则用来跟踪管理这些</p>
-</blockquote>
-</li>
-<li><p><a href="http://gruntjs.com/" target="_blank" rel="external">Brunt</a>:The JavaScript Task Runner(JavaScript 世界的构建工具)</p>
-<blockquote>
-<p>为何要用构建工具？<br>一句话：自动化。对于需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。当你在 Gruntfile 文件正确配置好了任务，任务运行器就会自动帮你或你的小组完成大部分无聊的工作。</p>
+<p>因此<code>foo(&#39;hank&#39;)</code>返回了一个继承了<code>foo.prototype</code>对象上的属性和方法，以及拥有<code>name</code>属性为<code>hank</code>的对象，并将它赋值给变量<code>f</code>，所以console.log(f.name)输出 hank。</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="Yeoman实践">Yeoman实践</h4><pre><code>npm <span class="keyword">install</span> -g generator-angular <span class="comment">#全局安装 angular</span>
-npm <span class="keyword">install</span> -g generator-mobile <span class="comment">#全局安装 mobile</span>
-npm <span class="keyword">install</span> -g generator-webapp <span class="comment">#全局安装 webapp</span>
-</code></pre><blockquote>
-<p>接下来新建angular项目为例</p>
-</blockquote>
-<pre><code>mkdir yo-<span class="built_in">action</span> <span class="preprocessor">#新建目录</span>
-cd yo-<span class="built_in">action</span> 
-mkdir angular-<span class="built_in">action</span> <span class="preprocessor">#新建项目目录</span>
-cd angular-aciton
-yo angular helloAngular <span class="preprocessor">#创建angular项目 helloAngular项目名称</span>
-   <span class="preprocessor">#选用grunt</span>
-   <span class="preprocessor">#sass是否包含自行选择（sass基于ruby，要求有ruby环境）和 bootStrap框架等</span>
-dir <span class="preprocessor">#安装完成之后 查看目录</span>
-ls -al<span class="preprocessor"># ls列出当前目录下的bash命令 -al表示列出隐藏文件以及一点开头的文件</span>
-</code></pre><blockquote>
-<p><code>ruby</code>安装、解决<a href="http://www.w3cplus.com/sassguide/install.html" target="_blank" rel="external">sass</a>未翻墙不能安装等问题。<br>接下来看看项目下的<code>pageage.json</code>文件</p>
-</blockquote>
-<pre><code> {
- <span class="string">"name"</span>: <span class="string">"helloangular"</span>, <span class="preprocessor">#项目名</span>
- <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,<span class="preprocessor">#版本号，递增</span>
- <span class="string">"dependencies"</span>: {} <span class="preprocessor">#项目在生产环境中需要的依赖</span>
- <span class="string">"devDependencies"</span>: {
-    <span class="string">"grunt"</span>: <span class="string">"^0.4.5"</span>, <span class="preprocessor"># ^表示对版本比较宽松的限制，只限制主版本号，如果有新版本自动更新，直到<span class="number">1.</span>x.x之前的版本都可以</span>
-    <span class="string">"grunt-newer"</span>: <span class="string">"~1.1.0"</span>, <span class="preprocessor"># ~只更新<span class="number">1.1</span><span class="number">.0</span>到<span class="number">1.1</span><span class="number">.9</span> </span>
-   },
- <span class="string">"scripts"</span>: {
-    <span class="string">"test"</span>: <span class="string">"grunt test"</span>，
-    “install”:<span class="string">""</span>  <span class="preprocessor"># 执行npm install 会根据package.json文件中的组件来安装</span>
-   }
+<h4 id="4-apply/call_方法的调用_——————最大作用：就是改变this指向">4.apply/call 方法的调用 ——————最大作用：就是改变this指向</h4><p> 在javascript里函数也是对象，因此函数也有方法，从<code>Function.prototype</code>上继承到<code>Function.prototype.apply / Function.prototype.call</code>方法。<br><code>apply/call</code>方法最大的作用就是能改变<code>this</code>关键字的指向。<br><code>Obj.method.apply(AnotherObj,argments);</code></p>
+<pre><code><span class="keyword">var</span> name = <span class="string">'hank'</span>;
+<span class="comment">//对象子面量</span>
+<span class="keyword">var</span> Foo = {
+    name:<span class="string">'HANK'</span>,
+    showName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+    }    
+}
+Foo.showName.call(); <span class="comment">// 浏览器输出：hank  nodejs输出：undefined</span>
+<span class="comment">//这里call方法里面的第一个参数为空，默认指向window / global</span>
+<span class="comment">// 虽然showName方法定义在Foo对象里，但是使用call方法后，将showName方法里面的this指向了window／global。因此最后输出 hank / undefined。</span>
+
+再举个例子：
+
+ <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a,b</span>)</span>{
+     <span class="keyword">this</span>.a =a;
+     <span class="keyword">this</span>.b =b;
+     <span class="keyword">this</span>.change = <span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>{
+         <span class="keyword">this</span>.a = x;
+         <span class="keyword">this</span>.b = y;
+     }
  }
+ <span class="keyword">var</span> foodA = <span class="keyword">new</span> foo(<span class="string">'tomato'</span>,<span class="string">'fish'</span>);
+ <span class="keyword">var</span> foodB = {a:<span class="string">'lemon'</span>,b:<span class="string">'apple'</span>};
 
-rm -rf node_modules <span class="preprocessor">#rm 删除目录命令 -rf递归删除且不需二次确认</span>
-</code></pre><ul>
-<li>目录说明<blockquote>
-<p>pakeage.json :这是NodeJS模块的“信息图”<br>bower.json :指定我们可以通过bower去拉哪些相应的前端框架和组件<br>.yo-rc.json<br>.travis.yml :专为开源打造的持续集成环境<br>.jshintrc  :jshin配置文件<br>.gitignore ：指定当前项目要忽略不上传到git的文件<br>.gitattributes  :git配置项<br>.editorconfig  :第三方工具<br>.bowerrc  :bower本身的配置项<br>test目录下的文件 ：项目自动化测试<br>bower_components ：线上拉下来的前端框架</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="Bower实践">Bower实践</h4><hr>
-<ol>
-<li><p>接下来就bower是如何对web框架和组件进行管理的，利用jQuery和bootstrap为例。</p>
-<pre><code><span class="label">mkdir</span> <span class="keyword">bower-action </span>#创建<span class="keyword">bower测试目录
-</span><span class="label">cd</span> <span class="keyword">bower-action
-</span><span class="label">mkdir</span> jquery-<span class="keyword">bootstrap-aciton </span>#项目目录
-<span class="label">cd</span> jquery-<span class="keyword">bootstrap-action
-</span><span class="keyword">bower </span>install jquery
-<span class="keyword">bower </span>intall <span class="keyword">bootstrap
-</span><span class="label">ls</span> -al #安装完成后，查看目录下多了一个<span class="keyword">bower_components目录
-</span><span class="label">cd</span> <span class="keyword">bower_components </span>#目录下就有了jquery和<span class="keyword">bootstrap</span>
-</code></pre></li>
-<li><p>如果组件比较小，没有在bower上注册，怎么办？</p>
-<blockquote>
-<p>bower提供多种安装方式:</p>
-</blockquote>
-</li>
-</ol>
+ foodA.change.call(foodB,<span class="string">'chili'</span>,<span class="string">'pear'</span>);
+<span class="built_in">console</span>.log(foodB.a);   <span class="comment">// chili                 </span>
+<span class="built_in">console</span>.log(foodB.b);   <span class="comment">// pear               </span>
+
+<span class="string">`FoodB`</span>调用<span class="string">`foodA`</span>的<span class="string">`change`</span>方法，将<span class="string">`foodA`</span>中的<span class="string">`this`</span>绑定到了对象<span class="string">`foodB`</span>上。
+</code></pre><h4 id="4-1_Funtion-prototype-bind()方法">4.1 Funtion.prototype.bind()方法</h4><pre><code><span class="keyword">var</span> name = <span class="string">'hank'</span>;                                                               
+<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>{                                                             
+    <span class="keyword">this</span>.name = name;                                                            
+    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{                                                 
+          setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{                                               
+              <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);                                            
+          },<span class="number">100</span>);                                                                
+    }                                                                            
+}                                                                                
+<span class="keyword">var</span>  f = <span class="keyword">new</span> Foo(<span class="string">'HANK'</span>);                                                        
+f.getName();  <span class="comment">// 这里浏览器上输出hank   node上输出undefined                                 </span>
+<span class="comment">//因为这里的 setTimeout()定时函数，相当于window.setTimeout(), 因此this指向window,则this.name则为hank </span>
+</code></pre><p>如果才能达到输出<code>HANK</code>呢？</p>
+<pre><code><span class="keyword">var</span> name = <span class="string">'hank'</span>;                                     
+<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>{                                   
+    <span class="keyword">this</span>.name = name; 
+    <span class="comment">// _self =this // 也要可以用变量存储方式，利用变量调用对象自身的属性name                               </span>
+    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{                       
+          setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{                     
+              <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);                  
+          }.bind(<span class="keyword">this</span>),<span class="number">100</span>); 
+          <span class="comment">//这里使用bind方法，绑定setTimeout里面的匿名函数的this一直指向Foo对象</span>
+
+    };                                                 
+}                                                      
+<span class="keyword">var</span>  f = <span class="keyword">new</span> Foo(<span class="string">'HANK'</span>);                              
+f.getName();  <span class="comment">// 输出HANK  </span>
+</code></pre><p>注意：匿名函数使用<code>bind(this)</code>方法后创建了新的函数，这个新函数不管什么地方执行，<code>this</code>都指向<code>Foo</code>,而非<code>window</code>，因此输出了HANK。</p>
+<p>另外还有几个要注意的地方：</p>
 <ul>
-<li>通过github的短语安装 <img src="http://i.imgur.com/VKUiCwJ.png" alt=""></li>
-</ul>
-<pre><code><span class="keyword">bower </span>install jquery/jquery
-</code></pre><ul>
-<li>用过完整的github地址安装 </li>
-</ul>
-<pre><code>bower install <span class="string">https:</span><span class="comment">//github.com/jquery/jquery.git</span>
-</code></pre><ol>
-<li>框架和组件，github上没有怎么办？<blockquote>
-<p>bower提供了直接通过url地址安装<br>以上bower生成的文件中并没有包含bower.json和.bowerrc两个配置文件：需要初始化生成</p>
-</blockquote>
+<li><code>setTimeout/setInterval/匿名函数</code>执行的时候，<code>this</code>默认指向<code>window</code>对象，除非你手动改变<code>this</code>指向。</li>
+<li><p><code>setTimeout</code>方法是挂在<code>window</code>对象下的。《<code>JavaScript</code>高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中<code>this</code>的值在非严格模式下指向<code>window</code>对象，在严格模式下是<code>undefined</code>”。在这里，我们只讨论非严格模式。</p>
+<p>  var name = ‘hank’;<br>  function Foo(){</p>
+<pre><code><span class="keyword">this</span>.name = <span class="string">'HANK'</span>;
+<span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+setTimeout(<span class="keyword">this</span>.getName,<span class="number">100</span>);
+</code></pre><p>  }<br>  var f = new Foo();  // 输出 hank<br>  //this.getName方法即构造函数Foo()里面定义的方法。50ms后，执行this.getName方法， this.getName里面的this此时便指向了window对象</p>
 </li>
-</ol>
-<pre><code><span class="title">bower</span> init <span class="comment">#初始化后根据提示设置</span>
-</code></pre><blockquote>
-<p>手动生成一个.bowerrc,说说其配置</p>
-</blockquote>
-<pre><code>{
-  <span class="string">"directory"</span>: <span class="string">"bower_components"</span>,
-  <span class="string">"proxy"</span>:<span class="string">"http://proxy.kyj.com:8080"</span>, <span class="preprocessor">#为了网络安全，设置一层代理</span>
-  <span class="string">"https-proxy"</span>:<span class="string">"https://proxy.kyj.com:8080"</span>,
-  <span class="string">"timeout"</span>:<span class="number">60000</span> <span class="preprocessor">#超时 毫秒</span>
+</ul>
+<p>上面代码要解决问题，可以用采用变量来保存Foo对象的方式，然后利用变量来访问Foo对象自身的属性。</p>
+<pre><code>_self = <span class="keyword">this</span>;
+<span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
+    <span class="built_in">console</span>.log(_self.name);
 }
-</code></pre><blockquote>
-<p>项目中如果单独使用bower，在项目中引用这些框架和组件非常麻烦，所以一定要配合grunt一起使用，提供开发效率。</p>
-<h4 id="Grunt实践">Grunt实践</h4><hr>
-</blockquote>
-<pre><code>mkdir grunt-action
-cd grunt-action
-mkdir grunt-yo
-cd grunt-yo
-yo webapp  grunt-yo #注意需要安装：npm install -g yeoman/generator-webpp
-#项目出现<span class="number">3</span>个选项
-<span class="comment">(*)Sass #对css3的扩展，增加了规则、变量、混入、选择器、继承等等特性
-(*)</span>BootStrap
-<span class="comment">(*)Modernizr #用来检测用户浏览器是否支持某些HTML5和CSS3新特性的一个js库</span>
-</code></pre><blockquote>
-<p>接下来讲解一Gruntfile.js —</p>
-</blockquote>
-<pre><code><span class="string">'use strict'</span>;<span class="comment">#遵循ECMAScript（ES5）严格模式，体现js更合理、更安全、更严谨的发展方向</span>
-module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> </span>{
-<span class="comment">#所有的gruntpage和逻辑代码都要放入该函数</span>
-
-<span class="comment">// 自动加载package.json里声明的 grunt tasks </span>
-<span class="comment">// [jit-grunt](https://github.com/shootaroo/jit-grunt)自动加载所需任务 也可以使用load-grunt-tasks插件来加载</span>
-  <span class="keyword">require</span>(<span class="string">'jit-grunt'</span>)(grunt, {
-    useminPrepare: <span class="string">'grunt-usemin'</span>
-  });
- <span class="comment">// Configurable paths</span>
- <span class="keyword">var</span> config = {
-    app: <span class="string">'app'</span>,
-    dist: <span class="string">'dist'</span>
- };
- <span class="comment">#grunt重要的概念:task（任务）,initConfig里配置的是一个一个的单元task</span>
- grunt.initConfig({
-    config: config,
-    watch: {
-      bower: {  <span class="comment">#任务watch的第一个目标</span>
-        files: [<span class="string">'bower.json'</span>], <span class="comment">#属性是可选的</span>
-        tasks: [<span class="string">'wiredep'</span>]
-      }，
-      babel: {  <span class="comment">#任务watch的第二个目标</span>
-        files: [<span class="string">'&lt;%= config.app %&gt;/scripts/{,*/}*.js'</span>],
-        tasks: [<span class="string">'babel:dist'</span>]
-      }
+</code></pre><p>匿名函数：</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"hank"</span>;
+<span class="keyword">var</span> person={
+    name:<span class="string">"HANK"</span>,
+    showName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
     }
-  }
-}
-</code></pre><p>本人在window环境测试，需要注意几个问题：</p>
-<blockquote>
-<p>1.检查是否安装好ruby并安装好sass，sass在3.3.0之后版本提供了<a href="http://code.tutsplus.com/tutorials/source-maps-101--net-29173" target="_blank" rel="external">sourcemap</a>功能<br>2.检查<a href="https://github.com/Medium/phantomjs" target="_blank" rel="external">phantomjs</a>是否全局安装成功，yo生成webapp会报相关错误。<br>3.全局安装generator-mocha<br>4.运行grunt如果有Plugin没有安装报错，安装一下，比如grunt-mocha,grunt-contrib-sass等</p>
-<h5 id="Grunt的Task,Target和Options">Grunt的Task,Target和Options</h5></blockquote>
-<h5 id="从无到有构建Grunt项目">从无到有构建Grunt项目</h5><h5 id="初识Grunt_Files处理方式">初识Grunt Files处理方式</h5><h5 id="剖析Grunt_Tasks_-_grunt_serve">剖析Grunt Tasks - grunt serve</h5><h5 id="剖析Grunt_Tasks_-_grunt_test">剖析Grunt Tasks - grunt test</h5><h5 id="剖析Grunt_Tasks_-_grunt_build">剖析Grunt Tasks - grunt build</h5><h4 id="Grunt_-_plugins">Grunt - plugins</h4><hr>
-<h5 id="剖析Grunt_-_plugins（一）">剖析Grunt - plugins（一）</h5><h4 id="扩展知识介绍">扩展知识介绍</h4><hr>
-<h5 id="gulp-in-action（一）">gulp-in-action（一）</h5><h5 id="npm-in-action">npm-in-action</h5><h4 id="总结">总结</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/nodejs/">Nodejs</a><a class="article-category-link" href="/categories/nodejs/web-tool/">Web Tool</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web-tool/">Web Tool</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Sass和Compass用法以及Ruby安装" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/29/Sass和Compass用法以及Ruby安装/" class="article-date">
-      <time datetime="2015-10-29T02:40:58.000Z" itemprop="datePublished">2015-10-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>###RubyInstaller </p>
-<p>If you are on Windows, there is a great project to help you install Ruby: <a href="http://rubyinstaller.org/" target="_blank" rel="external">RubyInstaller</a>. It gives you everything you need to set up a full Ruby development environment on Windows.<br>Just download it, run it, and you are done!</p>
-<h4 id="Check_whether_Ruby_already_is_available_by_opening_a_terminal">Check whether Ruby already is available by opening a terminal</h4><pre><code><span class="title">ruby</span> -v
-</code></pre><h4 id="Try_Ruby">Try Ruby</h4><p>1.由于国内网络原因，首先我们来修改一下Ruby的source地址</p>
-<pre><code>gem sources --<span class="built_in">remove</span> http<span class="variable">s:</span>//rubygems.org/ //移除默认的
-gem sources -<span class="keyword">a</span> http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org/ //添加新的地址
-gem sources -<span class="keyword">l</span> # 查看<span class="keyword">list</span>
-
-gem <span class="keyword">update</span> //更新<span class="keyword">ruby</span>版本
-</code></pre><p>2.安装Sass<br>如果安装多个版本的sass先下载<a href="http://rubyinstaller.org/downloads" target="_blank" rel="external">DevKit</a>构建工具</p>
-<pre><code>gem install sass
-sass -v 
-gem install sass --version=<span class="number">3.3</span> <span class="comment">//安装特定版本的sass , 但要先安装build tools 》DevKit</span>
-gem <span class="built_in">list</span> <span class="comment">//列出本地的所有ruby程序包</span>
-gem unistall sass -- version=<span class="number">3.3</span><span class="number">.0</span> <span class="comment">//卸载特定版本的sass</span>
-</code></pre><p> 简单说一下安装devkit注意事项：</p>
-<blockquote>
-<p>DevKit 是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。注：这个方法目前仅支持通过RubyInstaller安装的Ruby，如果不是建议你重新安装。安装方法：双击下载的7z文件，指定解压路径，路径中不能有空格。如D:/DeveloperInstall\DevKit，这个路径就是<devkit_install_dir>。<br>cd <devkit_install_dir></devkit_install_dir></devkit_install_dir></p>
-</blockquote>
-<pre><code>ruby dk<span class="class">.rb</span> init <span class="comment">//#生成config.yml，这里会检查将要添加DevKit支持的Ruby列表，只支持通过RubyInstaller安装的Ruby</span>
-</code></pre><blockquote>
-<p>如果这里列出的Ruby与你的要求不符，可以手动修改</p>
-</blockquote>
-<pre><code>ruby dk.rb review /<span class="regexp">/检查要添加DevKit支持的Ruby列表是否有误，可以略过
-ruby dk.rb install /</span><span class="regexp">/安装后会出现以下两条信息
-/</span><span class="regexp">/[INFO] Updating convenience notice gem override for 'D:/</span><span class="constant">DeveloperInstall</span>/<span class="constant">Ruby22</span><span class="string">'
-//[INFO] Installing '</span><span class="constant">D</span>:<span class="regexp">/DeveloperInstall/</span><span class="constant">Ruby22</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">ruby</span>/<span class="title">site_ruby</span>/<span class="title">devkit</span>.<span class="title">rb</span>'</span>
-
-gem install rdiscount --platform=ruby /<span class="regexp">/检查是否安装成功  如果能安装rdiscount成功说明安装DevKit成功</span>
-</code></pre><p>安装好DevKit后就可以安装多个版本的sass等<br><img src="http://i.imgur.com/3S0o0W2.png" alt=""><br>测试一下：<br>    mkdir learn-sass-cli<br>    vim main.scss //按i进入编辑后添加 *{margin:0;padding:0;} 然后按esc进入命令行模式 输入:wq 保存退出<br>    sass main.scss main.css // 转css文件<br>    sass-convert main.scss main.sass // 转.sass文件，可以了解一下sass写法</p>
-<p>3.安装Compass</p>
-<pre><code>gem install compass
-
-compass <span class="built_in">create</span> learn-sass-syntax<span class="comment"> //创建compass-sass项目</span>
-</code></pre><p>在命令行模式下，除了一次性编译命令，compass还有自动编译命令</p>
-<pre><code>　　<span class="title">compass</span> watch
-</code></pre><p>运行该命令后，只要scss文件发生变化，就会被自动编译成css文件。<br>1.sass 变量声明</p>
-<pre><code>/*在.scss文件中 ---变量的声明
-<span class="variable">$headline-ff</span>:Arial,Verdana,Helvetica,sans-serif;
-<span class="variable">$main-sec-ff</span>:Arial,Verdana,Helvetica,sans-serif;
-</code></pre><p>2.scss中包含已有的.scss文件 </p>
-<blockquote>
-<p>例如：把上面的变量存在一个新建的_variables.scss文件中，由于变量不用被转化成css文件，所以在文件名前加下划线：表示局部文件</p>
-</blockquote>
-<pre><code>@<span class="keyword">import</span> <span class="string">"varables"</span>; //scss文件中的<span class="keyword">import</span>并非css中的<span class="keyword">import</span>，css中<span class="keyword">import</span>必须放在代码最前面，对性能也不利，css文件中不建议用<span class="keyword">import</span>指令
-</code></pre><p>3.引入时没有带入下划线：基于sass的既定规则</p>
-<blockquote>
-<p>1.没有文件后缀名的时候，sass会添加.scss或.sass的后缀<br>2.同一目录下，局部文件和非局部文件不能重名</p>
-</blockquote>
-<p>4.使用css原生@import的既定规则：</p>
-<blockquote>
-<p>1.当@import后边跟的文件名是以.css结尾的时候<br>2.当@import后边跟的是<a href="http://开头的字符串的时候" target="_blank" rel="external">http://开头的字符串的时候</a><br>3.当@import后边跟的是一个url()函数的时候<br>4.当@import后边带有media queries的时候</p>
-</blockquote>
-<p>   注意：多个x需要import的文件可以写成一行，用逗号隔开</p>
-<hr>
-<blockquote>
-<p>sass编译中文时候出现如下错误的解决方法： </p>
-</blockquote>
-<pre><code>error sass/screen<span class="class">.scss</span> (Line <span class="number">2</span> of sass/_variables<span class="class">.scss</span>: Invalid GBK character <span class="string">"\xE5"</span>)
-</code></pre><blockquote>
-<p>到ruby安装目录下的gems\2.2.0\gems\sass-3.4.19\lib\sass等目录下找到engine.rb文件，在文件里require后加上就可以了：</p>
-</blockquote>
-<pre><code>Encoding<span class="class">.default_external</span> = Encoding.<span class="function"><span class="title">find</span><span class="params">(<span class="string">'utf-8'</span>)</span></span>
-</code></pre><hr>
-<h3 id="语法注意事项">语法注意事项</h3><p>例如：</p>
-<ol>
-<li>如下图1：<img src="http://i.imgur.com/JDOH0iL.png" alt="a标签的hover"><br>左侧是scss文件，右边是生成后的css文件，blue的a后面多一个空格影响就很大，指a标签下面所有元素hover效果，注意<code>&amp;</code>特殊符号的应用。</li>
-</ol>
-<p>2.sass里提供了class嵌套，也提供了Atrribute嵌套</p>
-<pre><code>//class嵌套
-.mian-sec{
-    font-family:<span class="variable">$main-sec-ff</span>;
-    .headline{
-        font-family: <span class="variable">$main-sec-ff</span>;
-        font-size: <span class="number">16</span>px;
+    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        (<span class="function"><span class="keyword">function</span>(<span class="params">content</span>)</span>{
+             content.showName();
+        })(<span class="keyword">this</span>)
     }
 }
-//属性嵌套
-.mian-sec{
-    font-family:<span class="variable">$main-sec-ff</span>;
-    .headline{
-        font:{
-          family: <span class="variable">$main-sec-ff</span>;
-          size: <span class="number">16</span>px;
+person.getName();  <span class="comment">// hank</span>
+<span class="comment">//同样this还是指向了window / global</span>
+</code></pre><p>稍加修改：</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"hank"</span>;
+    <span class="keyword">var</span> person={
+        name:<span class="string">"HANK"</span>,
+        showName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+        }
+        getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                 <span class="keyword">var</span> _self  = <span class="keyword">this</span>; <span class="comment">//变量存储Foo对象</span>
+            (<span class="function"><span class="keyword">function</span>(<span class="params">self</span>)</span>{
+                  <span class="built_in">console</span>.log(<span class="keyword">this</span>===global) <span class="comment">//true 这里的this指向window/global                </span>
+                  self.showName();
+            })(_self) <span class="comment">//注意，IIFE立即执行函数创建了临时作用域</span>
+        }
+    }
+    person.getName();  <span class="comment">// HANK</span>
+</code></pre><h4 id="5_Eval函数">5 Eval函数</h4><p>该函数执行的时候，this绑定到当前作用域的对象上。</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"hank"</span>;
+    <span class="keyword">var</span> foo={
+        name:<span class="string">"HANK"</span>,
+        showName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">eval</span>(<span class="string">"console.log(this.name)"</span>);
+        }
+    }
+
+    foo.showName();  <span class="comment">//输出 "HANK"</span>
+
+    <span class="keyword">var</span> f=foo.showName;  <span class="comment">// 执行f，this绑定到了当前作用域window/global上</span>
+    f();  <span class="comment">//浏览器输出:hank  node输出：undefined</span>
+</code></pre><h4 id="箭头函数（=&gt;）">箭头函数（=&gt;）</h4><p><code>ES6</code>中的箭头函数并不会使用四条标准的绑定规则，而是根据当前的词法作用域来决定this,具体来说，箭头函数会<code>继承</code>外层函数调用的<code>this</code>绑定（无论this绑定到什么）。这其实和ES6之前代码中的self=this机制一样。</p>
+<blockquote>
+<p><code>箭头函数</code>和<code>普通函数</code>之间有一个重要的差别：箭头函数没有自己的<code>this</code>值，其<code>this</code>值是继承外域的<code>this</code>值。同时箭头函数的绑定也不能使用<code>call</code>, <code>apply</code>, <code>bind</code>等方法来改变<code>this</code>的指向，<br> 事实上<code>箭头函数</code>并不绑定 this，arguments，super(ES6)，抑或 new.target(ES6)。箭头函数不会绑定那些<code>局部变量</code>，所有涉及它们的引用，都会沿袭<code>向上查找外层作用域链</code>的方案来处理</p>
+</blockquote>
+<p>我们来看看箭头函数的词法作用域：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>{                   
+  <span class="comment">//返回一个箭头函数</span>
+  <span class="keyword">return</span> () =&gt; { 
+          <span class="comment">//this 继承自foo()              </span>
+     <span class="built_in">console</span>.log(<span class="string">"id:"</span>, <span class="keyword">this</span>.id); 
+  };                         
+}
+<span class="keyword">var</span> a = {id:<span class="number">2</span>};
+<span class="keyword">var</span> b= {id:<span class="number">3</span>};                               
+</code></pre><p>   var f = foo.call(a);<br>    f.call(b); // id: 2     </p>
+<p><code>foo()</code>内部创建的箭头函数会捕获调用时<code>foo()</code>的<code>this</code>。由于<code>foo()</code>的<code>this</code>绑定到<code>a</code>,<code>f</code> (引用箭头函数)的<code>this</code>的也会绑定到<code>a</code>。箭头函数的绑定无法被修改。(new 也不行！)</p>
+<p><strong>* lexical capture of this ？</strong><br> 在之前我也认为箭头函数里的this是局部的，啥意思呢？</p>
+<p> 箭头函数常用于回调函数中，例如事件处理器或者定时器：</p>
+<pre><code><span class="function">function <span class="title">foo</span><span class="params">()</span> </span>{                   
+  setTimeout( () =&gt; { 
+          <span class="comment">//这里的this在词法上继承自foo()            </span>
+     console.<span class="built_in">log</span>(<span class="string">"id:"</span>, <span class="keyword">this</span>.id); 
+  },<span class="number">100</span>);                         
+}           
+foo.call( { id: <span class="number">10</span> } ); <span class="comment">// id: 10       </span>
+</code></pre><p> 这里的<code>箭头函数</code>看起来把它内部的this绑定为父级函数<code>foo()</code>里的<code>this</code>了，如果这个内部函数式一个常规的函数（声明／表达式），它的this将类似<code>setTimeout</code>如何调用函数一个被控制着。<br> <code>箭头函数</code>可以像bind(…)一样确保函数的this被绑定到指定对象，其实就是它用更常见的词法作用域取代了传统的<code>this</code>机制。实际上，在ES6之前我们就已经在使用一种类似和<code>箭头函数</code>完全一样的模式。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>{                               
+ <span class="keyword">var</span> context = <span class="keyword">this</span>;  <span class="comment">//  想要把this 指向函数自己，结果并没有  ，准确的说这里的this是一个动态上下文</span>
+ <span class="built_in">console</span>.log(context); <span class="comment">// {id:3}                          </span>
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{                                              
+     <span class="built_in">console</span>.log(<span class="string">"id:"</span>, context.id);           
+  },<span class="number">100</span>);                                      
+}                                              
+<span class="keyword">var</span> a = {id:<span class="number">2</span>};                                
+<span class="keyword">var</span> b= {id:<span class="number">3</span>};
+<span class="keyword">var</span> f = foo.call(b);  <span class="comment">// id: 3                           </span>
+</code></pre><p>虽然context=this和<code>箭头函数</code>看起来都可以取代bind(…)但是从本质上看，他们像替代的是this机制。</p>
+<blockquote>
+<p>箭头函数没有自己的this,但当你在内部使用了this,常规的局部作用域准则就起作用了，它会指向最近一层作用域内的this.<br>看代码：</p>
+</blockquote>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> ()=&gt;{
+        <span class="keyword">return</span> ()=&gt;{
+            <span class="keyword">return</span> ()=&gt;{
+                console.log(<span class="string">'id:'</span>,this.id);
+            }
         }
     }
 }
-</code></pre><p>两种形式生成css结果一样：</p>
-<pre><code><span class="comment">/* line 31, ../sass/screen.scss */</span>
-<span class="class">.mian-sec</span> <span class="class">.headline</span> <span class="rules">{
-  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Verdana, Helvetica, sans-serif</span></span>;
-  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">16px</span></span></span>;
-}</span>
-</code></pre><ol>
-<li></li>
-<li></li>
-<li></li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/css/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">CSS</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo搭建静态博客" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/15/hexo搭建静态博客/" class="article-date">
-      <time datetime="2015-10-15T02:40:58.000Z" itemprop="datePublished">2015-10-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="安装">安装</h4><p>系统环境 Windows 7 64bit</p>
-<p>文本编辑器推荐使用 WebStorm 10,<br>文件编码选择 UTF-8<br>Git</p>
-<p>安装 GitHub for Windows,<br>登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱</p>
-<p>新建仓库, Github Pages 的仓库名必须为your_user_name.github.io<br>your_user_name 替换成你的用户名</p>
-<p>配置 SSH, 参考 SSH配置教程Node.js<br>安装 Node.js, Node 安装包里带有 npm<br>Hexo</p>
-<h5 id="安装_Hexo">安装 Hexo</h5><pre><code>//2.x
-npm <span class="operator"><span class="keyword">install</span> hexo -<span class="keyword">g</span>
-
-//<span class="number">3.</span>x
-npm <span class="keyword">install</span> hexo-cli -<span class="keyword">g</span>
-npm <span class="keyword">install</span> hexo <span class="comment">--save</span></span>
-</code></pre><p>查看 Node 版本</p>
-<pre><code><span class="keyword">node</span><span class="identifier"> </span><span class="title">-v</span>
-</code></pre><p>查看 Hexo 版本</p>
-<pre><code>hexo <span class="property">version</span>
-</code></pre><p>创建项目</p>
-<pre><code><span class="title">hexo</span> init hexo-lcx
-</code></pre><p>进入目录</p>
-<p>cd hexo-lcx</p>
-<p>也可以先建文件夹再进目录初始化</p>
-<pre><code>cd hexo-lcx
-hexo init
-
-安装依赖包
-
-//2.x
-npm <span class="operator"><span class="keyword">install</span>
-
-// <span class="number">3.</span>x
-npm <span class="keyword">install</span>
-// generators
-npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-generator-<span class="keyword">archive</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-generator-<span class="keyword">category</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-generator-tag <span class="comment">--save</span>
-// <span class="keyword">server</span>
-npm <span class="keyword">install</span> hexo-<span class="keyword">server</span> <span class="comment">--save</span>
-// deployers
-npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-deployer-heroku <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-deployer-rsync <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-deployer-openshift <span class="comment">--save</span>
-// plugins
-npm <span class="keyword">install</span> hexo-renderer-marked@<span class="number">0.25</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-renderer-stylus@<span class="number">0.3</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-generator-feed@<span class="number">1.0</span><span class="number">.3</span> <span class="comment">--save</span>
-npm <span class="keyword">install</span> hexo-generator-sitemap@<span class="number">1.0</span><span class="number">.1</span> <span class="comment">--save</span></span>
-</code></pre><p>以后所有的命令都在该目录下进行</p>
-<p>启动服务</p>
-<pre><code>hexo <span class="keyword">server</span>
-</code></pre><p>用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 或者 <a href="http://127.0.0.1:4000/" target="_blank" rel="external">http://127.0.0.1:4000/</a> 就能看到网页了<br>推荐使用现代化浏览器(Chrome)获得最佳效果</p>
-<p>按 Ctrl+C 停止本地预览服务<br>使用<br>目录结构</p>
-<blockquote>
-<p>├── .deploy       #需要部署的文件<br>├── node_modules  #Hexo插件<br>├── public        #生成的静态网页文件<br>├── scaffolds     #模板<br>├── source        #博客正文和其他源文件, 404 favicon CNAME 等都应该放在这里<br>|   ├── _drafts   #草稿<br>|   └── _posts    #文章<br>├── themes        #主题<br>├── _config.yml   #全局配置文件<br>└── package.json</p>
-</blockquote>
-<h5 id="全局配置__config-yml">全局配置 _config.yml</h5><p>配置文件的冒号”:”后面有空格</p>
-<pre><code><span class="comment"># Site #站点信息</span>
-title: Hank
-subtitle: Hank's Blog
-description: 关注WEB前端，前端开发
-author: hank
-author_title: 'Web Developer &amp; Designer'
-avatar: css/images/avatar.png
-location: 'Beijing, China'
-follow: https://github.com/huangjihua/
-language: zh-CN
-since: <span class="number">2015</span>
-timezone: Asia/Beijing <span class="comment">#时区</span>
-
-<span class="comment"># URL #链接格式</span>
-url: http://blog.huangjihua.com <span class="comment">#网址</span>
-root: / <span class="comment">#根目录</span>
-permalink: post/:title.html <span class="comment">#文章的链接格式</span>
-permalink_defaults:
-
-<span class="comment"># Directory #目录</span>
-source_dir: source <span class="comment">#源文件</span>
-public_dir: public <span class="comment">#生成的网页文件</span>
-tag_dir: tags <span class="comment">#标签</span>
-archive_dir: archives <span class="comment">#归档</span>
-category_dir: categories <span class="comment">#分类</span>
-code_dir: downloads/code
-i18n_dir: :lang <span class="comment">#国际化</span>
-skip_render:
-
-<span class="comment"># Writing #写作</span>
-new_post_name: :title.md <span class="comment">#新文章标题</span>
-default_layout: post <span class="comment">#默认模板(post page photo draft)</span>
-titlecase: <span class="literal">false</span> <span class="comment">#标题转换成大写</span>
-external_link: <span class="literal">true</span> <span class="comment">#新标签页里打开连接</span>
-filename_case: <span class="number">0</span>
-render_drafts: <span class="literal">false</span>
-post_asset_folder: <span class="literal">false</span>
-relative_link: <span class="literal">false</span>
-future: <span class="literal">true</span>
-highlight: <span class="comment">#语法高亮</span>
-  enable: <span class="literal">true</span>
-  line_number: <span class="literal">false</span> <span class="comment">#显示行号</span>
-  auto_detect: <span class="literal">true</span>
-  tab_replace:
-
-<span class="comment"># Category &amp; Tag #分类和标签</span>
-default_category: uncategorized <span class="comment">#默认分类</span>
-category_map:
-tag_map:
-
-<span class="comment"># Date / Time format #日期时间格式</span>
-<span class="comment">## http://momentjs.com/docs/#/displaying/format/</span>
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-
-<span class="comment"># Pagination #分页</span>
-per_page: <span class="number">20</span> <span class="comment">#每页文章数, 设置成 0 禁用分页</span>
-pagination_dir: page
-
-<span class="comment"># Extensions #插件和主题</span>
-<span class="comment">## 插件: http://hexo.io/plugins/</span>
-<span class="comment">## 主题: http://hexo.io/themes/</span>
-theme: next
-
-<span class="comment"># Deployment #部署, huangjihua是我的用户名, 同时发布在 GitHub 和 GitCafe 上面</span>
-deploy:
-  <span class="operator">type</span>: git
-  repository:
-    github: https://github.com/huangjihua/huangjihua.github.io.git,<span class="keyword">master</span>
-    <span class="title">gitcafe</span>: https://gitcafe.com/huangjihua/huangjihua.git,<span class="keyword">master</span>
-
-<span class="title"># Disqus</span> <span class="comment">#Disqus评论系统</span>
-disqus_shortname:
-
-plugins: <span class="comment">#插件，例如生成 RSS 和站点地图的</span>
-- hexo-generator-feed
-- hexo-generator-sitemap
-</code></pre><h5 id="命令行使用">命令行使用</h5><p>常用命令:</p>
-<pre><code>hexo help <span class="preprocessor">#查看帮助</span>
-hexo init <span class="preprocessor">#初始化一个目录</span>
-hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
-hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
-hexo generate <span class="preprocessor">#生成网页, 可以在 public 目录查看整个网站的文件</span>
-hexo <span class="keyword">server</span> <span class="preprocessor">#本地预览, 'Ctrl+C'关闭</span>
-hexo deploy <span class="preprocessor">#部署.deploy目录</span>
-hexo clean <span class="preprocessor">#清除缓存, </span>
-</code></pre><p><strong>强烈建议每次执行命令前先清理缓存, 每次部署前先删除 .deploy 文件夹</strong></p>
-<p>复合命令:</p>
-<pre><code>hexo deploy -g <span class="preprocessor">#生成加部署</span>
-hexo <span class="keyword">server</span> -g <span class="preprocessor">#生成加预览</span>
-</code></pre><p>简写：</p>
-<pre><code>hexo <span class="keyword">n</span> == hexo new
-hexo <span class="keyword">g</span> == hexo <span class="keyword">generate</span>
-hexo s == hexo server
-hexo <span class="keyword">d</span> == hexo deploy
-</code></pre><p>安装插件, <plugin-name> 为插件名</plugin-name></p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt; <span class="comment">--save #安装</span>
-npm <span class="keyword">update</span> #升级
-npm <span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt; #卸载</span>
-</code></pre><p>安装主题, <repository> 为主题的 git 仓库, <theme-name>为要存放在本地的目录名</theme-name></repository></p>
-<pre><code>git <span class="keyword">clone</span> <span class="title">&lt;repository</span>&gt; themes/<span class="tag">&lt;theme-name&gt;</span>
-</code></pre><p>#####　修改网站配置文件</p>
-<pre><code><span class="attribute">theme</span>: <span class="string">&lt;theme-name&gt;</span>
-</code></pre><p>编辑文章</p>
-<p>新建文章</p>
-<pre><code>hexo <span class="keyword">new</span> <span class="string">"标题"</span>
-</code></pre><p>在 _posts 目录下会生成文件 标题.md</p>
-<pre><code>title: 标题
-date: <span class="number">2014</span>-<span class="number">11</span>-<span class="number">11</span> <span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span>
-tags:
-- 标签<span class="number">1</span>
-- 标签<span class="number">2</span>
-- 标签<span class="number">3</span>
-categories: [分类<span class="number">1</span>,分类<span class="number">2</span>,分类<span class="number">3</span>]
----
-</code></pre><p>正文, 使用 Markdown 语法书写</p>
-<p>编辑完后保存, hexo server 预览</p>
-<h4 id="发布">发布</h4><p>以发布到 Github 为例</p>
-<p>编辑全局配置文件 _config.yml 中的 deploy 部分, huangjihua为用户名</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: github
-  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/huangjihua/huangjihua.github.io.git</span>
-  <span class="attribute">branch</span>: master
-</code></pre><p>或者</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: github
-  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:huangjihua/huangjihua.github.com.git
-  <span class="attribute">branch</span>: master
-</code></pre><p>项目主页需要把 branch 设置为 gh-pages</p>
-<p>托管到 Gitcafe 的话修改为</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: github
-  <span class="attribute">repository</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:huangjihua/huangjihua.git
-  <span class="attribute">branch</span>: gitcafe-pages
-</code></pre><h4 id="部署">部署</h4><pre><code><span class="title">hexo</span> deploy
-</code></pre><p>以下提示说明部署成功</p>
-<pre><code><span class="string">[info]</span> Deploy done: github
-</code></pre><p>点击 Github 上项目的 Settings, GitHub Pages, 提示 Your site is published at <a href="http://huangjihua.github.io/">http://huangjihua.github.io/</a><br>第一次上传网站需要等十分钟左右, 以后每次更新都能马上打开</p>
-<h5 id="绑定域名">绑定域名</h5><p>不绑定域名的话只能通过 your_user_name.github.io 访问<br>申请域名推荐 GoDaddy, 域名解析推荐 DNSPod<br>绑定顶级域名</p>
-<p>新建文件 CNAME, 无后缀, 纯文本文件, 内容为要绑定的域名 huangjihua.com<br>如果要使用 www.huangjihua.com 的形式, 文件内容改为 www.huangjihua.com<br>DNS设置<br>主机记录@, 类型A, 记录值192.30.252.153<br>主机记录www, 类型A, 记录值192.30.252.153<br>参考 Tips for configuring an A record with your DNS provider<br>绑定子域名</p>
-<p>比如使用域名huangjihua.com的子域名blog.huangjihua.com<br>CNAME文件内容为blog.huangjihua.com</p>
-<p>DNS设置<br>主机记录blog, 类型CNAME, 记录值huangjihua.github.io<br>参考 Tips for configuring a CNAME record with your DNS provider<br>Gitcafe 绑定域名</p>
-<p>项目管理界面, 左侧的导航栏中有自定义域名设置</p>
-<h4 id="主题">主题</h4>
-
-
-<p>代码:<br><a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external">https://github.com/ppoffice/hexo-theme-icarus</a><br>下载安装主题</p>
-<pre><code>cd hexo-theme-icarus
-git <span class="keyword">clone</span> <span class="title">https</span>://github.com/ppoffice/hexo-theme-icarus.git
-</code></pre><p>也可以手动下载后解压到 themes 目录</p>
-<p>全局配置文件 _config.yml 中 theme 改成 icarus</p>
-<h5 id="主题目录结构">主题目录结构</h5><p>.<br>├── languages          #国际化<br>|   ├── default.yml    #默认<br>|   └── zh-CN.yml      #中文<br>├── layout             #布局<br>|   ├── _partial       #局部的布局<br>|   └── _widget        #小挂件的布局<br>├── script             #js脚本<br>├── source             #源代码文件<br>|   ├── css            #CSS<br>|   |   ├── _base      #基础CSS<br>|   |   ├── _partial   #局部CSS<br>|   |   ├── fonts      #字体<br>|   |   ├── images     #图片<br>|   |   └── style.styl #style.css<br>|   ├── fancybox       #fancybox<br>|   └── js             #js<br>├── _config.yml        #主题配置文件<br>└── README.md          #主题介绍</p>
-<h5 id="主题配置文件">主题配置文件</h5><p>以下是主题 Icarus 的配置文件</p>
-<pre><code><span class="comment"># Logo</span>
-logo: css/images/logo.png <span class="comment"># Empty this to unset logo</span>
-<span class="comment"># Header</span>
-menu:
-  首页: /
-  归档: /archives
-  <span class="comment">#生活: /life</span>
-  <span class="comment">#分类: /categories</span>
-  <span class="comment">#标签: /tags</span>
-  关于: /about
-
-<span class="comment"># Content</span>
-excerpt_link: 阅读全文 <span class="comment">#替换为中文</span>
-fancybox: <span class="literal">true</span>   <span class="comment">#插件添加照片 ![img caption](img url)</span>
-archive_yearly: <span class="literal">true</span> <span class="comment">#按年存档</span>
-
-
-<span class="comment"># Profile</span>
-profile: <span class="literal">true</span> <span class="comment"># whether to show profile bar</span>
-gravatar: <span class="literal">false</span> <span class="comment"># whether to use gravatar with the email</span>
-showlogo: <span class="literal">false</span> <span class="comment"># whether to show the logo in the header</span>
-
-<span class="comment"># Sidebar</span>
-sidebar: right <span class="comment"># set to false if you don't want a sidebar</span>
-widgets: <span class="comment">#站点右边栏，暂时默认，后面介绍修改和添加</span>
-<span class="comment">#- search</span>
-- recent_posts
-- category
-- <span class="keyword">tag</span>
-<span class="title">- tagcloud</span>
-- archive
-- weibo
-thumbnail: <span class="literal">true</span>
-contacts:
-  github: http://github.com/huangjihua  <span class="comment">#ppoffice/hexo-theme-icarus</span>
-  weibo:  http://www.weibo.com/<span class="number">236797891</span>
-  csdn: http://blog.csdn.net/huangjihua0402
-  <span class="comment">#twitter: '#'</span>
-  <span class="comment">#facebook: '#'</span>
-  <span class="comment">#dribbble: '#'</span>
-  rss: atom.<span class="keyword">xml</span> <span class="title">#rss</span>地址  默认即可
-
-<span class="comment"># Links</span>
-links:
-  hank: http://www.github.com/huangjihua
-
-<span class="comment"># CDN</span>
-cdn: useso <span class="comment">#If your site loads slowly change it to "google" , because "useso" is slow out of China</span>
-
-addthis: <span class="comment">#SNS分享，身在天朝，当然用“百度分享”，暂时默认，后面会介绍</span>
-  enable: <span class="literal">true</span>
-  pubid:
-  facebook: <span class="literal">true</span>
-  twitter: <span class="literal">true</span>
-  google: <span class="literal">true</span>
-  pinterest: <span class="literal">true</span>
-
-<span class="comment"># Miscellaneous 分享</span>
-google_site_verification:
-google_analytics: <span class="comment">#要使用google_analytics进行统计的话，这里需要配置ID，暂时默认，后面介绍</span>
-baidu_analytics: <span class="number">07</span>c425d4bcfc27b868657ca3f2a6e187
-jiathis: <span class="literal">true</span>
-favicon: favicon.png <span class="comment">#添加小图标</span>
-baidushare: <span class="literal">true</span>
-<span class="comment">#twitter:</span>
-<span class="comment">#google_plus:</span>
-<span class="comment">#fb_admins:</span>
-<span class="comment">#fb_app_id:</span>
-
-<span class="comment">#将 favicon.ico 文件放在 source 目录下, 修改主题配置文件</span>
-</code></pre><p>语言设置</p>
-<p>可用的语言及代码</p>
-<pre><code>English (<span class="keyword">en</span>)
-中文简体 (zh-Hans)
-French (fr-FR)
-正体中文 (zh-hk/zh-<span class="keyword">tw</span>)
-Russian (<span class="keyword">ru</span>)
-German (<span class="keyword">de</span>)
-</code></pre><p>站点配置文件</p>
-<pre><code><span class="label">language:</span> <span class="built_in">zh</span>-hk
-</code></pre><h5 id="菜单设置">菜单设置</h5><p>编辑主题配置文件的 menu<br>若站点运行在子目录中, 将链接前缀的 / 去掉</p>
-<pre><code><span class="attribute">menu</span>:
-  <span class="attribute">home</span>: /
-  <span class="attribute">archives</span>: /archives
-  <span class="attribute">categories</span>: /categories
-  <span class="attribute">tags</span>: /tags
-  <span class="attribute">commonweal</span>: /<span class="number">404</span>.html
-  <span class="attribute">about</span>: /about
-</code></pre><p>标签云页面</p>
-<p>添加一个标签云页面, 并在菜单中显示页面链接</p>
-<p>新建 tags 页面</p>
-<pre><code>hexo <span class="keyword">new</span> page “<span class="keyword">tags</span>”
-</code></pre><p>将页面的类型设置为 tags</p>
-<pre><code>title: tags
-date: 2015-09-19 22:37:08
-<span class="header">type: "tags"
----</span>
-</code></pre><p>关闭评论</p>
-<pre><code>title: tags
-date: 2015-09-19 22:37:08
-type: "tags"
-<span class="header">comments: false
----</span>
-</code></pre><p>在菜单中添加链接. 编辑主题配置文件, 添加 tags 到 menu 中</p>
-<pre><code><span class="attribute">menu</span>:
-  <span class="attribute">tags</span>: /tags
-</code></pre><p>分类页面</p>
-<p>添加一个分类页面, 并在菜单中显示页面链接</p>
-<p>新建 categories 页面</p>
-<pre><code>hexo <span class="keyword">new</span> page categories
-</code></pre><p>将页面的类型设置为 categories</p>
-<pre><code>title: categories
-date: 2015-09-19 22:38:00
-<span class="header">type: "categories"
----</span>
-</code></pre><p>关闭评论</p>
-<pre><code>title: categories
-date: 2015-09-19 22:38:00
-type: "categories"
-<span class="header">comments: false
----</span>
-</code></pre><p>在菜单中添加链接. 编辑主题配置文件, 添加 categories 到 menu 中</p>
-<pre><code><span class="attribute">menu</span>:
-  <span class="attribute">categories</span>: /categories
-</code></pre><p>RSS 链接</p>
-<p>编辑主题配置文件 rss 字段</p>
-<pre><code><span class="string">rss:</span> <span class="literal">false</span>
-</code></pre><p>禁用Feed链接</p>
-<pre><code><span class="label">rss:</span>
-</code></pre><p>默认使用站点的 Feed 链接, 需要安装 hexo-generator-feed 插件<br>浏览<a href="http://localhost:4000/atom.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/atom.xml查看是否生效</a></p>
-<pre><code><span class="string">rss:</span> <span class="string">http:</span><span class="comment">//your-feed-url</span>
-</code></pre><p>指定特定的链接地址, 适用于已经烧制过 Feed 的情形<br>代码高亮主题</p>
-<p>NexT 使用 Tomorrow Theme 作为代码高亮, 共有5款主题<br>站点建立时间</p>
-<p>例如 © 2014 - 2015</p>
-<p>站点配置文件新增字段 since</p>
-<pre><code><span class="attribute">since</span>: <span class="string">2014</span>
-</code></pre><p>数学公式显示</p>
-<p>NexT 使用 MathJax 来显示数学公式, 默认关闭</p>
-<p>主题配置文件 mathjax 设定为 true</p>
-<pre><code><span class="preprocessor">##### MathJax Support</span>
-mathjax: <span class="literal">true</span>
-</code></pre><p>访问过慢可替换为其他CDN, 修改文件<br>    themes\next\layout_scripts\mathjax.swig<br>    <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></p>
-<p>侧栏设置</p>
-<p>post - 默认行为, 在文章页面(拥有目录列表)时显示<br>always - 在所有页面中都显示<br>hide - 在所有页面中都隐藏(可以手动展开)</p>
-<p>sidebar: post</p>
-<p>头像设置</p>
-<p>编辑站点配置文件, 新增字段 avatar, 头像的链接地址可以是:</p>
-<pre><code>网络地址
-<span class="symbol">https:</span>/<span class="regexp">/avatars2.githubusercontent.com/u</span><span class="regexp">/4962914?v=3&amp;s=460
-
-站点内的地址
-/uploads</span><span class="regexp">/avatar.jpg /</span><span class="regexp">/头像图片放置在站点的 source/uploads</span><span class="regexp">/
-/images</span><span class="regexp">/avatar.jpg /</span><span class="regexp">/头像图片放置在主题的 source/images</span><span class="regexp">/</span>
-</code></pre><p>avatar: /images/huangjihua_avatar.png</p>
-<p>作者名称</p>
-<p>编辑站点配置文件 author<br>站点描述设置</p>
-<p>编辑站点配置文件 description<br>侧边栏社交链接</p>
-<p>站点配置文件新增字段 social, 然后添加社交站点名称与地址</p>
-<pre><code><span class="comment"># Social links</span>
-<span class="symbol">social:</span>
-  <span class="constant">GitHub</span>: <span class="symbol">https:</span>/<span class="regexp">/github.com/huangjihua</span>
-  <span class="constant">Twitter</span>: <span class="symbol">https:</span>/<span class="regexp">/twitter.com/huangjihua</span>
-  <span class="constant">Zhihu</span>: <span class="symbol">http:</span>/<span class="regexp">/www.zhihu.com/people</span><span class="regexp">/huangjihua
-  Douban: http:/</span><span class="regexp">/www.douban.com/people</span><span class="regexp">/huangjihua
-  #Weibo: http:/</span><span class="regexp">/weibo.com/lmlcx</span>
-</code></pre><h5 id="自定义页面">自定义页面</h5><p>以关于页面为例<br>新建一个 about 页面</p>
-<pre><code>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
-</code></pre><p>编辑 source/about/index.md：</p>
-<pre><code>title: About
-<span class="header">date: 2014-11-1 11:11:11
----</span>
-About Me
-</code></pre><p>菜单显示 about 链接, 主题配置文件中将 menu 中 about 前面的注释去掉</p>
-<pre><code><span class="keyword">menu</span>:
-  <span class="keyword">about</span>: /<span class="keyword">about</span>
-</code></pre><p>友情链接</p>
-<p>站点配置文件添加</p>
-<pre><code><span class="preprocessor"># 标题</span>
-links_title: 友情链接
-<span class="preprocessor"># 链接</span>
-links:
-  Hexo: http:<span class="comment">//hexo.io/</span>
-  huangjihua: http:<span class="comment">//blog.huangjihua.com/</span>
-</code></pre><p>Sitemap 网站地图</p>
-<p>安装插件</p>
-<pre><code>npm <span class="keyword">install</span> hexo-generator-sitemap
-</code></pre><p>站点配置文件里开启插件</p>
-<pre><code>plugins:
-<span class="bullet">- </span>hexo-generator-sitemap
-</code></pre><p>浏览<a href="http://localhost:4000/sitemap.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/sitemap.xml查看是否生效</a></p>
-<h5 id="404_页面">404 页面</h5><p>效果 <a href="http://blog.huangjihua.com/404.html" target="_blank" rel="external">http://blog.huangjihua.com/404.html</a></p>
-<p>source 目录下新建 404.html 页面</p>
-<pre><code><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
-<span class="tag">&lt;<span class="title">html</span>&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html;charset=utf-8;"</span>/&gt;</span>
-  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"X-UA-Compatible"</span> <span class="attribute">content</span>=<span class="value">"IE=edge,chrome=1"</span> /&gt;</span>
-  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"robots"</span> <span class="attribute">content</span>=<span class="value">"all"</span> /&gt;</span>
-  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"robots"</span> <span class="attribute">content</span>=<span class="value">"index,follow"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://www.qq.com/404/search_children.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> <span class="attribute">homePageUrl</span>=<span class="value">"your-site-url"</span> <span class="attribute">homePageName</span>=<span class="value">"回到我的主页"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</code></pre><p>文章摘录</p>
-<p>NexT 支持三种方式来控制首页文章的显示方式</p>
-<pre><code>在文章中使用 <span class="comment">&lt;!-- more --&gt;</span> 手动进行截断
-在文章的 front-matter 中添加 description, 内容为文章摘要
-自动形成摘要, 在主题配置文件中添加
-</code></pre><p>设定首页/归档/标签页面文章的篇数</p>
-<p>安装以下插件</p>
-<pre><code>hexo-generator-<span class="built_in">index</span>
-hexo-generator-archive
-hexo-generator-<span class="keyword">tag</span>
-</code></pre><p>站点配置文章中设定</p>
-<pre><code><span class="attribute">index_generator</span>:
-  <span class="attribute">per_page</span>: <span class="number">5</span>
-
-<span class="attribute">archive_generator</span>:
-  <span class="attribute">per_page</span>: <span class="number">20</span>
-  <span class="attribute">yearly</span>: true
-  <span class="attribute">monthly</span>: true
-
-<span class="attribute">tag_generator</span>:
-  <span class="attribute">per_page</span>: <span class="number">10</span>
-</code></pre><p>优化</p>
-<h5 id="多说评论系统">多说评论系统</h5><pre><code>如需取消某个页面/文章的评论, 在 md 文件的 <span class="keyword">front</span>-matter 中增加 comments: <span class="constant">false</span>
-</code></pre><p>登陆多说创建站点, 多说域名 xxx.duoshuo.com 前面的 xxx 即为 duoshuo_shortname, 在站点配置文件中新增 duoshuo_shortname 字段</p>
-<pre><code><span class="attribute">duoshuo_shortname</span>: <span class="string">xxx</span>
-</code></pre><p>多说评论组件提供热评文章功能, 仅在文章页面显示</p>
-<p>站点/主题配置文件中设置</p>
-<pre><code># 多说热评文章 <span class="literal">true</span> 或者 <span class="literal">false</span>
-<span class="label">duoshuo_hotartical:</span> <span class="literal">true</span>
-</code></pre><p>Disqus</p>
-<p>在 Disqus官网 申请新网站的 shortname<br>站点配置文件, 添加 disqus_shortname</p>
-<pre><code><span class="attribute">disqus_shortname</span>: <span class="string">xxxxxxxx</span>
-</code></pre><h5 id="设置网站统计">设置网站统计</h5><p>百度统计</p>
-<p>登录 百度统计, 定位到站点的代码获取页面<br>复制 hm.js? 后面那串统计脚本 id<br>编辑站点配置文件, 新增字段 baidu_analytics 字段</p>
-<pre><code><span class="attribute">baidu_analytics</span>: <span class="string">xxxxxxxxxxxxxxxx</span>
-
-<span class="nginx"><span class="title">Google</span> Analytics</span>
-</code></pre><p>从 Google Analytics 获取 ID<br>站点配置文件新增 google_analytics, 设置成 Google 跟踪 ID. 通常是以 UA- 开头</p>
-<pre><code><span class="attribute">google_analytics</span>: <span class="string">UA-xxxxxxxx-x</span>
-</code></pre><h5 id="分享">分享</h5><p>分享服务优先选择 JiaThis<br>JiaThis</p>
-<p>站点/主题配置文件添加字段 jiathis, 值为 true</p>
-<pre><code><span class="preprocessor"># JiaThis 分享服务</span>
-jiathis: <span class="literal">true</span>
-</code></pre><p>百度分享</p>
-<p>站点/主题配置文件添加字段 baidushare, 值为 true</p>
-<pre><code><span class="preprocessor"># 百度分享服务</span>
-baidushare: <span class="literal">true</span>
-</code></pre><p>多说分享</p>
-<p>站点/主题配置文件添加字段 duoshuo_share, 值为 true, 多说分享必须与多说评论同时使用</p>
-<pre><code><span class="preprocessor"># 多说分享服务</span>
-duoshuo_share: <span class="literal">true</span>
-</code></pre><h5 id="Swiftype_搜索">Swiftype 搜索</h5><p>站点配置文件新增 swiftype_key 字段, 值为 swiftype 搜索引擎的 key</p>
-<pre><code><span class="preprocessor">#Swiftype Search Key</span>
-<span class="label">swiftype_key:</span> xxxxxxxxx
-</code></pre><p>Google Webmaster tools</p>
-<p>设置 Google 站点管理工具的验证字符串, 用于提交 sitemap</p>
-<pre><code>获取 google site verification <span class="tag">code</span>
-登录 Google Webmaster Tools, 导航到验证方法, 并选择 HTML 标签, 将会获取到一段代码:
-
-&lt;meta name=<span class="string">"google-site-verification"</span> <span class="attribute">content</span>=<span class="string">"XXXXXXXXXXXXXXXXXXXXXXX"</span> /&gt;
-
-将 <span class="attribute">content</span> 里面的 XXXXXXXXXXXXXXXXXXXXXXX 复制出来, 站点配置文件新增字段 google_site_verification
-
-google_site_verification: XXXXXXXXXXXXXXXXXXXXXXX
-</code></pre><p>版权</p>
-<p>参见 知识共享许可协议<br>站点配置文件新增</p>
-<pre><code># Creative Commons 4.0 International License.
-# http:<span class="comment">//creativecommons.org/</span>
-# Available: <span class="keyword">by</span> | <span class="keyword">by</span>-nc | <span class="keyword">by</span>-nc-nd | <span class="keyword">by</span>-nc-<span class="keyword">sa</span> | <span class="keyword">by</span>-nd | <span class="keyword">by</span>-<span class="keyword">sa</span> | zero
-creative_commons: <span class="keyword">by</span>-nc-<span class="keyword">sa</span>
-</code></pre><p>图片显示</p>
-<p>把图片放到 source/images 目录下</p>
-<pre><code>![<span class="link_label">test</span>](<span class="link_url">images/xxx.jpg</span>)
-</code></pre><p>推荐使用图床, 例如七牛云存储<br>自定义 404 页面</p>
-<p>添加 source/404.html</p>
-<p>404 页面不需要 Hexo 解析</p>
-<pre><code>layout: false
---------
-<span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="title">html</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=UTF-8"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">href</span>=<span class="value">"/favicon.ico"</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">p</span>&gt;</span>404 你懂的<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</code></pre><h5 id="添加_robots-txt">添加 robots.txt</h5><p>source 目录下添加 robots.txt</p>
-<pre><code># robots.txt
-User-agen<span class="variable">t:</span> Baiduspider
-Disallo<span class="variable">w:</span> /
-User-agen<span class="variable">t:</span> Googlebot
-Disallo<span class="variable">w:</span>
-</code></pre><p>生成 post 时默认生成 categories 配置项</p>
-<p>在 scaffolds/post.md 中添加</p>
-<pre><code><span class="label">categories:</span>
-</code></pre><p>添加 “fork me on github”</p>
-<p>官方教程<br>点击加载评论</p>
-<p>在 themes\next\layout_layout.swig 里找到</p>
-<pre><code>&lt;<span class="operator">div</span> id=<span class="string">"disqus_thread"</span>&gt;
-&lt;noscript&gt;Please enable JavaScript <span class="built_in">to</span> view <span class="operator">the</span> &lt;<span class="operator">a</span> href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered <span class="keyword">by</span> Disqus.&lt;/<span class="operator">a</span>&gt;&lt;/noscript&gt;
-&lt;/<span class="operator">div</span>&gt;
-</code></pre><p>在上面添加</p>
-<pre><code><span class="tag">&lt;<span class="title">button</span> <span class="attribute">id</span>=<span class="value">"load-disqus"</span> <span class="attribute">onclick</span>=<span class="value">"disqus.load();"</span> <span class="attribute">style</span>=<span class="value">"background-color: #ebebeb; color: #646464; font-size: 18px; padding: 8px 12px; border-radius: 5px; border: 1px solid #ebebeb;"</span>&gt;</span>点击查看评论<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
-</code></pre><p>修改文件<br>themes\next\layout_scripts\comments\disqus.swig</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml">
-
-var disqus = { //添加的内容
-load : function disqus(){ //添加的内容
-
-      var disqus_shortname = '<span class="comment"></span>';
-      var disqus_identifier = '<span class="comment"></span>';
-      var disqus_title = '<span class="comment"></span>';
-      var disqus_url = '<span class="comment"></span>';
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-      run_disqus_script('count.js');
-      <span class="comment"></span>
-
-$('#load-disqus').remove(); //添加的内容
-} //添加的内容
-} //添加的内容
-
-</span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><h5 id="给_GitHub_添加_README">给 GitHub 添加 README</h5><p>把 README.MD 文件的后缀名改成 MDOWN, 放到 source 文件夹下, 这样 Hexo 不会将其解析成网页, GitHub 也会作为 MD 文件解析<br>网站访问量统计</p>
-<p>使用 不蒜子 提供的服务</p>
-<p>安装脚本</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">async</span> <span class="attribute">src</span>=<span class="value">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><p>安装标签</p>
-<p>算法a: pv的方式, 单个用户连续点击n篇文章, 记录n次访问量.</p>
-<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_container_site_pv"</span>&gt;</span>
-    本站总访问量<span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>次
-<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
-</code></pre><p>算法b: uv的方式, 单个用户连续点击n篇文章, 只记录1次访客数.</p>
-<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_container_site_uv"</span>&gt;</span>
-  本站访客数<span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>人次
-<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
-</code></pre><p>网站运行时间</p>
-<p>脚本</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
-<span class="keyword">var</span> birthDay = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"11/20/2014"</span>);
-<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();
-<span class="keyword">var</span> duration = now.getTime() - birthDay.getTime();
-<span class="keyword">var</span> total= <span class="built_in">Math</span>.floor(duration / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>));
-<span class="built_in">document</span>.getElementById(<span class="string">"showDays"</span>).innerHTML = <span class="string">"本站已运行 "</span>+total+<span class="string">" 天"</span>;
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><p>标签</p>
-<pre><code><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span>=<span class="value">"showDays"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
-</code></pre><p>简体中文/繁体中文切换</p>
-<p>下载 js文件 放到主题的 js 文件夹</p>
-<p>添加标签</p>
-<pre><code><span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"translateLink"</span> <span class="attribute">href</span>=<span class="value">"javascript:translatePage();"</span>&gt;</span>繁體<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-</code></pre><p>添加脚本</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/tw_cn.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript">
-<span class="keyword">var</span> defaultEncoding = <span class="number">2</span>; <span class="comment">//网站编写字体是否繁体，1-繁体，2-简体</span>
-<span class="keyword">var</span> translateDelay = <span class="number">0</span>; <span class="comment">//延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0</span>
-<span class="keyword">var</span> cookieDomain = <span class="string">"http://www.arao.me/"</span>; <span class="comment">//Cookie地址, 一定要设定, 通常为你的网址</span>
-<span class="keyword">var</span> msgToTraditionalChinese = <span class="string">"繁體"</span>; <span class="comment">//此处可以更改为你想要显示的文字</span>
-<span class="keyword">var</span> msgToSimplifiedChinese = <span class="string">"简体"</span>; <span class="comment">//同上，但两处均不建议更改</span>
-<span class="keyword">var</span> translateButtonId = <span class="string">"translateLink"</span>; <span class="comment">//默认互换id</span>
-translateInitilization();
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-
-Kill IE6
-
-<span class="comment">&lt;!--[if IE 6]&gt;
-  &lt;script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"&gt;&lt;/script&gt;
-&lt;![endif]--&gt;</span>
-</code></pre><h5 id="hexo简要流程">hexo简要流程</h5><p>Hexo首先解析md文件，然后根据layout.ejs判断布局类型，再转发给其他布局文件。在布局中可以引入其他文件，比如</p>
-<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('_partial/header')</span> <span class="preprocessor">%</span>&gt;
-</code></pre><p>这样每一块内容都是单独的，方便二次使用，也可以几个不同布局引用一个代码片段。<br><img src="http://www.huangyunkun.com/images/2014/02/hexo_ejs_1.png" alt="简要流程"></p>
-<h4 id="markdown里的一些特殊用法">markdown里的一些特殊用法</h4><h5 id="绘制表格">绘制表格</h5><pre><code><span class="constant">MD</span>写法：
- | 名称 | 属性 | 方法 |
-|<span class="symbol">:-----|</span><span class="symbol">:---</span><span class="symbol">:|----------</span><span class="symbol">:|</span>
-|测试| **<span class="string">`name`</span>** |test（）|
-|测试| **<span class="string">`name`</span>** |test（）|
-</code></pre><p>   编译后的效果如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名称</th>
-<th style="text-align:center">属性</th>
-<th style="text-align:right">方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">测试</td>
-<td style="text-align:center"><strong><code>name</code></strong></td>
-<td style="text-align:right">test（）</td>
-</tr>
-<tr>
-<td style="text-align:left">测试</td>
-<td style="text-align:center"><strong><code>name</code></strong></td>
-<td style="text-align:right">test（）</td>
-</tr>
-</tbody>
-</table>
-<h4 id="绘制流程图">绘制流程图</h4><p> 一个完整示例：</p>
-<pre><code>&lt;img src="http://yuml.me/diagram/nofunky/usecase/(note: figure 1.2{bg:beige}),
-[<span class="built_ins">User</span>]-(Login),[Site <span class="built_ins">Maintainer</span>]-(<span class="built_ins">Add</span> <span class="built_ins">User</span>),(<span class="built_ins">Add</span> <span class="built_ins">User</span>)&lt;(<span class="built_ins">Add</span> Company),
-[Site <span class="built_ins">Maintainer</span>]-(Upload Docs),(Upload Docs)&lt;(Manage Folders),[<span class="built_ins">User</span>]-(Upload Docs),
-[<span class="built_ins">User</span>]-(Full Text Search Docs), (Full Text Search Docs)&gt;(Preview Doc),(Full Text Search Docs)&gt;(Download Docs),
-[<span class="built_ins">User</span>]-(Browse Docs),(Browse Docs)&gt;(Preview Doc), (Download Docs),
-[Site <span class="built_ins">Maintainer</span>]-(Post New Event To The Web Site), [<span class="built_ins">User</span>]-(View Events)" &gt;
-</code></pre><p><img src="http://yuml.me/diagram/nofunky/usecase/(note: figure 1.2{bg:beige}),
-      [User]-(Login),[Site Maintainer]-(Add User),(Add User)<(Add Company),
-      [Site Maintainer]-(Upload Docs),(Upload Docs)<(Manage Folders),[User]-(Upload Docs),
-      [User]-(Full Text Search Docs), (Full Text Search Docs)>(Preview Doc),(Full Text Search Docs)>(Download Docs),
-      [User]-(Browse Docs),(Browse Docs)>(Preview Doc), (Download Docs),
-      [Site Maintainer]-(Post New Event To The Web Site), [User]-(View Events)"><br>-EOF-</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/hexo/">Hexo</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTTP与HTTPs区别以及SSL和TLS协议运行机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" class="article-date">
-      <time datetime="2014-10-29T02:40:58.000Z" itemprop="datePublished">2014-10-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="HTTP和HTTPS介绍">HTTP和HTTPS介绍</h4><p><img src="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg" alt=""></p>
-<h6 id="1-http介绍">1.http介绍</h6><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本传输协议标准架构的发展根基。Ted Nelson组织协调万维网协会（World Wide Web Consortium）和互联网工程工作小组（Internet Engineering Task Force ）共同合作研究，最终发布了一系列的RFC，其中著名的RFC 2616定义了HTTP 1.1。</p>
-<blockquote>
-<p>1.0与1.1版本的主要区别</p>
-</blockquote>
-<pre><code><span class="number">1</span>，HTTP/<span class="number">1.0</span>协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；
-<span class="number">2</span>，HTTP/<span class="number">1.1</span>默认使用持久连接(然而,HTTP/<span class="number">1.1</span>协议的客户机和服务器可以配置成使用非持久连接)。
-   在持久连接下,不必为每个Web对象的传送建立一个新的连接,一个连接中可以传输多个对象!
-</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a></p>
-<h6 id="2-https介绍">2.https介绍</h6><p><code>HTTPS</code>（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。</p>
-<p>HTTPS工作图解：<br><img src="http://www.nowamagic.net/librarys/images/201212/2012_12_20_01.png" alt=""> <img src="http://image72.360doc.com/DownloadImg/2014/05/1415/41600550_1.png" alt="时序图"></p>
-<h6 id="HTTP与HTTPS主要区别">HTTP与HTTPS主要区别</h6><blockquote>
-<ol>
-<li><code>HTTPS</code>使用端口443，而不是象<code>HTTP</code>那样使用端口80来和TCP/IP进行通信。(不同的连接方式和不同的端口)</li>
-<li><code>HTTPS</code>协议需要到ca申请证书，一般免费证书很少，需要交费。</li>
-<li>http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议</li>
-<li>http的连接很简单,是无状态的。</li>
-<li>HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议 要比http协议安全</li>
-</ol>
-</blockquote>
-<h6 id="HTTPS解决的问题">HTTPS解决的问题</h6><blockquote>
-<ol>
-<li><strong>信任主机的问题</strong>：采用https 的server 必须从CA 申请一个用于证明服务器用途类型的证书. 改证书只有用于对应的server 的时候,客户度才信任次主机.</li>
-<li><strong>通讯过程中的数据的泄密和被窜改</strong>：</li>
-</ol>
-</blockquote>
-<pre><code><span class="number">1</span>. 一般意义上的https, 就是 server 有一个证书.
-    a) 主要目的是保证server 就是他声称的server. 这个跟第一点一样.
-    b) 服务端和客户端之间的所有通讯,都是加密的.
-        i. 具体讲,是客户端产生一个对称的密钥,通过server 的证书来交换密钥. 一般意义上的握手过程.
-        ii. 接下来所有的信息往来就都是加密的. 第三方即使截获,也没有任何意义.因为他没有密钥. 当然窜改也就没有什么意义了.
-<span class="number">2</span>. 少许对客户端有要求的情况下,会要求客户端也必须有一个证书.
-    a) 这里客户端证书,其实就类似表示个人信息的时候,除了用户名/密码, 还有一个<span class="variable">CA</span> 认证过的身份. 
-       应为个人证书一般来说上别人无法模拟的,所有这样能够更深的确认自己的身份.
-    b) 目前少数个人银行的专业版是这种做法,具体证书可能是拿<span class="variable">U</span>盘作为一个备份的载体.
-<span class="number">3</span>. <span class="variable">HTTPS</span> 一定是繁琐的.
-    a) 本来简单的http协议,一个get一个response. 由于https 要还密钥和确认加密算法的需要.单握手就需要<span class="number">6</span>/<span class="number">7</span> 个往返.
-        i. 任何应用中,过多的round trip 肯定影响性能.
-    b) 接下来才是具体的http协议,每一次响应或者请求, 都要求客户端和服务端对会话的内容做加密/解密.
-        i. 尽管对称加密/解密效率比较高,可是仍然要消耗过多的<span class="variable">CPU</span>,为此有专门的<span class="variable">SSL</span> 芯片. 如果<span class="variable">CPU</span> 信能比较低的话,肯定会降低性能,从而不能serve 更多的请求.
-        ii. 加密后数据量的影响. 所以，才会出现那么多的安全认证提示
-</code></pre><h6 id="SSL/TLS协议运行机制">SSL/TLS协议运行机制</h6><p>互联网的通信安全，建立在SSL/TLS协议之上。<br>本文简要介绍SSL/TLS协议的运行机制。这里就重点介绍一下设计思想和运行过程，不涉及具体的实现细节。详情请参阅<a href="http://tools.ietf.org/html/rfc5246" target="_blank" rel="external">RFC文档</a>。</p>
-<blockquote>
-<p><strong>一、历史</strong><br>互联网加密通信协议的历史，几乎与互联网一样长。<br>1994年，NetScape公司设计了SSL协议（Secure Sockets Layer）的1.0版，但是未发布。<br>1995年，NetScape公司发布SSL 2.0版，很快发现有严重漏洞。<br>1996年，SSL 3.0版问世，得到大规模应用。<br>1999年，互联网标准化组织ISOC接替NetScape公司，发布了SSL的升级版TLS 1.0版。<br>2006年和2008年，TLS进行了两次升级，分别为TLS 1.1版和TLS 1.2版。最新的变动是2011年TLS 1.2的修订版。<br>目前，应用最广泛的是TLS 1.0，接下来是SSL 3.0。但是，主流浏览器都已经实现了TLS 1.2的支持。<br>TLS 1.0通常被标示为SSL 3.1，TLS 1.1为SSL 3.2，TLS 1.2为SSL 3.3。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><strong>二、作用</strong><br>不使用SSL/TLS的HTTP通信，就是不加密的通信。所有信息明文传播，带来了三大风险。</p>
-</blockquote>
-<pre><code>（<span class="number">1</span>） 窃听风险（eavesdropping）：第三方可以获知通信内容。
-（<span class="number">2</span>） 篡改风险（tampering）：第三方可以修改通信内容。
-（<span class="number">3</span>） 冒充风险（pretending）：第三方可以冒充他人身份参与通信。
-</code></pre><p>SSL/TLS协议是为了解决这三大风险而设计的，希望达到：</p>
-<pre><code>（<span class="number">1</span>） 所有信息都是加密传播，第三方无法窃听。
-（<span class="number">2</span>） 具有校验机制，一旦被篡改，通信双方会立刻发现。
-（<span class="number">3</span>） 配备身份证书，防止身份被冒充。
-</code></pre><p>互联网是开放环境，通信双方都是未知身份，这为协议的设计带来了很大的难度。而且，协议还必须能够经受所有匪夷所思的攻击，这使得SSL/TLS协议变得异常复杂。</p>
-<blockquote>
-<p><strong>三、基本的运行过程</strong><br>SSL/TLS协议的基本思路是采用公钥加密法，也就是说，客户端先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密。但是，这里有两个问题。</p>
-</blockquote>
-<p>（1）如何保证公钥不被篡改？</p>
-<pre><code>解决方法：将公钥放在数字证书中。只要证书是可信的，公钥就是可信的。
-</code></pre><p>（2）公钥加密计算量太大，如何减少耗用的时间？</p>
-<pre><code>解决方法：每一次对话（session），客户端和服务器端都生成一个<span class="string">"对话密钥"</span>（session <span class="variable">key</span>），用它来加密信息。
-         由于<span class="string">"对话密钥"</span>是对称加密，所以运算速度非常快，而服务器公钥只用于加密<span class="string">"对话密钥"</span>本身，这样就减少了加密运算的消耗时间。
-</code></pre><p>因此，SSL/TLS协议的基本过程是这样的：</p>
-<pre><code>（<span class="number">1</span>） 客户端向服务器端索要并验证公钥。
-（<span class="number">2</span>） 双方协商生成<span class="string">"对话密钥"</span>。
-（<span class="number">3</span>） 双方采用<span class="string">"对话密钥"</span>进行加密通信。
-</code></pre><p>上面过程的前两步，又称为”握手阶段”（handshake）。</p>
-<p>参考资料：</p>
-<p>MicroSoft,<a href="https://technet.microsoft.com/zh-cn/library/cc785811(v=ws.10" target="_blank" rel="external"> SSL/TLS in Detail</a>.aspx)<br><a href="http://www.moserware.com/2009/06/first-few-milliseconds-of-https.html" target="_blank" rel="external">The First Few Milliseconds of an HTTPS Connection</a></p>
+foo.call( { id: <span class="number">12</span>} )()()();   <span class="comment">// 12</span>
+</code></pre><p>看上面代码，我有个问题，这里执行了多少次<code>this</code>绑定呢？<br>  大部分人会认为有4次–每个函数里各一次<br>  上面答案肯定是不对的， 准确的说，只有一次绑定，发生在foo()函数中。<br>这些链接内嵌的函数都没有声明他们自己的<code>this</code>,所以<code>this.id</code>的引用会简单的顺着作用域链查找,一直查到<code>foo()</code>函数，它是第一处能找到一个确切存在的<code>this</code>的地方。<br>     其实<code>this</code>生来就是局部的，而且一直保持局部状态，箭头函数并不会绑定一个<code>this</code>变量，它的作用域会如同寻常所做的一样一层一层地向上查找。</p>
+<p>除了<code>this</code>,还有<code>arguments</code>、<code>super</code>(ES6) 、<code>new.target</code>(ES6) 匿名函数都是不绑定的</p>
+<p>再来看一个例子：</p>
+<pre><code><span class="function">function <span class="title">foo</span><span class="params">()</span> </span>{
+   setTimeout( () =&gt; {
+      console.<span class="built_in">log</span>(<span class="string">"args:"</span>, arguments);
+   },<span class="number">100</span>);
+}
+
+foo( <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span> );
+<span class="comment">// args: [1,2,3,4]</span>
+</code></pre><p>代码中箭头函数并没有绑定 arguments，所以它会以 foo() 的 arguments 来取而代之，而 super 和 new.target 也是一样的情况。就到这里吧，欢迎各位拍砖。</p>
 
       
     </div>
@@ -1562,11 +668,11 @@ Kill IE6
 
 
   
-    <article id="post-Linux的学习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript数组去重的方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/10/15/Linux的学习/" class="article-date">
-      <time datetime="2014-10-15T03:40:58.000Z" itemprop="datePublished">2014-10-15</time>
+      <a href="/2016/11/14/javascript数组去重的方法/" class="article-date">
+      <time datetime="2016-11-14T14:40:58.000Z" itemprop="datePublished">2016-11-14</time>
 </a>
 
 
@@ -1581,7 +687,7 @@ Kill IE6
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/15/Linux的学习/">linux学习随笔</a>
+      <a class="article-title" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a>
     </h1>
   
 
@@ -1591,76 +697,100 @@ Kill IE6
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="系统分区只分区与格式化">系统分区只分区与格式化</h4><p>1.分区类型</p>
-<ul>
-<li>主分区：最多只能4个 （硬盘由等大小的扇区组成，每个扇区有512字节，512个字节当中446个字节用来记录启动信息的，另外64个字节用来分区表示的，每16个字节一个分区所以只能分4个主分区）</li>
-<li>扩展分区：<pre><code>最多只能有<span class="number">1</span>个；
-主分区加扩展分区最多有<span class="number">4</span>个；
-不能写入数据，只能包含逻辑分区；
+        <h1 id="javascript数组去重的方法">javascript数组去重的方法</h1><p><strong>这个是个经常用来面试的题目（别小看这个题）考点有二：</strong></p>
+<ol>
+<li><code>正确性</code>：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。</li>
+<li><p><code>高性能</code>：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。</p>
+<pre><code>var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="string">'2'</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="string">'2'</span>,{a:<span class="number">1</span>},{b:<span class="number">1</span>,c:<span class="number">2</span>},{a:<span class="number">1</span>}];
 </code></pre></li>
-<li>逻辑分区</li>
-</ul>
-<p>2、格式化：<br>    ·格式化（高级格式化）又称逻辑格式化，它是指根据用户选定的文件系统（如FAT16、FAT32、NTFS、EXTZ、EXT3、EXT4等），<br>    在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
-<h4 id="分区之分区设备文件名与挂载">分区之分区设备文件名与挂载</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">硬件</th>
-<th style="text-align:center">设备文件名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">IDE硬盘</td>
-<td style="text-align:center">dev/hd[a一d]</td>
-</tr>
-<tr>
-<td style="text-align:left">SCSI/SATA/USB硬盘</td>
-<td style="text-align:center">/dev/sd[a一p]</td>
-</tr>
-<tr>
-<td style="text-align:left">光驱</td>
-<td style="text-align:center">/dev/cdrom或/dev/hdc</td>
-</tr>
-<tr>
-<td style="text-align:left">软盘</td>
-<td style="text-align:center">/dev/fd[0-1]</td>
-</tr>
-<tr>
-<td style="text-align:left">打印机（25针）</td>
-<td style="text-align:center">/dev/1p[0-2]</td>
-</tr>
-<tr>
-<td style="text-align:left">打印机（USB)</td>
-<td style="text-align:center">/dev/usb/lp[0-15]</td>
-</tr>
-<tr>
-<td style="text-align:left">鼠标</td>
-<td style="text-align:center">/dev/mouse</td>
-</tr>
-</tbody>
-</table>
-<p><strong>分区设备文件名</strong></p>
-<ul>
-<li>/dev/hda1(IDE硬盘接口)</li>
-<li>/dev/sda1(SCSI硬盘接口、SATA硬盘接口[串口]) SATA1,2,3<h4 id="挂载">挂载</h4></li>
-<li>必须分区<ol>
-<li>/（根分区）</li>
-<li>swap分区(交换分区，内存2倍，不超过2GB)</li>
 </ol>
+<p>下面的方法测试结果都是对arr数组进行测试的。</p>
+<h2 id="第一反应方案———扩展方法实现">第一反应方案———扩展方法实现</h2><ol>
+<li><p>利用indexOf判断旧数组</p>
+<pre><code> <span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+  <span class="keyword">var</span> newArray = [];
+  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> ;i &lt; <span class="keyword">this</span>.length;i++){
+      <span class="comment">//判断新数组里的是否存在该值</span>
+      <span class="keyword">if</span>(newArray.indexOf(<span class="keyword">this</span>[i]) == -<span class="number">1</span>){
+          newArray.push(<span class="keyword">this</span>[i]);
+      }
+  }
+     <span class="keyword">return</span> newArray;
+};
+<span class="built_in">console</span>.log(arr.unique1()); 
+<span class="comment">//结果 ：[ 1, 2, '2', 3, 4, { a: 1 }, { b: 1, c: 2 }, { a: 1 } ]</span>
+</code></pre></li>
+<li><p>利用indexOf判断新数组</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#9;Array.prototype.uniqu2 =  function () &#123;&#10;&#9;      var newArray = [];&#10;&#9;      for (var i = 0; i &#60; this.length; i++) &#123;&#10;&#9;          //&#21028;&#26029;&#24403;&#21069;&#25968;&#32452;&#30340;&#31532;i&#39033;&#22312;&#24403;&#21069;&#25968;&#32452;&#20013;&#20540;&#31532;&#19968;&#27425;&#20986;&#29616;&#30340;&#20301;&#32622;&#26159;&#19981;&#26159;=i&#65292;&#22914;&#26524;!=i,&#34920;&#31034;&#26377;&#37325;&#22797;&#65292;&#24573;&#30053;&#25481;&#12290;&#10;&#9;          if (this.indexOf(this[i]) == i) &#123;&#10;&#9;              newArray.push(this[i]);&#10;&#9;          &#125;&#10;&#9;      &#125;&#10;&#9;      return newArray;&#10;&#9;  &#125;;&#10;&#9;  &#10;&#9;  console.log(arr.unique2()); &#10;//&#32467;&#26524; &#65306;[ 1, 2, &#39;2&#39;, 3, 4, &#123; a: 1 &#125;, &#123; b: 1, c: 2 &#125;, &#123; a: 1 &#125; ]</span><br></pre></td></tr></table></figure>
 </li>
-<li>推荐分区<ol>
-<li>/boot (启动分区，200MB)</li>
 </ol>
+<p>以上两种方法都觉得很靠谱，在现代浏览器下，上面这个函数很正确，性能也不错。但前端最大的悲哀也是挑战之处在于，要支持各种运行环境。在 IE6-8 下，数组的 indexOf 方法还不存在，那怎么办呢？接下来就利用到了对象了。</p>
+<ol>
+<li><p>利用hash对象key的唯一性—————优化方案</p>
+<pre><code><span class="built_in">Array</span>.prototype.unique3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+ <span class="keyword">var</span> newArray = [], hash = {};
+ <span class="comment">// for循环时，每次取出一个元素与对象进行对比</span>
+ <span class="comment">// 如果这个元素不重复，则将它存放到newArray数组中</span>
+ <span class="comment">// 同时把这个元素的内容作为对象的一个属性，并赋值为1,</span>
+ <span class="comment">// 存入到第2步建立的对象中</span>
+ <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span> ;i&lt;<span class="keyword">this</span>.length;i++){
+     <span class="comment">// 检测在hash对象中是否包含遍历到的元素的值</span>
+     <span class="comment">//(typeof this[i])+this[i] 为了处理number与string类型，</span>
+     <span class="comment">// 但是如果数组里包含object类型的对象（如：{a:1}）此方法不可行</span>
+     <span class="keyword">if</span>(!hash[(<span class="keyword">typeof</span> <span class="keyword">this</span>[i])+<span class="keyword">this</span>[i]]){
+         <span class="comment">// 如果不包含，存入object对象中该属性名的值设置为1</span>
+         hash[(<span class="keyword">typeof</span> <span class="keyword">this</span>[i])+<span class="keyword">this</span>[i]] = <span class="literal">true</span>;
+         <span class="comment">// 如果不包含，将存入对象的元素的值推入到newArray数组中</span>
+         newArray.push(<span class="keyword">this</span>[i]);
+     }
+ }
+ <span class="keyword">return</span> newArray;
+ };
+<span class="built_in">console</span>.log(arr.unique()); 
+ <span class="comment">//结果 ：[ 1, 2, '2', 3, 4, { a: 1 } ]  </span>
+</code></pre><p> 核心是构建了一个 hash 对象来替代 indexOf. 注意在 JavaScript 里，对象的键值只能是字符串，因此需要 var key = typeof(this[i]) + this[i] 来区分数值 2 和字符串 ‘2’ 等情况。</p>
+<p> 但优化真的很容易带来坑，比如上面的实现，对下面这种输入就无法判断：</p>
+<pre><code><span class="function"><span class="title">unique</span><span class="params">([ new String(<span class="number">2</span>)</span></span>, new <span class="function"><span class="title">Number</span><span class="params">(<span class="number">2</span>)</span></span> ])
+</code></pre><p>可以继续修改代码，做到性能和正确性都很好。但往往，这带来的结果并不好。如果有谁有好的方法解决这个问题，可以回复我。</p>
 </li>
+</ol>
+<h2 id="使用Set">使用Set</h2><ul>
+<li><code>Set</code> 和<code>Map</code>是ES6中新增的数据结构</li>
+<li><p><code>Set</code>直接可以存储不重复的一组<code>key</code>,这个<code>key</code>也可以是对象,字符串等。</p>
+<pre><code><span class="comment">// ES6 </span>
+<span class="function"><span class="keyword">function</span> <span class="title">unique</span> (<span class="params">arr</span>) </span>{ 
+    <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Map</span>()     
+    <span class="keyword">return</span> arr.filter((a) =&gt; !seen.has(a) &amp;&amp; seen.set(a, <span class="number">1</span>));
+ } 
+<span class="comment">// or</span>
+<span class="function"><span class="keyword">function</span> <span class="title">unique</span> (<span class="params">arr</span>) </span>{ 
+     <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));
+}
+</code></pre></li>
 </ul>
-<p><strong>文件系统结构</strong><br><img src="http://yuml.me/diagram/nofunky/usecase/(note: 文件系统结构{bg:beige}),(/)-(/boot),(/)-(/etc),(/)-(/home),
-(/etc)-(passwd),(/etc)-(shadow),(/etc)-(group)
-"><br><img src="http://yuml.me/diagram/nofunky/usecase/(note: 挂载{bg:beige}),(/boot)-(/dev/sda1),(/home)-(/dev/sda2),(/)-(/dev/sda3)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dir_3.png" alt="文件系统与目录树的关系(挂载)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dirtree.gif" alt="目录树结构"></p>
-<h4 id="总结">总结</h4><ul>
-<li>分区：把大硬盘分为小的逻辑分区</li>
-<li>格式化：写入文件系统</li>
-<li>分区设备文件名：给每个分区定义设备文件名</li>
-<li>挂载：给每个分区分配挂载点</li>
+<p>##创建set</p>
+<pre><code>var s = <span class="keyword">new</span> Set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);
+console.<span class="built_in">log</span>(s); <span class="comment">//Set { 1, 2, 3, 4, 5 }</span>
+</code></pre><h3 id="新增元素">新增元素</h3><pre><code>s.add(<span class="number">6</span>);
+console.<span class="built_in">log</span>(s); <span class="comment">//Set { 1, 2, 3, 4, 5, 6 }</span>
+s.add(<span class="number">3</span>); <span class="comment">//重复的不会增加</span>
+ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2, 3, 4, 5, 6 }</span>
+</code></pre><h3 id="删除元素">删除元素</h3><pre><code>s.<span class="keyword">delete</span>(<span class="number">3</span>);
+console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2, 4, 5 }</span>
+</code></pre><h3 id="遍历元素">遍历元素</h3><ul>
+<li><code>Set</code> 和<code>Map</code>无法使用<code>下标</code></li>
+<li><p>ES6标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p>  for(var x of s){</p>
+<pre><code>console.<span class="command">log</span>(x);
+</code></pre><p>  }</p>
+</li>
+<li><p>或者直接使用<code>iterable</code>内置<code>forEach</code>方法</p>
+</li>
+<li><p><code>forEach</code>方法<code>ES5.1</code>标准引入的</p>
+<pre><code>s.forEach(<span class="function"><span class="keyword">function</span><span class="params">(ele,<span class="keyword">set</span>)</span><span class="comment">{
+    console.log(ele);
+}</span>);</span>
+</code></pre></li>
 </ul>
 
       
@@ -1670,13 +800,458 @@ Kill IE6
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/linux/">Linux</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">Linux</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Atom中linter-eslint安装以及全局设置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/22/Atom中linter-eslint安装以及全局设置/" class="article-date">
+      <time datetime="2016-10-22T03:02:25.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h1><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
+<p>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
+<p>把<code>Disable when no ESLint config is found</code>的对钩去掉。这个选项的意思是说：如果你的javascript项目文件夹中没有.eslintrc这样的配置文件的话，那么ESLint就不起作用。在这里，我们要设置为全局lint，不需要在每个javascript文件夹中包含.eslintrc文件，所以要把它去掉，否则由于我们的项目文件夹中没有.eslintrc文件，ESLint会不起作用。<br>把<code>Use global ESLint installation</code>的对钩勾上。因为我们使用的是全局的ESLint安装包。<br>下面，开始安装ESLint：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint -<span class="keyword">g</span></span>
+</code></pre><p>ESLint是通过npm安装的，这里的-g选项代表全局，也就是说它不会把ESLint的可执行文件安装在你的项目文件夹或者说当前文件夹下。如果你没有设置这个-g选项的话，它会在你当前文件夹下安装ESLint可执行文件，那样就不是全局安装了。后面我们所有安装包都要用使用这个-g选项<br>eslint -v<br>安装完成之后，你可以先执行一下eslint -v这个命令来看一下eslint是否已经安装成功了，如果没有的话，你需要反复检查，直到确保eslint安装已经成功为止。</p>
+<p>关于<code>eslint --init</code> 可以不必执行，它主要的作用是在你当前文件夹下生成.eslintrc文件，但同时也会把eslint在你当前文件夹下重新安装一遍，并且如果你使用包的话，它还会要求必须要有package.json文件，总之会很麻烦。但如果你是第一次使用的话，我建议你可以执行一下试试，它主要提供3种预安装包：<code>Google</code>标准、<code>Airbnb</code>标准和<code>Standard</code>标准。这3个标准里，Google就是Google公司的标准，Airbnb是Airbnb公司的标准，Standard就是一些前端工程师自定的标准。目前来看，公认的最好的标准是Airbnb标准（互联网发展日新月异，永远是年轻人颠覆老年人，连Google都老了）。它对于ES6要求最严格，比如禁止使用var定义变量，必须使用let或者const等等。既然采用最新标准，当然就让你的代码一次性向最高标准看齐，省得以后麻烦。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-config-airbnb -<span class="keyword">g</span></span>
+</code></pre><p>精彩的重头戏来了：看到漂亮的airbnb了吗？我们就里就是要安装Airbnb的标准了。注意-g，还是全局化安装。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-jsx-a11y -<span class="keyword">g</span></span>
+</code></pre><p>a11y是accessibility（无障碍环境）的缩写，从第一个字母a到最后一个字母y，中间一共是11个字母，所以就叫a11y了，类似于i18n表示internationalization（国际化）一样。JSX主要是React会用到，虽然我们的项目里可能并不会用React，但是这个Airbnb标准必须要用到它，所以必须安装。</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> eslint-<span class="keyword">plugin</span>-<span class="keyword">import</span> -<span class="keyword">g</span></span>
+</code></pre><p>同上，Airbnb标准必需。<br>最后，编写我们自己的全局.eslintrc文件：</p>
+<pre><code>vi ~/<span class="class">.eslintrc</span><span class="class">.json</span>
+</code></pre><p>前面讲过了，为项目服务的.eslintrc.json文件是放在项目文件夹下的，全局的.eslintrc.json文件则放在当前用户的根目录下，类Unix系统的当前用户目录是~，而Windows系统的话则是类似于C:\Windows\Users\Username这样的地方。<br>把以下代码放入.eslintrc.json，就做好了你的全局ESLint配置文件。</p>
+<pre><code>{
+    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
+    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
+    "<span class="attribute">plugins</span>": <span class="value">[
+        <span class="string">"react"</span>
+    ]
+</span>}
+</code></pre><p>在atom中打开你的某一个js文件，随便改几个字符看看效果吧，不出所料的话，应该会出现一堆红色的错误。如果没有出现，不是你的代码没有问题，而是你没有安装对。</p>
+<p>Airbnb的缺省标准是每行的缩进字符是2个空格键，而我一般喜欢使用4个空格键作缩进，所以这里需要一点小小的定制。另外，我缺省会大量使用jQuery，不想让它总是报告什么jQuery这个变量未定义等错误。所以增加了几行，最终的.eslintrc.json如下：</p>
+<pre><code>{
+    "<span class="attribute">extends</span>": <span class="value"><span class="string">"airbnb"</span></span>,
+    "<span class="attribute">installedESLint</span>": <span class="value"><span class="literal">true</span></span>,
+    "<span class="attribute">plugins</span>": <span class="value">[
+        <span class="string">"react"</span>
+    ]</span>,
+    "<span class="attribute">env</span>": <span class="value">{
+        "<span class="attribute">jquery</span>": <span class="value"><span class="literal">true</span>
+    </span>}</span>,
+    "<span class="attribute">rules</span>": <span class="value">{
+        "<span class="attribute">indent</span>": <span class="value">[<span class="string">"error"</span>, <span class="number">4</span>]
+    </span>}
+ </span>}
+</code></pre><p>这样你在任何项目中的js文件都会按照这同一套标准去检查。好了，现在可以开始改你的代码了，解决那一大堆红叉子吧，我相信一定不少。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/atom/">Atom</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atom/">Atom</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MAC中bash与zsh的切换" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/22/MAC中bash与zsh的切换/" class="article-date">
+      <time datetime="2016-10-22T03:02:25.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#MAC中bash与zsh的切换</p>
+<h4 id="切换命令">切换命令</h4><ul>
+<li><p>切换bash</p>
+<p>   <code>chsh -s /bin/bash</code></p>
+</li>
+</ul>
+<ul>
+<li><p>切换zsh</p>
+<p>  <code>chsh -s /bin/zsh</code></p>
+</li>
+</ul>
+<h4 id="配置启动zsh时自动加载node">配置启动zsh时自动加载node</h4><p>1.进入插件目录</p>
+<pre><code>cd~/.oh-<span class="keyword">my</span>-zsh/plugins/
+</code></pre><p>2.创建 nvm_auto_load 目录</p>
+<pre><code><span class="built_in">mkdir</span> nvm_auto_load
+</code></pre><p>3.将初始化 nvm 写入 nvm_auto_load.plugin.zsh</p>
+<pre><code><span class="keyword">if</span> [[ -z <span class="variable">$NVM_DIR</span> ]]; <span class="keyword">then</span>
+ NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span>
+
+<span class="keyword">fi</span>
+[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>] &amp;&amp; .<span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>
+</code></pre><p>4.修改 ~/.zshrc</p>
+<blockquote>
+<p>在你的原有插件配置中添加 nvm_auto_load ，如 plugins=(git nvm_auto_load)<br>如果你的nvm 不是安装在推荐的目录 ~/.nvm ，则需要在plugins 配置行之前添加一个 NVM_DIR 的配置</p>
+</blockquote>
+<pre><code><span class="built_in">export</span>NVM_DIR=<span class="string">"/path/to/nvm"</span>
+</code></pre><p>5.修改后的 .zshrc 完整示例：</p>
+<pre><code>exportZSH=<span class="variable">$HOME</span>/.oh-my-zsh
+exportNVM_DIR=<span class="variable">$HOME</span>/.nvm
+
+plugins=(git nvm_auto_load)
+
+source<span class="variable">$ZSH</span>/oh-my-zsh.sh
+</code></pre><p>修改完记得重启zsh哟~~</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/mac/">Mac</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">Mac</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-作用域与闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/20/作用域与闭包/" class="article-date">
+      <time datetime="2016-10-20T03:02:25.000Z" itemprop="datePublished">2016-10-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/20/作用域与闭包/">作用域与闭包</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#作用域与闭包<br>首先在讲之前，需要掌握以下几个概念：</p>
+<ol>
+<li>javaScript具有两种作用域：<strong>全局作用域</strong>和<strong>函数作用域</strong>，另外还有<strong>块作用域</strong>，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。</li>
+<li>ES6的let关键字，可以用来在任意代码块中声明变量。</li>
+<li><strong>IIFE</strong>（立即执行函数表达式）是什么？它有什么作用？</li>
+</ol>
+<h3 id="什么是闭包">什么是闭包</h3><p><strong>闭包</strong>：函数可以记住并访问所在的词法作用域时，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> a=<span class="number">2</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(a);
+    }
+    <span class="keyword">return</span> bar;
+}
+<span class="keyword">var</span> baz=foo();
+baz();<span class="comment">// 这里就是闭包的效果</span>
+</code></pre><p>   函数bar()词法作用域能够访问foo()的内部作用域，然后我们将bar()函数本身当作一个 <em>值类型</em> 进行传递。在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz(),实际上只是通过不同的标识符引用了内部的函数bar();<br>   bar()显然可以被正常执行，但是在这个例子中，它在自己定义的词法作用域以外的地方执行。<br>   在foo()执行后，桐城期待foo()的整个内部作用域都被销毁，因为我们知道引擎有<strong>垃圾回收器</strong>用来解释不再使用的内存空间，由于看上去foo()的内容不会再被使用，所以很自然地会考虑对其进行回收。<br>   而闭包的“神奇”之处正是可以阻止这件事的发生。事实上<em>内部作用域</em>依然存在，因此没有被回收，谁在使用这个内部作用域？其实是bar()本身在使用。<br>    由于bar()所声明的位置所赐，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以供bar()在之后任何时间进行引用。<br>     bar()依然持有对该作用域的引用，而这个引用就叫做<code>闭包</code>。</p>
+<pre><code> 当然，无论使用何种方式对函数类型的值<span class="string">`进行传递`</span>，当函数载别处被调用时都可以观察到闭包。
+
+
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)    </span>{
+    <span class="keyword">var</span> a = <span class="number">2</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)    </span>{
+        <span class="built_in">console</span>.log(a); <span class="comment">//2</span>
+    }
+    bar(baz);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">fn</span>)</span>{
+    fn(); <span class="comment">//看吧，这就是闭包</span>
+}
+</code></pre><p>   当然也可以间接的传递参数，无论用过何种手段将<code>内部函数</code>传递到所载词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。<br>   接下来，我们看一个常见的代码：</p>
+<pre><code>functon <span class="built_in">wait</span>(message) {
+    <span class="built_in">set</span>Timeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span> () {
+        console.log(message);
+    },<span class="number">1000</span>);
+}
+<span class="built_in">wait</span>(<span class="string">'Hi,closure!'</span>);
+</code></pre><p>  分析一下该码：将一个内部函数（名为timer）传递给setTimeout(…)。timer具有涵盖wait(…)作用域的闭包，因此还保有对变量message的引用。<br>    wait(…)执行1000ms后，它的内容作用域并不会消失，timer函数依然保有wait(…)作用域的闭包。<br>    在引擎内部，内置的工具函数setTimeout(..)持有对一个参数的引用，这个参数也许叫作fn或者func，引擎会调用这个函数，例子中就是内部的timer函数，而<code>词法作用域在这个过程中保持完整</code>。<br>    这就是闭包。</p>
+<h3 id="闭包在哪些函数中应用？">闭包在哪些函数中应用？</h3><p> 其实包括定时器、事件监听器、Ajax请求、跨窗口通信、Web Workers或者任何其他的异步（或者同步）任务中，<code>只要使用了回调函数，实际就是在使用闭包</code>。</p>
+<p>这里我吗看一个特别典型的闭包例子，但<strong>是严格来说它并不是闭包</strong> ,为什么呢？        </p>
+<pre><code><span class="keyword">var</span> a = <span class="number">2</span>;
+(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span><span class="params">()</span><span class="comment">{
+   console.log(a);
+}</span>)<span class="params">()</span>;</span>
+</code></pre><p>因为函数（例子中的IIFE）并不是在它<code>本身的词法作用域以外</code>执行的。它却是在定义时所在的作用域中执行（而外部作用域，也就是全局作用域也持有a）。a通过普通的词法作用域查找而非闭包被发现的。</p>
+<p>   尽管从技术讲，闭包时发生在定义时的，但它并不非常明显，就如IIFE本身并不是<code>观察闭包</code>的恰当例子，但它的确创建了闭包，并且也是常用来创建可以被封闭起来的闭包的工具。因此IIFE的确同作用域息息相关，即使本身并不会真的创建作用域。 </p>
+<h3 id="循环和闭包">循环和闭包</h3><p>要说明闭包，for循环时最常见的例子。</p>
+<pre><code><span class="keyword">for</span>(var i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++) {
+    setTimeout(<span class="function">function <span class="title">timer</span><span class="params">()</span></span>{
+        console.<span class="built_in">log</span>(i);
+    },i*<span class="number">1000</span>);
+}
+</code></pre><p>我想新手大多数都被这段代码给坑了吧，为何结果输出的却是5个6呢？<br>6怎么来的这个不用解释吧（6是循环终止条件），但是5个6事怎么来的就得解释一下了，原因在于延迟函数的回调函数在<strong>循环结束</strong>时才执行。就算是setTimeout(..,0)定时时间为0，所有的回调函数依然是在循环结束后才会被执行，因此才会每次输出都是6；</p>
+<p>这里引申出一个更深入的问题，代码中到底有<code>什么缺陷</code>导致它的行为同语义所暗示的不一致呢？</p>
+<p>   缺陷就是我们试图假设循环中的每个迭代在运行时都会给自己“捕获”一个i的副本。但是根据作用域的工作原理，实际情况是尽管循环中的五个函数式在各个迭代中分别定义的，但是它们都是被封闭在一个共享的全局作用域中，因此实际上只有一个i。</p>
+<p>实际上这个是这个样子，图解：<br><img src="/images/QQ20170224-1.png" alt="QQ20170224-1"><br>而我们实际想要的却是这样的：<br><img src="/images/344C442F-CDE7-4343-A2AD-10377485832F.png.jpg" alt="344C442F-CDE7-4343-A2AD-10377485832F"></p>
+<p>下面回到正题。既然明白了缺陷是什么，那么要怎样做才能达到我们想象中的样子呢？答案是我们需要在每一次迭代的过程中都创建一个闭包作用域。在上文中我们已经有所铺垫，IIFE会通过声明立即执行一个函数来创建作用域。我们可以将代码改成下面的样子：</p>
+<pre><code>for<span class="list">(<span class="keyword">var</span> i=1<span class="comment">; i&lt;=5; i++){</span>
+    <span class="list">(<span class="keyword">function</span><span class="list">()</span>{
+        setTImeout<span class="list">(<span class="keyword">function</span> time<span class="list">()</span>{
+            console.log<span class="list">(<span class="keyword">i</span>)</span>
+        }, i*1000)</span>
+    })</span><span class="list">()</span><span class="comment">;</span>
+}</span>
+</code></pre><p>这样每一次迭代我们都创建了一个封闭的作用域(你可以想象为上图中黄色的矩形部分)。但是这样做仍旧不行，为什么呢？因为虽然每个延迟函数都会将IIFE在每次迭代中创建的作用域封闭起来，但我们封闭的作用域是空的，所以必须传点东西过去才能实现我们想要的结果。</p>
+<pre><code><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">var</span> j = i
+        setTImeout(<span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(j)
+        }, j*<span class="number">1000</span>)
+    })();
+}
+</code></pre><p>ok!试试现在他能正常工作吗？对这段代码再进行一点改进</p>
+<pre><code>for<span class="list">(<span class="keyword">var</span> i=1<span class="comment">; i&lt;=5; i++){</span>
+    <span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">j</span>)</span>{
+        setTImeout<span class="list">(<span class="keyword">function</span> time<span class="list">()</span>{
+            console.log<span class="list">(<span class="keyword">j</span>)</span>
+        }, j*1000)</span>
+    })</span><span class="list">(<span class="keyword">i</span>)</span><span class="comment">;</span>
+}</span>
+</code></pre><p>总的来说，就是在迭代内使用IIFE会为每个迭代都生成一个新的作用域，使得延迟函数可以将新的作用域封闭在每个迭代内部，我们同时在迭代的过程中将每次迭代的i值作为参数传入进新的作用域，这样在迭代中创建的封闭作用域就都会含有一个具有正确值的变量供我们访问。ok,it’s work!</p>
+<p>###块作用域</p>
+<p>仔细思考我们前面的解决方案。我们使用IIFE在每次迭代时都创建一个新的作用域。也就是说，每次迭代我们都需要一个块作用域。前面我们提到，你需要对ES6中的<code>let</code>关键字进行了解，它可以用来劫持块作用域，并且在这个块作用域中声明一个变量。<br><code>本质上来讲它是将一个块转换成可以被关闭的作用域</code>。</p>
+<pre><code><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+        <span class="keyword">let</span> j = i; <span class="comment">//闭包的块作用域</span>
+        setTImeout(<span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(j)
+        }, j*<span class="number">1000</span>)
+}
+</code></pre><p>如果将<code>let</code>声明在for循环的头部那么将会有一些特殊的行为，有多特殊呢？<code>它会指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量</code>。不管这句话有多拗口，看看代码吧！</p>
+<pre><code>    <span class="keyword">for</span>(let i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+        setTImeout(<span class="function">function <span class="title">time</span><span class="params">()</span></span>{
+            console.<span class="built_in">log</span>(i)
+        }, i*<span class="number">1000</span>)
+}
+</code></pre><h3 id="闭包的运用————模块">闭包的运用————模块</h3><p><code>模块</code>的代码模式就是利用了闭包的强大威力，但从表面上看，它们似乎与回调无关。下面一起来研究：模块。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>{                            
+   <span class="keyword">var</span> something = <span class="string">'cool'</span>;                    
+   <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];                     
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>{                 
+         <span class="built_in">console</span>.log(something);              
+    }                                         
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{                    
+         <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));      
+    }                                         
+}                                             
+</code></pre><p>这段代码里并没有明显的闭包，只有两个<code>私有数据变量</code>something和another，以及doSomething()和doAnoter()两个内部函数，它们的词法作用域（而这就是闭包）也就是foo()的内部作用域。<br>接下来考虑以下代码：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">coolModule</span> (<span class="params"></span>) </span>{                            
+   <span class="keyword">var</span> something = <span class="string">'cool'</span>;                    
+   <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];                     
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>{                 
+         <span class="built_in">console</span>.log(something);              
+    }                                         
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{                    
+         <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));      
+    }
+    <span class="keyword">return</span> {
+        doSomething:doSomething,
+        doAnother:doAnother
+    };                                      
+}   
+<span class="keyword">var</span>  foo = coolModule();
+foo.doSomething();<span class="comment">//cool</span>
+foo.doAnother(); <span class="comment">//1!2!3 </span>
+</code></pre><p>这个模式在javascript中被称为<code>模块</code>。最常见的实现模块模式的方法就是<code>模块暴露</code>，这里展示的是它的演变形式。<br>接下来我么分析一下代码：<br>    首先，coolModule()只是一个函数，必须要通过调用它来创建一个<strong>模块实例</strong>。如果不执行外部函数，内部作用域和闭包都无法被创建。<br>    其次，coolModule()返回一个用对象字面量语法{key:value,…}来表示的对象。这个返回的对象中含有对<code>内部函数</code>而不是<code>内部数据变量</code>的引用。我们保持<code>内部数据变量是隐藏且私有</code>的状态。可以将这个对象类型的返回值看作<strong>本质上是模块的公共API</strong>。</p>
+<p> 这个对象类型的返回值最终被赋值给外部的变量foo,然后就可以通过它来访问API的属性方法了。</p>
+<p> doSomething()和doAnother()函数具有<code>涵盖模块实例内部作用域的闭包</code>（用过调用CoolModule()实现）。当通过<code>返回一个含有属性引用的对象的方式</code>来将<code>函数传递到词法作用域外部</code>时，我们已经创造了可以<strong>观察</strong>和<strong>实践</strong>闭包的条件。</p>
+<p> <strong>如果要简单的描述，模块模式需要具备2个必要条件：</strong><br>  1.必须有外部的封闭函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）<br>  2.封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。</p>
+<blockquote>
+<p>注意：一个具有函数属性的对象本身并不是<code>真正的模块</code>。从方便观察的角度看，一个从函数调用所返回的，只有数据属性而没有<code>闭包函数的对象</code>并不是真正的模块。</p>
+</blockquote>
+<p>闭包作用之一；比如扩展该对象，你可以添加自己的私有成员和方法，然后使用闭包在其内部封装这些变量和函数声明。只暴露你想暴露的public成员和方法</p>
+<p>上面的代码很不错了，但如果我们想做到只有在使用的时候才初始化，那该如何做呢？为了节约资源的目的，我们可以另外一个构造函数里来初始化这些代码。</p>
+<p>  下面我来实现一个简单单例模式:</p>
+<pre><code><span class="keyword">var</span> foo=(<span class="function"><span class="keyword">function</span> <span class="title">coolModule</span> (<span class="params"></span>) </span>{
+     <span class="comment">// 私有变量和方法</span>
+    <span class="keyword">var</span> something = <span class="string">'cool'</span>;
+    <span class="keyword">var</span> another = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>{
+        <span class="built_in">console</span>.log(something);
+    }
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{
+        <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));
+    }
+     <span class="comment">//公有属性与方法（可以访问私有变量和方法）</span>
+    <span class="keyword">return</span> {
+        doSomething: doSomething,
+        doAnother: doAnother
+    };
+})(); <span class="comment">//利用了IIFE</span>
+foo.doSomething(); <span class="comment">//cool</span>
+foo.doAnother(); <span class="comment">// 1!2!3</span>
+</code></pre><p>我们将模块函数转换成了IIFE，立即调用这个函数并将返回值直接赋值给单例的模块实例标识符foo。</p>
+<p>知道了单例如何实现了，但单例用在什么样的场景比较好呢？其实单例一般是用在<code>系统间各种模式的通信协调上</code>，下面的代码是一个单例的最佳实践：</p>
+<pre><code><span class="keyword">var</span> SingletonTester = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+   <span class="comment">//参数:传递给单例的一个集合</span>
+   <span class="function"><span class="keyword">function</span> <span class="title">Singleton</span> (<span class="params">args</span>) </span>{
+       <span class="comment">//设置args变量为接收的参数或者为空（如果没有提供的话）</span>
+       <span class="keyword">var</span> args = args||{};
+       <span class="comment">//设置name参数</span>
+       <span class="keyword">this</span>.name=<span class="string">"SingletonTester"</span>;
+       <span class="keyword">this</span>.pointX = args.pointX || <span class="number">6</span> ; <span class="comment">//从接收的参数里获取，或者设置为默认值</span>
+       <span class="keyword">this</span>.pointY = args.pointY || <span class="number">8</span>;
+   }
+   <span class="comment">//实例容器</span>
+   <span class="keyword">var</span> instance;
+   <span class="keyword">var</span> _static = {
+       name:<span class="string">'SingletonTester'</span>,
+       <span class="comment">//获取实例的方法</span>
+       <span class="comment">//返回Singleton的实例</span>
+       getInstance:<span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>{
+           <span class="keyword">if</span>(instance === <span class="literal">undefined</span>){
+               instance = <span class="keyword">new</span> Singleton(args);
+           }
+           <span class="keyword">return</span> instance;
+       }
+   };
+   <span class="keyword">return</span> _static;
+})();
+<span class="keyword">var</span> st = SingletonTester.getInstance({pointX:<span class="number">23</span>,pointY:<span class="number">89</span>});
+<span class="built_in">console</span>.log(st.pointX); <span class="comment">//23</span>
+</code></pre><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"><br></iframe>  
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
 
       
@@ -1698,7 +1273,7 @@ Kill IE6
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -1707,7 +1282,7 @@ Kill IE6
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016 Hank
+                2016-2017 Hank
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>

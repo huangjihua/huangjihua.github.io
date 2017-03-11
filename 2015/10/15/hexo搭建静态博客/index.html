@@ -21,14 +21,14 @@
 新建仓库, Github Pages 的仓库名必须为your_user_name.github.ioyour_user_name 替换成你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo搭建静态博客">
-<meta property="og:url" content="http://huangjihua.github.io/2015/10/15/hexo搭建静态博客/index.html">
+<meta property="og:url" content="http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="安装系统环境 Windows 7 64bit
 文本编辑器推荐使用 WebStorm 10,文件编码选择 UTF-8Git
 安装 GitHub for Windows,登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱
 新建仓库, Github Pages 的仓库名必须为your_user_name.github.ioyour_user_name 替换成你">
 <meta property="og:image" content="http://i.imgur.com/l1XCAcS.png">
-<meta property="og:updated_time" content="2015-10-26T10:25:34.000Z">
+<meta property="og:updated_time" content="2017-03-11T05:53:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo搭建静态博客">
 <meta name="twitter:description" content="安装系统环境 Windows 7 64bit
@@ -96,6 +96,16 @@
 
 
 
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 
 </head>
@@ -207,7 +217,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
                     </div>
                 </section>
                 
@@ -531,7 +541,7 @@ categories: [分类<span class="number">1</span>,分类<span class="number">2</s
 </code></pre><h4 id="部署">部署</h4><pre><code><span class="title">hexo</span> deploy
 </code></pre><p>以下提示说明部署成功</p>
 <pre><code><span class="string">[info]</span> Deploy done: github
-</code></pre><p>点击 Github 上项目的 Settings, GitHub Pages, 提示 Your site is published at <a href="http://huangjihua.github.io/">http://huangjihua.github.io/</a><br>第一次上传网站需要等十分钟左右, 以后每次更新都能马上打开</p>
+</code></pre><p>点击 Github 上项目的 Settings, GitHub Pages, 提示 Your site is published at <a href="http://huangjihua.github.io/" target="_blank" rel="external">http://huangjihua.github.io/</a><br>第一次上传网站需要等十分钟左右, 以后每次更新都能马上打开</p>
 <h5 id="绑定域名">绑定域名</h5><p>不绑定域名的话只能通过 your_user_name.github.io 访问<br>申请域名推荐 GoDaddy, 域名解析推荐 DNSPod<br>绑定顶级域名</p>
 <p>新建文件 CNAME, 无后缀, 纯文本文件, 内容为要绑定的域名 huangjihua.com<br>如果要使用 www.huangjihua.com 的形式, 文件内容改为 www.huangjihua.com<br>DNS设置<br>主机记录@, 类型A, 记录值192.30.252.153<br>主机记录www, 类型A, 记录值192.30.252.153<br>参考 Tips for configuring an A record with your DNS provider<br>绑定子域名</p>
 <p>比如使用域名huangjihua.com的子域名blog.huangjihua.com<br>CNAME文件内容为blog.huangjihua.com</p>
@@ -974,7 +984,18 @@ Kill IE6
       [User]-(Full Text Search Docs), (Full Text Search Docs)>(Preview Doc),(Full Text Search Docs)>(Download Docs),
       [User]-(Browse Docs),(Browse Docs)>(Preview Doc), (Download Docs),
       [Site Maintainer]-(Post New Event To The Web Site), [User]-(View Events)"><br>-EOF-</p>
-
+<h4 id="添加本地图片">添加本地图片</h4><p>在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![&#8220;&#22270;&#29255;&#25551;&#36848;&#8221;](/images/&#20320;&#30340;&#22270;&#29255;&#21517;&#23383;.JPG)</span><br></pre></td></tr></table></figure></p>
+<h4 id="插入音乐">插入音乐</h4><p>比如网易云音乐，找到喜欢的歌曲，点击分享按钮，把里面的代码复制下来，直接粘贴到博文中即可</p>
+<pre><code>&lt;<span class="tag">iframe</span> frameborder=<span class="string">"no"</span> <span class="attribute">border</span>=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> <span class="attribute">width</span>=<span class="number">330</span> <span class="attribute">height</span>=<span class="number">86</span>   
+   src=<span class="string">"http://music.163.com/outchain/player?type=2&amp;id=25706282&amp;auto=0&amp;height=66"</span>&gt;  
+&lt;/iframe&gt;   
+</code></pre><h4 id="插入视频">插入视频</h4><p>如：</p>
+<pre><code><span class="tag">&lt;<span class="title">iframe</span>   
+    <span class="attribute">height</span>=<span class="value">498</span> <span class="attribute">width</span>=<span class="value">510</span>   
+    <span class="attribute">src</span>=<span class="value">"http://player.youku.com/embed/XNjcyMDU4Njg0"</span>   
+    <span class="attribute">frameborder</span>=<span class="value">0</span> <span class="attribute">allowfullscreen</span>&gt;</span>  
+<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span>  
+</code></pre>
       
     </div>
     
@@ -985,10 +1006,10 @@ Kill IE6
         <p><span>本文标题:</span><a href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2015-10-15, 10:40:58</p>
-        <p><span>最后更新:</span>2015-10-26, 18:25:34</p>
+        <p><span>最后更新:</span>2017-03-11, 13:53:13</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2015/10/15/hexo搭建静态博客/" title="hexo搭建静态博客">http://huangjihua.github.io/2015/10/15/hexo搭建静态博客/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://huangjihua.github.io/2015/10/15/hexo搭建静态博客/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2015/10/15/hexo搭建静态博客/" title="hexo搭建静态博客">http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -1021,7 +1042,7 @@ Kill IE6
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装_Hexo"><span class="toc-number">1.1.</span> <span class="toc-text">安装 Hexo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局配置__config-yml"><span class="toc-number">1.2.</span> <span class="toc-text">全局配置 _config.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行使用"><span class="toc-number">1.3.</span> <span class="toc-text">命令行使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布"><span class="toc-number">2.</span> <span class="toc-text">发布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">3.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绑定域名"><span class="toc-number">3.1.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-number">4.</span> <span class="toc-text">主题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主题目录结构"><span class="toc-number">4.1.</span> <span class="toc-text">主题目录结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#主题配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">主题配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#菜单设置"><span class="toc-number">4.3.</span> <span class="toc-text">菜单设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义页面"><span class="toc-number">4.4.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#404_页面"><span class="toc-number">4.5.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多说评论系统"><span class="toc-number">4.6.</span> <span class="toc-text">多说评论系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置网站统计"><span class="toc-number">4.7.</span> <span class="toc-text">设置网站统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分享"><span class="toc-number">4.8.</span> <span class="toc-text">分享</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Swiftype_搜索"><span class="toc-number">4.9.</span> <span class="toc-text">Swiftype 搜索</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加_robots-txt"><span class="toc-number">4.10.</span> <span class="toc-text">添加 robots.txt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#给_GitHub_添加_README"><span class="toc-number">4.11.</span> <span class="toc-text">给 GitHub 添加 README</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hexo简要流程"><span class="toc-number">4.12.</span> <span class="toc-text">hexo简要流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown里的一些特殊用法"><span class="toc-number">5.</span> <span class="toc-text">markdown里的一些特殊用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制表格"><span class="toc-number">5.1.</span> <span class="toc-text">绘制表格</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制流程图"><span class="toc-number">6.</span> <span class="toc-text">绘制流程图</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装_Hexo"><span class="toc-number">1.1.</span> <span class="toc-text">安装 Hexo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局配置__config-yml"><span class="toc-number">1.2.</span> <span class="toc-text">全局配置 _config.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行使用"><span class="toc-number">1.3.</span> <span class="toc-text">命令行使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布"><span class="toc-number">2.</span> <span class="toc-text">发布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">3.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绑定域名"><span class="toc-number">3.1.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-number">4.</span> <span class="toc-text">主题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主题目录结构"><span class="toc-number">4.1.</span> <span class="toc-text">主题目录结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#主题配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">主题配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#菜单设置"><span class="toc-number">4.3.</span> <span class="toc-text">菜单设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义页面"><span class="toc-number">4.4.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#404_页面"><span class="toc-number">4.5.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多说评论系统"><span class="toc-number">4.6.</span> <span class="toc-text">多说评论系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置网站统计"><span class="toc-number">4.7.</span> <span class="toc-text">设置网站统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分享"><span class="toc-number">4.8.</span> <span class="toc-text">分享</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Swiftype_搜索"><span class="toc-number">4.9.</span> <span class="toc-text">Swiftype 搜索</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加_robots-txt"><span class="toc-number">4.10.</span> <span class="toc-text">添加 robots.txt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#给_GitHub_添加_README"><span class="toc-number">4.11.</span> <span class="toc-text">给 GitHub 添加 README</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hexo简要流程"><span class="toc-number">4.12.</span> <span class="toc-text">hexo简要流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown里的一些特殊用法"><span class="toc-number">5.</span> <span class="toc-text">markdown里的一些特殊用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制表格"><span class="toc-number">5.1.</span> <span class="toc-text">绘制表格</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制流程图"><span class="toc-number">6.</span> <span class="toc-text">绘制流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加本地图片"><span class="toc-number">7.</span> <span class="toc-text">添加本地图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入音乐"><span class="toc-number">8.</span> <span class="toc-text">插入音乐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入视频"><span class="toc-number">9.</span> <span class="toc-text">插入视频</span></a></li></ol>
         
     </div>
     <style>
@@ -1073,7 +1094,7 @@ Kill IE6
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2015/10/15/hexo搭建静态博客/" data-title="hexo搭建静态博客" data-url="http://huangjihua.github.io/2015/10/15/hexo搭建静态博客/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2015/10/15/hexo搭建静态博客/" data-title="hexo搭建静态博客" data-url="http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/"></div>
     <script>
         var duoshuoQuery = {short_name:"null"};
         var loadComment = function(){
@@ -1110,7 +1131,7 @@ Kill IE6
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
 
@@ -1124,7 +1145,7 @@ Kill IE6
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016 Hank
+                2016-2017 Hank
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>

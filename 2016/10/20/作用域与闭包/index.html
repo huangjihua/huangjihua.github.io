@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Hank" />
+
+
+
+<meta name="description" content="#作用域与闭包首先在讲之前，需要掌握以下几个概念：
+
+javaScript具有两种作用域：全局作用域和函数作用域，另外还有块作用域，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。
+ES6的let关键字，可以用来在任意代码块中声明变量。
+IIFE（立即执行函数表达式）是什么？它有什么作用？
+
+什么是闭包闭包：函数可以记住并访问所在的词法作用域时，即使函数是在当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作用域与闭包">
+<meta property="og:url" content="http://huangjihua.com.cn/2016/10/20/作用域与闭包/index.html">
+<meta property="og:site_name" content="Huangjihua's Blog">
+<meta property="og:description" content="#作用域与闭包首先在讲之前，需要掌握以下几个概念：
+
+javaScript具有两种作用域：全局作用域和函数作用域，另外还有块作用域，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。
+ES6的let关键字，可以用来在任意代码块中声明变量。
+IIFE（立即执行函数表达式）是什么？它有什么作用？
+
+什么是闭包闭包：函数可以记住并访问所在的词法作用域时，即使函数是在当">
+<meta property="og:image" content="http://huangjihua.com.cn/images/QQ20170224-1.png">
+<meta property="og:image" content="http://huangjihua.com.cn/images/344C442F-CDE7-4343-A2AD-10377485832F.png.jpg">
+<meta property="og:updated_time" content="2017-03-11T07:08:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="作用域与闭包">
+<meta name="twitter:description" content="#作用域与闭包首先在讲之前，需要掌握以下几个概念：
+
+javaScript具有两种作用域：全局作用域和函数作用域，另外还有块作用域，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。
+ES6的let关键字，可以用来在任意代码块中声明变量。
+IIFE（立即执行函数表达式）是什么？它有什么作用？
+
+什么是闭包闭包：函数可以记住并访问所在的词法作用域时，即使函数是在当">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>作用域与闭包 | Huangjihua&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?07c425d4bcfc27b868657ca3f2a6e187";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/hank.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Hank</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">填坑手艺人的随笔</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/essays/">我的随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Hank</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/hank.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Hank</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">填坑手艺人的随笔</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/essays/">我的随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
+                            
+                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-作用域与闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/20/作用域与闭包/" class="article-date">
+      <time datetime="2016-10-20T03:02:25.000Z" itemprop="datePublished">2016-10-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      作用域与闭包
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#作用域与闭包<br>首先在讲之前，需要掌握以下几个概念：</p>
+<ol>
+<li>javaScript具有两种作用域：<strong>全局作用域</strong>和<strong>函数作用域</strong>，另外还有<strong>块作用域</strong>，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。</li>
+<li>ES6的let关键字，可以用来在任意代码块中声明变量。</li>
+<li><strong>IIFE</strong>（立即执行函数表达式）是什么？它有什么作用？</li>
+</ol>
+<h3 id="什么是闭包">什么是闭包</h3><p><strong>闭包</strong>：函数可以记住并访问所在的词法作用域时，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> a=<span class="number">2</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(a);
+    }
+    <span class="keyword">return</span> bar;
+}
+<span class="keyword">var</span> baz=foo();
+baz();<span class="comment">// 这里就是闭包的效果</span>
+</code></pre><p>   函数bar()词法作用域能够访问foo()的内部作用域，然后我们将bar()函数本身当作一个 <em>值类型</em> 进行传递。在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz(),实际上只是通过不同的标识符引用了内部的函数bar();<br>   bar()显然可以被正常执行，但是在这个例子中，它在自己定义的词法作用域以外的地方执行。<br>   在foo()执行后，桐城期待foo()的整个内部作用域都被销毁，因为我们知道引擎有<strong>垃圾回收器</strong>用来解释不再使用的内存空间，由于看上去foo()的内容不会再被使用，所以很自然地会考虑对其进行回收。<br>   而闭包的“神奇”之处正是可以阻止这件事的发生。事实上<em>内部作用域</em>依然存在，因此没有被回收，谁在使用这个内部作用域？其实是bar()本身在使用。<br>    由于bar()所声明的位置所赐，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以供bar()在之后任何时间进行引用。<br>     bar()依然持有对该作用域的引用，而这个引用就叫做<code>闭包</code>。</p>
+<pre><code> 当然，无论使用何种方式对函数类型的值<span class="string">`进行传递`</span>，当函数载别处被调用时都可以观察到闭包。
+
+
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)    </span>{
+    <span class="keyword">var</span> a = <span class="number">2</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)    </span>{
+        <span class="built_in">console</span>.log(a); <span class="comment">//2</span>
+    }
+    bar(baz);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">fn</span>)</span>{
+    fn(); <span class="comment">//看吧，这就是闭包</span>
+}
+</code></pre><p>   当然也可以间接的传递参数，无论用过何种手段将<code>内部函数</code>传递到所载词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。<br>   接下来，我们看一个常见的代码：</p>
+<pre><code>functon <span class="built_in">wait</span>(message) {
+    <span class="built_in">set</span>Timeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span> () {
+        console.log(message);
+    },<span class="number">1000</span>);
+}
+<span class="built_in">wait</span>(<span class="string">'Hi,closure!'</span>);
+</code></pre><p>  分析一下该码：将一个内部函数（名为timer）传递给setTimeout(…)。timer具有涵盖wait(…)作用域的闭包，因此还保有对变量message的引用。<br>    wait(…)执行1000ms后，它的内容作用域并不会消失，timer函数依然保有wait(…)作用域的闭包。<br>    在引擎内部，内置的工具函数setTimeout(..)持有对一个参数的引用，这个参数也许叫作fn或者func，引擎会调用这个函数，例子中就是内部的timer函数，而<code>词法作用域在这个过程中保持完整</code>。<br>    这就是闭包。</p>
+<h3 id="闭包在哪些函数中应用？">闭包在哪些函数中应用？</h3><p> 其实包括定时器、事件监听器、Ajax请求、跨窗口通信、Web Workers或者任何其他的异步（或者同步）任务中，<code>只要使用了回调函数，实际就是在使用闭包</code>。</p>
+<p>这里我吗看一个特别典型的闭包例子，但<strong>是严格来说它并不是闭包</strong> ,为什么呢？        </p>
+<pre><code><span class="keyword">var</span> a = <span class="number">2</span>;
+(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span><span class="params">()</span><span class="comment">{
+   console.log(a);
+}</span>)<span class="params">()</span>;</span>
+</code></pre><p>因为函数（例子中的IIFE）并不是在它<code>本身的词法作用域以外</code>执行的。它却是在定义时所在的作用域中执行（而外部作用域，也就是全局作用域也持有a）。a通过普通的词法作用域查找而非闭包被发现的。</p>
+<p>   尽管从技术讲，闭包时发生在定义时的，但它并不非常明显，就如IIFE本身并不是<code>观察闭包</code>的恰当例子，但它的确创建了闭包，并且也是常用来创建可以被封闭起来的闭包的工具。因此IIFE的确同作用域息息相关，即使本身并不会真的创建作用域。 </p>
+<h3 id="循环和闭包">循环和闭包</h3><p>要说明闭包，for循环时最常见的例子。</p>
+<pre><code><span class="keyword">for</span>(var i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++) {
+    setTimeout(<span class="function">function <span class="title">timer</span><span class="params">()</span></span>{
+        console.<span class="built_in">log</span>(i);
+    },i*<span class="number">1000</span>);
+}
+</code></pre><p>我想新手大多数都被这段代码给坑了吧，为何结果输出的却是5个6呢？<br>6怎么来的这个不用解释吧（6是循环终止条件），但是5个6事怎么来的就得解释一下了，原因在于延迟函数的回调函数在<strong>循环结束</strong>时才执行。就算是setTimeout(..,0)定时时间为0，所有的回调函数依然是在循环结束后才会被执行，因此才会每次输出都是6；</p>
+<p>这里引申出一个更深入的问题，代码中到底有<code>什么缺陷</code>导致它的行为同语义所暗示的不一致呢？</p>
+<p>   缺陷就是我们试图假设循环中的每个迭代在运行时都会给自己“捕获”一个i的副本。但是根据作用域的工作原理，实际情况是尽管循环中的五个函数式在各个迭代中分别定义的，但是它们都是被封闭在一个共享的全局作用域中，因此实际上只有一个i。</p>
+<p>实际上这个是这个样子，图解：<br><img src="/images/QQ20170224-1.png" alt="QQ20170224-1"><br>而我们实际想要的却是这样的：<br><img src="/images/344C442F-CDE7-4343-A2AD-10377485832F.png.jpg" alt="344C442F-CDE7-4343-A2AD-10377485832F"></p>
+<p>下面回到正题。既然明白了缺陷是什么，那么要怎样做才能达到我们想象中的样子呢？答案是我们需要在每一次迭代的过程中都创建一个闭包作用域。在上文中我们已经有所铺垫，IIFE会通过声明立即执行一个函数来创建作用域。我们可以将代码改成下面的样子：</p>
+<pre><code>for<span class="list">(<span class="keyword">var</span> i=1<span class="comment">; i&lt;=5; i++){</span>
+    <span class="list">(<span class="keyword">function</span><span class="list">()</span>{
+        setTImeout<span class="list">(<span class="keyword">function</span> time<span class="list">()</span>{
+            console.log<span class="list">(<span class="keyword">i</span>)</span>
+        }, i*1000)</span>
+    })</span><span class="list">()</span><span class="comment">;</span>
+}</span>
+</code></pre><p>这样每一次迭代我们都创建了一个封闭的作用域(你可以想象为上图中黄色的矩形部分)。但是这样做仍旧不行，为什么呢？因为虽然每个延迟函数都会将IIFE在每次迭代中创建的作用域封闭起来，但我们封闭的作用域是空的，所以必须传点东西过去才能实现我们想要的结果。</p>
+<pre><code><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">var</span> j = i
+        setTImeout(<span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(j)
+        }, j*<span class="number">1000</span>)
+    })();
+}
+</code></pre><p>ok!试试现在他能正常工作吗？对这段代码再进行一点改进</p>
+<pre><code>for<span class="list">(<span class="keyword">var</span> i=1<span class="comment">; i&lt;=5; i++){</span>
+    <span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">j</span>)</span>{
+        setTImeout<span class="list">(<span class="keyword">function</span> time<span class="list">()</span>{
+            console.log<span class="list">(<span class="keyword">j</span>)</span>
+        }, j*1000)</span>
+    })</span><span class="list">(<span class="keyword">i</span>)</span><span class="comment">;</span>
+}</span>
+</code></pre><p>总的来说，就是在迭代内使用IIFE会为每个迭代都生成一个新的作用域，使得延迟函数可以将新的作用域封闭在每个迭代内部，我们同时在迭代的过程中将每次迭代的i值作为参数传入进新的作用域，这样在迭代中创建的封闭作用域就都会含有一个具有正确值的变量供我们访问。ok,it’s work!</p>
+<p>###块作用域</p>
+<p>仔细思考我们前面的解决方案。我们使用IIFE在每次迭代时都创建一个新的作用域。也就是说，每次迭代我们都需要一个块作用域。前面我们提到，你需要对ES6中的<code>let</code>关键字进行了解，它可以用来劫持块作用域，并且在这个块作用域中声明一个变量。<br><code>本质上来讲它是将一个块转换成可以被关闭的作用域</code>。</p>
+<pre><code><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+        <span class="keyword">let</span> j = i; <span class="comment">//闭包的块作用域</span>
+        setTImeout(<span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(j)
+        }, j*<span class="number">1000</span>)
+}
+</code></pre><p>如果将<code>let</code>声明在for循环的头部那么将会有一些特殊的行为，有多特殊呢？<code>它会指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量</code>。不管这句话有多拗口，看看代码吧！</p>
+<pre><code>    <span class="keyword">for</span>(let i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++){
+        setTImeout(<span class="function">function <span class="title">time</span><span class="params">()</span></span>{
+            console.<span class="built_in">log</span>(i)
+        }, i*<span class="number">1000</span>)
+}
+</code></pre><h3 id="闭包的运用————模块">闭包的运用————模块</h3><p><code>模块</code>的代码模式就是利用了闭包的强大威力，但从表面上看，它们似乎与回调无关。下面一起来研究：模块。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>{                            
+   <span class="keyword">var</span> something = <span class="string">'cool'</span>;                    
+   <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];                     
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>{                 
+         <span class="built_in">console</span>.log(something);              
+    }                                         
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{                    
+         <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));      
+    }                                         
+}                                             
+</code></pre><p>这段代码里并没有明显的闭包，只有两个<code>私有数据变量</code>something和another，以及doSomething()和doAnoter()两个内部函数，它们的词法作用域（而这就是闭包）也就是foo()的内部作用域。<br>接下来考虑以下代码：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">coolModule</span> (<span class="params"></span>) </span>{                            
+   <span class="keyword">var</span> something = <span class="string">'cool'</span>;                    
+   <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];                     
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>{                 
+         <span class="built_in">console</span>.log(something);              
+    }                                         
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{                    
+         <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));      
+    }
+    <span class="keyword">return</span> {
+        doSomething:doSomething,
+        doAnother:doAnother
+    };                                      
+}   
+<span class="keyword">var</span>  foo = coolModule();
+foo.doSomething();<span class="comment">//cool</span>
+foo.doAnother(); <span class="comment">//1!2!3 </span>
+</code></pre><p>这个模式在javascript中被称为<code>模块</code>。最常见的实现模块模式的方法就是<code>模块暴露</code>，这里展示的是它的演变形式。<br>接下来我么分析一下代码：<br>    首先，coolModule()只是一个函数，必须要通过调用它来创建一个<strong>模块实例</strong>。如果不执行外部函数，内部作用域和闭包都无法被创建。<br>    其次，coolModule()返回一个用对象字面量语法{key:value,…}来表示的对象。这个返回的对象中含有对<code>内部函数</code>而不是<code>内部数据变量</code>的引用。我们保持<code>内部数据变量是隐藏且私有</code>的状态。可以将这个对象类型的返回值看作<strong>本质上是模块的公共API</strong>。</p>
+<p> 这个对象类型的返回值最终被赋值给外部的变量foo,然后就可以通过它来访问API的属性方法了。</p>
+<p> doSomething()和doAnother()函数具有<code>涵盖模块实例内部作用域的闭包</code>（用过调用CoolModule()实现）。当通过<code>返回一个含有属性引用的对象的方式</code>来将<code>函数传递到词法作用域外部</code>时，我们已经创造了可以<strong>观察</strong>和<strong>实践</strong>闭包的条件。</p>
+<p> <strong>如果要简单的描述，模块模式需要具备2个必要条件：</strong><br>  1.必须有外部的封闭函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）<br>  2.封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。</p>
+<blockquote>
+<p>注意：一个具有函数属性的对象本身并不是<code>真正的模块</code>。从方便观察的角度看，一个从函数调用所返回的，只有数据属性而没有<code>闭包函数的对象</code>并不是真正的模块。</p>
+</blockquote>
+<p>闭包作用之一；比如扩展该对象，你可以添加自己的私有成员和方法，然后使用闭包在其内部封装这些变量和函数声明。只暴露你想暴露的public成员和方法</p>
+<p>上面的代码很不错了，但如果我们想做到只有在使用的时候才初始化，那该如何做呢？为了节约资源的目的，我们可以另外一个构造函数里来初始化这些代码。</p>
+<p>  下面我来实现一个简单单例模式:</p>
+<pre><code><span class="keyword">var</span> foo=(<span class="function"><span class="keyword">function</span> <span class="title">coolModule</span> (<span class="params"></span>) </span>{
+     <span class="comment">// 私有变量和方法</span>
+    <span class="keyword">var</span> something = <span class="string">'cool'</span>;
+    <span class="keyword">var</span> another = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>{
+        <span class="built_in">console</span>.log(something);
+    }
+    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>{
+        <span class="built_in">console</span>.log(another.join(<span class="string">"!"</span>));
+    }
+     <span class="comment">//公有属性与方法（可以访问私有变量和方法）</span>
+    <span class="keyword">return</span> {
+        doSomething: doSomething,
+        doAnother: doAnother
+    };
+})(); <span class="comment">//利用了IIFE</span>
+foo.doSomething(); <span class="comment">//cool</span>
+foo.doAnother(); <span class="comment">// 1!2!3</span>
+</code></pre><p>我们将模块函数转换成了IIFE，立即调用这个函数并将返回值直接赋值给单例的模块实例标识符foo。</p>
+<p>知道了单例如何实现了，但单例用在什么样的场景比较好呢？其实单例一般是用在<code>系统间各种模式的通信协调上</code>，下面的代码是一个单例的最佳实践：</p>
+<pre><code><span class="keyword">var</span> SingletonTester = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+   <span class="comment">//参数:传递给单例的一个集合</span>
+   <span class="function"><span class="keyword">function</span> <span class="title">Singleton</span> (<span class="params">args</span>) </span>{
+       <span class="comment">//设置args变量为接收的参数或者为空（如果没有提供的话）</span>
+       <span class="keyword">var</span> args = args||{};
+       <span class="comment">//设置name参数</span>
+       <span class="keyword">this</span>.name=<span class="string">"SingletonTester"</span>;
+       <span class="keyword">this</span>.pointX = args.pointX || <span class="number">6</span> ; <span class="comment">//从接收的参数里获取，或者设置为默认值</span>
+       <span class="keyword">this</span>.pointY = args.pointY || <span class="number">8</span>;
+   }
+   <span class="comment">//实例容器</span>
+   <span class="keyword">var</span> instance;
+   <span class="keyword">var</span> _static = {
+       name:<span class="string">'SingletonTester'</span>,
+       <span class="comment">//获取实例的方法</span>
+       <span class="comment">//返回Singleton的实例</span>
+       getInstance:<span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>{
+           <span class="keyword">if</span>(instance === <span class="literal">undefined</span>){
+               instance = <span class="keyword">new</span> Singleton(args);
+           }
+           <span class="keyword">return</span> instance;
+       }
+   };
+   <span class="keyword">return</span> _static;
+})();
+<span class="keyword">var</span> st = SingletonTester.getInstance({pointX:<span class="number">23</span>,pointY:<span class="number">89</span>});
+<span class="built_in">console</span>.log(st.pointX); <span class="comment">//23</span>
+</code></pre><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"><br></iframe>  
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/20/作用域与闭包/">作用域与闭包</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
+        <p><span>发布时间:</span>2016-10-20, 11:02:25</p>
+        <p><span>最后更新:</span>2017-03-11, 15:08:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/20/作用域与闭包/" title="作用域与闭包">http://huangjihua.com.cn/2016/10/20/作用域与闭包/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2016/10/20/作用域与闭包/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/10/22/MAC中bash与zsh的切换/">
+                    MAC中bash与zsh的切换
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">
+                    javascript中new到底做了什么？又如何理解prototype？
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是闭包"><span class="toc-number">1.</span> <span class="toc-text">什么是闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包在哪些函数中应用？"><span class="toc-number">2.</span> <span class="toc-text">闭包在哪些函数中应用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环和闭包"><span class="toc-number">3.</span> <span class="toc-text">循环和闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包的运用————模块"><span class="toc-number">4.</span> <span class="toc-text">闭包的运用————模块</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"作用域与闭包　| Huangjihua's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/20/作用域与闭包/" data-title="作用域与闭包" data-url="http://huangjihua.com.cn/2016/10/20/作用域与闭包/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"null"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/22/MAC中bash与zsh的切换/" title="上一篇: MAC中bash与zsh的切换">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="下一篇: javascript中new到底做了什么？又如何理解prototype？">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Hank
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

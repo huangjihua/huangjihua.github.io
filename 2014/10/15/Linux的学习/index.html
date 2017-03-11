@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
         <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
     <![endif]-->
-
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Hank" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Hank">
 
 
 
@@ -26,7 +24,7 @@
 
 2、格式化：    ·格式化（高级格式化）又称逻辑格式化，它是指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux学习随笔">
+<meta property="og:title" content="Linux学习随笔">
 <meta property="og:url" content="http://huangjihua.com.cn/2014/10/15/Linux的学习/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="系统分区只分区与格式化1.分区类型
@@ -40,14 +38,13 @@
 
 2、格式化：    ·格式化（高级格式化）又称逻辑格式化，它是指">
 <meta property="og:image" content="http://yuml.me/diagram/nofunky/usecase/(note: 文件系统结构{bg:beige}),(/)-(/boot),(/)-(/etc),(/)-(/home),
-(/etc)-(passwd),(/etc)-(shadow),(/etc)-(group)
-">
+(/etc)-(passwd),(/etc)-(shadow),(/etc)-(group)">
 <meta property="og:image" content="http://yuml.me/diagram/nofunky/usecase/(note: 挂载{bg:beige}),(/boot)-(/dev/sda1),(/home)-(/dev/sda2),(/)-(/dev/sda3)">
 <meta property="og:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dir_3.png">
 <meta property="og:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dirtree.gif">
 <meta property="og:updated_time" content="2015-10-28T10:22:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux学习随笔">
+<meta name="twitter:title" content="Linux学习随笔">
 <meta name="twitter:description" content="系统分区只分区与格式化1.分区类型
 
 主分区：最多只能4个 （硬盘由等大小的扇区组成，每个扇区有512字节，512个字节当中446个字节用来记录启动信息的，另外64个字节用来分区表示的，每16个字节一个分区所以只能分4个主分区）
@@ -59,7 +56,7 @@
 
 2、格式化：    ·格式化（高级格式化）又称逻辑格式化，它是指">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
@@ -89,7 +86,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>linux学习随笔 | Huangjihua&#39;s Blog</title>
+<title>Linux学习随笔 | Huangjihua&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -110,7 +107,9 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -131,7 +130,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -151,11 +150,11 @@
 
         
             <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
             <i class="fa fa-times" onclick="resetSearch()"></i>
             </form>
             <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -222,23 +221,17 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
                     </nav>
@@ -310,29 +303,23 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-Linux的学习" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -340,37 +327,26 @@
       <a href="/2014/10/15/Linux的学习/" class="article-date">
       <time datetime="2014-10-15T03:40:58.000Z" itemprop="datePublished">2014-10-15</time>
 </a>
-
-
     </div>
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      linux学习随笔
+        <h1 class="article-title" itemprop="name">
+      Linux学习随笔
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
+        <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/linux/">Linux</a>
     </div>
-
-
-        
-    <div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">Linux</a></li></ul>
     </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -441,33 +417,30 @@
 </li>
 </ul>
 <p><strong>文件系统结构</strong><br><img src="http://yuml.me/diagram/nofunky/usecase/(note: 文件系统结构{bg:beige}),(/)-(/boot),(/)-(/etc),(/)-(/home),
-(/etc)-(passwd),(/etc)-(shadow),(/etc)-(group)
-"><br><img src="http://yuml.me/diagram/nofunky/usecase/(note: 挂载{bg:beige}),(/boot)-(/dev/sda1),(/home)-(/dev/sda2),(/)-(/dev/sda3)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dir_3.png" alt="文件系统与目录树的关系(挂载)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dirtree.gif" alt="目录树结构"></p>
+(/etc)-(passwd),(/etc)-(shadow),(/etc)-(group)"><br><img src="http://yuml.me/diagram/nofunky/usecase/(note: 挂载{bg:beige}),(/boot)-(/dev/sda1),(/home)-(/dev/sda2),(/)-(/dev/sda3)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dir_3.png" alt="文件系统与目录树的关系(挂载)"><br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_files/dirtree.gif" alt="目录树结构"></p>
 <h4 id="总结">总结</h4><ul>
 <li>分区：把大硬盘分为小的逻辑分区</li>
 <li>格式化：写入文件系统</li>
 <li>分区设备文件名：给每个分区定义设备文件名</li>
 <li>挂载：给每个分区分配挂载点</li>
 </ul>
-
       
     </div>
     
   </div>
   
-    
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2014/10/15/Linux的学习/">linux学习随笔</a></p>
+        <p><span>本文标题:</span><a href="/2014/10/15/Linux的学习/">Linux学习随笔</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2014-10-15, 11:40:58</p>
         <p><span>最后更新:</span>2015-10-28, 18:22:40</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2014/10/15/Linux的学习/" title="linux学习随笔">http://huangjihua.com.cn/2014/10/15/Linux的学习/</a>
+            <span>原始链接:</span><a class="post-url" href="/2014/10/15/Linux的学习/" title="Linux学习随笔">http://huangjihua.com.cn/2014/10/15/Linux的学习/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2014/10/15/Linux的学习/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -489,11 +462,9 @@
             </div>
         
     </nav>
-
   
 </article>
-
-    <div id="toc" class="toc-article">
+<div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统分区只分区与格式化"><span class="toc-number">1.</span> <span class="toc-text">系统分区只分区与格式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分区之分区设备文件名与挂载"><span class="toc-number">2.</span> <span class="toc-text">分区之分区设备文件名与挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#挂载"><span class="toc-number">3.</span> <span class="toc-text">挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
@@ -510,16 +481,14 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
     <script>
         yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
-
-    
-<div class="share">
+    <div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -528,11 +497,11 @@
             <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
             <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
             <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"linux学习随笔　| Huangjihua's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Linux学习随笔　| Huangjihua's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -541,14 +510,10 @@
 
 
 
-
-
-
-
     
       <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2014/10/15/Linux的学习/" data-title="linux学习随笔" data-url="http://huangjihua.com.cn/2014/10/15/Linux的学习/"></div>
+    <div id="comment-box"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2014/10/15/Linux的学习/" data-title="Linux学习随笔" data-url="http://huangjihua.com.cn/2014/10/15/Linux的学习/"></div>
     <script>
         var duoshuoQuery = {short_name:"null"};
         var loadComment = function(){
@@ -560,16 +525,12 @@
 
         
     </script>
-    
     <script> loadComment(); </script>
-
 </div>
     
 
 
-
-
-    <div class="scroll" id="post-nav-button">
+<div class="scroll" id="post-nav-button">
         
             <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" title="上一篇: HTTP与HTTPs区别以及SSL/TLS协议运行机制">
                 <i class="fa fa-angle-left"></i>
@@ -585,15 +546,12 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
-
-
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
     <script>
         
-    </script>
-</div>
+    </script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -610,7 +568,7 @@
         
             <div class="visit">
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
+                    <span id="busuanzi_container_site_pv" style="display:none">
                         <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -619,8 +577,8 @@
                     <span>| </span>
                 
                 
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -629,10 +587,8 @@
     </div>
 </footer>
     </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
+    <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+<script>
         $(document).ready(function() {
             var iPad = window.navigator.userAgent.indexOf('iPad');
             if (iPad > -1 || $(".left-col").css("display") === "none") {
@@ -648,9 +604,18 @@
         })
     </script>
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-27792601-2', 'auto');
+ga('send', 'pageview');
 
-
+</script>
+<!-- End Google Analytics -->
 
     <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -672,10 +637,9 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#comments" onclick="load$hide()" title="查看评论"><i class="fa fa-comments-o"></i></a>
     <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
@@ -683,7 +647,7 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-            
+             title: "a.article-title, .article-more-link a", 
             
             
              categories: ".article-category a, a.tag-list-link", 
@@ -704,4 +668,3 @@ MathJax.Hub.Queue(function() {
 </script>
   </div>
 </body>
-</html>

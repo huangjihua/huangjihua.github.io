@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
         <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
     <![endif]-->
-
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Hank" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Hank">
 
 
 
@@ -46,7 +44,7 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
 
 什么是闭包闭包：函数可以记住并访问所在的词法作用域时，即使函数是在当前">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
@@ -97,7 +95,9 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -118,7 +118,7 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -138,11 +138,11 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
 
         
             <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
             <i class="fa fa-times" onclick="resetSearch()"></i>
             </form>
             <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -209,23 +209,17 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
                     </nav>
@@ -297,29 +291,23 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-作用域与闭包" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -327,37 +315,26 @@ IIFE（立即执行函数表达式）是什么？它有什么作用？
       <a href="/2016/10/20/作用域与闭包/" class="article-date">
       <time datetime="2016-10-20T03:02:25.000Z" itemprop="datePublished">2016-10-20</time>
 </a>
-
-
     </div>
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       作用域与闭包
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
+        <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
     </div>
-
-
-        
-    <div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -547,16 +524,12 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
 })();
 <span class="keyword">var</span> st = SingletonTester.getInstance({pointX:<span class="number">23</span>,pointY:<span class="number">89</span>});
 <span class="built_in">console</span>.log(st.pointX); <span class="comment">//23</span>
-</code></pre><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"><br></iframe>  
-
-
-
+</code></pre><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"><br></iframe>
       
     </div>
     
   </div>
   
-    
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2016/10/20/作用域与闭包/">作用域与闭包</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
@@ -568,7 +541,7 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -585,16 +558,14 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">
-                    javascript中new到底做了什么？又如何理解prototype？
+                    Javascript中new到底做了什么？又如何理解prototype？
                 </a>
             </div>
         
     </nav>
-
   
 </article>
-
-    <div id="toc" class="toc-article">
+<div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域与闭包"><span class="toc-number">1.</span> <span class="toc-text">作用域与闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是闭包"><span class="toc-number">1.1.</span> <span class="toc-text">什么是闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包在哪些函数中应用？"><span class="toc-number">1.2.</span> <span class="toc-text">闭包在哪些函数中应用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环和闭包"><span class="toc-number">1.3.</span> <span class="toc-text">循环和闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包的运用————模块"><span class="toc-number">1.4.</span> <span class="toc-text">闭包的运用————模块</span></a></li></ol></li></ol>
@@ -611,16 +582,14 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
     <script>
         yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
-
-    
-<div class="share">
+    <div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -629,7 +598,7 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
             <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
             <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
             <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
         </div>
         <script>
             window._bd_share_config={
@@ -642,13 +611,9 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
 
 
 
-
-
-
-
     
       <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
+    <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/20/作用域与闭包/" data-title="作用域与闭包" data-url="http://huangjihua.com.cn/2016/10/20/作用域与闭包/"></div>
     <script>
         var duoshuoQuery = {short_name:"null"};
@@ -661,16 +626,12 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
 
         
     </script>
-    
     <script> loadComment(); </script>
-
 </div>
     
 
 
-
-
-    <div class="scroll" id="post-nav-button">
+<div class="scroll" id="post-nav-button">
         
             <a href="/2016/10/22/MAC中bash与zsh的切换/" title="上一篇: MAC中bash与zsh的切换">
                 <i class="fa fa-angle-left"></i>
@@ -680,21 +641,18 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="下一篇: javascript中new到底做了什么？又如何理解prototype？">
+            <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="下一篇: Javascript中new到底做了什么？又如何理解prototype？">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
-
-
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
     <script>
         
-    </script>
-</div>
+    </script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -711,7 +669,7 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
         
             <div class="visit">
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
+                    <span id="busuanzi_container_site_pv" style="display:none">
                         <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -720,8 +678,8 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
                     <span>| </span>
                 
                 
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -730,10 +688,8 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
     </div>
 </footer>
     </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
+    <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+<script>
         $(document).ready(function() {
             var iPad = window.navigator.userAgent.indexOf('iPad');
             if (iPad > -1 || $(".left-col").css("display") === "none") {
@@ -749,9 +705,18 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
         })
     </script>
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-27792601-2', 'auto');
+ga('send', 'pageview');
 
-
+</script>
+<!-- End Google Analytics -->
 
     <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -773,10 +738,9 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#comments" onclick="load$hide()" title="查看评论"><i class="fa fa-comments-o"></i></a>
     <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
@@ -784,7 +748,7 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-            
+             title: "a.article-title, .article-more-link a", 
             
             
              categories: ".article-category a, a.tag-list-link", 
@@ -805,4 +769,3 @@ MathJax.Hub.Queue(function() {
 </script>
   </div>
 </body>
-</html>

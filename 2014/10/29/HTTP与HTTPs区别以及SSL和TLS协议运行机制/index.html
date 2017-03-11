@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
         <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
     <![endif]-->
-
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Hank" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Hank">
 
 
 
@@ -32,7 +30,7 @@
 <meta name="twitter:description" content="HTTP和HTTPS介绍
 1.http介绍超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="Huangjihua&#39;s Blog" type="application/atom+xml">
@@ -83,7 +81,9 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -104,7 +104,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -124,11 +124,11 @@
 
         
             <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
             <i class="fa fa-times" onclick="resetSearch()"></i>
             </form>
             <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -195,23 +195,17 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
                     </nav>
@@ -283,29 +277,23 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:steven.online@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:hank.online@foxmail.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/huangjihua" title="GitHub"></a>
                             
-                                <a class="fa Coding" target="_blank" href="https://coding.net/u/huangjihua" title="Coding"></a>
-                            
-                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/hank-45-19/activities" title="知乎"></a>
-                            
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/8ece324ede55/timeline" title="简书"></a>
-                            
-                                <a class="fa SegmentFault" target="_blank" href="https://segmentfault.com/u/hankblog" title="SegmentFault"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
                             
                                 <a class="fa 博客园" target="_blank" href="http:www.cnblogs.com/huangjihua" title="博客园"></a>
                             
                                 <a class="fa CSDN" target="_blank" href="http://blog.csdn.cn/huangjihua0402" title="CSDN"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/236797891" title="新浪微博"></a>
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
                         </ul>
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-HTTP与HTTPs区别以及SSL和TLS协议运行机制" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -313,37 +301,26 @@
       <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" class="article-date">
       <time datetime="2014-10-29T02:40:58.000Z" itemprop="datePublished">2014-10-29</time>
 </a>
-
-
     </div>
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       HTTP与HTTPs区别以及SSL/TLS协议运行机制
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
+        <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/http-https/">HTTP/HTTPS</a>
     </div>
-
-
-        
-    <div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li></ul>
     </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -423,13 +400,11 @@
 </code></pre><p>上面过程的前两步，又称为”握手阶段”（handshake）。</p>
 <p>参考资料：</p>
 <p>MicroSoft,<a href="https://technet.microsoft.com/zh-cn/library/cc785811(v=ws.10" target="_blank" rel="external"> SSL/TLS in Detail</a>.aspx)<br><a href="http://www.moserware.com/2009/06/first-few-milliseconds-of-https.html" target="_blank" rel="external">The First Few Milliseconds of an HTTPS Connection</a></p>
-
       
     </div>
     
   </div>
   
-    
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
@@ -441,7 +416,7 @@
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -451,26 +426,24 @@
         
             <div id="article-nav-newer" class="article-nav-title">
                 <a href="/2015/10/15/hexo搭建静态博客/">
-                    hexo搭建静态博客
+                    Hexo搭建静态博客
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2014/10/15/Linux的学习/">
-                    linux学习随笔
+                    Linux学习随笔
                 </a>
             </div>
         
     </nav>
-
   
 </article>
-
-    <div id="toc" class="toc-article">
+<div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP和HTTPS介绍"><span class="toc-number">1.</span> <span class="toc-text">HTTP和HTTPS介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-http介绍"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.http介绍</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-https介绍"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.https介绍</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTTP与HTTPS主要区别"><span class="toc-number">1.0.3.</span> <span class="toc-text">HTTP与HTTPS主要区别</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTTPS解决的问题"><span class="toc-number">1.0.4.</span> <span class="toc-text">HTTPS解决的问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SSL/TLS协议运行机制"><span class="toc-number">1.0.5.</span> <span class="toc-text">SSL/TLS协议运行机制</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP和HTTPS介绍"><span class="toc-number">1.</span> <span class="toc-text">HTTP和HTTPS介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-http介绍"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.http介绍</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-https介绍"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.https介绍</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTTP与HTTPS主要区别"><span class="toc-number">1.0.3.</span> <span class="toc-text">HTTP与HTTPS主要区别</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTTPS解决的问题"><span class="toc-number">1.0.4.</span> <span class="toc-text">HTTPS解决的问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SSL/TLS协议运行机制"><span class="toc-number">1.0.5.</span> <span class="toc-text">SSL/TLS协议运行机制</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -484,16 +457,14 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
     <script>
         yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
-
-    
-<div class="share">
+    <div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -502,7 +473,7 @@
             <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
             <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
             <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
         </div>
         <script>
             window._bd_share_config={
@@ -515,13 +486,9 @@
 
 
 
-
-
-
-
     
       <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
+    <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" data-title="HTTP与HTTPs区别以及SSL/TLS协议运行机制" data-url="http://huangjihua.com.cn/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/"></div>
     <script>
         var duoshuoQuery = {short_name:"null"};
@@ -534,18 +501,14 @@
 
         
     </script>
-    
     <script> loadComment(); </script>
-
 </div>
     
 
 
-
-
-    <div class="scroll" id="post-nav-button">
+<div class="scroll" id="post-nav-button">
         
-            <a href="/2015/10/15/hexo搭建静态博客/" title="上一篇: hexo搭建静态博客">
+            <a href="/2015/10/15/hexo搭建静态博客/" title="上一篇: Hexo搭建静态博客">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -553,21 +516,18 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/10/15/Linux的学习/" title="下一篇: linux学习随笔">
+            <a href="/2014/10/15/Linux的学习/" title="下一篇: Linux学习随笔">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
-
-
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字到底怎么理解，你真的弄懂了吗？/">Javascript中this关键字到底怎么理解，你真的弄懂了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
     <script>
         
-    </script>
-</div>
+    </script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -584,7 +544,7 @@
         
             <div class="visit">
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
+                    <span id="busuanzi_container_site_pv" style="display:none">
                         <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -593,8 +553,8 @@
                     <span>| </span>
                 
                 
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -603,10 +563,8 @@
     </div>
 </footer>
     </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
+    <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+<script>
         $(document).ready(function() {
             var iPad = window.navigator.userAgent.indexOf('iPad');
             if (iPad > -1 || $(".left-col").css("display") === "none") {
@@ -622,9 +580,18 @@
         })
     </script>
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-27792601-2', 'auto');
+ga('send', 'pageview');
 
-
+</script>
+<!-- End Google Analytics -->
 
     <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -646,10 +613,9 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#comments" onclick="load$hide()" title="查看评论"><i class="fa fa-comments-o"></i></a>
     <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
@@ -657,7 +623,7 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-            
+             title: "a.article-title, .article-more-link a", 
             
             
              categories: ".article-category a, a.tag-list-link", 
@@ -678,4 +644,3 @@ MathJax.Hub.Queue(function() {
 </script>
   </div>
 </body>
-</html>

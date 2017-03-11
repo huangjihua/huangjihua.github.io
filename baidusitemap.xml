@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://huangjihua.com.cn/2015/10/15/hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2017-03-11T09:33:52.000Z</lastmod>
+    <lastmod>2017-03-11T13:16:02.000Z</lastmod>
     <data>
         <display>
-        <title>hexo搭建静态博客</title>
+        <title>Hexo搭建静态博客</title>
         <pubTime>2015-10-15T02:40:58.000Z</pubTime>
         
         <tag>hexo</tag>
@@ -22,6 +22,7 @@
     </data>
     </url>
 
+    
     
   <url>
     <loc>http://huangjihua.com.cn/2017/01/11/S6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/</loc>
@@ -88,7 +89,7 @@
     <lastmod>2017-03-11T07:07:54.000Z</lastmod>
     <data>
         <display>
-        <title>javascript数组去重的方法</title>
+        <title>Javascript数组去重的方法</title>
         <pubTime>2016-11-14T14:40:58.000Z</pubTime>
         
         <tag>javascript</tag>
@@ -108,7 +109,7 @@
     <lastmod>2017-03-11T06:56:39.000Z</lastmod>
     <data>
         <display>
-        <title>javascript中new到底做了什么？又如何理解prototype？</title>
+        <title>Javascript中new到底做了什么？又如何理解prototype？</title>
         <pubTime>2015-11-29T02:40:58.000Z</pubTime>
         
         <tag>javascript</tag>
@@ -148,7 +149,7 @@
     <lastmod>2017-03-11T04:03:55.000Z</lastmod>
     <data>
         <display>
-        <title>Atom中linter-eslint安装以及全局设置</title>
+        <title>Atom中linter-Eslint安装以及全局设置</title>
         <pubTime>2016-10-22T03:02:25.000Z</pubTime>
         
         <tag>Atom</tag>
@@ -261,7 +262,7 @@
     <lastmod>2015-10-28T10:22:40.000Z</lastmod>
     <data>
         <display>
-        <title>linux学习随笔</title>
+        <title>Linux学习随笔</title>
         <pubTime>2014-10-15T03:40:58.000Z</pubTime>
         
         <tag>Linux</tag>

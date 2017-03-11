@@ -43,7 +43,7 @@ c">
 }
 
 c">
-<meta property="og:updated_time" content="2017-03-11T09:15:26.000Z">
+<meta property="og:updated_time" content="2017-03-11T09:23:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="S6中的关键字super该如何理解？">
 <meta name="twitter:description" content="S6中的关键字super该如何理解？有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？
@@ -105,7 +105,7 @@ c">
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
+        search: true
     }
 </script>
 
@@ -149,6 +149,13 @@ c">
         <p class="header-subtitle">填坑手艺人的随笔</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -371,7 +378,7 @@ c">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h1><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
+        <h2 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h2><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
 <pre><code> <span class="keyword">class</span> Cat { 
   <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
     <span class="keyword">this</span>.name = name;
@@ -448,7 +455,7 @@ c">
         <p><span>本文标题:</span><a href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2017-01-11, 11:23:34</p>
-        <p><span>最后更新:</span>2017-03-11, 17:15:26</p>
+        <p><span>最后更新:</span>2017-03-11, 17:23:24</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/11/S6中的关键字super该如何理解？/" title="S6中的关键字super该如何理解？">http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -478,7 +485,7 @@ c">
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#S6中的关键字super该如何理解？"><span class="toc-number">1.</span> <span class="toc-text">S6中的关键字super该如何理解？</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#S6中的关键字super该如何理解？"><span class="toc-number">1.</span> <span class="toc-text">S6中的关键字super该如何理解？</span></a></li></ol>
         
     </div>
     <style>
@@ -666,8 +673,8 @@ MathJax.Hub.Queue(function() {
             
             
             
-            
-            
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

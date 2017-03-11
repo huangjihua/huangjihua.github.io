@@ -28,7 +28,7 @@
 安装 GitHub for Windows,登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱
 新建仓库, Github Pages 的仓库名必须为your_user_name.github.ioyour_user_name 替换成你">
 <meta property="og:image" content="http://i.imgur.com/l1XCAcS.png">
-<meta property="og:updated_time" content="2017-03-11T05:53:13.000Z">
+<meta property="og:updated_time" content="2017-03-11T09:33:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo搭建静态博客">
 <meta name="twitter:description" content="安装系统环境 Windows 7 64bit
@@ -82,7 +82,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
+        search: true
     }
 </script>
 
@@ -126,6 +126,13 @@
         <p class="header-subtitle">填坑手艺人的随笔</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -984,6 +991,29 @@ Kill IE6
       [User]-(Full Text Search Docs), (Full Text Search Docs)>(Preview Doc),(Full Text Search Docs)>(Download Docs),
       [User]-(Browse Docs),(Browse Docs)>(Preview Doc), (Download Docs),
       [Site Maintainer]-(Post New Event To The Web Site), [User]-(View Events)"><br>-EOF-</p>
+<h4 id="搜索引擎收录">搜索引擎收录</h4><p>1.安装插件：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save </span>
+npm <span class="keyword">install</span> hexo-generator-baidu-sitemap <span class="comment">--save </span></span>
+</code></pre><p>2.在站点下的_config.yml文件中添加下面的内容：</p>
+<pre><code><span class="attribute">sitemap</span>:
+  <span class="attribute">path</span>: sitemap.xml
+<span class="attribute">baidusitemap</span>:
+  <span class="attribute">path</span>: baidusitemap.xml
+</code></pre><p>3.在robots.txt文件中添加以下内容(注意把域名换成你自己的)：</p>
+<pre><code><span class="string">Sitemap:</span> <span class="string">http:</span><span class="comment">//test.com/sitemap.xml</span>
+<span class="string">Sitemap:</span> <span class="string">http:</span><span class="comment">//test.com/baidusitemap.xml</span>
+</code></pre><p>4.robots.txt是蜘蛛协议，给搜索引擎爬的，可以参考下面的文件：</p>
+<pre><code>User-<span class="string">agent:</span> *
+<span class="string">Allow:</span> /
+<span class="string">Allow:</span> <span class="regexp">/archives/</span> 
+<span class="string">Disallow:</span> <span class="regexp">/js/</span>
+<span class="string">Disallow:</span> <span class="regexp">/css/</span>
+<span class="string">Disallow:</span> <span class="regexp">/fonts/</span>
+<span class="string">Disallow:</span> <span class="regexp">/vendors/</span>
+<span class="string">Disallow:</span> <span class="regexp">/fancybox/</span>
+<span class="string">Sitemap:</span> <span class="string">http:</span><span class="comment">//test.com/sitemap.xml</span>
+<span class="string">Sitemap:</span> <span class="string">http:</span><span class="comment">//test.com/baidusitemap.xml</span>
+</code></pre><p>手动创建文件，将其放在站点目录下的source目录下即可</p>
 <h4 id="添加本地图片">添加本地图片</h4><p>在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![&#8220;&#22270;&#29255;&#25551;&#36848;&#8221;](/images/&#20320;&#30340;&#22270;&#29255;&#21517;&#23383;.JPG)</span><br></pre></td></tr></table></figure></p>
 <h4 id="插入音乐">插入音乐</h4><p>比如网易云音乐，找到喜欢的歌曲，点击分享按钮，把里面的代码复制下来，直接粘贴到博文中即可</p>
 <pre><code>&lt;<span class="tag">iframe</span> frameborder=<span class="string">"no"</span> <span class="attribute">border</span>=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> <span class="attribute">width</span>=<span class="number">330</span> <span class="attribute">height</span>=<span class="number">86</span>   
@@ -1006,7 +1036,7 @@ Kill IE6
         <p><span>本文标题:</span><a href="/2015/10/15/hexo搭建静态博客/">hexo搭建静态博客</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2015-10-15, 10:40:58</p>
-        <p><span>最后更新:</span>2017-03-11, 13:53:13</p>
+        <p><span>最后更新:</span>2017-03-11, 17:33:52</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/10/15/hexo搭建静态博客/" title="hexo搭建静态博客">http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -1042,7 +1072,7 @@ Kill IE6
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装_Hexo"><span class="toc-number">1.1.</span> <span class="toc-text">安装 Hexo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局配置__config-yml"><span class="toc-number">1.2.</span> <span class="toc-text">全局配置 _config.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行使用"><span class="toc-number">1.3.</span> <span class="toc-text">命令行使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布"><span class="toc-number">2.</span> <span class="toc-text">发布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">3.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绑定域名"><span class="toc-number">3.1.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-number">4.</span> <span class="toc-text">主题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主题目录结构"><span class="toc-number">4.1.</span> <span class="toc-text">主题目录结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#主题配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">主题配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#菜单设置"><span class="toc-number">4.3.</span> <span class="toc-text">菜单设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义页面"><span class="toc-number">4.4.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#404_页面"><span class="toc-number">4.5.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多说评论系统"><span class="toc-number">4.6.</span> <span class="toc-text">多说评论系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置网站统计"><span class="toc-number">4.7.</span> <span class="toc-text">设置网站统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分享"><span class="toc-number">4.8.</span> <span class="toc-text">分享</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Swiftype_搜索"><span class="toc-number">4.9.</span> <span class="toc-text">Swiftype 搜索</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加_robots-txt"><span class="toc-number">4.10.</span> <span class="toc-text">添加 robots.txt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#给_GitHub_添加_README"><span class="toc-number">4.11.</span> <span class="toc-text">给 GitHub 添加 README</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hexo简要流程"><span class="toc-number">4.12.</span> <span class="toc-text">hexo简要流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown里的一些特殊用法"><span class="toc-number">5.</span> <span class="toc-text">markdown里的一些特殊用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制表格"><span class="toc-number">5.1.</span> <span class="toc-text">绘制表格</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制流程图"><span class="toc-number">6.</span> <span class="toc-text">绘制流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加本地图片"><span class="toc-number">7.</span> <span class="toc-text">添加本地图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入音乐"><span class="toc-number">8.</span> <span class="toc-text">插入音乐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入视频"><span class="toc-number">9.</span> <span class="toc-text">插入视频</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装_Hexo"><span class="toc-number">1.1.</span> <span class="toc-text">安装 Hexo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局配置__config-yml"><span class="toc-number">1.2.</span> <span class="toc-text">全局配置 _config.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行使用"><span class="toc-number">1.3.</span> <span class="toc-text">命令行使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布"><span class="toc-number">2.</span> <span class="toc-text">发布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">3.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绑定域名"><span class="toc-number">3.1.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-number">4.</span> <span class="toc-text">主题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主题目录结构"><span class="toc-number">4.1.</span> <span class="toc-text">主题目录结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#主题配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">主题配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#菜单设置"><span class="toc-number">4.3.</span> <span class="toc-text">菜单设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义页面"><span class="toc-number">4.4.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#404_页面"><span class="toc-number">4.5.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多说评论系统"><span class="toc-number">4.6.</span> <span class="toc-text">多说评论系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置网站统计"><span class="toc-number">4.7.</span> <span class="toc-text">设置网站统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分享"><span class="toc-number">4.8.</span> <span class="toc-text">分享</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Swiftype_搜索"><span class="toc-number">4.9.</span> <span class="toc-text">Swiftype 搜索</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加_robots-txt"><span class="toc-number">4.10.</span> <span class="toc-text">添加 robots.txt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#给_GitHub_添加_README"><span class="toc-number">4.11.</span> <span class="toc-text">给 GitHub 添加 README</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hexo简要流程"><span class="toc-number">4.12.</span> <span class="toc-text">hexo简要流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#markdown里的一些特殊用法"><span class="toc-number">5.</span> <span class="toc-text">markdown里的一些特殊用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制表格"><span class="toc-number">5.1.</span> <span class="toc-text">绘制表格</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制流程图"><span class="toc-number">6.</span> <span class="toc-text">绘制流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搜索引擎收录"><span class="toc-number">7.</span> <span class="toc-text">搜索引擎收录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加本地图片"><span class="toc-number">8.</span> <span class="toc-text">添加本地图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入音乐"><span class="toc-number">9.</span> <span class="toc-text">插入音乐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入视频"><span class="toc-number">10.</span> <span class="toc-text">插入视频</span></a></li></ol>
         
     </div>
     <style>
@@ -1232,8 +1262,8 @@ MathJax.Hub.Queue(function() {
             
             
             
-            
-            
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

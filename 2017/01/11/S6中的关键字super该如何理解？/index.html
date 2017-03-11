@@ -16,18 +16,48 @@
 
 
 <meta name="description" content="S6中的关键字super该如何理解？有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？
-Cat &amp;#123; 1  constructor(name) &amp;#123;&amp;#10;    this.name = name;&amp;#10;  &amp;#125;&amp;#10;  &amp;#10;  speak() &amp;#123;&amp;#10;    console.log(this.">
+ class Cat { 
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + &apos; makes a noise.&apos;);
+  }
+}
+
+c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="S6中的关键字super该如何理解？">
 <meta property="og:url" content="http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/index.html">
 <meta property="og:site_name" content="Huangjihua's Blog">
 <meta property="og:description" content="S6中的关键字super该如何理解？有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？
-Cat &amp;#123; 1  constructor(name) &amp;#123;&amp;#10;    this.name = name;&amp;#10;  &amp;#125;&amp;#10;  &amp;#10;  speak() &amp;#123;&amp;#10;    console.log(this.">
-<meta property="og:updated_time" content="2017-03-11T07:49:28.000Z">
+ class Cat { 
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + &apos; makes a noise.&apos;);
+  }
+}
+
+c">
+<meta property="og:updated_time" content="2017-03-11T09:15:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="S6中的关键字super该如何理解？">
 <meta name="twitter:description" content="S6中的关键字super该如何理解？有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？
-Cat &amp;#123; 1  constructor(name) &amp;#123;&amp;#10;    this.name = name;&amp;#10;  &amp;#125;&amp;#10;  &amp;#10;  speak() &amp;#123;&amp;#10;    console.log(this.">
+ class Cat { 
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + &apos; makes a noise.&apos;);
+  }
+}
+
+c">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -342,19 +372,72 @@ Cat &amp;#123; 1  constructor(name) &amp;#123;&amp;#10;    this.name = name;&amp
       
           
         <h1 id="S6中的关键字super该如何理解？">S6中的关键字super该如何理解？</h1><p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
-<figure class="highlight"><figcaption><span>Cat &#123; </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  constructor(name) &#123;&#10;    this.name = name;&#10;  &#125;&#10;  &#10;  speak() &#123;&#10;    console.log(this.name + &#39; makes a noise.&#39;);&#10;  &#125;&#10;&#125;&#10;&#10;class Lion extends Cat &#123;&#10;  constructor(name, color) &#123;&#10;     super(name); // &#36825;&#20010;super&#25351;&#21521;&#20160;&#20040;&#21602;&#10;     this.color = color;&#10;  &#125;&#10;&#10;  speak() &#123;&#10;    super.speak(); // &#36825;&#20010;super&#21448;&#25351;&#21521;&#20160;&#20040;&#65311;&#10;    console.log(this.name + &#39; roars.&#39;);&#10;  &#125;&#10;&#125;&#10;&#10;let a = &#123;&#10;   toString()&#123;&#10;      return &#39;My little pony&#39; + super.toString(); //&#36825;&#37324;&#30340;super&#21448;&#25351;&#21521;&#20160;&#20040;&#10;   &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>super关键字只能够以指定的形式出现在以下地点，否则代码会出现SyntaxError，无法通过编译：</p>
+<pre><code> <span class="keyword">class</span> Cat { 
+  <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
+    <span class="keyword">this</span>.name = name;
+  }
+
+  speak() {
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' makes a noise.'</span>);
+  }
+}
+
+<span class="keyword">class</span> Lion extends Cat {
+  <span class="constructor"><span class="keyword">constructor</span>(name, color) </span>{
+     <span class="keyword">super</span>(name); <span class="comment">// 这个super指向什么呢</span>
+     <span class="keyword">this</span>.color = color;
+  }
+
+  speak() {
+    <span class="keyword">super</span>.speak(); <span class="comment">// 这个super又指向什么？</span>
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' roars.'</span>);
+  }
+}
+
+<span class="keyword">let</span> a = {
+   toString(){
+      <span class="keyword">return</span> <span class="string">'My little pony'</span> + <span class="keyword">super</span>.toString(); <span class="comment">//这里的super又指向什么</span>
+   }
+}
+</code></pre><p>super关键字只能够以指定的形式出现在以下地点，否则代码会出现SyntaxError，无法通过编译：</p>
 <ol>
-<li>class语句块内的constructor函数的定义内，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;                              &#10;    constructor(name)&#123;                &#10;        this.name=name;               &#10;    &#125;                                 &#10;    getName()&#123;                        &#10;        return this.name;             &#10;    &#125;                                 &#10;&#125;                                     &#10;                                      &#10;class B extends A &#123;                   &#10;    constructor(name,age)&#123;            &#10;        super(name);    &#10; //&#27880;&#24847;&#65306;&#22914;&#26524;super&#19981;&#26159;&#22312;&#31532;&#19968;&#20010;this&#35843;&#29992;&#20043;&#21069;&#65292;&#23601;&#20250;&#25253;&#65306;ReferenceError: this is not defined               &#10;        this.age = age;               &#10;    &#125;                                 &#10;    getAge() &#123;                        &#10;        return this.age;              &#10;    &#125;                                 &#10;&#125;                                     &#10;                                      &#10;var b = new B(&#39;hank&#39;,50);             &#10;console.log(b.getName());  // hank    &#10;console.log(b.getAge());   // 50</span><br></pre></td></tr></table></figure>
-</li>
+<li><p>class语句块内的constructor函数的定义内，例如：</p>
+<pre><code><span class="keyword">class</span> A{                              
+    <span class="constructor"><span class="keyword">constructor</span>(name)</span>{                
+        <span class="keyword">this</span>.name=name;               
+    }                                 
+    getName(){                        
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;             
+    }                                 
+}                                     
+
+<span class="keyword">class</span> B extends A {                   
+    <span class="constructor"><span class="keyword">constructor</span>(name,age)</span>{            
+        <span class="keyword">super</span>(name);    
+ <span class="comment">//注意：如果super不是在第一个this调用之前，就会报：ReferenceError: this is not defined               </span>
+        <span class="keyword">this</span>.age = age;               
+    }                                 
+    getAge() {                        
+        <span class="keyword">return</span> <span class="keyword">this</span>.age;              
+    }                                 
+}                                     
+
+<span class="keyword">var</span> b = <span class="keyword">new</span> B(<span class="string">'hank'</span>,<span class="number">50</span>);             
+<span class="built_in">console</span>.log(b.getName());  <span class="comment">// hank    </span>
+<span class="built_in">console</span>.log(b.getAge());   <span class="comment">// 50      </span>
+</code></pre></li>
 </ol>
 <p>建立class时,当且仅当“使用了<code>extends</code>关键字并指定了<code>constructor</code>函数”，<code>super</code>关键字必须以<code>super([arg1,....])</code>的形式使用一次。此时<code>super([arg1,....])</code>相当于创建了一个<code>对象</code>，且以该对象为<code>context</code>调用<code>extends</code>关键字指示的函数（以new的形式），随后这个<code>对象</code>成为<code>constructor</code>函数的<code>context</code>。因此<code>super([arg1,....)</code>必须出现在<code>constructor</code>函数内的第一个<code>this</code>关键字之前，否则会报<code>ReferenceError: this is not defined</code>。<br> 也可以以super.IdentifierName的形式出现（这就与是否使用了<code>extends</code>关键字无关了）。 </p>
 <ul>
 <li><code>super.IdentifierName</code>作为<code>getter</code>使用时，表示函数<code>B</code>的<code>prototype</code>属性对象的<code>[[prototype]]</code>; </li>
 <li><code>super.IdentifierName</code>作为<code>setter</code>使用时， <code>super</code>表示<code>this</code>;           </li>
 </ul>
-<p>2.<code>class</code>语句块哪的<code>static</code>函数的定义内，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class B extends A &#123;&#10;&#10;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.<code>class</code>语句块哪的<code>static</code>函数的定义内，例如：</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">A</span> {</span>
 
+
+}
+</code></pre>
       
     </div>
     
@@ -365,7 +448,7 @@ Cat &amp;#123; 1  constructor(name) &amp;#123;&amp;#10;    this.name = name;&amp
         <p><span>本文标题:</span><a href="/2017/01/11/S6中的关键字super该如何理解？/">S6中的关键字super该如何理解？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2017-01-11, 11:23:34</p>
-        <p><span>最后更新:</span>2017-03-11, 15:49:28</p>
+        <p><span>最后更新:</span>2017-03-11, 17:15:26</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/11/S6中的关键字super该如何理解？/" title="S6中的关键字super该如何理解？">http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2017/01/11/S6中的关键字super该如何理解？/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

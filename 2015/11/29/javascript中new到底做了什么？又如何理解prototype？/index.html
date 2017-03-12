@@ -34,7 +34,7 @@ var p={}; 也就是说，初始化一个对象p
 p.proto=Person.prototype;
 Person.call(p);也就是说">
 <meta property="og:image" content="http://huangjihua.com.cn/images/joo_3.png">
-<meta property="og:updated_time" content="2017-03-11T14:14:01.000Z">
+<meta property="og:updated_time" content="2017-03-12T13:10:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中new到底做了什么？又如何理解prototype？">
 <meta name="twitter:description" content="说到prototype就得先说说new了。我们先看看这样一段代码：
@@ -97,9 +97,7 @@ Person.call(p);也就是说">
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -232,7 +230,7 @@ Person.call(p);也就是说">
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compass/">Compass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext3/">SublimeText3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash-zsh/">bash/zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -242,6 +240,8 @@ Person.call(p);也就是说">
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
                     </div>
                 </section>
@@ -316,50 +316,52 @@ Person.call(p);也就是说">
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-javascript中new到底做了什么？又如何理解prototype？" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
-      <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" class="article-date">
+        <a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" class="article-date">
       <time datetime="2015-11-29T02:40:58.000Z" itemprop="datePublished">2015-11-29</time>
 </a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy">
+        
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">
       Javascript中new到底做了什么？又如何理解prototype？
     </h1>
-      </header>
-      
-      <div class="article-info article-info-post">
-        <div class="article-category tagcloud">
+        </header>
+        
+        <div class="article-info article-info-post">
+            <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
     </div>
-        <div class="article-tag tagcloud">
+            <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
+            <div class="clearfix"></div>
+        </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            <p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
 <span class="keyword">var</span> p = <span class="keyword">new</span> Person();
 </code></pre><p> 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：</p>
 <ol>
 <li>var p={}; 也就是说，初始化一个对象p</li>
 <li>p.<strong>proto</strong>=Person.prototype;</li>
-<li>Person.call(p);也就是说构造p，也可以称之为初始化p。</li>
-</ol>
+<li><p>Person.call(p);也就是说构造p，也可以称之为初始化p。</p>
+<a id="more"></a>
 <p>关键在于第二步，我们来证明一下,如果这段代码会返回true。说明我们步骤2的正确：</p>
-<pre><code><span class="built_in">console</span>.log(p.__proto__ === Person.prototype); <span class="regexp">//</span>结果果然是<span class="literal">true</span>
-</code></pre><h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
+<p> console.log(p.<strong>proto</strong> === Person.prototype); //结果果然是true</p>
+</li>
+</ol>
+<h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
 <p>   按照标准，<strong>proto</strong>是不对外公开的，也就是说是个私有属性，但是Firefox的引擎将他暴露了出来成为了一个共有的属性，我们可以对外访问和设置。</p>
 <p>好，概念说清了，让我们看一下下面这些代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
@@ -416,16 +418,16 @@ Base.call(obj)<span class="comment">;</span>
     <span class="keyword">return</span> <span class="keyword">this</span>.id;
 }
 </code></pre><p>那么当我们使用new创建一个新对象的时候，根据<strong>proto</strong>的特性，toString这个方法也可以做新对象的方法被访问到。于是我们看到了：<br>构造子中，我们来设置‘类’的成员变量（例如：例子中的id），构造子对象prototype中我们来设置‘类’的公共方法。于是通过函数对象和Javascript特有的<strong>proto</strong>与prototype成员及new操作符，模拟出类和类实例化的效果。</p>
-      
+            
+        </div>
+        
     </div>
     
-  </div>
-  
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2015-11-29, 10:40:58</p>
-        <p><span>最后更新:</span>2017-03-11, 22:14:01</p>
+        <p><span>最后更新:</span>2017-03-12, 21:10:47</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" title="Javascript中new到底做了什么？又如何理解prototype？">http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -454,7 +456,7 @@ Base.call(obj)<span class="comment">;</span>
             </div>
         
     </nav>
-  
+    
 </article>
 <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
@@ -480,7 +482,7 @@ Base.call(obj)<span class="comment">;</span>
     </script>
 
 
-    <div class="share">
+<div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -502,8 +504,8 @@ Base.call(obj)<span class="comment">;</span>
 
 
 
-    
-      <div class="duoshuo" id="comments">
+
+<div class="duoshuo" id="comments">
     <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2015/11/29/javascript中new到底做了什么？又如何理解prototype？/" data-title="Javascript中new到底做了什么？又如何理解prototype？" data-url="http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/"></div>
     <script>
@@ -516,10 +518,47 @@ Base.call(obj)<span class="comment">;</span>
         }
 
         
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2015/11/29/javascript中new到底做了什么？又如何理解prototype？/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
     </script>
-    <script> loadComment(); </script>
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
 </div>
-    
+
 
 
 <div class="scroll" id="post-nav-button">
@@ -541,9 +580,9 @@ Base.call(obj)<span class="comment">;</span>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ES6中的关键字super该如何理解？/">ES6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字理解，你懂了？/">Javascript中this关键字理解，你懂了？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
-    <script>
-        
-    </script></div>
+<script>
+    
+</script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -553,6 +592,8 @@ Base.call(obj)<span class="comment">;</span>
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                    Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a>
                 
                 
             </div>
@@ -639,11 +680,11 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-             title: "a.article-title, .article-more-link a", 
+            
             
             
              categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
+            
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

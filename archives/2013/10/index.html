@@ -74,9 +74,7 @@
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -209,7 +207,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compass/">Compass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext3/">SublimeText3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash-zsh/">bash/zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -219,6 +217,8 @@
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
                     </div>
                 </section>
@@ -386,6 +386,8 @@
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
                 
+                    Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a>
+                
                 
             </div>
         </div>
@@ -471,11 +473,11 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-             title: "a.article-title, .article-more-link a", 
+            
             
             
              categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
+            
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

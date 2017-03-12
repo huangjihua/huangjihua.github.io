@@ -33,7 +33,7 @@
        alert(&quot;HTML添加事件处理&quot;);
    }
 &amp;lt;">
-<meta property="og:updated_time" content="2015-10-19T10:35:00.000Z">
+<meta property="og:updated_time" content="2017-03-12T13:10:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM事件探秘(二)">
 <meta name="twitter:description" content="二、使用事件处理程序1. HTML事件处理程序即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
@@ -96,9 +96,7 @@
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -231,7 +229,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compass/">Compass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext3/">SublimeText3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash-zsh/">bash/zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -241,6 +239,8 @@
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
                     </div>
                 </section>
@@ -315,39 +315,39 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-DOM事件探秘二" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
-      <a href="/2013/10/12/DOM事件探秘二/" class="article-date">
+        <a href="/2013/10/12/DOM事件探秘二/" class="article-date">
       <time datetime="2013-10-12T09:11:02.000Z" itemprop="datePublished">2013-10-12</time>
 </a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy">
+        
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">
       DOM事件探秘(二)
     </h1>
-      </header>
-      
-      <div class="article-info article-info-post">
-        <div class="article-category tagcloud">
+        </header>
+        
+        <div class="article-info article-info-post">
+            <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
     </div>
-        <div class="article-tag tagcloud">
+            <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="二、使用事件处理程序">二、使用事件处理程序</h4><h5 id="1-_HTML事件处理程序">1. HTML事件处理程序</h5><pre><code>即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
+            <div class="clearfix"></div>
+        </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            <h4 id="二、使用事件处理程序">二、使用事件处理程序</h4><h5 id="1-_HTML事件处理程序">1. HTML事件处理程序</h5><pre><code>即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
 
 <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn1"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">onclick</span>=<span class="value">"showmsg();"</span>&gt;</span>
 <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript">
@@ -356,9 +356,9 @@
    }
 </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 </code></pre><blockquote>
-<p>从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。</p>
-</blockquote>
+<p>从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。<br><a id="more"></a></p>
 <h5 id="2-_DOM0级事件处理程序">2. DOM0级事件处理程序</h5><p>即为指定对象添加事件处理，看下面的一段代码</p>
+</blockquote>
 <pre><code><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn2"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span>
 <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
     <span class="comment">//DOM0级事件</span>
@@ -397,16 +397,16 @@
 <p>怎么处理事件处理程序的浏览器兼容性？<br>        //跨浏览器事件处理程序<br>         var  eventUtil={<br>                    //添加句柄– 给元素添加事件<br>                    addHandler:function(element,type,handler){<br>                        if(element.addEventListener){<br>                            element.addEventListener(type,handler,false);//DOM2级添加事件处理程序<br>                        }else if(element.attachEvent){<br>                            element.attachEvent(‘on’+type,handler);//IE添加事件处理程序<br>                        }else{<br>                            element[‘on’+type]=handler;//DOM0级添加事件<br>                            //完全等价element.onclick===element[‘on’+type]<br>                        }<br>                    },<br>                    //删除句柄- 给元素删除事件<br>                    removeHandler:function(element,type,handler){<br>                        if(element.removeEventListener){<br>                            element.removeEventListener(type,handler,false);//DOM2级删除事件处理程序<br>                        }else if(element.detachEvent){<br>                            element.detachEvent(‘on’+type,handler);<br>                        }else{<br>                            element[‘on’+type] =null;<br>                        }<br>                    }<br>               }</p>
 </blockquote>
 <p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
-      
+            
+        </div>
+        
     </div>
     
-  </div>
-  
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2013-10-12, 17:11:02</p>
-        <p><span>最后更新:</span>2015-10-19, 18:35:00</p>
+        <p><span>最后更新:</span>2017-03-12, 21:10:01</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2013/10/12/DOM事件探秘二/" title="DOM事件探秘(二)">http://huangjihua.com.cn/2013/10/12/DOM事件探秘二/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2013/10/12/DOM事件探秘二/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -435,7 +435,7 @@
             </div>
         
     </nav>
-  
+    
 </article>
 <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
@@ -461,7 +461,7 @@
     </script>
 
 
-    <div class="share">
+<div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -483,8 +483,8 @@
 
 
 
-    
-      <div class="duoshuo" id="comments">
+
+<div class="duoshuo" id="comments">
     <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2013/10/12/DOM事件探秘二/" data-title="DOM事件探秘(二)" data-url="http://huangjihua.com.cn/2013/10/12/DOM事件探秘二/"></div>
     <script>
@@ -497,10 +497,47 @@
         }
 
         
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2013/10/12/DOM事件探秘二/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
     </script>
-    <script> loadComment(); </script>
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
 </div>
-    
+
 
 
 <div class="scroll" id="post-nav-button">
@@ -522,9 +559,9 @@
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ES6中的关键字super该如何理解？/">ES6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字理解，你懂了？/">Javascript中this关键字理解，你懂了？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
-    <script>
-        
-    </script></div>
+<script>
+    
+</script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -534,6 +571,8 @@
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                    Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a>
                 
                 
             </div>
@@ -620,11 +659,11 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-             title: "a.article-title, .article-more-link a", 
+            
             
             
              categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
+            
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

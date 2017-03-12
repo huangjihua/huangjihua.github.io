@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg">
 <meta property="og:image" content="http://www.nowamagic.net/librarys/images/201212/2012_12_20_01.png">
 <meta property="og:image" content="http://image72.360doc.com/DownloadImg/2014/05/1415/41600550_1.png">
-<meta property="og:updated_time" content="2017-03-11T04:56:55.000Z">
+<meta property="og:updated_time" content="2017-03-12T13:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP与HTTPs区别以及SSL/TLS协议运行机制">
 <meta name="twitter:description" content="HTTP和HTTPS介绍
@@ -81,9 +81,7 @@
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -216,7 +214,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compass/">Compass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext3/">SublimeText3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash-zsh/">bash/zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -226,6 +224,8 @@
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
                     </div>
                 </section>
@@ -300,39 +300,39 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-HTTP与HTTPs区别以及SSL和TLS协议运行机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
-      <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" class="article-date">
+        <a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" class="article-date">
       <time datetime="2014-10-29T02:40:58.000Z" itemprop="datePublished">2014-10-29</time>
 </a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy">
+        
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">
       HTTP与HTTPs区别以及SSL/TLS协议运行机制
     </h1>
-      </header>
-      
-      <div class="article-info article-info-post">
-        <div class="article-category tagcloud">
+        </header>
+        
+        <div class="article-info article-info-post">
+            <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/http-https/">HTTP/HTTPS</a>
     </div>
-        <div class="article-tag tagcloud">
+            <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li></ul>
     </div>
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="HTTP和HTTPS介绍">HTTP和HTTPS介绍</h4><p><img src="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg" alt=""></p>
+            <div class="clearfix"></div>
+        </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            <h4 id="HTTP和HTTPS介绍">HTTP和HTTPS介绍</h4><p><img src="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg" alt=""></p>
 <h6 id="1-http介绍">1.http介绍</h6><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本传输协议标准架构的发展根基。Ted Nelson组织协调万维网协会（World Wide Web Consortium）和互联网工程工作小组（Internet Engineering Task Force ）共同合作研究，最终发布了一系列的RFC，其中著名的RFC 2616定义了HTTP 1.1。</p>
 <blockquote>
 <p>1.0与1.1版本的主要区别</p>
@@ -340,7 +340,7 @@
 <pre><code><span class="number">1</span>，HTTP/<span class="number">1.0</span>协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；
 <span class="number">2</span>，HTTP/<span class="number">1.1</span>默认使用持久连接(然而,HTTP/<span class="number">1.1</span>协议的客户机和服务器可以配置成使用非持久连接)。
    在持久连接下,不必为每个Web对象的传送建立一个新的连接,一个连接中可以传输多个对象!
-</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a></p>
+</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a><br><a id="more"></a></p>
 <h6 id="2-https介绍">2.https介绍</h6><p><code>HTTPS</code>（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。</p>
 <p>HTTPS工作图解：<br><img src="http://www.nowamagic.net/librarys/images/201212/2012_12_20_01.png" alt=""> <img src="http://image72.360doc.com/DownloadImg/2014/05/1415/41600550_1.png" alt="时序图"></p>
 <h6 id="HTTP与HTTPS主要区别">HTTP与HTTPS主要区别</h6><blockquote>
@@ -404,16 +404,16 @@
 </code></pre><p>上面过程的前两步，又称为”握手阶段”（handshake）。</p>
 <p>参考资料：</p>
 <p>MicroSoft,<a href="https://technet.microsoft.com/zh-cn/library/cc785811(v=ws.10" target="_blank" rel="external"> SSL/TLS in Detail</a>.aspx)<br><a href="http://www.moserware.com/2009/06/first-few-milliseconds-of-https.html" target="_blank" rel="external">The First Few Milliseconds of an HTTPS Connection</a></p>
-      
+            
+        </div>
+        
     </div>
     
-  </div>
-  
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2014-10-29, 10:40:58</p>
-        <p><span>最后更新:</span>2017-03-11, 12:56:55</p>
+        <p><span>最后更新:</span>2017-03-12, 21:10:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" title="HTTP与HTTPs区别以及SSL/TLS协议运行机制">http://huangjihua.com.cn/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -442,7 +442,7 @@
             </div>
         
     </nav>
-  
+    
 </article>
 <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
@@ -468,7 +468,7 @@
     </script>
 
 
-    <div class="share">
+<div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -490,8 +490,8 @@
 
 
 
-    
-      <div class="duoshuo" id="comments">
+
+<div class="duoshuo" id="comments">
     <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/" data-title="HTTP与HTTPs区别以及SSL/TLS协议运行机制" data-url="http://huangjihua.com.cn/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/"></div>
     <script>
@@ -504,10 +504,47 @@
         }
 
         
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
     </script>
-    <script> loadComment(); </script>
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
 </div>
-    
+
 
 
 <div class="scroll" id="post-nav-button">
@@ -529,9 +566,9 @@
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ES6中的关键字super该如何理解？/">ES6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字理解，你懂了？/">Javascript中this关键字理解，你懂了？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
-    <script>
-        
-    </script></div>
+<script>
+    
+</script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -541,6 +578,8 @@
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                    Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a>
                 
                 
             </div>
@@ -627,11 +666,11 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-             title: "a.article-title, .article-more-link a", 
+            
             
             
              categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
+            
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             

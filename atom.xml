@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://huangjihua.com.cn/"/>
-  <updated>2017-03-11T15:08:54.000Z</updated>
+  <updated>2017-03-12T16:21:26.000Z</updated>
   <id>http://huangjihua.com.cn/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://huangjihua.com.cn/2017/01/11/ES6%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97super%E8%AF%A5%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9F/"/>
     <id>http://huangjihua.com.cn/2017/01/11/ES6中的关键字super该如何理解？/</id>
     <published>2017-01-11T03:23:34.000Z</published>
-    <updated>2017-03-11T15:08:54.000Z</updated>
+    <updated>2017-03-12T16:21:26.000Z</updated>
     
-    <content type="html"><![CDATA[<p>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
+    <content type="html"><![CDATA[<p>   说起ES6的继承和<code>super</code>的用法大家都不会陌生，可一问到<code>super</code>到底是什么，很多人就很模糊了，比如<code>java</code><br>中的<code>super</code>和<code>this</code>的<code>不同点</code>包括： <code>super()</code>主要是对父类构造函数的调用，<code>this()</code>是对重载构造<br>函数的调用；<code>super()</code>主要是在继承了父类的子类的构造函数中使用，是在不同类中的使用；<code>this()</code>主要是<br>在同一类的不同构造函数中的使用 ；<code>相同</code>的是二者都必须在构造函数的第一行进行调用，否则就报错。但是在<br><code>ES6</code>中，<code>super</code>是一个特殊的语法，而且它比this还要特殊，很多用法上限制。<br><a id="more"></a><br>有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？</p>
 <pre><code> <span class="keyword">class</span> Cat { 
   <span class="constructor"><span class="keyword">constructor</span>(name) </span>{
     <span class="keyword">this</span>.name = name;
@@ -84,17 +84,44 @@
 <li><code>super.IdentifierName</code>作为<code>setter</code>使用时， <code>super</code>表示<code>this</code>;           </li>
 </ul>
 <p>2.<code>class</code>语句块哪的<code>static</code>函数的定义内，例如：</p>
-<pre><code><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">A</span> {</span>
-
-
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">A</span> {</span>
+    static foo() {                        
+     <span class="keyword">super</span>.say();                      
+     console.log(<span class="keyword">super</span>.say === <span class="type">A</span>.say); 
+      }                                       
 }
-</code></pre>]]></content>
+<span class="keyword">var</span> c= <span class="keyword">new</span> <span class="type">C</span>();  
+</code></pre><p>必须以<code>super.IdentifierName</code>的形式出现。<code>super.IdentifierName</code>作为<code>getter</code>时，super表示该函数B的[[prototype]]（本例中C的[[prototype]]即A）。若通过super.IdentifierName()来调用函数，则此函数的相当于通过.call(this)调用。super.IdentifierName作为<code>setter</code>使用时，super表示this。</p>
+<p>3.class语句块内的一般方法（非static或constructor函数）的定义内，例如：</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">A</span> {</span>
+    foo() {                        
+     <span class="keyword">super</span>.say();                      
+     console.log(<span class="keyword">super</span>.say === <span class="type">A</span>.say); 
+      }                                       
+}
+<span class="keyword">var</span> <span class="type">D</span>= <span class="keyword">new</span> <span class="type">D</span>();  
+</code></pre><p>  必须以super.IdentifierName作为<code>getter</code>时，<code>super</code>表示该函数D的<code>prototype</code>属性对象的[[prototype]]。同样，若通过super.IdentifierName()来调用函数，则此函数的相当于通过.call(this)调用；super.IdentifierName作为setter使用时，super表示this。</p>
+<p>4.在对象字面量的方法的定义内，例如：</p>
+<pre><code><span class="keyword">let</span> a = {
+    foo() {
+        <span class="keyword">super</span>.test()
+    }
+}
+
+<span class="keyword">let</span> b = {
+    test() {
+        <span class="built_in">console</span>.log(<span class="string">"I'm hank"</span>)
+    }
+}
+
+<span class="built_in">Object</span>.setPrototypeOf(a, b);
+a.foo(); <span class="comment">// "I'm hank"</span>
+</code></pre><p>必须以super.IdentifierName的形式出现，super.IdentifierName作为<code>getter</code>时，<code>super</code>表示该对象的[[prototype]]。同样，若通过super.IdentifierName()来调用函数，则此函数的相当于通过.call(this)调用。super.IdentifierName作为<code>setter</code>使用时，<code>super</code>表示<code>this</code>。</p>
+<p>以上都是在node6.2下测试</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;有时能被当作函数来调用，有时又能当作对象来访问，实在让人糊涂…那么怎么描述这一关键字比较容易理解呢？&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; Cat { 
-  &lt;span class=&quot;constructor&quot;&gt;
+      &lt;p&gt;   说起ES6的继承和&lt;code&gt;super&lt;/code&gt;的用法大家都不会陌生，可一问到&lt;code&gt;super&lt;/code&gt;到底是什么，很多人就很模糊了，比如&lt;code&gt;java&lt;/code&gt;&lt;br&gt;中的&lt;code&gt;super&lt;/code&gt;和&lt;code&gt;this&lt;/code&gt;的&lt;code&gt;不同点&lt;/code&gt;包括： &lt;code&gt;super()&lt;/code&gt;主要是对父类构造函数的调用，&lt;code&gt;this()&lt;/code&gt;是对重载构造&lt;br&gt;函数的调用；&lt;code&gt;super()&lt;/code&gt;主要是在继承了父类的子类的构造函数中使用，是在不同类中的使用；&lt;code&gt;this()&lt;/code&gt;主要是&lt;br&gt;在同一类的不同构造函数中的使用 ；&lt;code&gt;相同&lt;/code&gt;的是二者都必须在构造函数的第一行进行调用，否则就报错。但是在&lt;br&gt;&lt;code&gt;ES6&lt;/code&gt;中，&lt;code&gt;super&lt;/code&gt;是一个特殊的语法，而且它比this还要特殊，很多用法上限制。&lt;br&gt;
     
     </summary>
     
@@ -110,7 +137,7 @@
     <link href="http://huangjihua.com.cn/2016/11/29/Javascript%E4%B8%ADthis%E5%85%B3%E9%94%AE%E5%AD%97%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BD%A0%E6%87%82%E4%BA%86%EF%BC%9F/"/>
     <id>http://huangjihua.com.cn/2016/11/29/Javascript中this关键字理解，你懂了？/</id>
     <published>2016-11-29T13:40:58.000Z</published>
-    <updated>2017-03-11T14:13:27.000Z</updated>
+    <updated>2017-03-12T13:11:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>其实这个问题在面试中基本都会问到，我想大多数童鞋们都经历过吧，你是否答对了呢？</p>
 <h2 id="this指向哪里呢？">this指向哪里呢？</h2><p> 在Javascript中，和大多数面向对象的编程语言一样，这是一个特殊的关键字，它在方法中用于引用<br><code>被调用方法</code>的对象。</p>
@@ -119,9 +146,8 @@
 </blockquote>
 <p>值得注意，this在javascript中和执行环境有关，而非声明环境。</p>
 <blockquote>
-<p>The this keyword is relative to the execution context, not the declaration context.</p>
+<p>The this keyword is relative to the execution context, not the declaration context.<br><a id="more"></a><br>首先，要搞清楚js里函数的几种调用方式：</p>
 </blockquote>
-<p>首先，要搞清楚js里函数的几种调用方式：</p>
 <ul>
 <li>普通函数</li>
 <li>作为方法来调用</li>
@@ -416,7 +442,13 @@ foo( <span class="number">1</span>,<span class="number">2</span>,<span class="nu
     <summary type="html">
     
       &lt;p&gt;其实这个问题在面试中基本都会问到，我想大多数童鞋们都经历过吧，你是否答对了呢？&lt;/p&gt;
-&lt;h2 id=&quot;this指向哪里呢？&quot;&gt;this指向哪里呢？&lt;/h2&gt;&lt;p&gt; 在Javascript中，和大多数面向对象的编程语言一样，这是一个特殊的关键字，它在方法中用于引用&lt;br&gt;&lt;
+&lt;h2 id=&quot;this指向哪里呢？&quot;&gt;this指向哪里呢？&lt;/h2&gt;&lt;p&gt; 在Javascript中，和大多数面向对象的编程语言一样，这是一个特殊的关键字，它在方法中用于引用&lt;br&gt;&lt;code&gt;被调用方法&lt;/code&gt;的对象。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In JavaScript, as in most object-oriented programming languages, this is a special keyword that is used within methods to refer to the object on which a method is being invoked.&lt;br&gt;                                   ——jQuery Fundamentals (Chapter 2), by Rebecca Murphey&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;值得注意，this在javascript中和执行环境有关，而非声明环境。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The this keyword is relative to the execution context, not the declaration context.&lt;br&gt;
     
     </summary>
     
@@ -432,7 +464,7 @@ foo( <span class="number">1</span>,<span class="number">2</span>,<span class="nu
     <link href="http://huangjihua.com.cn/2016/11/14/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>http://huangjihua.com.cn/2016/11/14/javascript数组去重的方法/</id>
     <published>2016-11-14T14:40:58.000Z</published>
-    <updated>2017-03-11T14:13:49.000Z</updated>
+    <updated>2017-03-12T13:17:20.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>这个是个经常用来面试的题目（别小看这个题）考点有二：</strong></p>
 <ol>
@@ -441,7 +473,7 @@ foo( <span class="number">1</span>,<span class="number">2</span>,<span class="nu
 <pre><code>var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="string">'2'</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="string">'2'</span>,{a:<span class="number">1</span>},{b:<span class="number">1</span>,c:<span class="number">2</span>},{a:<span class="number">1</span>}];
 </code></pre></li>
 </ol>
-<p>下面的方法测试结果都是对arr数组进行测试的。</p>
+<p>下面的方法测试结果都是对arr数组进行测试的。<br><a id="more"></a></p>
 <h2 id="第一反应方案———扩展方法实现">第一反应方案———扩展方法实现</h2><ol>
 <li><p>利用indexOf判断旧数组</p>
 <pre><code> <span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
@@ -535,12 +567,18 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
       &lt;p&gt;&lt;strong&gt;这个是个经常用来面试的题目（别小看这个题）考点有二：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;正确性&lt;/code&gt;：考虑到javascript经常要在浏览器上运行，在不同浏览器环境下要保证一个函数的正确性可不是件简单的事情。&lt;/li&gt;
-&lt;li
+&lt;li&gt;&lt;p&gt;&lt;code&gt;高性能&lt;/code&gt;：虽然大部分情况下javascript语言本身（狭义范畴，不包含DOM等延拓）不会导致性能问题，但是很不幸这是道考题，因此面试官还是会把性能作为一个考点。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var arr = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;,{a:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;},{b:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,c:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;},{a:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;}];
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面的方法测试结果都是对arr数组进行测试的。&lt;br&gt;
     
     </summary>
     
       <category term="javascript" scheme="http://huangjihua.com.cn/categories/javascript/"/>
     
+    
+      <category term="Array" scheme="http://huangjihua.com.cn/tags/array/"/>
     
       <category term="javascript" scheme="http://huangjihua.com.cn/tags/javascript/"/>
     
@@ -551,7 +589,7 @@ console.<span class="built_in">log</span>(s);<span class="comment">//Set { 1, 2,
     <link href="http://huangjihua.com.cn/2016/10/22/MAC%E4%B8%ADbash%E4%B8%8Ezsh%E7%9A%84%E5%88%87%E6%8D%A2/"/>
     <id>http://huangjihua.com.cn/2016/10/22/MAC中bash与zsh的切换/</id>
     <published>2016-10-22T03:02:25.000Z</published>
-    <updated>2017-03-11T14:13:38.000Z</updated>
+    <updated>2017-03-12T13:20:55.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="切换命令">切换命令</h4><ul>
 <li><p>切换bash</p>
@@ -605,6 +643,8 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     
       <category term="Mac" scheme="http://huangjihua.com.cn/tags/mac/"/>
     
+      <category term="bash/zsh" scheme="http://huangjihua.com.cn/tags/bash-zsh/"/>
+    
   </entry>
   
   <entry>
@@ -612,10 +652,9 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     <link href="http://huangjihua.com.cn/2016/10/22/Atom%E4%B8%ADlinter-eslint%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE/"/>
     <id>http://huangjihua.com.cn/2016/10/22/Atom中linter-eslint安装以及全局设置/</id>
     <published>2016-10-22T03:02:25.000Z</published>
-    <updated>2017-03-11T14:14:45.000Z</updated>
+    <updated>2017-03-12T13:08:40.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Atom中linter-eslint安装以及全局设置">Atom中linter-eslint安装以及全局设置</h2><p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。</p>
-<p>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
+    <content type="html"><![CDATA[<p>   <a href="http://eslint.org/" target="_blank" rel="external">ESLint</a>是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。<br>    <a id="more"></a><br>首先，在atom中安装linter插件和linter-eslint插件。安装完成之后，linter-eslint的缺省设置有2个地方需要修改：</p>
 <p>把<code>Disable when no ESLint config is found</code>的对钩去掉。这个选项的意思是说：如果你的javascript项目文件夹中没有.eslintrc这样的配置文件的话，那么ESLint就不起作用。在这里，我们要设置为全局lint，不需要在每个javascript文件夹中包含.eslintrc文件，所以要把它去掉，否则由于我们的项目文件夹中没有.eslintrc文件，ESLint会不起作用。<br>把<code>Use global ESLint installation</code>的对钩勾上。因为我们使用的是全局的ESLint安装包。<br>下面，开始安装ESLint：</p>
 <pre><code>npm <span class="operator"><span class="keyword">install</span> eslint -<span class="keyword">g</span></span>
 </code></pre><p>ESLint是通过npm安装的，这里的-g选项代表全局，也就是说它不会把ESLint的可执行文件安装在你的项目文件夹或者说当前文件夹下。如果你没有设置这个-g选项的话，它会在你当前文件夹下安装ESLint可执行文件，那样就不是全局安装了。后面我们所有安装包都要用使用这个-g选项<br>eslint -v<br>安装完成之后，你可以先执行一下eslint -v这个命令来看一下eslint是否已经安装成功了，如果没有的话，你需要反复检查，直到确保eslint安装已经成功为止。</p>
@@ -654,7 +693,7 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Atom中linter-eslint安装以及全局设置&quot;&gt;Atom中linter-eslint安装以及全局设置&lt;/h2&gt;&lt;p&gt;   &lt;a href=&quot;http://eslint.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ESLint&lt;
+      &lt;p&gt;   &lt;a href=&quot;http://eslint.org/&quot;&gt;ESLint&lt;/a&gt;是一个Javascript静态检查工具，它可以帮你养成良好的编程习惯，使你的javascript代码达到国际化的水准。ESLint是所有Javascrpt静态检查工具里最晚诞生的一个，之前还曾经有过JSLint以及JSHint等工具，但JSLint和JSHint都是用的一套标准，在目前这个前端技术飞速发展的时代已经显得有点落伍。ESLint的好处是既提供了国际大厂的标准，同时又给了你自定义标准的可能性。ESLint的推荐设置方式是按项目设置，但是如果我们有很多个不同的javascript项目的话，一个一个去设置未免太麻烦，所以在这里介绍的是全局设置方法，一次设置，所有项目全部采用同一标准。&lt;br&gt;
     
     </summary>
     
@@ -670,15 +709,16 @@ source<span class="variable">$ZSH</span>/oh-my-zsh.sh
     <link href="http://huangjihua.com.cn/2016/10/20/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
     <id>http://huangjihua.com.cn/2016/10/20/作用域与闭包/</id>
     <published>2016-10-20T03:02:25.000Z</published>
-    <updated>2017-03-11T14:11:30.000Z</updated>
+    <updated>2017-03-12T13:15:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>首先在讲之前，需要掌握以下几个概念：</p>
 <ol>
 <li>javaScript具有两种作用域：<strong>全局作用域</strong>和<strong>函数作用域</strong>，另外还有<strong>块作用域</strong>，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。</li>
 <li>ES6的let关键字，可以用来在任意代码块中声明变量。</li>
-<li><strong>IIFE</strong>（立即执行函数表达式）是什么？它有什么作用？</li>
+<li><strong>IIFE</strong>（立即执行函数表达式）是什么？它有什么作用？<a id="more"></a>
+<h3 id="什么是闭包">什么是闭包</h3></li>
 </ol>
-<h3 id="什么是闭包">什么是闭包</h3><p><strong>闭包</strong>：函数可以记住并访问所在的词法作用域时，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
+<p><strong>闭包</strong>：函数可以记住并访问所在的词法作用域时，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
     <span class="keyword">var</span> a=<span class="number">2</span>;
     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>{
@@ -860,7 +900,9 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
     
       &lt;p&gt;首先在讲之前，需要掌握以下几个概念：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;javaScript具有两种作用域：&lt;strong&gt;全局作用域&lt;/strong&gt;和&lt;strong&gt;函数作用域&lt;/strong&gt;，另外还有&lt;strong&gt;块作用域&lt;/strong&gt;，比如：try …catch…语
+&lt;li&gt;javaScript具有两种作用域：&lt;strong&gt;全局作用域&lt;/strong&gt;和&lt;strong&gt;函数作用域&lt;/strong&gt;，另外还有&lt;strong&gt;块作用域&lt;/strong&gt;，比如：try …catch…语句中，catch 分句是块级作用域，还有with语句等。&lt;/li&gt;
+&lt;li&gt;ES6的let关键字，可以用来在任意代码块中声明变量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IIFE&lt;/strong&gt;（立即执行函数表达式）是什么？它有什么作用？
     
     </summary>
     
@@ -869,6 +911,10 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
     
       <category term="javascript" scheme="http://huangjihua.com.cn/tags/javascript/"/>
     
+      <category term="作用域" scheme="http://huangjihua.com.cn/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    
+      <category term="闭包" scheme="http://huangjihua.com.cn/tags/%E9%97%AD%E5%8C%85/"/>
+    
   </entry>
   
   <entry>
@@ -876,7 +922,7 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
     <link href="http://huangjihua.com.cn/2015/11/29/javascript%E4%B8%ADnew%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%E5%8F%88%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3prototype%EF%BC%9F/"/>
     <id>http://huangjihua.com.cn/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/</id>
     <published>2015-11-29T02:40:58.000Z</published>
-    <updated>2017-03-11T14:14:01.000Z</updated>
+    <updated>2017-03-12T13:10:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>说到prototype就得先说说new了。我们先看看这样一段代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{};
@@ -885,11 +931,13 @@ foo.doAnother(); <span class="comment">// 1!2!3</span>
 <ol>
 <li>var p={}; 也就是说，初始化一个对象p</li>
 <li>p.<strong>proto</strong>=Person.prototype;</li>
-<li>Person.call(p);也就是说构造p，也可以称之为初始化p。</li>
-</ol>
+<li><p>Person.call(p);也就是说构造p，也可以称之为初始化p。</p>
+<a id="more"></a>
 <p>关键在于第二步，我们来证明一下,如果这段代码会返回true。说明我们步骤2的正确：</p>
-<pre><code><span class="built_in">console</span>.log(p.__proto__ === Person.prototype); <span class="regexp">//</span>结果果然是<span class="literal">true</span>
-</code></pre><h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
+<p> console.log(p.<strong>proto</strong> === Person.prototype); //结果果然是true</p>
+</li>
+</ol>
+<h4 id="那么proto是什么？">那么<strong>proto</strong>是什么？</h4><p>   我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是<strong>proto</strong>，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去<strong>proto</strong>里找这个属性，这个<strong>proto</strong>又会有自己的<strong>proto</strong>，于是就这样 一直找下去，也就是我们平时所说的原型链的概念。</p>
 <p>   按照标准，<strong>proto</strong>是不对外公开的，也就是说是个私有属性，但是Firefox的引擎将他暴露了出来成为了一个共有的属性，我们可以对外访问和设置。</p>
 <p>好，概念说清了，让我们看一下下面这些代码：</p>
 <pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>
@@ -950,7 +998,13 @@ Base.call(obj)<span class="comment">;</span>
     <summary type="html">
     
       &lt;p&gt;说到prototype就得先说说new了。我们先看看这样一段代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; Person = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;f
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; Person = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{};
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 很简单的一段代码，我们来看看这个new究竟做了什么？我们可以把new的过程拆分成以下三步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;var p={}; 也就是说，初始化一个对象p&lt;/li&gt;
+&lt;li&gt;p.&lt;strong&gt;proto&lt;/strong&gt;=Person.prototype;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Person.call(p);也就是说构造p，也可以称之为初始化p。&lt;/p&gt;
     
     </summary>
     
@@ -966,7 +1020,7 @@ Base.call(obj)<span class="comment">;</span>
     <link href="http://huangjihua.com.cn/2015/11/02/grunt-beginner%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     <id>http://huangjihua.com.cn/2015/11/02/grunt-beginner前端自动化工具/</id>
     <published>2015-11-02T08:29:57.000Z</published>
-    <updated>2016-12-25T10:39:20.000Z</updated>
+    <updated>2017-03-12T13:09:12.000Z</updated>
     
     <content type="html"><![CDATA[<p> 本文章适合对HTML、CSS、JS有一定基础，并且对Nodejs有一定的了解的同学。</p>
 <h4 id="学习目标和内容">学习目标和内容</h4><hr>
@@ -975,11 +1029,7 @@ Base.call(obj)<span class="comment">;</span>
 </blockquote>
 <p>前端集成解决方案个人理解是：</p>
 <blockquote>
-<p>将前端研发领域中各种分散的技术元素集中在一起，并对常见的前端开发问题、不足、缺陷和需求，所提出的一种解决问题的方案。</p>
-</blockquote>
-<p>不同角色理解解对比：</p>
-<blockquote>
-<p>开发者：解决前端工程的根本问题；<br>专家学者：一套包含<strong>框架</strong>和<strong>工具</strong>，便于开发者<strong>快速</strong>构建<strong>美丽实用</strong>的Web应用程序的工作流，同时这套工作流必须是稳健强壮的。(其中美丽和实用有时候不能同时并存)</p>
+<p>将前端研发领域中各种分散的技术元素集中在一起，并对常见的前端开发问题、不足、缺陷和需求，所提出的一种解决问题的方案。<br><a id="more"></a><br>不同角色理解解对比：<br>开发者：解决前端工程的根本问题；<br>专家学者：一套包含<strong>框架</strong>和<strong>工具</strong>，便于开发者<strong>快速</strong>构建<strong>美丽实用</strong>的Web应用程序的工作流，同时这套工作流必须是稳健强壮的。(其中美丽和实用有时候不能同时并存)</p>
 </blockquote>
 <p><strong><em>解决哪些前端问题？</em></strong></p>
 <blockquote>
@@ -1189,7 +1239,11 @@ module.exports = <span class="function"><span class="keyword">function</span> <s
       &lt;p&gt; 本文章适合对HTML、CSS、JS有一定基础，并且对Nodejs有一定的了解的同学。&lt;/p&gt;
 &lt;h4 id=&quot;学习目标和内容&quot;&gt;学习目标和内容&lt;/h4&gt;&lt;hr&gt;
 &lt;h5 id=&quot;什么事前端集成解决方案&quot;&gt;什么事前端集成解决方案&lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;每一
+&lt;p&gt;每一个前端团队都想打造自己的前端开发体系，来帮助团队更高效的工作，目前通常都是东拼西凑，逐渐的整合的过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;前端集成解决方案个人理解是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将前端研发领域中各种分散的技术元素集中在一起，并对常见的前端开发问题、不足、缺陷和需求，所提出的一种解决问题的方案。&lt;br&gt;
     
     </summary>
     
@@ -1209,7 +1263,7 @@ module.exports = <span class="function"><span class="keyword">function</span> <s
     <link href="http://huangjihua.com.cn/2015/10/29/Sass%E5%92%8CCompass%E7%94%A8%E6%B3%95%E4%BB%A5%E5%8F%8ARuby%E5%AE%89%E8%A3%85/"/>
     <id>http://huangjihua.com.cn/2015/10/29/Sass和Compass用法以及Ruby安装/</id>
     <published>2015-10-29T02:40:58.000Z</published>
-    <updated>2015-12-13T10:16:42.000Z</updated>
+    <updated>2017-03-12T13:18:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>###RubyInstaller </p>
 <p>If you are on Windows, there is a great project to help you install Ruby: <a href="http://rubyinstaller.org/" target="_blank" rel="external">RubyInstaller</a>. It gives you everything you need to set up a full Ruby development environment on Windows.<br>Just download it, run it, and you are done!</p>
@@ -1220,7 +1274,8 @@ gem sources -<span class="keyword">a</span> http<span class="variable">s:</span>
 gem sources -<span class="keyword">l</span> # 查看<span class="keyword">list</span>
 
 gem <span class="keyword">update</span> //更新<span class="keyword">ruby</span>版本
-</code></pre><p>2.安装Sass<br>如果安装多个版本的sass先下载<a href="http://rubyinstaller.org/downloads" target="_blank" rel="external">DevKit</a>构建工具</p>
+</code></pre><a id="more"></a>
+<p>2.安装Sass<br>如果安装多个版本的sass先下载<a href="http://rubyinstaller.org/downloads" target="_blank" rel="external">DevKit</a>构建工具</p>
 <pre><code>gem install sass
 sass -v 
 gem install sass --version=<span class="number">3.3</span> <span class="comment">//安装特定版本的sass , 但要先安装build tools 》DevKit</span>
@@ -1313,7 +1368,15 @@ compass <span class="built_in">create</span> learn-sass-syntax<span class="comme
     <summary type="html">
     
       &lt;p&gt;###RubyInstaller &lt;/p&gt;
-&lt;p&gt;If you are on Windows, there is a great project to help you install Ruby: &lt;a href=&quot;http://rubyinstaller.org/&quot; ta
+&lt;p&gt;If you are on Windows, there is a great project to help you install Ruby: &lt;a href=&quot;http://rubyinstaller.org/&quot;&gt;RubyInstaller&lt;/a&gt;. It gives you everything you need to set up a full Ruby development environment on Windows.&lt;br&gt;Just download it, run it, and you are done!&lt;/p&gt;
+&lt;h4 id=&quot;Check_whether_Ruby_already_is_available_by_opening_a_terminal&quot;&gt;Check whether Ruby already is available by opening a terminal&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;ruby&lt;/span&gt; -v
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;Try_Ruby&quot;&gt;Try Ruby&lt;/h4&gt;&lt;p&gt;1.由于国内网络原因，首先我们来修改一下Ruby的source地址&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gem sources --&lt;span class=&quot;built_in&quot;&gt;remove&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//rubygems.org/ //移除默认的
+gem sources -&lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;keyword&quot;&gt;ruby&lt;/span&gt;.taobao.org/ //添加新的地址
+gem sources -&lt;span class=&quot;keyword&quot;&gt;l&lt;/span&gt; # 查看&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;
+
+gem &lt;span class=&quot;keyword&quot;&gt;update&lt;/span&gt; //更新&lt;span class=&quot;keyword&quot;&gt;ruby&lt;/span&gt;版本
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -1322,6 +1385,10 @@ compass <span class="built_in">create</span> learn-sass-syntax<span class="comme
     
       <category term="CSS" scheme="http://huangjihua.com.cn/tags/css/"/>
     
+      <category term="Compass" scheme="http://huangjihua.com.cn/tags/compass/"/>
+    
+      <category term="Ruby" scheme="http://huangjihua.com.cn/tags/ruby/"/>
+    
   </entry>
   
   <entry>
@@ -1329,12 +1396,11 @@ compass <span class="built_in">create</span> learn-sass-syntax<span class="comme
     <link href="http://huangjihua.com.cn/2015/10/15/hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://huangjihua.com.cn/2015/10/15/hexo搭建静态博客/</id>
     <published>2015-10-15T02:40:58.000Z</published>
-    <updated>2017-03-11T13:16:02.000Z</updated>
+    <updated>2017-03-12T13:10:12.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="安装">安装</h4><p>系统环境 Windows 7 64bit</p>
 <p>文本编辑器推荐使用 WebStorm 10,<br>文件编码选择 UTF-8<br>Git</p>
-<p>安装 GitHub for Windows,<br>登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱</p>
-<p>新建仓库, Github Pages 的仓库名必须为your_user_name.github.io<br>your_user_name 替换成你的用户名</p>
+<p>安装 GitHub for Windows,<br>登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱<br><a id="more"></a><br>新建仓库, Github Pages 的仓库名必须为your_user_name.github.io<br>your_user_name 替换成你的用户名</p>
 <p>配置 SSH, 参考 SSH配置教程Node.js<br>安装 Node.js, Node 安装包里带有 npm<br>Hexo</p>
 <h5 id="安装_Hexo">安装 Hexo</h5><pre><code>//2.x
 npm <span class="operator"><span class="keyword">install</span> hexo -<span class="keyword">g</span>
@@ -2043,7 +2109,7 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     
       &lt;h4 id=&quot;安装&quot;&gt;安装&lt;/h4&gt;&lt;p&gt;系统环境 Windows 7 64bit&lt;/p&gt;
 &lt;p&gt;文本编辑器推荐使用 WebStorm 10,&lt;br&gt;文件编码选择 UTF-8&lt;br&gt;Git&lt;/p&gt;
-&lt;p&gt;安装 GitHub for Windows,&lt;br&gt;登录后会自动在本地配置
+&lt;p&gt;安装 GitHub for Windows,&lt;br&gt;登录后会自动在本地配置好 SSH, 执行git shell时也不需要-config用户名和邮箱&lt;br&gt;
     
     </summary>
     
@@ -2059,7 +2125,7 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     <link href="http://huangjihua.com.cn/2014/10/29/HTTP%E4%B8%8EHTTPs%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8ASSL%E5%92%8CTLS%E5%8D%8F%E8%AE%AE%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
     <id>http://huangjihua.com.cn/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/</id>
     <published>2014-10-29T02:40:58.000Z</published>
-    <updated>2017-03-11T04:56:55.000Z</updated>
+    <updated>2017-03-12T13:10:32.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="HTTP和HTTPS介绍">HTTP和HTTPS介绍</h4><p><img src="http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg" alt=""></p>
 <h6 id="1-http介绍">1.http介绍</h6><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本传输协议标准架构的发展根基。Ted Nelson组织协调万维网协会（World Wide Web Consortium）和互联网工程工作小组（Internet Engineering Task Force ）共同合作研究，最终发布了一系列的RFC，其中著名的RFC 2616定义了HTTP 1.1。</p>
@@ -2069,7 +2135,7 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
 <pre><code><span class="number">1</span>，HTTP/<span class="number">1.0</span>协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；
 <span class="number">2</span>，HTTP/<span class="number">1.1</span>默认使用持久连接(然而,HTTP/<span class="number">1.1</span>协议的客户机和服务器可以配置成使用非持久连接)。
    在持久连接下,不必为每个Web对象的传送建立一个新的连接,一个连接中可以传输多个对象!
-</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a></p>
+</code></pre><p>图解HTTP推荐看：<a href="http://www.cnblogs.com/xing901022/p/4309840.html" target="_blank" rel="external">图解HTTP(上)</a> 和 <a href="http://www.cnblogs.com/xing901022/p/4311987.html" target="_blank" rel="external">图解HTTP(下)</a><br><a id="more"></a></p>
 <h6 id="2-https介绍">2.https介绍</h6><p><code>HTTPS</code>（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。</p>
 <p>HTTPS工作图解：<br><img src="http://www.nowamagic.net/librarys/images/201212/2012_12_20_01.png" alt=""> <img src="http://image72.360doc.com/DownloadImg/2014/05/1415/41600550_1.png" alt="时序图"></p>
 <h6 id="HTTP与HTTPS主要区别">HTTP与HTTPS主要区别</h6><blockquote>
@@ -2137,7 +2203,14 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     <summary type="html">
     
       &lt;h4 id=&quot;HTTP和HTTPS介绍&quot;&gt;HTTP和HTTPS介绍&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://ximg.tuxi.com.cn/uploadimageschinaz/2015/0828/1440768573966.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h6 
+&lt;h6 id=&quot;1-http介绍&quot;&gt;1.http介绍&lt;/h6&gt;&lt;p&gt;超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。1960年美国人Ted Nelson构思了一种通过计算机处理文本信息的方法，并称之为超文本（hypertext）,这成为了HTTP超文本传输协议标准架构的发展根基。Ted Nelson组织协调万维网协会（World Wide Web Consortium）和互联网工程工作小组（Internet Engineering Task Force ）共同合作研究，最终发布了一系列的RFC，其中著名的RFC 2616定义了HTTP 1.1。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.0与1.1版本的主要区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;，HTTP/&lt;span class=&quot;number&quot;&gt;1.0&lt;/span&gt;协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；
+&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;，HTTP/&lt;span class=&quot;number&quot;&gt;1.1&lt;/span&gt;默认使用持久连接(然而,HTTP/&lt;span class=&quot;number&quot;&gt;1.1&lt;/span&gt;协议的客户机和服务器可以配置成使用非持久连接)。
+   在持久连接下,不必为每个Web对象的传送建立一个新的连接,一个连接中可以传输多个对象!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;图解HTTP推荐看：&lt;a href=&quot;http://www.cnblogs.com/xing901022/p/4309840.html&quot;&gt;图解HTTP(上)&lt;/a&gt; 和 &lt;a href=&quot;http://www.cnblogs.com/xing901022/p/4311987.html&quot;&gt;图解HTTP(下)&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -2153,7 +2226,7 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     <link href="http://huangjihua.com.cn/2014/10/15/Linux%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
     <id>http://huangjihua.com.cn/2014/10/15/Linux的学习/</id>
     <published>2014-10-15T03:40:58.000Z</published>
-    <updated>2015-10-28T10:22:40.000Z</updated>
+    <updated>2017-03-12T13:20:28.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="系统分区只分区与格式化">系统分区只分区与格式化</h4><p>1.分区类型</p>
 <ul>
@@ -2162,9 +2235,9 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
 主分区加扩展分区最多有<span class="number">4</span>个；
 不能写入数据，只能包含逻辑分区；
 </code></pre></li>
-<li>逻辑分区</li>
+<li>逻辑分区<a id="more"></a>
+2、格式化：<br>  ·格式化（高级格式化）又称逻辑格式化，它是指根据用户选定的文件系统（如FAT16、FAT32、NTFS、EXTZ、EXT3、EXT4等），<br>  在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</li>
 </ul>
-<p>2、格式化：<br>    ·格式化（高级格式化）又称逻辑格式化，它是指根据用户选定的文件系统（如FAT16、FAT32、NTFS、EXTZ、EXT3、EXT4等），<br>    在磁盘的特定区域写入特定数据，在分区中划出一片用于存放文件分配表、目录表等用于文件管理的磁盘空间。</p>
 <h4 id="分区之分区设备文件名与挂载">分区之分区设备文件名与挂载</h4><table>
 <thead>
 <tr>
@@ -2230,11 +2303,16 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     
       &lt;h4 id=&quot;系统分区只分区与格式化&quot;&gt;系统分区只分区与格式化&lt;/h4&gt;&lt;p&gt;1.分区类型&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;主分区：最多只能4个 （硬盘由等大小的扇区组成，每个扇区有512字节，512个字节当中446个字节用来记录启动信息的，另外64个字节用来分区表示的，每16个字节
+&lt;li&gt;主分区：最多只能4个 （硬盘由等大小的扇区组成，每个扇区有512字节，512个字节当中446个字节用来记录启动信息的，另外64个字节用来分区表示的，每16个字节一个分区所以只能分4个主分区）&lt;/li&gt;
+&lt;li&gt;扩展分区：&lt;pre&gt;&lt;code&gt;最多只能有&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;个；
+主分区加扩展分区最多有&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;个；
+不能写入数据，只能包含逻辑分区；
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;逻辑分区
     
     </summary>
     
-      <category term="Linux" scheme="http://huangjihua.com.cn/categories/linux/"/>
+      <category term="System" scheme="http://huangjihua.com.cn/categories/system/"/>
     
     
       <category term="Linux" scheme="http://huangjihua.com.cn/tags/linux/"/>
@@ -2246,7 +2324,7 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
     <link href="http://huangjihua.com.cn/2014/02/12/SublimeText3-Nodejs%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://huangjihua.com.cn/2014/02/12/SublimeText3-Nodejs环境配置/</id>
     <published>2014-02-12T08:28:00.000Z</published>
-    <updated>2015-12-13T10:14:04.000Z</updated>
+    <updated>2017-03-12T13:18:16.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="下载SublimeText-Nodejs">下载SublimeText-Nodejs</h4><blockquote>
 <p>本文基于window环境测试的说明，希望能给大家带来帮助。</p>
@@ -2255,9 +2333,9 @@ npm install hexo-generator-baidu-sitemap --<span class="built_in">save</span>
 <p>2、使用git命令下载到Sublime的Data/package目录</p>
 <pre><code>git <span class="keyword">clone</span> <span class="title">https</span>://github.com/tanepiper/SublimeText-Nodejs 
 </code></pre><blockquote>
-<p>注意：下载好后，将SublimeText-Nodejs目录名称改为Nodejs</p>
-</blockquote>
-<h4 id="修改nodejs配置项">修改nodejs配置项</h4><ul>
+<p>注意：下载好后，将SublimeText-Nodejs目录名称改为Nodejs<br><a id="more"></a></p>
+<h4 id="修改nodejs配置项">修改nodejs配置项</h4></blockquote>
+<ul>
 <li><p>修改第一个文件，在package目录下的nodejs目录中，打开<code>Nodejs.sublime-setting</code>配置文件，修改<code>&quot;node_command&quot;</code>和<code>&quot;npm_command&quot;</code>两项,修改好后内容如下：</p>
 <p>  {</p>
 <pre><code>// save before running commands
@@ -2339,7 +2417,11 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
       &lt;h4 id=&quot;下载SublimeText-Nodejs&quot;&gt;下载SublimeText-Nodejs&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;本文基于window环境测试的说明，希望能给大家带来帮助。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;1、直接下载压缩包后解压到subli
+&lt;p&gt;1、直接下载压缩包后解压到sublime text的package目录中。查看package目录在哪可以通过菜单栏中的Preferences–&amp;gt;浏览程序包Browse Packages直接打开package目录。&lt;/p&gt;
+&lt;p&gt;2、使用git命令下载到Sublime的Data/package目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git &lt;span class=&quot;keyword&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;https&lt;/span&gt;://github.com/tanepiper/SublimeText-Nodejs 
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;注意：下载好后，将SublimeText-Nodejs目录名称改为Nodejs&lt;br&gt;
     
     </summary>
     
@@ -2350,7 +2432,7 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
     
       <category term="Nodejs" scheme="http://huangjihua.com.cn/tags/nodejs/"/>
     
-      <category term="Web Tool" scheme="http://huangjihua.com.cn/tags/web-tool/"/>
+      <category term="SublimeText3" scheme="http://huangjihua.com.cn/tags/sublimetext3/"/>
     
   </entry>
   
@@ -2359,12 +2441,12 @@ Server running at http:<span class="comment">//127.0.0.1:3000/</span>
     <link href="http://huangjihua.com.cn/2013/10/12/DOM%E4%BA%8B%E4%BB%B6%E6%8E%A2%E7%A7%98%E4%B8%89/"/>
     <id>http://huangjihua.com.cn/2013/10/12/DOM事件探秘三/</id>
     <published>2013-10-12T09:13:47.000Z</published>
-    <updated>2015-10-20T04:37:46.000Z</updated>
+    <updated>2017-03-12T13:09:50.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="事件处理程序">事件处理程序</h4><blockquote>
 <p>什么事事件对象呢？在触发DOM上的事件时都会产生一个对象事件对象event</p>
 </blockquote>
-<p>Event对象在event第一次触发的时候被创建出来，并且一直伴随着事件在DOM结构中流转的整个生命周期。event对象会被作为第一个参数传递给事件监听的回调函数。我们可以通过这个event对象来获取到大量当前事件相关的信息</p>
+<p>Event对象在event第一次触发的时候被创建出来，并且一直伴随着事件在DOM结构中流转的整个生命周期。event对象会被作为第一个参数传递给事件监听的回调函数。我们可以通过这个event对象来获取到大量当前事件相关的信息<br><a id="more"></a></p>
 <blockquote>
 <ul>
 <li>type (String) — 事件的名称</li>
@@ -2450,7 +2532,7 @@ stopPropagation:function(<span class="keyword">event</span>){
       &lt;h4 id=&quot;事件处理程序&quot;&gt;事件处理程序&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;什么事事件对象呢？在触发DOM上的事件时都会产生一个对象事件对象event&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Event对象在event第一次触发的时候被创建出来，并且一直伴随着事件在D
+&lt;p&gt;Event对象在event第一次触发的时候被创建出来，并且一直伴随着事件在DOM结构中流转的整个生命周期。event对象会被作为第一个参数传递给事件监听的回调函数。我们可以通过这个event对象来获取到大量当前事件相关的信息&lt;br&gt;
     
     </summary>
     
@@ -2466,7 +2548,7 @@ stopPropagation:function(<span class="keyword">event</span>){
     <link href="http://huangjihua.com.cn/2013/10/12/DOM%E4%BA%8B%E4%BB%B6%E6%8E%A2%E7%A7%98%E4%BA%8C/"/>
     <id>http://huangjihua.com.cn/2013/10/12/DOM事件探秘二/</id>
     <published>2013-10-12T09:11:02.000Z</published>
-    <updated>2015-10-19T10:35:00.000Z</updated>
+    <updated>2017-03-12T13:10:01.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="二、使用事件处理程序">二、使用事件处理程序</h4><h5 id="1-_HTML事件处理程序">1. HTML事件处理程序</h5><pre><code>即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
 
@@ -2477,9 +2559,9 @@ stopPropagation:function(<span class="keyword">event</span>){
    }
 </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 </code></pre><blockquote>
-<p>从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。</p>
-</blockquote>
+<p>从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。<br><a id="more"></a></p>
 <h5 id="2-_DOM0级事件处理程序">2. DOM0级事件处理程序</h5><p>即为指定对象添加事件处理，看下面的一段代码</p>
+</blockquote>
 <pre><code><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"btn2"</span> <span class="attribute">value</span>=<span class="value">"按钮"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span>
 <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
     <span class="comment">//DOM0级事件</span>
@@ -2523,7 +2605,14 @@ stopPropagation:function(<span class="keyword">event</span>){
     
       &lt;h4 id=&quot;二、使用事件处理程序&quot;&gt;二、使用事件处理程序&lt;/h4&gt;&lt;h5 id=&quot;1-_HTML事件处理程序&quot;&gt;1. HTML事件处理程序&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;即我们直接在HTML代码中添加事件处理程序，如下面这段代码：
 
-&lt;span class=&quot;tag&quot;&gt;&amp;lt
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;btn1&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;按钮&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;onclick&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;showmsg();&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;actionscript&quot;&gt;
+   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showmsg&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+       alert(&lt;span class=&quot;string&quot;&gt;&quot;HTML添加事件处理&quot;&lt;/span&gt;);
+   }
+&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;从上面的代码中我们可以看出，事件处理是直接嵌套在元素里头的，这样有一个毛病：就是html代码和js的耦合性太强，如果哪一天我想要改变js中showmsg，那么我不但要再js中修改，我还需要到html中修改，一两处的修改我们能接受，但是当你的代码达到万行级别的时候，修改起来就需要劳民伤财了，所以，这个方式我们并不推荐使用。&lt;br&gt;
     
     </summary>
     
@@ -2539,9 +2628,9 @@ stopPropagation:function(<span class="keyword">event</span>){
     <link href="http://huangjihua.com.cn/2013/10/12/DOM%E4%BA%8B%E4%BB%B6%E6%8E%A2%E7%A7%98/"/>
     <id>http://huangjihua.com.cn/2013/10/12/DOM事件探秘/</id>
     <published>2013-10-12T08:28:00.000Z</published>
-    <updated>2015-10-19T10:31:18.000Z</updated>
+    <updated>2017-03-12T13:09:34.000Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。</p>
+    <content type="html"><![CDATA[<h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。<br><a id="more"></a></p>
 <h4 id="一、事件流">一、事件流</h4><p>事件流就是描述了页面中接受事件的顺序，在浏览器发展的初期，两大浏览器厂商IE和Netscape互掐，出现了一个坑爹的情况，那就是他们对事件流的解释出现了两中截然相反的定义。也就是我们所熟悉的：IE的事件冒泡，Netscape的事件捕获。<br><img height="550" alt="DOM事件触发过程" src="http://yuml.me/diagram/nofunky/class/
   [window]->1[document],[window]-[note:document],[window]8<-[document],
   [document]->2[body],[document]-[note:body],[document]7<-[body],
@@ -2593,7 +2682,7 @@ stopPropagation:function(<span class="keyword">event</span>){
     
     <summary type="html">
     
-      &lt;h4 id=&quot;前言&quot;&gt;前言&lt;/h4&gt;&lt;p&gt;Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可
+      &lt;h4 id=&quot;前言&quot;&gt;前言&lt;/h4&gt;&lt;p&gt;Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。&lt;br&gt;  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。&lt;br&gt;  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。&lt;br&gt;
     
     </summary>
     

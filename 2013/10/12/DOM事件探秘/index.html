@@ -24,7 +24,7 @@
   [document]->2[body],[document]-[note:body],[document]7<-[body],
   [body]->3[div],[body]-[note:div],[body]6<-[div],
   [div]->4[text],[div]-[note:text],[div]5<-[text]">
-<meta property="og:updated_time" content="2015-10-19T10:31:18.000Z">
+<meta property="og:updated_time" content="2017-03-12T13:09:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM事件探秘(一)">
 <meta name="twitter:description" content="前言Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。">
@@ -80,9 +80,7 @@
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -215,7 +213,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compass/">Compass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-https/">HTTP/HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext3/">SublimeText3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-tool/">Web Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash-zsh/">bash/zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -225,6 +223,8 @@
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
                     </div>
                 </section>
@@ -299,39 +299,39 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap"><article id="post-DOM事件探秘" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
-      <a href="/2013/10/12/DOM事件探秘/" class="article-date">
+        <a href="/2013/10/12/DOM事件探秘/" class="article-date">
       <time datetime="2013-10-12T08:28:00.000Z" itemprop="datePublished">2013-10-12</time>
 </a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+    <div class="article-inner">
+        
+        <input type="hidden" class="isFancy">
+        
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">
       DOM事件探秘(一)
     </h1>
-      </header>
-      
-      <div class="article-info article-info-post">
-        <div class="article-category tagcloud">
+        </header>
+        
+        <div class="article-info article-info-post">
+            <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
     </div>
-        <div class="article-tag tagcloud">
+            <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。</p>
+            <div class="clearfix"></div>
+        </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            <h4 id="前言">前言</h4><p>Click、touch、load、drag、change、input、error、risize — 这些都是冗长的DOM（文档对象模型）事件列表的一部分。事件可以在文档(Document)结构的任何部分被触发，触发者可以是用户操作，也可以是浏览器本身。事件并不是只是在一处被触发和终止；他们在整个document中流动，拥有它们自己的生命周期。而这个生命周期让DOM事件有更多的用途和可扩展性。<br>  作为一个开发人员，我们必须要理解DOM事件是如何工作的，然后才能更好的驾驭它，利用它们潜在的优势，开发出更高交互性的参与体验。<br>  本章节目标就是帮助大家快速的清楚的认识DOM事件的内在工作机制和基本使用方式，以及如何用这些机制来解决工作中遇到的常见问题。<br><a id="more"></a></p>
 <h4 id="一、事件流">一、事件流</h4><p>事件流就是描述了页面中接受事件的顺序，在浏览器发展的初期，两大浏览器厂商IE和Netscape互掐，出现了一个坑爹的情况，那就是他们对事件流的解释出现了两中截然相反的定义。也就是我们所熟悉的：IE的事件冒泡，Netscape的事件捕获。<br><img height="550" alt="DOM事件触发过程" src="http://yuml.me/diagram/nofunky/class/
   [window]->1[document],[window]-[note:document],[window]8<-[document],
   [document]->2[body],[document]-[note:body],[document]7<-[body],
@@ -380,16 +380,16 @@
 <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre><p>相关文章:<br><a href="/2013/10/12/DOM事件探秘/">1.理解事件流</a><br><a href="/2013/10/12/DOM事件探秘二/">2.使用事件处理程序</a><br><a href="/2013/10/12/DOM事件探秘三/">3.Event对象</a></p>
-      
+            
+        </div>
+        
     </div>
     
-  </div>
-  
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hank</a></p>
         <p><span>发布时间:</span>2013-10-12, 16:28:00</p>
-        <p><span>最后更新:</span>2015-10-19, 18:31:18</p>
+        <p><span>最后更新:</span>2017-03-12, 21:09:34</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2013/10/12/DOM事件探秘/" title="DOM事件探秘(一)">http://huangjihua.com.cn/2013/10/12/DOM事件探秘/</a>
             <span class="copy-path" data-clipboard-text="原文: http://huangjihua.com.cn/2013/10/12/DOM事件探秘/　　作者: Hank" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -412,7 +412,7 @@
         
         
     </nav>
-  
+    
 </article>
 <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
@@ -438,7 +438,7 @@
     </script>
 
 
-    <div class="share">
+<div class="share">
     
         <div class="bdsharebuttonbox">
             <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
@@ -460,8 +460,8 @@
 
 
 
-    
-      <div class="duoshuo" id="comments">
+
+<div class="duoshuo" id="comments">
     <div id="comment-box"></div>
     <div class="ds-thread" id="ds-thread" data-thread-key="2013/10/12/DOM事件探秘/" data-title="DOM事件探秘(一)" data-url="http://huangjihua.com.cn/2013/10/12/DOM事件探秘/"></div>
     <script>
@@ -474,10 +474,47 @@
         }
 
         
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2013/10/12/DOM事件探秘/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
     </script>
-    <script> loadComment(); </script>
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
 </div>
-    
+
 
 
 <div class="scroll" id="post-nav-button">
@@ -497,9 +534,9 @@
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/ES6中的关键字super该如何理解？/">ES6中的关键字super该如何理解？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/Javascript中this关键字理解，你懂了？/">Javascript中this关键字理解，你懂了？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/javascript数组去重的方法/">Javascript数组去重的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/MAC中bash与zsh的切换/">MAC中bash与zsh的切换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/Atom中linter-eslint安装以及全局设置/">Atom中linter-Eslint安装以及全局设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/20/作用域与闭包/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/javascript中new到底做了什么？又如何理解prototype？/">Javascript中new到底做了什么？又如何理解prototype？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/grunt-beginner前端自动化工具/">Grunt-Beginner前端自动化工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Sass和Compass用法以及Ruby安装/">Sass 和 Compass 用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/hexo搭建静态博客/">Hexo搭建静态博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/HTTP与HTTPs区别以及SSL和TLS协议运行机制/">HTTP与HTTPs区别以及SSL/TLS协议运行机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/15/Linux的学习/">Linux学习随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/12/SublimeText3-Nodejs环境配置/">SublimeText3-Nodejs环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘三/">DOM事件探秘(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘二/">DOM事件探秘(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/DOM事件探秘/">DOM事件探秘(一)</a></li></ul>
 
 
-    <script>
-        
-    </script></div>
+<script>
+    
+</script></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -509,6 +546,8 @@
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>
+                
+                    Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a>
                 
                 
             </div>
@@ -595,11 +634,11 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
-             title: "a.article-title, .article-more-link a", 
+            
             
             
              categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
+            
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             
